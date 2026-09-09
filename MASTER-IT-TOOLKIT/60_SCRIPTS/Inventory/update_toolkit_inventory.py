@@ -48,56 +48,85 @@ def files(folder):
 def iso_time(timestamp):
     return datetime.datetime.fromtimestamp(timestamp, datetime.timezone.utc).isoformat()
 
-def scan():
+def scan(full_storage=False):
     text = safe_path('assets/js/tools-data.js').read_text(encoding='utf-8-sig')
     match = re.search(r'window\.TOOLKIT_DATA\s*=\s*(\[.*\])\s*;?\s*$', text, re.S)
     if not match: raise ValueError('Catalog must contain a JSON array assignment')
     catalog = json.loads(match.group(1))
-    inventory = dict(schemaVersion=1, generatedAt=iso_time(datetime.datetime.now().timestamp()),
-                     tools={}, storage={'folders':{}, 'volume':None}, errors=[])
-    cache = {}
+    inventory = dict(schemaVersion=2, generatedAt=iso_time(datetime.datetime.now().timestamp()),
+                     tools={}, storage={'folders':{}, 'volume':None}, errors=[], scanMode='full' if full_storage else 'quick')
+    try: receipts = json.loads(safe_path('assets/download-receipts.json').read_text('utf-8'))
+    except (OSError, ValueError): receipts = {}
+    requested = sorted(set(t['localFolder'] for t in catalog if t.get('localFolder')) | (set(FOLDERS) if full_storage else set()), key=lambda x:(len(x),x))
+    roots=[]
+    for folder in requested:
+        if not any(folder==r or folder.startswith(r+'/') for r in roots): roots.append(folder)
+    indexed={}; failures={}
+    for folder in roots:
+        entries=[]
+        try:
+            base=safe_path(folder)
+            def walk(directory):
+                with os.scandir(directory) as children:
+                    for entry in children:
+                        st=entry.stat(follow_symlinks=False)
+                        if entry.is_symlink() or getattr(st,'st_file_attributes',0)&0x400: continue
+                        if entry.is_dir(follow_symlinks=False): walk(entry.path)
+                        elif entry.is_file(follow_symlinks=False): entries.append((Path(entry.path),st))
+            if base.is_dir(): walk(base)
+        except (OSError, ValueError) as error: failures[folder]=str(error)
+        indexed[folder]=entries
+    candidates={}
     for tool in catalog:
-        record = dict(installed=False, localPath='', files=[], sizeBytes=0,
-                      lastModified='', version='', scanError='')
-        folder, patterns = tool.get('localFolder'), tool.get('inventoryPatterns', [])
-        if folder and patterns:
+        record=dict(installed=False, downloaded=False, ready=False, localPath='',files=[],sizeBytes=0,lastModified='',version='',scanError='')
+        folder=tool.get('localFolder'); patterns=tool.get('inventoryPatterns',[])
+        if folder:
             try:
-                if folder not in cache: cache[folder] = files(folder)
-                matches = [f for f in cache[folder] if f.stat().st_size > 0 and
-                           any(fnmatch.fnmatchcase(f.name.casefold(), p.casefold()) for p in patterns)]
-                complete = bool(matches)
-                if tool.get('inventoryMatch') == 'all':
-                    complete = complete and all(any(fnmatch.fnmatchcase(f.name.casefold(), p.casefold())
-                                                   for f in matches) for p in patterns)
-                if matches:
-                    selected = max(matches, key=lambda f:f.stat().st_mtime)
-                    expected = tool.get('localExecutable')
-                    if expected and safe_path(expected) in matches: selected = safe_path(expected)
-                    record.update(installed=complete, localPath=selected.relative_to(ROOT).as_posix(),
-                                  sizeBytes=sum(f.stat().st_size for f in matches),
-                                  lastModified=iso_time(selected.stat().st_mtime),
-                                  files=[dict(path=f.relative_to(ROOT).as_posix(), sizeBytes=f.stat().st_size,
-                                              lastModified=iso_time(f.stat().st_mtime)) for f in matches])
-                    # No subprocess or binary parsing: version remains explicitly unknown.
-            except (OSError, ValueError) as error:
-                record['scanError'] = str(error)
-                inventory['errors'].append(tool['id'] + ': ' + str(error))
-        inventory['tools'][tool['id']] = record
+                base=safe_path(folder)
+                root=next(r for r in roots if folder==r or folder.startswith(r+'/'))
+                if root in failures: raise ValueError(failures[root])
+                if folder not in candidates: candidates[folder]=[(f,st) for f,st in indexed[root] if base in f.parents and st.st_size>0]
+                pool=candidates[folder]
+                matches=[(f,st) for f,st in pool if any(fnmatch.fnmatchcase(f.name.casefold(),p.casefold()) for p in patterns)]
+                complete=bool(matches)
+                if tool.get('inventoryMatch')=='all': complete=complete and all(any(fnmatch.fnmatchcase(f.name.casefold(),p.casefold()) for f,st in matches) for p in patterns)
+                packages=[(f,st) for f,st in pool if any(fnmatch.fnmatchcase(f.name.casefold(),p.casefold()) for p in tool.get('packagePatterns',[]))]
+                trusted=[]
+                for receipt in receipts.get(tool['id'],[]):
+                    for f,st in pool:
+                        if f.relative_to(ROOT).as_posix()==receipt.get('path') and st.st_size==receipt.get('size'):
+                            packages.append((f,st)); trusted.append(receipt)
+                combined={str(f):(f,st) for f,st in matches+packages}
+                if combined:
+                    selected=max(combined.values(),key=lambda pair:pair[1].st_mtime)
+                    if tool.get('localExecutable'):
+                        expected=safe_path(tool['localExecutable'])
+                        selected=next((pair for pair in matches if pair[0]==expected),selected)
+                    f,st=selected
+                    record.update(installed=complete,ready=complete,downloaded=bool(complete or packages),localPath=f.relative_to(ROOT).as_posix(),sizeBytes=sum(st.st_size for f,st in combined.values()),lastModified=iso_time(st.st_mtime),files=[dict(path=f.relative_to(ROOT).as_posix(),sizeBytes=st.st_size,lastModified=iso_time(st.st_mtime)) for f,st in combined.values()])
+                    if trusted: record['version']=max(trusted,key=lambda r:r.get('savedAt','')).get('version','')
+                    if not record['version'] and tool.get('packageVersionPattern'):
+                        parsed=re.search(tool['packageVersionPattern'],f.name,re.I)
+                        if parsed: record['version']='.'.join(parsed.groups())
+                    record['latestVersion']=receipts.get('_latest',{}).get(tool['id'],'')
+            except (OSError, ValueError, StopIteration) as error:
+                record['scanError']=str(error);inventory['errors'].append(tool['id']+': '+str(error))
+        inventory['tools'][tool['id']]=record
     for folder in FOLDERS:
-        try: inventory['storage']['folders'][folder] = sum(f.stat().st_size for f in files(folder))
-        except (OSError, ValueError) as error:
-            inventory['storage']['folders'][folder] = None
-            inventory['errors'].append(folder + ': ' + str(error))
-    usage = shutil.disk_usage(ROOT)
-    inventory['storage']['volume'] = dict(totalBytes=usage.total, freeBytes=usage.free)
+        try:
+            inventory['storage']['folders'][folder]=sum(st.st_size for f,st in indexed.get(folder,[])) if full_storage else (None if safe_path(folder).exists() else 0)
+        except (OSError,ValueError): inventory['storage']['folders'][folder]=None
+    usage=shutil.disk_usage(ROOT)
+    inventory['storage']['volume']=dict(totalBytes=usage.total,freeBytes=usage.free)
     return inventory
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--what-if', action='store_true', help='Scan without writing')
+    parser.add_argument('--full-storage', action='store_true', help='Also measure every storage folder; slower on large SSDs')
     args = parser.parse_args()
-    inventory = scan()
-    print('Expected files present for', sum(t['installed'] for t in inventory['tools'].values()),
+    inventory = scan(args.full_storage)
+    print('Downloaded or ready files present for', sum(t['downloaded'] for t in inventory['tools'].values()),
           'records;', len(inventory['errors']), 'scan errors.')
     if args.what_if:
         print('Preview only; no files written.')

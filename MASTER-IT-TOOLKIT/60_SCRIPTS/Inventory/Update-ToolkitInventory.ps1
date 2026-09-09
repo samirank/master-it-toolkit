@@ -5,14 +5,23 @@ Scans predefined toolkit folders and records file presence without launching any
 .\60_SCRIPTS\Inventory\Update-ToolkitInventory.ps1
 #>
 [CmdletBinding(SupportsShouldProcess=$true)]
-param()
+param([switch]$FullStorage)
 . (Join-Path $PSScriptRoot 'Toolkit-Common.ps1')
+# Use the shared fast scanner when a bundled runtime or Python is available.
+$scanArgs=@()
+if ($WhatIfPreference) {$scanArgs+='--what-if'}
+if ($FullStorage) {$scanArgs+='--full-storage'}
+foreach ($candidate in @((Join-Path $script:ToolkitRoot 'Master-IT-Toolkit.exe'),(Join-Path (Split-Path $script:ToolkitRoot -Parent) 'Master-IT-Toolkit.exe'))) {
+    if (Test-Path -LiteralPath $candidate -PathType Leaf) { & $candidate --inventory @scanArgs; return }
+}
+$pythonCommand=Get-Command python -ErrorAction SilentlyContinue
+if ($pythonCommand -and $pythonCommand.Source -notlike '*WindowsApps*' -and (Test-Path -LiteralPath (Join-Path $PSScriptRoot 'update_toolkit_inventory.py'))) { & $pythonCommand.Source (Join-Path $PSScriptRoot 'update_toolkit_inventory.py') @scanArgs; return }
 $manifest = Get-ToolkitManifest
 $result = [ordered]@{}
 $folderCache = @{}
 $scanErrors = New-Object 'Collections.Generic.List[string]'
 foreach ($tool in $manifest) {
-    $record = [ordered]@{ installed=$false; localPath=''; files=@(); sizeBytes=0; lastModified=''; version=''; scanError='' }
+    $record = [ordered]@{ installed=$false; downloaded=$false; ready=$false; localPath=''; files=@(); sizeBytes=0; lastModified=''; version=''; scanError='' }
     if ($tool.localFolder -and @($tool.inventoryPatterns).Count -gt 0) {
         try {
             if (-not $folderCache.ContainsKey($tool.localFolder)) { $folderCache[$tool.localFolder] = @(Get-SafeToolkitFiles $tool.localFolder) }
@@ -48,10 +57,18 @@ foreach ($tool in $manifest) {
             }
         } catch { $record.scanError=$_.Exception.Message; $scanErrors.Add($tool.id + ': ' + $_.Exception.Message) }
     }
+    $record.ready=$record.installed
+    $record.downloaded=$record.installed
+    if ($tool.localFolder -and (Get-OptionalProperty $tool 'packagePatterns')) {
+        if (-not $folderCache.ContainsKey($tool.localFolder)) {$folderCache[$tool.localFolder]=@(Get-SafeToolkitFiles $tool.localFolder)}
+        $packages=@($folderCache[$tool.localFolder] | Where-Object { $file=$_; @($tool.packagePatterns | Where-Object {$file.Name -like $_ -and $file.Length -gt 0}).Count -gt 0 })
+        if ($packages.Count) {$record.downloaded=$true; if (-not $record.localPath) {$record.localPath=Get-ToolkitRelativePath $packages[0].FullName}}
+    }
     $result[$tool.id]=$record
 }
 $sizes=[ordered]@{}
 foreach ($folder in @('00_BOOT','10_WINDOWS_TOOLBOX','20_PORTABLE_APPS','30_DRIVERS','40_INSTALLERS','50_FIRMWARE','60_SCRIPTS','70_DOCUMENTATION','80_LICENSED_TOOLS','90_TEMP')) {
+    if (-not $FullStorage) {$sizes[$folder]=$null; continue}
     try { $folderFiles=@(Get-SafeToolkitFiles $folder); $sum=0; if ($folderFiles.Count) { $sum=($folderFiles | Measure-Object Length -Sum).Sum }; $sizes[$folder]=[long]$sum }
     catch { $sizes[$folder]=$null; $scanErrors.Add($folder + ': ' + $_.Exception.Message) }
 }

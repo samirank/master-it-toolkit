@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 REPO=Path(__file__).resolve().parents[2]
 spec=importlib.util.spec_from_file_location('inventory', REPO/'MASTER-IT-TOOLKIT/60_SCRIPTS/Inventory/update_toolkit_inventory.py')
@@ -38,6 +39,24 @@ class InventoryTests(unittest.TestCase):
         self.write('suite/b.exe','MOCK DATA');self.assertTrue(module.scan()['tools']['suite']['installed'])
     def test_wildcard_iso(self): self.assertTrue(module.scan()['tools']['iso']['installed'])
     def test_host_not_installed(self): self.assertFalse(module.scan()['tools']['host']['installed'])
+    def test_real_7zip_and_bcu_packages(self):
+        catalog=json.loads((REPO/'MASTER-IT-TOOLKIT/assets/toolkit-manifest.json').read_text('utf-8'))
+        tools=[t for t in catalog if t['id'] in ('7zip','bcu')]
+        self.write('assets/js/tools-data.js','window.TOOLKIT_DATA = '+json.dumps(tools)+';')
+        for t in tools:self.write(t['localFolder']+('/7z2603-x64.exe' if t['id']=='7zip' else '/BCUninstaller_5.10.0_portable.zip'),'MOCK PACKAGE')
+        result=module.scan()['tools']
+        for id in ('7zip','bcu'):
+            self.assertTrue(result[id]['downloaded']);self.assertFalse(result[id]['ready'])
+        self.assertEqual(result['7zip']['version'],'26.03')
+    def test_download_receipt_version(self):
+        self.write('apps/unusual-package.zip','PACKAGE')
+        self.write('assets/download-receipts.json',json.dumps({'app':[{'path':'apps/unusual-package.zip','size':7,'version':'2.0','savedAt':'2026-09-09'}],'_latest':{'app':'2.1'}}))
+        result=module.scan()['tools']['app'];self.assertTrue(result['downloaded']);self.assertEqual(result['version'],'2.0');self.assertEqual(result['latestVersion'],'2.1')
+    def test_each_directory_walked_once(self):
+        original=module.os.scandir;seen=[]
+        def counted(path):seen.append(str(path));return original(path)
+        with patch.object(module.os,'scandir',side_effect=counted):module.scan()
+        self.assertEqual(len(seen),len(set(seen)))
     def test_missing_folder_size(self): self.assertEqual(module.scan()['storage']['folders']['90_TEMP'],0)
     def test_unsafe_paths(self):
         for value in ['../outside','/etc/passwd','C:\\Windows','apps/../outside','a.txt:stream']:

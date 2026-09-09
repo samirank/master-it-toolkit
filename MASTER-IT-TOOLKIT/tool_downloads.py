@@ -1,5 +1,6 @@
 """Publisher release choices and download-only transfers. Never executes packages."""
 import hashlib
+import datetime
 import json
 import os
 from pathlib import Path
@@ -87,4 +88,36 @@ def save_selected(root, tool_id, selected, safe_path, progress):
             results.append('Saved: ' + str(destination) + (' (SHA256 verified)' if expected.startswith('sha256:') else ' (no publisher SHA256 supplied)'))
         finally:
             if temporary.exists(): temporary.unlink()
-    return '\n'.join(results) + '\nPackages were not installed or extracted. Extract portable tools, then scan inventory.'
+    receipt_path = safe_path(root, 'assets/download-receipts.json')
+    receipt_path.parent.mkdir(parents=True, exist_ok=True)
+    try: receipts = json.loads(receipt_path.read_text('utf-8'))
+    except (OSError, ValueError): receipts = {}
+    previous = {r['path']: r for r in receipts.get(tool_id, [])}
+    for key in selected:
+        asset=assets[key]; destination=safe_path(root, info['folder']+'/'+asset['name'])
+        if destination.exists():
+            relative=destination.relative_to(root).as_posix()
+            # Only newly saved files get release-version attribution; existing files are not re-labelled.
+            if any(line.startswith('Saved: '+str(destination)) for line in results):
+                previous[relative]={'path':relative,'size':destination.stat().st_size,'version':info.get('version',''),'savedAt':datetime.datetime.now(datetime.timezone.utc).isoformat()}
+    receipts[tool_id]=list(previous.values())
+    if info.get('version'): receipts.setdefault('_latest',{})[tool_id]=info['version']
+    temp=receipt_path.with_name('.download-receipts-'+secrets.token_hex(6)+'.tmp')
+    temp.write_text(json.dumps(receipts,indent=2),encoding='utf-8');os.replace(temp,receipt_path)
+    return '\n'.join(results) + '\nPackages were not installed or extracted. Extract portable tools before running them.'
+
+def check_updates(root, safe_path):
+    inventory=(root/'assets/js/local-inventory.js').read_text('utf-8-sig')
+    records=json.loads(inventory.split('window.LOCAL_INVENTORY =',1)[1].strip().rstrip(';'))['tools']
+    path=safe_path(root,'assets/download-receipts.json')
+    try: receipts=json.loads(path.read_text('utf-8'))
+    except (OSError,ValueError): receipts={}
+    checked=0; errors=[]
+    for id,record in records.items():
+        if not (record.get('downloaded') or record.get('installed')): continue
+        try:
+            info=options(root,id)
+            if info.get('version'):receipts.setdefault('_latest',{})[id]=info['version'];checked+=1
+        except Exception as error:errors.append(id+': '+str(error))
+    path.write_text(json.dumps(receipts,indent=2),encoding='utf-8')
+    return 'Checked '+str(checked)+' publisher releases. Vendor-managed tools require their own update check.'+ ('\n'+'\n'.join(errors) if errors else '')

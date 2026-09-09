@@ -46,3 +46,4 @@ MASTER-IT-TOOLKIT/.toolkit-backups/
 build/
 dist/
 *.spec
+MASTER-IT-TOOLKIT/assets/download-receipts.json

@@ -8,7 +8,7 @@ An offline PC rescue and field-service dashboard. Search tools, work through a r
 
 ## What is included
 
-- 221 catalog records: software, built-in commands, driver and firmware libraries, and supplied scripts/references.
+- 275 catalog records: software, built-in commands, driver and firmware libraries, and supplied scripts/references.
 - 16 task guides, 10 saved checklists, and 24 offline reference sections.
 - Instant search by symptom, category, vendor, platform, tag, and command.
 - Favorites; installed, bootable, portable, priority, type, and update filters.
@@ -164,3 +164,9 @@ This is source-available software, not an OSI-approved open-source release. Thir
 Click **Download** on a tool card or Missing downloads row. In launcher mode, supported publisher GitHub releases (including 7-Zip) show platform and filename choices: select one, a platform, all platforms, or any combination, then **Download selected to SSD**. Files go to that tool's folder. Existing files are kept; partial downloads are cleaned up, and GitHub SHA256 digests are checked when provided. Packages are never executed or extracted automatically. Publishers with license, sign-in, or custom download flows retain an official download link. The hosted demo offers browser downloads; it cannot write directly to your SSD.
 
 Standalone ZIPs contain the executable at the root beside `MASTER-IT-TOOLKIT/`; root HTML and README files are omitted. Keep that folder beside the executable. Existing nested launchers remain supported, but download a new standalone package to get the root executable layout.
+
+### Download detection and quick scans
+
+The default inventory scan indexes each relevant directory once and reuses file metadata. Full folder sizing is optional: run `python3 60_SCRIPTS/Inventory/update_toolkit_inventory.py --full-storage`. Downloaded installers/archives and ready-to-run files are tracked separately. Save vendor downloads into the copyable directory shown in the download popup. Files saved in your browser Downloads directory are not scanned.
+
+Launcher downloads save version receipts and automatically refresh inventory. **Check downloaded tool updates** compares supported publisher releases without downloading them. Tool cards show **Downloaded** for existing files and **Update** only when a newer known version is available; unknown versions remain unknown. The catalog now includes the EaseUS product families and platform variants listed in its product/download centers (license editions are grouped), plus video editors, recording, notes, email and remote-support applications. Every tool detail includes an offline quick start and an official documentation link.

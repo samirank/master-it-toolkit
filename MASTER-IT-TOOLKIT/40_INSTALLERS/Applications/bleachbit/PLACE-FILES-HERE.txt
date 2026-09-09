@@ -1,0 +1,1 @@
+Save the official BleachBit package here. Do not put client documents in this directory.

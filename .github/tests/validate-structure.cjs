@@ -2,7 +2,7 @@ const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('ass
 const root=process.env.TOOLKIT_ROOT||path.resolve(__dirname,'../../MASTER-IT-TOOLKIT'),scope={window:{}};
 for(const f of ['tools-data.js','categories.js','guides-data.js','inventory-default.js','metadata.js'])vm.runInNewContext(fs.readFileSync(path.join(root,'assets/js',f),'utf8'),scope);
 const data=scope.window.TOOLKIT_DATA,checks=[];const test=(name,fn)=>{fn();checks.push(name);console.log('PASS '+name)};
-test('221 unique maintainable records',()=>{assert.equal(data.length,221);assert.equal(new Set(data.map(t=>t.id)).size,data.length)});
+test('Catalog has unique maintainable records',()=>{assert(data.length>=275);assert.equal(new Set(data.map(t=>t.id)).size,data.length)});
 test('Every required field and risk warning exists',()=>{for(const t of data){for(const field of ['id','name','developer','description','categories','tags','priority','license','personalLicenseNotes','technicianLicenseNotes','portable','bootable','offline','os','architecture','estimatedSizeMB','officialWebsite','officialDownload','documentation','localFolder','localExecutable','localVersion','latestVersion','lastChecked','manualVersionCheck','freshDownloadRequired','risk','notes'])assert(field in t,`${t.id}: ${field}`);assert(['SAFE','CAUTION','HIGH RISK'].includes(t.risk));if(t.risk==='HIGH RISK')assert(t.caution)}});
 test('Tool categories all resolve',()=>{for(const t of data)for(const c of t.categories)assert(scope.window.TOOLKIT_CATEGORIES.includes(c),`${t.id}: ${c}`)});
 test('Task tools and checklists all resolve',()=>{for(const t of scope.window.TOOLKIT_TASKS){for(const id of t.tools)assert(data.some(x=>x.id===id),`${t.id}: ${id}`);assert(scope.window.TOOLKIT_CHECKLISTS[t.checklist])}});

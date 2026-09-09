@@ -27,6 +27,16 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.getByText('Download started.',{exact:false}).waitFor();
   assert.deepEqual(selected.assets,['win']);assert.equal(selected.tool,'7zip');
   await page.locator('.download-dialog').getByRole('button',{name:'Close',exact:true}).click();
+  await page.evaluate(()=>window.dispatchEvent(new CustomEvent('toolkit-inventory',{detail:{tools:{'7zip':{downloaded:true,ready:false,version:'26.03',latestVersion:'26.03'}}}})));
+  await page.locator('[data-nav="tools"]').first().click();await page.locator('#search').fill('7-Zip');
+  assert.equal(await page.locator('[data-tool-id="7zip"] [data-download]').count(),0);
+  await page.evaluate(()=>window.dispatchEvent(new CustomEvent('toolkit-inventory',{detail:{tools:{'7zip':{downloaded:true,ready:false,version:'26.03',latestVersion:'26.04'}}}})));
+  assert.equal(await page.locator('[data-tool-id="7zip"] [data-download]').innerText(),'Update ↓');
+  await page.locator('[data-detail="7zip"]').first().click();assert((await page.locator('#detail-body').innerText()).includes('Quick start'));await page.keyboard.press('Escape');
+  await page.locator('#search').fill('AnyDesk');await page.locator('[data-download="anydesk"]').click();
+  assert((await page.getByRole('textbox',{name:'Download destination'}).inputValue()).includes('Remote'));
+  assert(await page.getByRole('button',{name:'Copy destination path'}).isVisible());
+  await page.locator('.download-dialog').getByRole('button',{name:'Close',exact:true}).click();
   await page.setViewportSize({width:390,height:844});
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
   assert.deepEqual(errors,[]);

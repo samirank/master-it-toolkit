@@ -1,4 +1,3 @@
-// Central catalog. Source checks are not software or license certification.
 window.TOOLKIT_DATA = [
   {
     "id": "windows11",
@@ -67,7 +66,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.239917+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "hirens",
@@ -135,7 +155,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.892630+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "systemrescue",
@@ -205,7 +246,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.593999+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ]
   },
   {
     "id": "gparted",
@@ -274,7 +320,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.491691+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ]
   },
   {
     "id": "ubuntu",
@@ -343,7 +394,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.411012+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ]
   },
   {
     "id": "rescuezilla",
@@ -412,7 +468,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.920790+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ]
   },
   {
     "id": "clonezilla",
@@ -478,7 +539,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.215242+00:00"
       }
     },
-    "sourceReviewNotes": "Official project SourceForge release listing and Clonezilla changelog reviewed; main download page blocks automated requests. Latest version left manual."
+    "sourceReviewNotes": "Official project SourceForge release listing and Clonezilla changelog reviewed; main download page blocks automated requests. Latest version left manual.",
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ]
   },
   {
     "id": "kaspersky",
@@ -547,7 +613,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.554921+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "memtest",
@@ -617,7 +704,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.521547+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "passmark",
@@ -686,7 +794,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.356922+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "winaero",
@@ -758,7 +887,28 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html; charset=UTF-8"
       }
     },
-    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification."
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Open Winaero Tweaker using the package for your operating system.",
+      "Use it for: Windows interface and behavior customization with reversible options.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "shutup",
@@ -832,7 +982,28 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html; charset=UTF-8"
       }
     },
-    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification."
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Record the current configuration and choose individual changes.",
+      "Review the consequences of each selected setting before applying it.",
+      "Test the affected features and keep a rollback record."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "win11debloat",
@@ -908,7 +1079,28 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html; charset=utf-8"
       }
     },
-    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification."
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Record the current configuration and choose individual changes.",
+      "Review the consequences of each selected setting before applying it.",
+      "Test the affected features and keep a rollback record."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "winutil",
@@ -982,7 +1174,28 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html; charset=utf-8"
       }
     },
-    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification."
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Open Chris Titus Tech WinUtil using the package for your operating system.",
+      "Use it for: Interactive Windows tweaks, repair, update settings and software management; some functions need internet.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "appbuster",
@@ -1051,7 +1264,28 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html; charset=UTF-8"
       }
     },
-    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification."
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Open O&O AppBuster using the package for your operating system.",
+      "Use it for: Remove optional Windows apps; restoration may require Store access or source packages.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "optimizernxt",
@@ -1121,7 +1355,28 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html; charset=utf-8"
       }
     },
-    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification."
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Record the current configuration and choose individual changes.",
+      "Review the consequences of each selected setting before applying it.",
+      "Test the affected features and keep a rollback record."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "revo",
@@ -1191,7 +1446,28 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html; charset=UTF-8"
       }
     },
-    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification."
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Review the installed application list and choose only approved removals.",
+      "Create a restore or backup option and inspect the uninstall plan.",
+      "Review leftovers manually and test required applications afterward."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "bcu",
@@ -1220,7 +1496,7 @@ window.TOOLKIT_DATA = [
     ],
     "estimatedSizeMB": 150,
     "officialWebsite": "https://www.bcuninstaller.com/",
-    "officialDownload": "https://www.bcuninstaller.com/",
+    "officialDownload": "https://github.com/Klocman/Bulk-Crap-Uninstaller/releases",
     "documentation": "https://www.bcuninstaller.com/",
     "localFolder": "10_WINDOWS_TOOLBOX/01_Uninstallers/BCUninstaller",
     "localExecutable": "10_WINDOWS_TOOLBOX/01_Uninstallers/BCUninstaller/BCUninstaller.exe",
@@ -1260,7 +1536,18 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html; charset=utf-8"
       }
     },
-    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification."
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "packagePatterns": [
+      "BCUninstaller*.zip",
+      "BCUninstaller*setup*.exe",
+      "BCUninstaller*installer*.exe"
+    ],
+    "quickStart": [
+      "Extract the portable ZIP or install the setup package.",
+      "Launch BCUninstaller and review the detected applications; select only approved removals.",
+      "Review the uninstall plan and leftover list, then verify that required applications still work."
+    ],
+    "packageVersionPattern": "BCUninstaller[_-](\\d+(?:\\.\\d+)+)"
   },
   {
     "id": "geek",
@@ -1329,7 +1616,28 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html"
       }
     },
-    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification."
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Review the installed application list and choose only approved removals.",
+      "Create a restore or backup option and inspect the uninstall plan.",
+      "Review leftovers manually and test required applications afterward."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "hibit",
@@ -1398,7 +1706,28 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html"
       }
     },
-    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification."
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Review the installed application list and choose only approved removals.",
+      "Create a restore or backup option and inspect the uninstall plan.",
+      "Review leftovers manually and test required applications afterward."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "rufus",
@@ -1467,7 +1796,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.976953+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Rufus Portable using the package for your operating system.",
+      "Use it for: Create Windows installation USB media; supported setup choices vary by Windows release.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "ntlite",
@@ -1535,7 +1885,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.138313+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open NTLite using the package for your operating system.",
+      "Use it for: Customize Windows images and unattended setup; removing components can break updates.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "easeus",
@@ -1604,7 +1975,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.255165+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open EaseUS Partition Master using the package for your operating system.",
+      "Use it for: Licensed partition and migration option; keep your authorized installer and license separately.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "diskgenius",
@@ -1672,7 +2064,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.224607+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open DiskGenius using the package for your operating system.",
+      "Use it for: Partition, file recovery and cloning tools with edition-specific capabilities.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "minitool",
@@ -1740,7 +2153,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.371045+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open MiniTool Partition Wizard using the package for your operating system.",
+      "Use it for: Optional partition manager; confirm whether your edition permits commercial service.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "aomei",
@@ -1808,7 +2242,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.544811+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open AOMEI Partition Assistant using the package for your operating system.",
+      "Use it for: Optional partition suite with separate paid technician editions.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "macrium",
@@ -1877,7 +2332,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.841494+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Macrium Reflect using the package for your operating system.",
+      "Use it for: Paid Windows image backup and restore; select a current authorized edition.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "veeam",
@@ -1945,7 +2421,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:59.197256+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Veeam Agent for Microsoft Windows using the package for your operating system.",
+      "Use it for: Windows endpoint backup and recovery; installation and recovery media preparation required.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "testdisk",
@@ -2014,7 +2511,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.726221+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Stop writing to the affected drive and preserve an image where possible.",
+      "Select the source and begin a read-only scan or preview.",
+      "Recover files to separate healthy storage, then validate a sample."
+    ]
   },
   {
     "id": "photorec",
@@ -2083,7 +2585,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.726221+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Stop writing to the affected drive and preserve an image where possible.",
+      "Select the source and begin a read-only scan or preview.",
+      "Recover files to separate healthy storage, then validate a sample."
+    ]
   },
   {
     "id": "dmde",
@@ -2151,7 +2658,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.136549+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Stop writing to the affected drive and preserve an image where possible.",
+      "Select the source and begin a read-only scan or preview.",
+      "Recover files to separate healthy storage, then validate a sample."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "recuva",
@@ -2219,7 +2747,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.969444+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Stop writing to the affected drive and preserve an image where possible.",
+      "Select the source and begin a read-only scan or preview.",
+      "Recover files to separate healthy storage, then validate a sample."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "rstudio",
@@ -2288,7 +2837,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.802833+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Stop writing to the affected drive and preserve an image where possible.",
+      "Select the source and begin a read-only scan or preview.",
+      "Recover files to separate healthy storage, then validate a sample."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "ufs",
@@ -2357,7 +2927,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:59.017604+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Stop writing to the affected drive and preserve an image where possible.",
+      "Select the source and begin a read-only scan or preview.",
+      "Recover files to separate healthy storage, then validate a sample."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "cdi",
@@ -2425,7 +3016,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.769542+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the intended drive by model and serial number.",
+      "Read health information before initiating any extended test.",
+      "Save the report; prioritize backup if the drive shows errors."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "cdm",
@@ -2493,7 +3105,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.329734+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the intended drive by model and serial number.",
+      "Read health information before initiating any extended test.",
+      "Save the report; prioritize backup if the drive shows errors."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "gsmart",
@@ -2562,7 +3195,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.491691+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the intended drive by model and serial number.",
+      "Read health information before initiating any extended test.",
+      "Save the report; prioritize backup if the drive shows errors."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "smartmontools",
@@ -2633,7 +3287,28 @@ window.TOOLKIT_DATA = [
         "contentType": "text/html; charset=utf-8"
       }
     },
-    "sourceReviewNotes": "Project GitHub releases reviewed; primary domain presents bot challenge. Version remains manual."
+    "sourceReviewNotes": "Project GitHub releases reviewed; primary domain presents bot challenge. Version remains manual.",
+    "quickStart": [
+      "Select the intended drive by model and serial number.",
+      "Read health information before initiating any extended test.",
+      "Save the report; prioritize backup if the drive shows errors."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "hddscan",
@@ -2701,7 +3376,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.958872+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Select the intended drive by model and serial number.",
+      "Read health information before initiating any extended test.",
+      "Save the report; prioritize backup if the drive shows errors."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "samsung",
@@ -2769,7 +3465,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.198156+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the intended drive by model and serial number.",
+      "Read health information before initiating any extended test.",
+      "Save the report; prioritize backup if the drive shows errors."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "wd",
@@ -2843,7 +3560,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.052759+00:00",
         "contentType": "text/html;charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "seatools",
@@ -2911,7 +3649,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.871611+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Select the intended drive by model and serial number.",
+      "Read health information before initiating any extended test.",
+      "Save the report; prioritize backup if the drive shows errors."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "crucial",
@@ -2979,7 +3738,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.089341+00:00",
         "contentType": "text/plain"
       }
-    }
+    },
+    "quickStart": [
+      "Select the intended drive by model and serial number.",
+      "Read health information before initiating any extended test.",
+      "Save the report; prioritize backup if the drive shows errors."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "solidigm",
@@ -3047,7 +3827,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.600002+00:00",
         "contentType": "text/html;charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the intended drive by model and serial number.",
+      "Read health information before initiating any extended test.",
+      "Save the report; prioritize backup if the drive shows errors."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "kingston",
@@ -3112,7 +3913,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.823954+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Select the intended drive by model and serial number.",
+      "Read health information before initiating any extended test.",
+      "Save the report; prioritize backup if the drive shows errors."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "hwinfo",
@@ -3184,7 +4006,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.156087+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open HWiNFO using the package for your operating system.",
+      "Use it for: Detailed hardware inventory, sensors and logging for thermal and stability diagnosis.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "cpuz",
@@ -3252,7 +4095,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.159097+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open CPU-Z using the package for your operating system.",
+      "Use it for: Identify CPU, mainboard and RAM timings; compare configured memory speed.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "gpuz",
@@ -3324,7 +4188,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.901035+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open GPU-Z using the package for your operating system.",
+      "Use it for: Identify GPU, video BIOS and sensors; log behavior during crashes.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "occt",
@@ -3393,7 +4278,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.907065+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open OCCT using the package for your operating system.",
+      "Use it for: CPU, GPU, memory and power stability tests; choose one subsystem at a time.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "prime95",
@@ -3461,7 +4367,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.078654+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Prime95 using the package for your operating system.",
+      "Use it for: CPU and memory stress testing with different FFT workloads; stop on errors or overheating.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "furmark",
@@ -3529,7 +4456,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.805662+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open FurMark using the package for your operating system.",
+      "Use it for: Heavy graphics stress workload to expose cooling and stability issues.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "cinebench",
@@ -3597,7 +4545,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.374569+00:00",
         "contentType": "text/html;charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Cinebench using the package for your operating system.",
+      "Use it for: Repeatable rendering benchmark for CPU performance and thermal comparison.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "hwmonitor",
@@ -3665,7 +4634,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.941695+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open HWMonitor using the package for your operating system.",
+      "Use it for: Simple voltage, fan and temperature overview as an alternative sensor view.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "coretemp",
@@ -3733,7 +4723,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.011561+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Core Temp using the package for your operating system.",
+      "Use it for: Per-core CPU temperature monitoring; review installer options carefully.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "latencymon",
@@ -3801,7 +4812,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.319466+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open LatencyMon using the package for your operating system.",
+      "Use it for: Analyze DPC/ISR latency associated with audio dropouts and driver issues.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "ddu",
@@ -3870,7 +4902,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:59.273487+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "sdio",
@@ -3939,7 +4992,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.510676+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "wireshark",
@@ -4007,7 +5081,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.801670+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Wireshark using the package for your operating system.",
+      "Use it for: Packet capture and protocol analysis. Live capture on Windows requires a capture driver.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "nmap",
@@ -4075,7 +5170,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.835079+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Nmap using the package for your operating system.",
+      "Use it for: Authorized host discovery and service checks; review Npcap and commercial redistribution terms.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "angryip",
@@ -4143,7 +5259,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.192186+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Angry IP Scanner using the package for your operating system.",
+      "Use it for: Quick authorized LAN host discovery; Java runtime may be required.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "advancedip",
@@ -4211,7 +5348,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.647042+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Advanced IP Scanner using the package for your operating system.",
+      "Use it for: Optional Windows LAN discovery interface; scan only networks you administer.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "iperf3",
@@ -4279,7 +5437,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.093349+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open iperf3 using the package for your operating system.",
+      "Use it for: Measure LAN throughput between two endpoints. Upstream supports Unix; Windows builds are not supplied here.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "putty",
@@ -4347,7 +5526,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.519250+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open PuTTY using the package for your operating system.",
+      "Use it for: SSH and serial terminal for authorized servers and network equipment.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "winscp",
@@ -4415,7 +5615,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.315799+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open WinSCP using the package for your operating system.",
+      "Use it for: SFTP/SCP file transfer; validate host keys and avoid saving customer credentials.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "rustdesk",
@@ -4445,7 +5666,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 30,
     "officialWebsite": "https://rustdesk.com/",
     "officialDownload": "https://rustdesk.com/",
-    "documentation": "https://rustdesk.com/",
+    "documentation": "https://rustdesk.com/docs/en/",
     "localFolder": "40_INSTALLERS/Remote-Support/RustDesk",
     "localExecutable": "",
     "inventoryPatterns": [
@@ -4483,7 +5704,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.164054+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Install or open the appropriate client on the authorized devices.",
+      "Verify the remote user/device identity and approve only the required session permissions.",
+      "Test connectivity, complete the support task, then disconnect and remove temporary access."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "anydesk",
@@ -4513,7 +5755,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 10,
     "officialWebsite": "https://anydesk.com/en/downloads/windows",
     "officialDownload": "https://anydesk.com/en/downloads/windows",
-    "documentation": "https://anydesk.com/en/downloads/windows",
+    "documentation": "https://support.anydesk.com/docs/how-do-i-install-and-set-up-anydesk",
     "localFolder": "40_INSTALLERS/Remote-Support/AnyDesk",
     "localExecutable": "40_INSTALLERS/Remote-Support/AnyDesk/AnyDesk.exe",
     "inventoryPatterns": [
@@ -4548,7 +5790,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.239282+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Install or open the appropriate client on the authorized devices.",
+      "Verify the remote user/device identity and approve only the required session permissions.",
+      "Test connectivity, complete the support task, then disconnect and remove temporary access."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "tailscale",
@@ -4578,7 +5841,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 60,
     "officialWebsite": "https://tailscale.com/download/windows",
     "officialDownload": "https://tailscale.com/download/windows",
-    "documentation": "https://tailscale.com/download/windows",
+    "documentation": "https://tailscale.com/docs/install",
     "localFolder": "40_INSTALLERS/Remote-Support/Tailscale",
     "localExecutable": "",
     "inventoryPatterns": [
@@ -4616,7 +5879,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.547609+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Install Tailscale on the devices and sign in to the approved tailnet.",
+      "Approve the devices and restrict access with the organization policy.",
+      "Test connectivity by Tailscale address; use a separate remote desktop client for screen control."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "safetyscanner",
@@ -4684,7 +5968,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.653572+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Microsoft Safety Scanner using the package for your operating system.",
+      "Use it for: On-demand defensive malware scan. DOWNLOAD FRESH COPY; expires 10 days after download.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "eek",
@@ -4752,7 +6057,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.602708+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Emsisoft Emergency Kit using the package for your operating system.",
+      "Use it for: Portable second-opinion scanner; refresh definitions and check technician licensing.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "malwarebytes",
@@ -4820,7 +6146,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.969749+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Malwarebytes using the package for your operating system.",
+      "Use it for: Installed second-opinion scanner; service work and business use need suitable terms.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "adwcleaner",
@@ -4888,7 +6235,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.915145+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open AdwCleaner using the package for your operating system.",
+      "Use it for: Portable adware and potentially unwanted program scanner.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firefox",
@@ -4956,7 +6324,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.640842+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Firefox Portable using the package for your operating system.",
+      "Use it for: Portable browser package published by PortableApps.com; web browsing needs connectivity.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "chrome",
@@ -5024,7 +6413,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.389132+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Google Chrome installer using the package for your operating system.",
+      "Use it for: Official browser installer; choose an offline enterprise package when needed.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "edge",
@@ -5092,7 +6502,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:18:00.132104+00:00",
         "contentType": "text/html;charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Microsoft Edge installer using the package for your operating system.",
+      "Use it for: Official Edge for Business offline installer selection.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "7zip",
@@ -5114,7 +6545,9 @@ window.TOOLKIT_DATA = [
     "bootable": false,
     "offline": true,
     "os": [
-      "Windows"
+      "Windows",
+      "Linux",
+      "macOS"
     ],
     "architecture": [
       "x64; other builds vary"
@@ -5161,7 +6594,20 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.295770+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "packagePatterns": [
+      "7z[0-9]*.exe",
+      "7z[0-9]*.msi",
+      "7z[0-9]*.7z",
+      "7z[0-9]*.tar.xz",
+      "7zr.exe"
+    ],
+    "quickStart": [
+      "Choose the correct OS/CPU package; the Windows EXE is an installer, while Linux/macOS builds are command-line packages.",
+      "Install the Windows GUI on the target PC or extract the appropriate standalone package.",
+      "Open the archive and extract into a new folder; verify the extracted files before using them."
+    ],
+    "packageVersionPattern": "^7z(\\d{2})(\\d{2})"
   },
   {
     "id": "nanazip",
@@ -5230,7 +6676,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.448588+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open NanaZip using the package for your operating system.",
+      "Use it for: Modern Windows archive integration; MSIX installation is required.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "notepad",
@@ -5299,7 +6766,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.579181+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Notepad++ using the package for your operating system.",
+      "Use it for: Lightweight portable editor for logs, configuration and scripts.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "vscode",
@@ -5367,7 +6855,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.490880+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Visual Studio Code Portable using the package for your operating system.",
+      "Use it for: Extract the ZIP and create a data folder beside Code.exe to enable portable mode.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "winmerge",
@@ -5435,7 +6944,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.856733+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open WinMerge using the package for your operating system.",
+      "Use it for: Compare text files and directories; inspect differences before merging.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "everything",
@@ -5503,7 +7033,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:59.070885+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Everything using the package for your operating system.",
+      "Use it for: Fast NTFS filename search; indexing may require elevation or its service.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "wiztree",
@@ -5571,7 +7122,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.543019+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open WizTree using the package for your operating system.",
+      "Use it for: Fast disk usage mapping to locate space consumers; commercial use requires a license.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "treesize",
@@ -5639,7 +7211,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.315469+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open TreeSize Free using the package for your operating system.",
+      "Use it for: Alternative directory size view; check allowed use and supported features.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "fastcopy",
@@ -5707,7 +7300,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.736451+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open FastCopy using the package for your operating system.",
+      "Use it for: High-throughput copy with verification options; sync/delete modes can remove files.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "freefilesync",
@@ -5775,7 +7389,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.617205+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open FreeFileSync using the package for your operating system.",
+      "Use it for: Compare and synchronize folders; preview deletion directions before syncing.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "sumatra",
@@ -5844,7 +7479,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.659324+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open a copy of the document or create a new workspace.",
+      "Perform the required edit and check formatting or account settings.",
+      "Save a separate copy and verify it in the intended destination application."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "pdfarranger",
@@ -5913,7 +7569,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.751312+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open a copy of the document or create a new workspace.",
+      "Perform the required edit and check formatting or account settings.",
+      "Save a separate copy and verify it in the intended destination application."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "libreoffice",
@@ -5982,7 +7659,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.405224+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open a copy of the document or create a new workspace.",
+      "Perform the required edit and check formatting or account settings.",
+      "Save a separate copy and verify it in the intended destination application."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "onlyoffice",
@@ -6050,7 +7748,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.071511+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open a copy of the document or create a new workspace.",
+      "Perform the required edit and check formatting or account settings.",
+      "Save a separate copy and verify it in the intended destination application."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "vlc",
@@ -6119,7 +7838,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.305933+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open a copy of your source media in the application.",
+      "Choose the intended edit, conversion or playback settings and test a short sample.",
+      "Save/export to a new file and verify the result before replacing originals."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "mediainfo",
@@ -6187,7 +7927,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.885220+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open a copy of your source media in the application.",
+      "Choose the intended edit, conversion or playback settings and test a short sample.",
+      "Save/export to a new file and verify the result before replacing originals."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "handbrake",
@@ -6255,7 +8016,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.151057+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open a copy of your source media in the application.",
+      "Choose the intended edit, conversion or playback settings and test a short sample.",
+      "Save/export to a new file and verify the result before replacing originals."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "audacity",
@@ -6323,7 +8105,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.948400+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open a copy of your source media in the application.",
+      "Choose the intended edit, conversion or playback settings and test a short sample.",
+      "Save/export to a new file and verify the result before replacing originals."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "irfanview",
@@ -6391,7 +8194,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.239772+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open IrfanView using the package for your operating system.",
+      "Use it for: Fast image viewer; commercial use requires registration.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "gimp",
@@ -6459,7 +8283,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.363412+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open GIMP using the package for your operating system.",
+      "Use it for: Offline image editing for screenshots and service documentation.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "powershell",
@@ -6528,7 +8373,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.579368+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open PowerShell 7 using the package for your operating system.",
+      "Use it for: Current cross-platform shell; ZIP edition can be staged without installation.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "git",
@@ -6596,7 +8462,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.413700+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Git Portable using the package for your operating system.",
+      "Use it for: Portable Git and shell tools for configuration history and source work.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "python",
@@ -6664,7 +8551,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.550894+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Python embeddable package using the package for your operating system.",
+      "Use it for: Minimal Windows embedded runtime; not a normal pip-enabled development installation.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "curl",
@@ -6732,7 +8640,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.314966+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open curl using the package for your operating system.",
+      "Use it for: Transfer URLs and inspect HTTP/TLS; avoid placing secrets in command histories.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "jq",
@@ -6800,7 +8729,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.685670+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open jq using the package for your operating system.",
+      "Use it for: Command-line JSON inspection and transformation.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "sqlite",
@@ -6868,7 +8818,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.462399+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open SQLite tools using the package for your operating system.",
+      "Use it for: Inspect local SQLite databases; work on a copy of application databases.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "ventoy",
@@ -6936,7 +8907,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:59.597408+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Ventoy installer using the package for your operating system.",
+      "Use it for: Prepare or update multiboot media. Initial installation repartitions the selected drive.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "usbtree",
@@ -7004,7 +8996,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:59.267967+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open USB Device Tree Viewer using the package for your operating system.",
+      "Use it for: Inspect USB topology, negotiated speed and device descriptors.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "usbdeview",
@@ -7072,7 +9085,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.376581+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open USBDeview using the package for your operating system.",
+      "Use it for: Inspect USB device history; disabling or removing devices changes configuration.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "mct",
@@ -7140,7 +9174,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.239917+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Windows Media Creation Tool using the package for your operating system.",
+      "Use it for: Download and create Windows installation media; requires internet.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "etcher",
@@ -7208,7 +9263,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.464317+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open balenaEtcher using the package for your operating system.",
+      "Use it for: Optional image-to-USB writer; overwrites the selected destination.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "unigetui",
@@ -7277,7 +9353,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.490186+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open UniGetUI using the package for your operating system.",
+      "Use it for: Graphical frontend for package managers; package actions generally need internet.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "chocolatey",
@@ -7343,7 +9440,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.290904+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Chocolatey using the package for your operating system.",
+      "Use it for: Windows package manager; audit package sources and scripts before installing.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "scoop",
@@ -7409,7 +9511,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.126937+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Scoop using the package for your operating system.",
+      "Use it for: User-level package manager; inspect buckets and manifests.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "proxmox",
@@ -7478,7 +9585,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.243917+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "debian",
@@ -7547,7 +9675,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.169491+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Select the rescue ISO that matches your hardware and task.",
+      "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
+      "Confirm the running environment and target disk before any repair."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "vcredist",
@@ -7615,7 +9764,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.985979+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Microsoft Visual C++ Redistributables using the package for your operating system.",
+      "Use it for: Stage supported x64 and x86 packages for games and desktop applications.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "dotnet",
@@ -7683,7 +9853,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.241788+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open .NET Desktop Runtime using the package for your operating system.",
+      "Use it for: Install the runtime major version and architecture required by the application.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "directx",
@@ -7751,7 +9942,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:18:06.625398+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open DirectX End-User Runtimes using the package for your operating system.",
+      "Use it for: Legacy side-by-side D3DX/XAudio libraries for older games; not a replacement for modern DirectX.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "steam",
@@ -7819,7 +10031,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.372627+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Steam using the package for your operating system.",
+      "Use it for: Optional gaming client; account login and game downloads require internet.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "epic",
@@ -7884,7 +10117,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.065202+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Open Epic Games Launcher using the package for your operating system.",
+      "Use it for: Optional gaming installer; do not retain customer credentials.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "battlenet",
@@ -7952,7 +10206,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.421533+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Open Battle.net using the package for your operating system.",
+      "Use it for: Optional gaming client with internet and account requirements.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "intel-network",
@@ -8023,7 +10298,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.592407+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "intel-chipset",
@@ -8094,7 +10390,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.592407+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "intel-gpu",
@@ -8165,7 +10482,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.592407+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "amd-chipset",
@@ -8239,7 +10577,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.990020+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "amd-gpu",
@@ -8313,7 +10672,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.990020+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "nvidia",
@@ -8387,7 +10767,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.868563+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "realtek",
@@ -8461,7 +10862,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:58.334569+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "hpia",
@@ -8535,7 +10957,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.363576+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "dell",
@@ -8609,7 +11052,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.569855+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "lenovo",
@@ -8680,7 +11144,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.269819+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "surface",
@@ -8754,7 +11239,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.716237+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact hardware model and current driver version.",
+      "Select the matching OS/architecture package and create a recovery option.",
+      "Install the approved driver, reboot if required, and retest the device."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firmware-hp",
@@ -8828,7 +11334,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.407221+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firmware-dell",
@@ -8902,7 +11429,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.452614+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firmware-lenovo",
@@ -8973,7 +11521,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.303938+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firmware-asus",
@@ -9047,7 +11616,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.835696+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firmware-acer",
@@ -9118,7 +11708,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:18:19.720693+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firmware-msi",
@@ -9189,7 +11800,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.489148+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firmware-gigabyte",
@@ -9260,7 +11892,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.362405+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firmware-intel",
@@ -9331,7 +11984,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.592407+00:00"
       }
     },
-    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked."
+    "sourceReviewNotes": "Primary page reviewed through web retrieval on 2026-09-09; direct HTTP checks may be blocked.",
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firmware-amd",
@@ -9405,7 +12079,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.990020+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "firmware-nvidia",
@@ -9479,7 +12174,28 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:56.868563+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Identify the exact device model and current firmware.",
+      "Read the vendor upgrade instructions and confirm stable power and recovery options.",
+      "Apply only the matching approved image, then verify the reported firmware version."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   },
   {
     "id": "sysinternals",
@@ -9549,7 +12265,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.326785+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Sysinternals Suite using the package for your operating system.",
+      "Use it for: Core portable Windows diagnostics, process inspection and administration suite. Individual tools are searchable below.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "autoruns",
@@ -9618,7 +12339,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.811989+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Autoruns using the package for your operating system.",
+      "Use it for: Inspect startup persistence and scheduled launch points. Disable selectively after recording originals.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "process-explorer",
@@ -9687,7 +12413,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.847580+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Process Explorer using the package for your operating system.",
+      "Use it for: Inspect processes, handles and loaded modules; use signatures to support investigation.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "procmon",
@@ -9755,7 +12486,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.069848+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Process Monitor using the package for your operating system.",
+      "Use it for: Trace file, registry and process activity with filters; logs may contain private paths.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "tcpview",
@@ -9825,7 +12561,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.327784+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open TCPView using the package for your operating system.",
+      "Use it for: Map live TCP/UDP connections to owning processes.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "rammap",
@@ -9893,7 +12634,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.069848+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open RAMMap using the package for your operating system.",
+      "Use it for: Understand physical memory use and file cache; avoid treating cache as wasted RAM.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "disk2vhd",
@@ -9962,7 +12708,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.752323+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Disk2vhd using the package for your operating system.",
+      "Use it for: Capture Windows volumes into virtual disks; use consistent snapshots and a separate destination.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "sigcheck",
@@ -10031,7 +12782,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.420190+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Sigcheck using the package for your operating system.",
+      "Use it for: Inspect file signatures and hashes; online reputation options transmit data.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "pstools",
@@ -10099,7 +12855,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.072367+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open PsTools using the package for your operating system.",
+      "Use it for: Administrative command-line suite; remote execution requires explicit authorization.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "procdump",
@@ -10167,7 +12928,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:52.809473+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open ProcDump using the package for your operating system.",
+      "Use it for: Capture process dumps for crash analysis. Dumps may contain sensitive memory.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "handle",
@@ -10235,7 +13001,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.014554+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Handle using the package for your operating system.",
+      "Use it for: Identify processes holding file handles; avoid forced handle closure.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "strings",
@@ -10303,7 +13074,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.220255+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open Strings using the package for your operating system.",
+      "Use it for: Extract printable strings from files for offline inspection.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "sdelete",
@@ -10371,7 +13147,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.189679+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open SDelete using the package for your operating system.",
+      "Use it for: Secure deletion utility. SSD wear leveling means file overwrite is not a guaranteed media sanitization method.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "zoomit",
@@ -10439,7 +13220,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.377090+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open ZoomIt using the package for your operating system.",
+      "Use it for: Screen zoom and annotation for support demonstrations.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "psping",
@@ -10508,7 +13294,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.015556+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Open PsPing using the package for your operating system.",
+      "Use it for: Measure ICMP/TCP connectivity and latency on authorized systems.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "sfc",
@@ -10575,7 +13366,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.787105+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: sfc /scannow",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "dism",
@@ -10642,7 +13438,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.703748+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: DISM /Online /Cleanup-Image /RestoreHealth",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "chkdsk",
@@ -10709,7 +13510,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.421701+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: chkdsk C:",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "msconfig",
@@ -10776,7 +13582,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: msconfig",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "msinfo32",
@@ -10843,7 +13654,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.451061+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: msinfo32",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "dxdiag",
@@ -10910,7 +13726,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: dxdiag",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "eventvwr",
@@ -10977,7 +13798,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: eventvwr.msc",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "perfmon",
@@ -11044,7 +13870,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: perfmon",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "reliability",
@@ -11114,7 +13945,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: perfmon /rel",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "resmon",
@@ -11181,7 +14017,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: resmon",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "taskmgr",
@@ -11248,7 +14089,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: taskmgr",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "services",
@@ -11315,7 +14161,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: services.msc",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "devmgmt",
@@ -11382,7 +14233,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: devmgmt.msc",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "diskmgmt",
@@ -11449,7 +14305,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: diskmgmt.msc",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "diskpart",
@@ -11516,7 +14377,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.566388+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: diskpart\nlist disk\nlist volume\nexit",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "compmgmt",
@@ -11583,7 +14449,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: compmgmt.msc",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "regedit",
@@ -11650,7 +14521,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: regedit",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "gpedit",
@@ -11717,7 +14593,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: gpedit.msc",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "secpol",
@@ -11784,7 +14665,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: secpol.msc",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "netplwiz",
@@ -11851,7 +14737,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: netplwiz",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "cleanmgr",
@@ -11918,7 +14809,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: cleanmgr",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "mrt",
@@ -11985,7 +14881,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: mrt",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "optionalfeatures",
@@ -12052,7 +14953,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: optionalfeatures",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "appwiz",
@@ -12119,7 +15025,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: appwiz.cpl",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "ncpa",
@@ -12186,7 +15097,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: ncpa.cpl",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "powercfg",
@@ -12240,7 +15156,12 @@ window.TOOLKIT_DATA = [
       "reviewedUrl": "https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/powercfg-command-line-options",
       "checkedAt": "2026-09-09",
       "method": "web retrieval"
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: powercfg /a",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "winget",
@@ -12307,7 +15228,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: winget list",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "winget-upgrade",
@@ -12374,7 +15300,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: winget upgrade",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "winget-export",
@@ -12441,7 +15372,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: winget export -o packages.json",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "winget-install",
@@ -12508,7 +15444,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: winget install --id 7zip.7zip --exact",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "robocopy",
@@ -12575,7 +15516,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.773919+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: robocopy \"SOURCE\" \"DESTINATION\" /E /L /R:1 /W:1",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "cipher",
@@ -12642,7 +15588,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.529281+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: cipher /c \"FILE\"",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "manage-bde",
@@ -12709,7 +15660,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.565389+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: manage-bde -status",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "reagentc",
@@ -12776,7 +15732,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: reagentc /info",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "bcdedit",
@@ -12843,7 +15804,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.704749+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: bcdedit /enum all",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "ipconfig",
@@ -12910,7 +15876,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.505223+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: ipconfig /all",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "dns",
@@ -12977,7 +15948,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.648594+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: nslookup example.com",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "tracert",
@@ -13044,7 +16020,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.804496+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: tracert -d example.com",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "porttest",
@@ -13111,7 +16092,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: Test-NetConnection example.com -Port 443",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "netadapter",
@@ -13179,7 +16165,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: Get-NetAdapter | Format-Table Name, Status, LinkSpeed",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "netip",
@@ -13246,7 +16237,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: Get-NetIPConfiguration",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "flushdns",
@@ -13313,7 +16309,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: ipconfig /flushdns",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "winsock",
@@ -13380,7 +16381,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: netsh winsock reset",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "ping",
@@ -13447,7 +16453,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.649592+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: ping -n 20 example.com",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "wlan",
@@ -13514,7 +16525,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: netsh wlan show interfaces",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "arp",
@@ -13581,7 +16597,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.296213+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: arp -a",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "restore",
@@ -13648,7 +16669,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: rstrui.exe",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "installer",
@@ -13715,7 +16741,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: Get-Service msiserver",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "quickassist",
@@ -13782,7 +16813,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: quickassist",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "defenderoffline",
@@ -13849,7 +16885,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.837080+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: Start-MpWDOScan",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "ddrescue",
@@ -13918,7 +16959,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.671088+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: ddrescue --help",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "dd",
@@ -13985,7 +17031,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.702162+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: dd --help",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "ssh",
@@ -14052,7 +17103,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:57.725982+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: ssh user@HOST",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "mdadm",
@@ -14119,7 +17175,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:51.159597+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: cat /proc/mdstat",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "lvm",
@@ -14186,7 +17247,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.502509+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: pvs; vgs; lvs",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "zfs",
@@ -14253,7 +17319,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:53.919791+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: zpool status",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "lsblk",
@@ -14320,7 +17391,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.728219+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: lsblk -o NAME,SIZE,MODEL,SERIAL,FSTYPE,MOUNTPOINTS",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "mount",
@@ -14387,7 +17463,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.728219+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: findmnt",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "rsync",
@@ -14454,7 +17535,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:54.580181+00:00",
         "contentType": "text/html"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: rsync -avhn /SOURCE/ /DESTINATION/",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "fsck",
@@ -14521,7 +17607,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.728219+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: lsblk -f",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "ip-linux",
@@ -14588,7 +17679,12 @@ window.TOOLKIT_DATA = [
         "checkedAt": "2026-09-09T20:17:55.775338+00:00",
         "contentType": "text/html; charset=utf-8"
       }
-    }
+    },
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: ip address; ip route",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "unattend",
@@ -14621,7 +17717,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 1,
     "officialWebsite": "",
     "officialDownload": "",
-    "documentation": "",
+    "documentation": "https://github.com/samirank/master-it-toolkit#readme",
     "localFolder": "10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended",
     "localExecutable": "10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml",
     "inventoryPatterns": [
@@ -14642,7 +17738,12 @@ window.TOOLKIT_DATA = [
     "command": "",
     "defaultFavorite": false,
     "sourceCheckedAt": "2026-09-09",
-    "localReference": "70_DOCUMENTATION/reference.html"
+    "localReference": "70_DOCUMENTATION/reference.html",
+    "quickStart": [
+      "Open Windows unattended language template using the package for your operating system.",
+      "Use it for: Language-only template for Windows Setup. No account bypass, credentials or disk operations. Validate against the exact image.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "reference",
@@ -14674,7 +17775,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 1,
     "officialWebsite": "",
     "officialDownload": "",
-    "documentation": "",
+    "documentation": "https://github.com/samirank/master-it-toolkit#readme",
     "localFolder": "70_DOCUMENTATION",
     "localExecutable": "70_DOCUMENTATION/reference.html",
     "inventoryPatterns": [
@@ -14695,7 +17796,12 @@ window.TOOLKIT_DATA = [
     "command": "",
     "defaultFavorite": false,
     "sourceCheckedAt": "2026-09-09",
-    "localReference": "70_DOCUMENTATION/reference.html"
+    "localReference": "70_DOCUMENTATION/reference.html",
+    "quickStart": [
+      "Open Offline technician reference using the package for your operating system.",
+      "Use it for: 24 local cheat sheets covering recovery, BitLocker, boot keys, networking, Linux and privacy.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "inventory-script",
@@ -14726,7 +17832,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 1,
     "officialWebsite": "",
     "officialDownload": "",
-    "documentation": "",
+    "documentation": "https://github.com/samirank/master-it-toolkit#readme",
     "localFolder": "60_SCRIPTS/Inventory",
     "localExecutable": "60_SCRIPTS/Inventory/Update-ToolkitInventory.ps1",
     "inventoryPatterns": [
@@ -14747,7 +17853,12 @@ window.TOOLKIT_DATA = [
     "command": ".\\60_SCRIPTS\\Inventory\\Update-ToolkitInventory.ps1",
     "defaultFavorite": false,
     "sourceCheckedAt": "2026-09-09",
-    "localReference": "70_DOCUMENTATION/reference.html"
+    "localReference": "70_DOCUMENTATION/reference.html",
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: .\\60_SCRIPTS\\Inventory\\Update-ToolkitInventory.ps1",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "metadata-script",
@@ -14778,7 +17889,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 1,
     "officialWebsite": "",
     "officialDownload": "",
-    "documentation": "",
+    "documentation": "https://github.com/samirank/master-it-toolkit#readme",
     "localFolder": "60_SCRIPTS/Inventory",
     "localExecutable": "60_SCRIPTS/Inventory/Update-ToolkitMetadata.ps1",
     "inventoryPatterns": [
@@ -14799,7 +17910,12 @@ window.TOOLKIT_DATA = [
     "command": ".\\60_SCRIPTS\\Inventory\\Update-ToolkitMetadata.ps1",
     "defaultFavorite": false,
     "sourceCheckedAt": "2026-09-09",
-    "localReference": "70_DOCUMENTATION/reference.html"
+    "localReference": "70_DOCUMENTATION/reference.html",
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: .\\60_SCRIPTS\\Inventory\\Update-ToolkitMetadata.ps1",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "download-script",
@@ -14830,7 +17946,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 1,
     "officialWebsite": "",
     "officialDownload": "",
-    "documentation": "",
+    "documentation": "https://github.com/samirank/master-it-toolkit#readme",
     "localFolder": "60_SCRIPTS/Inventory",
     "localExecutable": "60_SCRIPTS/Inventory/Download-MissingTools.ps1",
     "inventoryPatterns": [
@@ -14851,7 +17967,12 @@ window.TOOLKIT_DATA = [
     "command": ".\\60_SCRIPTS\\Inventory\\Download-MissingTools.ps1 -WhatIf",
     "defaultFavorite": false,
     "sourceCheckedAt": "2026-09-09",
-    "localReference": "70_DOCUMENTATION/reference.html"
+    "localReference": "70_DOCUMENTATION/reference.html",
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: .\\60_SCRIPTS\\Inventory\\Download-MissingTools.ps1 -WhatIf",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "diagnostic-script",
@@ -14883,7 +18004,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 1,
     "officialWebsite": "",
     "officialDownload": "",
-    "documentation": "",
+    "documentation": "https://github.com/samirank/master-it-toolkit#readme",
     "localFolder": "60_SCRIPTS/Diagnostics",
     "localExecutable": "60_SCRIPTS/Diagnostics/Get-PCDiagnostics.ps1",
     "inventoryPatterns": [
@@ -14904,7 +18025,12 @@ window.TOOLKIT_DATA = [
     "command": "",
     "defaultFavorite": false,
     "sourceCheckedAt": "2026-09-09",
-    "localReference": "70_DOCUMENTATION/reference.html"
+    "localReference": "70_DOCUMENTATION/reference.html",
+    "quickStart": [
+      "Open Collect PC diagnostics using the package for your operating system.",
+      "Use it for: Read-only hardware report; requires an explicit new output file. Contains device identifiers.",
+      "Review the output and save your work or report; use the official documentation for advanced operations."
+    ]
   },
   {
     "id": "network-script",
@@ -14936,7 +18062,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 1,
     "officialWebsite": "",
     "officialDownload": "",
-    "documentation": "",
+    "documentation": "https://github.com/samirank/master-it-toolkit#readme",
     "localFolder": "60_SCRIPTS/Network",
     "localExecutable": "60_SCRIPTS/Network/Get-NetworkDiagnostics.ps1",
     "inventoryPatterns": [
@@ -14957,7 +18083,12 @@ window.TOOLKIT_DATA = [
     "command": ".\\60_SCRIPTS\\Network\\Get-NetworkDiagnostics.ps1",
     "defaultFavorite": false,
     "sourceCheckedAt": "2026-09-09",
-    "localReference": "70_DOCUMENTATION/reference.html"
+    "localReference": "70_DOCUMENTATION/reference.html",
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: .\\60_SCRIPTS\\Network\\Get-NetworkDiagnostics.ps1",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
   },
   {
     "id": "repair-script",
@@ -14989,7 +18120,7 @@ window.TOOLKIT_DATA = [
     "estimatedSizeMB": 1,
     "officialWebsite": "",
     "officialDownload": "",
-    "documentation": "",
+    "documentation": "https://github.com/samirank/master-it-toolkit#readme",
     "localFolder": "60_SCRIPTS/Windows-Repair",
     "localExecutable": "60_SCRIPTS/Windows-Repair/Repair-WindowsFiles.ps1",
     "inventoryPatterns": [
@@ -15010,6 +18141,4038 @@ window.TOOLKIT_DATA = [
     "command": ".\\60_SCRIPTS\\Windows-Repair\\Repair-WindowsFiles.ps1 -WhatIf",
     "defaultFavorite": false,
     "sourceCheckedAt": "2026-09-09",
-    "localReference": "70_DOCUMENTATION/reference.html"
+    "localReference": "70_DOCUMENTATION/reference.html",
+    "quickStart": [
+      "Read the command and substitute only the documented target values.",
+      "Run it in the appropriate OS shell with the documented privileges: .\\60_SCRIPTS\\Windows-Repair\\Repair-WindowsFiles.ps1 -WhatIf",
+      "Review the output and follow the official documentation before taking additional action."
+    ]
+  },
+  {
+    "id": "obs",
+    "name": "OBS Studio",
+    "developer": "OBS Studio project / publisher",
+    "description": "Record screens and produce live streams.",
+    "categories": [
+      "Media",
+      "Software Installers"
+    ],
+    "tags": [
+      "OBS Studio",
+      "Media",
+      "open source"
+    ],
+    "useCases": [
+      "Record screens and produce live streams."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://obsproject.com/download",
+    "officialDownload": "https://obsproject.com/download",
+    "documentation": "https://obsproject.com/kb/quick-start-guide",
+    "localFolder": "40_INSTALLERS/Applications/obs",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Run Tools > Auto-Configuration Wizard for recording or streaming.",
+      "Create a scene, add a display/window source, and check microphone levels.",
+      "Record a short test and inspect video and audio before recording a session."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "obsidian",
+    "name": "Obsidian",
+    "developer": "Obsidian project / publisher",
+    "description": "Maintain a local Markdown knowledge base.",
+    "categories": [
+      "Office & PDF",
+      "Software Installers"
+    ],
+    "tags": [
+      "Obsidian",
+      "Office & PDF",
+      "vendor software"
+    ],
+    "useCases": [
+      "Maintain a local Markdown knowledge base."
+    ],
+    "priority": "P2",
+    "license": "Free / paid options",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://obsidian.md/download",
+    "officialDownload": "https://obsidian.md/download",
+    "documentation": "https://obsidian.md/help/",
+    "localFolder": "40_INSTALLERS/Applications/obsidian",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Create a vault in your chosen private notes folder.",
+      "Create a note and connect related notes using double-bracket links.",
+      "Back up the vault folder; configure sync separately if required."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "4kdownloader",
+    "name": "4K Video Downloader Plus",
+    "developer": "4K Video Downloader Plus project / publisher",
+    "description": "Save permitted online video and audio.",
+    "categories": [
+      "Media",
+      "Software Installers"
+    ],
+    "tags": [
+      "4K Video Downloader Plus",
+      "Media",
+      "vendor software"
+    ],
+    "useCases": [
+      "Save permitted online video and audio."
+    ],
+    "priority": "P2",
+    "license": "Free / paid options",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.4kdownload.com/products/videodownloader",
+    "officialDownload": "https://www.4kdownload.com/products/videodownloader",
+    "documentation": "https://www.4kdownload.com/howto",
+    "localFolder": "40_INSTALLERS/Applications/4kdownloader",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Copy a video URL you have permission to download.",
+      "Paste the link and choose format, quality, and output directory.",
+      "Verify the saved file; check the free-tier limits before batching."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "shotcut",
+    "name": "Shotcut",
+    "developer": "Shotcut project / publisher",
+    "description": "Edit and export video projects.",
+    "categories": [
+      "Media",
+      "Software Installers"
+    ],
+    "tags": [
+      "Shotcut",
+      "Media",
+      "open source"
+    ],
+    "useCases": [
+      "Edit and export video projects."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://shotcut.org/download/",
+    "officialDownload": "https://shotcut.org/download/",
+    "documentation": "https://shotcut.org/tutorials/",
+    "localFolder": "40_INSTALLERS/Applications/shotcut",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Create a project folder and choose the video mode.",
+      "Import clips, add them to the timeline, and trim or split them.",
+      "Save the project and export a short sample before the final render."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "kdenlive",
+    "name": "Kdenlive",
+    "developer": "Kdenlive project / publisher",
+    "description": "Edit multitrack video with effects and proxies.",
+    "categories": [
+      "Media",
+      "Software Installers"
+    ],
+    "tags": [
+      "Kdenlive",
+      "Media",
+      "open source"
+    ],
+    "useCases": [
+      "Edit multitrack video with effects and proxies."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://kdenlive.org/download/",
+    "officialDownload": "https://kdenlive.org/download/",
+    "documentation": "https://docs.kdenlive.org/",
+    "localFolder": "40_INSTALLERS/Applications/kdenlive",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Create a project with the source frame rate and resolution.",
+      "Import footage into the Project Bin and arrange it on the timeline.",
+      "Use proxies for heavy footage, save the project, then render a test."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "openshot",
+    "name": "OpenShot",
+    "developer": "OpenShot project / publisher",
+    "description": "Assemble and export video timelines.",
+    "categories": [
+      "Media",
+      "Software Installers"
+    ],
+    "tags": [
+      "OpenShot",
+      "Media",
+      "open source"
+    ],
+    "useCases": [
+      "Assemble and export video timelines."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.openshot.org/download/",
+    "officialDownload": "https://www.openshot.org/download/",
+    "documentation": "https://www.openshot.org/user-guide/",
+    "localFolder": "40_INSTALLERS/Applications/openshot",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Import clips into a new project.",
+      "Drag clips to tracks, trim their edges, and add titles.",
+      "Save the project, then export a short preview to verify settings."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "thunderbird",
+    "name": "Mozilla Thunderbird",
+    "developer": "Mozilla Thunderbird project / publisher",
+    "description": "Manage email, calendars and contacts.",
+    "categories": [
+      "Office & PDF",
+      "Software Installers"
+    ],
+    "tags": [
+      "Mozilla Thunderbird",
+      "Office & PDF",
+      "open source"
+    ],
+    "useCases": [
+      "Manage email, calendars and contacts."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.thunderbird.net/",
+    "officialDownload": "https://www.thunderbird.net/",
+    "documentation": "https://support.mozilla.org/products/thunderbird",
+    "localFolder": "40_INSTALLERS/Applications/thunderbird",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Add your email account with the provider sign-in flow.",
+      "Confirm incoming/outgoing server settings and test sending and receiving.",
+      "Back up the profile before migration; keep customer profiles separate."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "betterbird",
+    "name": "Betterbird",
+    "developer": "Betterbird project / publisher",
+    "description": "Use a Thunderbird-derived desktop email client.",
+    "categories": [
+      "Office & PDF",
+      "Software Installers"
+    ],
+    "tags": [
+      "Betterbird",
+      "Office & PDF",
+      "open source"
+    ],
+    "useCases": [
+      "Use a Thunderbird-derived desktop email client."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.betterbird.eu/downloads/",
+    "officialDownload": "https://www.betterbird.eu/downloads/",
+    "documentation": "https://www.betterbird.eu/support/",
+    "localFolder": "40_INSTALLERS/Applications/betterbird",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Back up the existing mail profile before trying Betterbird.",
+      "Add an account or follow the documented profile migration procedure.",
+      "Test send/receive and calendar access before switching permanently."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "clawsmail",
+    "name": "Claws Mail",
+    "developer": "Claws Mail project / publisher",
+    "description": "Use a lightweight desktop email client.",
+    "categories": [
+      "Office & PDF",
+      "Software Installers"
+    ],
+    "tags": [
+      "Claws Mail",
+      "Office & PDF",
+      "open source"
+    ],
+    "useCases": [
+      "Use a lightweight desktop email client."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.claws-mail.org/",
+    "officialDownload": "https://www.claws-mail.org/",
+    "documentation": "https://www.claws-mail.org/documentation.php",
+    "localFolder": "40_INSTALLERS/Applications/clawsmail",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Create an account and enter the provider server settings.",
+      "Configure authentication and TLS according to provider instructions.",
+      "Test send/receive and back up the mail configuration."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "joplin",
+    "name": "Joplin",
+    "developer": "Joplin project / publisher",
+    "description": "Keep notebooks and synchronize notes.",
+    "categories": [
+      "Office & PDF",
+      "Software Installers"
+    ],
+    "tags": [
+      "Joplin",
+      "Office & PDF",
+      "open source"
+    ],
+    "useCases": [
+      "Keep notebooks and synchronize notes."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://joplinapp.org/",
+    "officialDownload": "https://joplinapp.org/",
+    "documentation": "https://joplinapp.org/help/",
+    "localFolder": "40_INSTALLERS/Applications/joplin",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Create a notebook and add notes or attachments.",
+      "Choose a sync target only if needed and test with non-sensitive notes.",
+      "Export a backup before changing sync or encryption settings."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "remmina",
+    "name": "Remmina",
+    "developer": "Remmina project / publisher",
+    "description": "Connect from Linux using remote desktop protocols.",
+    "categories": [
+      "Remote Support",
+      "Software Installers"
+    ],
+    "tags": [
+      "Remmina",
+      "Remote Support",
+      "open source"
+    ],
+    "useCases": [
+      "Connect from Linux using remote desktop protocols."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Linux"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://remmina.org/",
+    "officialDownload": "https://remmina.org/",
+    "documentation": "https://remmina.org/how-to-install-remmina/",
+    "localFolder": "40_INSTALLERS/Applications/remmina",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Create a connection profile and choose the target protocol.",
+      "Enter an authorized host and verify its certificate or host identity.",
+      "Connect through a trusted network or VPN and disconnect after support."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "meshcentral",
+    "name": "MeshCentral",
+    "developer": "MeshCentral project / publisher",
+    "description": "Host an authorized remote management service.",
+    "categories": [
+      "Remote Support",
+      "Software Installers"
+    ],
+    "tags": [
+      "MeshCentral",
+      "Remote Support",
+      "open source"
+    ],
+    "useCases": [
+      "Host an authorized remote management service."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://meshcentral.com/",
+    "officialDownload": "https://meshcentral.com/",
+    "documentation": "https://docs.meshcentral.com/",
+    "localFolder": "40_INSTALLERS/Applications/meshcentral",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Deploy the server using the official setup guide with TLS.",
+      "Create an administrator account and enroll only approved devices.",
+      "Test one device, scope operator permissions, and document agent removal."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "syncthing",
+    "name": "Syncthing",
+    "developer": "Syncthing project / publisher",
+    "description": "Synchronize folders between approved devices.",
+    "categories": [
+      "Networking",
+      "Software Installers"
+    ],
+    "tags": [
+      "Syncthing",
+      "Networking",
+      "open source"
+    ],
+    "useCases": [
+      "Synchronize folders between approved devices."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://syncthing.net/",
+    "officialDownload": "https://syncthing.net/",
+    "documentation": "https://docs.syncthing.net/intro/getting-started.html",
+    "localFolder": "40_INSTALLERS/Applications/syncthing",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Pair devices by verifying their device IDs.",
+      "Share a small test folder and choose send/receive behavior.",
+      "Enable versioning where appropriate; synchronization is not a separate backup."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "keepassxc",
+    "name": "KeePassXC",
+    "developer": "KeePassXC project / publisher",
+    "description": "Maintain a local encrypted password database.",
+    "categories": [
+      "Malware & Security",
+      "Software Installers"
+    ],
+    "tags": [
+      "KeePassXC",
+      "Malware & Security",
+      "open source"
+    ],
+    "useCases": [
+      "Maintain a local encrypted password database."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://keepassxc.org/",
+    "officialDownload": "https://keepassxc.org/",
+    "documentation": "https://keepassxc.org/docs/",
+    "localFolder": "40_INSTALLERS/Applications/keepassxc",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Create a database with a strong master passphrase.",
+      "Add a test entry and verify locking and unlocking.",
+      "Keep a secure backup and never store client secrets in shared toolkit notes."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "bleachbit",
+    "name": "BleachBit",
+    "developer": "BleachBit project / publisher",
+    "description": "Preview and clean selected application data.",
+    "categories": [
+      "Windows Privacy",
+      "Software Installers"
+    ],
+    "tags": [
+      "BleachBit",
+      "Windows Privacy",
+      "open source"
+    ],
+    "useCases": [
+      "Preview and clean selected application data."
+    ],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; consult its license and bundled components.",
+    "technicianLicenseNotes": "Review the official license for redistribution and client deployments.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.bleachbit.org/download",
+    "officialDownload": "https://www.bleachbit.org/download",
+    "documentation": "https://docs.bleachbit.org/",
+    "localFolder": "40_INSTALLERS/Applications/bleachbit",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Close the applications whose data you intend to clean.",
+      "Select specific cleaners and use Preview to inspect affected files.",
+      "Clean only approved items; avoid saved passwords and recovery evidence."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ]
+  },
+  {
+    "id": "easeus-drw",
+    "name": "EaseUS Data Recovery Wizard",
+    "developer": "EaseUS",
+    "description": "EaseUS Data Recovery Wizard product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Data Recovery Wizard",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "Data Recovery Wizard"
+    ],
+    "useCases": [
+      "EaseUS Data Recovery Wizard product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/datarecoverywizard/free-data-recovery-software.htm",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/datarecoverywizard/free-data-recovery-software.htm",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-drw",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-drw-mac",
+    "name": "EaseUS Data Recovery Wizard for Mac",
+    "developer": "EaseUS",
+    "description": "EaseUS Data Recovery Wizard for Mac product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Data Recovery Wizard for Mac",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "Data Recovery Wizard for Mac"
+    ],
+    "useCases": [
+      "EaseUS Data Recovery Wizard for Mac product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/mac-data-recovery-software/drw-mac-free.htm",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/mac-data-recovery-software/drw-mac-free.htm",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-drw-mac",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-partition-mac",
+    "name": "EaseUS Partition Master for Mac",
+    "developer": "EaseUS",
+    "description": "EaseUS Partition Master for Mac product and edition reference.",
+    "categories": [
+      "Disk & Partition",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Partition Master for Mac",
+      "Disk & Partition",
+      "vendor software",
+      "EaseUS",
+      "Partition Master for Mac"
+    ],
+    "useCases": [
+      "EaseUS Partition Master for Mac product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/partition-manager/disk-partition-manager-for-mac.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/partition-manager/disk-partition-manager-for-mac.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-partition-mac",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-todo-backup",
+    "name": "EaseUS Todo Backup (Free / Home / Enterprise)",
+    "developer": "EaseUS",
+    "description": "EaseUS Todo Backup (Free / Home / Enterprise) product and edition reference.",
+    "categories": [
+      "Imaging & Cloning",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Todo Backup (Free / Home / Enterprise)",
+      "Imaging & Cloning",
+      "vendor software",
+      "EaseUS",
+      "Todo Backup (Free / Home / Enterprise)"
+    ],
+    "useCases": [
+      "EaseUS Todo Backup (Free / Home / Enterprise) product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/backup-software/tb-enterprise.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/backup-software/tb-enterprise.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-todo-backup",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Identify source and destination by model, capacity and serial number.",
+      "Select the backup or clone operation and review every disk that will be overwritten.",
+      "Verify the resulting image or cloned boot before reusing the original drive."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-todo-backup-mac",
+    "name": "EaseUS Todo Backup for Mac",
+    "developer": "EaseUS",
+    "description": "EaseUS Todo Backup for Mac product and edition reference.",
+    "categories": [
+      "Imaging & Cloning",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Todo Backup for Mac",
+      "Imaging & Cloning",
+      "vendor software",
+      "EaseUS",
+      "Todo Backup for Mac"
+    ],
+    "useCases": [
+      "EaseUS Todo Backup for Mac product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/backup-software/todo-backup-mac.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/backup-software/todo-backup-mac.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-todo-backup-mac",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Identify source and destination by model, capacity and serial number.",
+      "Select the backup or clone operation and review every disk that will be overwritten.",
+      "Verify the resulting image or cloned boot before reusing the original drive."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-pctrans",
+    "name": "EaseUS Todo PCTrans (Free / Pro / Technician)",
+    "developer": "EaseUS",
+    "description": "EaseUS Todo PCTrans (Free / Pro / Technician) product and edition reference.",
+    "categories": [
+      "Software Installers",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Todo PCTrans (Free / Pro / Technician)",
+      "Software Installers",
+      "vendor software",
+      "EaseUS",
+      "Todo PCTrans (Free / Pro / Technician)"
+    ],
+    "useCases": [
+      "EaseUS Todo PCTrans (Free / Pro / Technician) product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/pc-transfer-software/pctrans-technician.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/pc-transfer-software/pctrans-technician.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-pctrans",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-diskcopy",
+    "name": "EaseUS Disk Copy (Pro / Technician)",
+    "developer": "EaseUS",
+    "description": "EaseUS Disk Copy (Pro / Technician) product and edition reference.",
+    "categories": [
+      "Imaging & Cloning",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Disk Copy (Pro / Technician)",
+      "Imaging & Cloning",
+      "vendor software",
+      "EaseUS",
+      "Disk Copy (Pro / Technician)"
+    ],
+    "useCases": [
+      "EaseUS Disk Copy (Pro / Technician) product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/disk-copy/technician-edition/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/disk-copy/technician-edition/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-diskcopy",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "HIGH RISK",
+    "caution": "This operation can overwrite or erase data. Confirm ownership, backups, and the exact target before proceeding.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Identify source and destination by model, capacity and serial number.",
+      "Select the backup or clone operation and review every disk that will be overwritten.",
+      "Verify the resulting image or cloned boot before reusing the original drive."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-mobisaver",
+    "name": "EaseUS MobiSaver for iOS",
+    "developer": "EaseUS",
+    "description": "EaseUS MobiSaver for iOS product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS MobiSaver for iOS",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "MobiSaver for iOS"
+    ],
+    "useCases": [
+      "EaseUS MobiSaver for iOS product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/mobile-tool/free-iphone-data-recovery.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/mobile-tool/free-iphone-data-recovery.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-mobisaver",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-mobisaver-mac",
+    "name": "EaseUS MobiSaver for Mac",
+    "developer": "EaseUS",
+    "description": "EaseUS MobiSaver for Mac product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS MobiSaver for Mac",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "MobiSaver for Mac"
+    ],
+    "useCases": [
+      "EaseUS MobiSaver for Mac product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/mobile-tool/free-iphone-data-recovery-mac.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/mobile-tool/free-iphone-data-recovery-mac.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-mobisaver-mac",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-mobisaver-android",
+    "name": "EaseUS MobiSaver for Android",
+    "developer": "EaseUS",
+    "description": "EaseUS MobiSaver for Android product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS MobiSaver for Android",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "MobiSaver for Android"
+    ],
+    "useCases": [
+      "EaseUS MobiSaver for Android product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/android-data-recovery-software/free-android-data-recovery.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/android-data-recovery-software/free-android-data-recovery.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-mobisaver-android",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-mobisaver-app",
+    "name": "EaseUS MobiSaver Android App",
+    "developer": "EaseUS",
+    "description": "EaseUS MobiSaver Android App product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS MobiSaver Android App",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "MobiSaver Android App"
+    ],
+    "useCases": [
+      "EaseUS MobiSaver Android App product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Android"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/android-data-recovery-software/app-version.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/android-data-recovery-software/app-version.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-mobisaver-app",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-mobimover",
+    "name": "EaseUS MobiMover",
+    "developer": "EaseUS",
+    "description": "EaseUS MobiMover product and edition reference.",
+    "categories": [
+      "Software Installers",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS MobiMover",
+      "Software Installers",
+      "vendor software",
+      "EaseUS",
+      "MobiMover"
+    ],
+    "useCases": [
+      "EaseUS MobiMover product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://mobi.easeus.com/phone-transfer/mobimover-free.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://mobi.easeus.com/phone-transfer/mobimover-free.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-mobimover",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-mobiunlock",
+    "name": "EaseUS MobiUnlock",
+    "developer": "EaseUS",
+    "description": "EaseUS MobiUnlock product and edition reference.",
+    "categories": [
+      "Account & OOBE",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS MobiUnlock",
+      "Account & OOBE",
+      "vendor software",
+      "EaseUS",
+      "MobiUnlock"
+    ],
+    "useCases": [
+      "EaseUS MobiUnlock product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://mobi.easeus.com/unlock-iphone/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://mobi.easeus.com/unlock-iphone/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-mobiunlock",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "HIGH RISK",
+    "caution": "This operation can overwrite or erase data. Confirm ownership, backups, and the exact target before proceeding.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Confirm device ownership and review official account-recovery options first.",
+      "Back up accessible data and read the vendor reset/erase limitations.",
+      "Use only documented, authorized device recovery; this guide provides no activation-lock or authentication bypass steps."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-mobianygo",
+    "name": "EaseUS MobiAnyGo",
+    "developer": "EaseUS",
+    "description": "EaseUS MobiAnyGo product and edition reference.",
+    "categories": [
+      "Software Installers",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS MobiAnyGo",
+      "Software Installers",
+      "vendor software",
+      "EaseUS",
+      "MobiAnyGo"
+    ],
+    "useCases": [
+      "EaseUS MobiAnyGo product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://mobi.easeus.com/location-changer/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://mobi.easeus.com/location-changer/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-mobianygo",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-ringtone",
+    "name": "EaseUS Ringtone Editor",
+    "developer": "EaseUS",
+    "description": "EaseUS Ringtone Editor product and edition reference.",
+    "categories": [
+      "Media",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Ringtone Editor",
+      "Media",
+      "vendor software",
+      "EaseUS",
+      "Ringtone Editor"
+    ],
+    "useCases": [
+      "EaseUS Ringtone Editor product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://mobi.easeus.com/iphone-ringtone-maker/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://mobi.easeus.com/iphone-ringtone-maker/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-ringtone",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-recexperts",
+    "name": "EaseUS RecExperts",
+    "developer": "EaseUS",
+    "description": "EaseUS RecExperts product and edition reference.",
+    "categories": [
+      "Media",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS RecExperts",
+      "Media",
+      "vendor software",
+      "EaseUS",
+      "RecExperts"
+    ],
+    "useCases": [
+      "EaseUS RecExperts product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://recorder.easeus.com/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://recorder.easeus.com/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-recexperts",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-makemyaudio",
+    "name": "EaseUS MakeMyAudio",
+    "developer": "EaseUS",
+    "description": "EaseUS MakeMyAudio product and edition reference.",
+    "categories": [
+      "Media",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS MakeMyAudio",
+      "Media",
+      "vendor software",
+      "EaseUS",
+      "MakeMyAudio"
+    ],
+    "useCases": [
+      "EaseUS MakeMyAudio product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://multimedia.easeus.com/audio-tool/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://multimedia.easeus.com/audio-tool/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-makemyaudio",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-voicewave",
+    "name": "EaseUS VoiceWave",
+    "developer": "EaseUS",
+    "description": "EaseUS VoiceWave product and edition reference.",
+    "categories": [
+      "Media",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS VoiceWave",
+      "Media",
+      "vendor software",
+      "EaseUS",
+      "VoiceWave"
+    ],
+    "useCases": [
+      "EaseUS VoiceWave product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://multimedia.easeus.com/voice-changer/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://multimedia.easeus.com/voice-changer/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-voicewave",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-videoeditor",
+    "name": "EaseUS Video Editor",
+    "developer": "EaseUS",
+    "description": "EaseUS Video Editor product and edition reference.",
+    "categories": [
+      "Media",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Video Editor",
+      "Media",
+      "vendor software",
+      "EaseUS",
+      "Video Editor"
+    ],
+    "useCases": [
+      "EaseUS Video Editor product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://multimedia.easeus.com/video-editor/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://multimedia.easeus.com/video-editor/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-videoeditor",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-videokit",
+    "name": "EaseUS VideFlow / VideoKit",
+    "developer": "EaseUS",
+    "description": "EaseUS VideFlow / VideoKit product and edition reference.",
+    "categories": [
+      "Media",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS VideFlow / VideoKit",
+      "Media",
+      "vendor software",
+      "EaseUS",
+      "VideFlow / VideoKit"
+    ],
+    "useCases": [
+      "EaseUS VideFlow / VideoKit product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://multimedia.easeus.com/videokit/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://multimedia.easeus.com/videokit/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-videokit",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-videodownloader",
+    "name": "EaseUS Video Downloader",
+    "developer": "EaseUS",
+    "description": "EaseUS Video Downloader product and edition reference.",
+    "categories": [
+      "Media",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Video Downloader",
+      "Media",
+      "vendor software",
+      "EaseUS",
+      "Video Downloader"
+    ],
+    "useCases": [
+      "EaseUS Video Downloader product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://multimedia.easeus.com/video-downloader/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://multimedia.easeus.com/video-downloader/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-videodownloader",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-pdf",
+    "name": "EaseUS PDF Editor",
+    "developer": "EaseUS",
+    "description": "EaseUS PDF Editor product and edition reference.",
+    "categories": [
+      "Office & PDF",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS PDF Editor",
+      "Office & PDF",
+      "vendor software",
+      "EaseUS",
+      "PDF Editor"
+    ],
+    "useCases": [
+      "EaseUS PDF Editor product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://pdf.easeus.com/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://pdf.easeus.com/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-pdf",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-email",
+    "name": "EaseUS Email Recovery Wizard",
+    "developer": "EaseUS",
+    "description": "EaseUS Email Recovery Wizard product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Email Recovery Wizard",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "Email Recovery Wizard"
+    ],
+    "useCases": [
+      "EaseUS Email Recovery Wizard product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/emailrecoverywizard/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/emailrecoverywizard/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-email",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-exchange",
+    "name": "EaseUS Exchange Recovery",
+    "developer": "EaseUS",
+    "description": "EaseUS Exchange Recovery product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Exchange Recovery",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "Exchange Recovery"
+    ],
+    "useCases": [
+      "EaseUS Exchange Recovery product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/data-recovery-software/exchange-recovery.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/data-recovery-software/exchange-recovery.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-exchange",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-partitionrecovery",
+    "name": "EaseUS Partition Recovery",
+    "developer": "EaseUS",
+    "description": "EaseUS Partition Recovery product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Partition Recovery",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "Partition Recovery"
+    ],
+    "useCases": [
+      "EaseUS Partition Recovery product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/partition-recovery/index.htm",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/partition-recovery/index.htm",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-partitionrecovery",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "HIGH RISK",
+    "caution": "This operation can overwrite or erase data. Confirm ownership, backups, and the exact target before proceeding.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-sql",
+    "name": "EaseUS MS SQL Recovery",
+    "developer": "EaseUS",
+    "description": "EaseUS MS SQL Recovery product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS MS SQL Recovery",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "MS SQL Recovery"
+    ],
+    "useCases": [
+      "EaseUS MS SQL Recovery product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/data-recovery-software/ms-sql-recovery.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/data-recovery-software/ms-sql-recovery.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-sql",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-lockmyfile",
+    "name": "EaseUS LockMyFile",
+    "developer": "EaseUS",
+    "description": "EaseUS LockMyFile product and edition reference.",
+    "categories": [
+      "Malware & Security",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS LockMyFile",
+      "Malware & Security",
+      "vendor software",
+      "EaseUS",
+      "LockMyFile"
+    ],
+    "useCases": [
+      "EaseUS LockMyFile product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://toolbox.easeus.com/file-lock/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://toolbox.easeus.com/file-lock/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-lockmyfile",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-os2go",
+    "name": "EaseUS OS2Go",
+    "developer": "EaseUS",
+    "description": "EaseUS OS2Go product and edition reference.",
+    "categories": [
+      "USB Tools",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS OS2Go",
+      "USB Tools",
+      "vendor software",
+      "EaseUS",
+      "OS2Go"
+    ],
+    "useCases": [
+      "EaseUS OS2Go product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/utilities/ostogo.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/utilities/ostogo.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-os2go",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "HIGH RISK",
+    "caution": "This operation can overwrite or erase data. Confirm ownership, backups, and the exact target before proceeding.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-ntfs",
+    "name": "EaseUS NTFS for Mac",
+    "developer": "EaseUS",
+    "description": "EaseUS NTFS for Mac product and edition reference.",
+    "categories": [
+      "Disk & Partition",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS NTFS for Mac",
+      "Disk & Partition",
+      "vendor software",
+      "EaseUS",
+      "NTFS for Mac"
+    ],
+    "useCases": [
+      "EaseUS NTFS for Mac product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/all-products.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/all-products.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-ntfs",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-keyfinder",
+    "name": "EaseUS Key Finder",
+    "developer": "EaseUS",
+    "description": "EaseUS Key Finder product and edition reference.",
+    "categories": [
+      "Licensed Tools",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Key Finder",
+      "Licensed Tools",
+      "vendor software",
+      "EaseUS",
+      "Key Finder"
+    ],
+    "useCases": [
+      "EaseUS Key Finder product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/key-finder/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/key-finder/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-keyfinder",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-bitwiper",
+    "name": "EaseUS BitWiper",
+    "developer": "EaseUS",
+    "description": "EaseUS BitWiper product and edition reference.",
+    "categories": [
+      "Disk & Partition",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS BitWiper",
+      "Disk & Partition",
+      "vendor software",
+      "EaseUS",
+      "BitWiper"
+    ],
+    "useCases": [
+      "EaseUS BitWiper product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://toolbox.easeus.com/bitwiper/index.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://toolbox.easeus.com/bitwiper/index.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-bitwiper",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "HIGH RISK",
+    "caution": "This operation can overwrite or erase data. Confirm ownership, backups, and the exact target before proceeding.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Confirm that the owner authorized permanent data destruction.",
+      "Disconnect unrelated drives and verify the target serial number against the work order.",
+      "Select the supported erase method and verify the result; erasure is irreversible."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-duplicates",
+    "name": "EaseUS DupFiles Cleaner",
+    "developer": "EaseUS",
+    "description": "EaseUS DupFiles Cleaner product and edition reference.",
+    "categories": [
+      "Windows Privacy",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS DupFiles Cleaner",
+      "Windows Privacy",
+      "vendor software",
+      "EaseUS",
+      "DupFiles Cleaner"
+    ],
+    "useCases": [
+      "EaseUS DupFiles Cleaner product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/all-products.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/all-products.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-duplicates",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-driverhandy",
+    "name": "EaseUS DriverHandy",
+    "developer": "EaseUS",
+    "description": "EaseUS DriverHandy product and edition reference.",
+    "categories": [
+      "Drivers",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS DriverHandy",
+      "Drivers",
+      "vendor software",
+      "EaseUS",
+      "DriverHandy"
+    ],
+    "useCases": [
+      "EaseUS DriverHandy product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://toolbox.easeus.com/driver-handy/index.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://toolbox.easeus.com/driver-handy/index.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-driverhandy",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-everysync",
+    "name": "EaseUS EverySync",
+    "developer": "EaseUS",
+    "description": "EaseUS EverySync product and edition reference.",
+    "categories": [
+      "Networking",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS EverySync",
+      "Networking",
+      "vendor software",
+      "EaseUS",
+      "EverySync"
+    ],
+    "useCases": [
+      "EaseUS EverySync product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/file-sync/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/file-sync/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-everysync",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-chattrans",
+    "name": "EaseUS ChatTrans",
+    "developer": "EaseUS",
+    "description": "EaseUS ChatTrans product and edition reference.",
+    "categories": [
+      "Software Installers",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS ChatTrans",
+      "Software Installers",
+      "vendor software",
+      "EaseUS",
+      "ChatTrans"
+    ],
+    "useCases": [
+      "EaseUS ChatTrans product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://mobi.easeus.com/chat-transfer/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://mobi.easeus.com/chat-transfer/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-chattrans",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-winrescuer",
+    "name": "EaseUS WinRescuer",
+    "developer": "EaseUS",
+    "description": "EaseUS WinRescuer product and edition reference.",
+    "categories": [
+      "Windows Repair",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS WinRescuer",
+      "Windows Repair",
+      "vendor software",
+      "EaseUS",
+      "WinRescuer"
+    ],
+    "useCases": [
+      "EaseUS WinRescuer product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/boot-repair/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/boot-repair/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-winrescuer",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "HIGH RISK",
+    "caution": "This operation can overwrite or erase data. Confirm ownership, backups, and the exact target before proceeding.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-fixo",
+    "name": "EaseUS Fixo",
+    "developer": "EaseUS",
+    "description": "EaseUS Fixo product and edition reference.",
+    "categories": [
+      "Data Recovery",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Fixo",
+      "Data Recovery",
+      "vendor software",
+      "EaseUS",
+      "Fixo"
+    ],
+    "useCases": [
+      "EaseUS Fixo product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/repair-tools/",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/repair-tools/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-fixo",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Stop writing to the affected storage or database; work from an image or backup where possible.",
+      "Choose the source and scan or repair a copy, then preview the recoverable output.",
+      "Save recovered files to separate healthy storage and validate them before restoring service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-cleangenius",
+    "name": "EaseUS CleanGenius",
+    "developer": "EaseUS",
+    "description": "EaseUS CleanGenius product and edition reference.",
+    "categories": [
+      "Windows Privacy",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS CleanGenius",
+      "Windows Privacy",
+      "vendor software",
+      "EaseUS",
+      "CleanGenius"
+    ],
+    "useCases": [
+      "EaseUS CleanGenius product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.easeus.com/all-products.html",
+    "officialDownload": "https://www.easeus.com/download.htm",
+    "documentation": "https://www.easeus.com/all-products.html",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-cleangenius",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.zip",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.apk"
+    ],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "easeus-vocalremover",
+    "name": "EaseUS Vocal Remover Online",
+    "developer": "EaseUS",
+    "description": "EaseUS Vocal Remover Online product and edition reference.",
+    "categories": [
+      "Media",
+      "Licensed Tools"
+    ],
+    "tags": [
+      "EaseUS Vocal Remover Online",
+      "Media",
+      "vendor software",
+      "EaseUS",
+      "Vocal Remover Online"
+    ],
+    "useCases": [
+      "EaseUS Vocal Remover Online product and edition reference."
+    ],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Proprietary software. Free tiers, trials and paid features depend on the selected edition.",
+    "technicianLicenseNotes": "Check business/technician licensing; a personal free edition is not a technician license.",
+    "portable": false,
+    "bootable": false,
+    "offline": false,
+    "os": [
+      "Browser"
+    ],
+    "architecture": [
+      "Choose the publisher build for your OS and CPU"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://vocalremover.easeus.com/",
+    "officialDownload": "https://vocalremover.easeus.com/",
+    "documentation": "https://vocalremover.easeus.com/",
+    "localFolder": "80_LICENSED_TOOLS/EaseUS/easeus-vocalremover",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "kind": "Online",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review the selected operation and keep a backup of affected data.",
+    "notes": "Select the OS and license edition on the publisher page. Downloaded packages are not automatically installed.",
+    "sourceStatus": "Official product source reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-09",
+    "sourceEvidence": {},
+    "sourceReviewNotes": "Current publisher/project page reviewed on 2026-09-09. This is source provenance, not independent software safety certification.",
+    "quickStart": [
+      "Choose the appropriate platform and Free, trial, paid or technician edition on the official product page.",
+      "Work on a backup or test copy first; review the selected input and output before starting.",
+      "Follow the product documentation for the operation and verify the result before replacing original files."
+    ],
+    "packagePatterns": [],
+    "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
   }
 ];

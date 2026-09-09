@@ -23,6 +23,7 @@ import tool_downloads
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
 SCRIPTS = {
+    'check-updates': ('Check downloaded tool updates', 'tool_downloads.py', 'all'),
     'inventory': ('Scan local inventory', '60_SCRIPTS/Inventory/update_toolkit_inventory.py', 'all'),
     'pc': ('PC diagnostics', '60_SCRIPTS/Diagnostics/Get-PCDiagnostics.ps1', 'windows'),
     'network': ('Network diagnostics', '60_SCRIPTS/Network/Get-NetworkDiagnostics.ps1', 'windows'),
@@ -52,7 +53,7 @@ def managed_name(name):
     if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
-        return name != MANIFEST and name != 'assets/js/local-inventory.js' and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
+        return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
     if name.startswith(('60_SCRIPTS/', '70_DOCUMENTATION/')):
         return '/Service-Notes/' not in name and Path(name).suffix in ('.ps1', '.py', '.html', '.txt')
     return name.endswith('/PLACE-FILES-HERE.txt') or name == '90_TEMP/README.txt'
@@ -136,6 +137,10 @@ def powershell_command(powershell, script, key):
     return [powershell, '-NoProfile', '-ExecutionPolicy', 'Bypass', '-NoExit', '-File', str(script), *(['-Repair'] if key == 'repair' else [])]
 
 def run_script(key):
+    if key == 'check-updates':
+        message=tool_downloads.check_updates(ROOT,safe_path)
+        run_script('inventory')
+        return message
     label, relative, platform = SCRIPTS[key]
     script = safe_path(ROOT, relative)
     if platform == 'windows':
@@ -164,6 +169,7 @@ class Server(ThreadingHTTPServer):
             if action == 'download':
                 message = tool_downloads.save_selected(self.root, body['tool'], body['assets'], safe_path,
                     lambda message: setattr(self, 'state', {'busy': True, 'message': message}))
+                run_script('inventory')
             else: message = update() if action == 'update' else run_script(action)
             self.state = {'busy': False, 'message': message}
         except Exception as error:
@@ -198,6 +204,11 @@ class Handler(BaseHTTPRequestHandler):
             except Exception as error: return self.reply(400, {'error': str(error)})
         if route == 'api/status':
             return self.reply(200, dict(self.server.state, scripts=[{'id': key, 'name': label, 'enabled': platform == 'all' or os.name == 'nt', 'path': path} for key, (label, path, platform) in SCRIPTS.items()]))
+        if route == 'api/inventory':
+            try:
+                text=(self.server.root/'assets/js/local-inventory.js').read_text('utf-8-sig')
+                return self.reply(200,json.loads(text.split('window.LOCAL_INVENTORY =',1)[1].strip().rstrip(';')))
+            except (OSError,ValueError,IndexError): return self.reply(200,{'tools':{}})
         try:
             route = route or 'index.html'
             if route not in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt') and not route.startswith(('assets/', '70_DOCUMENTATION/')): raise ValueError()

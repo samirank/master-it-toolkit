@@ -1,0 +1,1 @@
+Save the official EaseUS MakeMyAudio package here. Do not put client documents in this directory.

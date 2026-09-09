@@ -10,6 +10,11 @@
   dialog.append(element('h2','Download '+tool.name));
   const status=element('p','Loading publisher choices…');status.setAttribute('role','status');dialog.append(status);
   document.body.append(dialog);dialog.addEventListener('close',()=>dialog.remove());dialog.showModal();
+  const pathLabel=element('label','Save in this toolkit folder');pathLabel.className='note-field';
+  const pathField=element('input');pathField.readOnly=true;pathField.setAttribute('aria-label','Download destination');
+  pathField.value=window.ToolkitPaths.resolve(tool.localFolder,window.TOOLKIT_LOCAL_BASE||location.href).filesystemPath||tool.localFolder;
+  pathLabel.append(pathField);dialog.append(pathLabel);
+  const copyPath=element('button','Copy destination path');copyPath.onclick=async()=>{try{await navigator.clipboard.writeText(pathField.value);copyPath.textContent='Path copied';}catch{pathField.focus();pathField.select();copyPath.textContent=document.execCommand('copy')?'Path copied':'Select the path and copy manually';}};dialog.append(copyPath);
   const official=()=>{const a=element('a','Open publisher downloads ↗');a.href=tool.officialDownload;a.target='_blank';a.rel='noopener noreferrer';dialog.append(a);};
   let info;
   try{
