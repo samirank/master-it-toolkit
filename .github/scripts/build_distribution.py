@@ -9,7 +9,7 @@ import subprocess
 import zipfile
 
 ROOT=Path(__file__).resolve().parents[2]
-NAME='NEIGHBOR-CIRCUIT-TOOLKIT'
+NAME='MASTER-IT-TOOLKIT'
 EMPTY=b'// Unscanned inventory; run a local updater to detect your files.\nwindow.LOCAL_INVENTORY = {"generatedAt":null,"tools":{},"storage":null,"errors":[]};\n'
 
 def source_files():

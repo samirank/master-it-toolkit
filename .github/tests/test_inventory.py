@@ -6,7 +6,7 @@ import tempfile
 import unittest
 
 REPO=Path(__file__).resolve().parents[2]
-spec=importlib.util.spec_from_file_location('inventory', REPO/'NEIGHBOR-CIRCUIT-TOOLKIT/60_SCRIPTS/Inventory/update_toolkit_inventory.py')
+spec=importlib.util.spec_from_file_location('inventory', REPO/'MASTER-IT-TOOLKIT/60_SCRIPTS/Inventory/update_toolkit_inventory.py')
 module=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 

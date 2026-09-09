@@ -1,4 +1,4 @@
-NEIGHBOR CIRCUIT TOOLKIT — FIRST WORKING EDITION
+MASTER IT TOOLKIT TOOLKIT — FIRST WORKING EDITION
 September 2026 | Offline PC Rescue & Field Service Toolkit
 
 STARTING AND DEPLOYING
@@ -163,7 +163,7 @@ assets/js/guides-data.js contains task guides, checklists and reference index.
 assets/css/app.css contains the visual system. assets/js/app.js is application
 logic. assets/js/local-inventory.js and metadata.js are maintenance output.
 assets/source-audit.json records build-time official URL checks.
-The canonical application source is inside NEIGHBOR-CIRCUIT-TOOLKIT/.
+The canonical application source is inside MASTER-IT-TOOLKIT/.
 Root index.html opens the dashboard there. Keep the directory intact or copy
 its contents to the SSD root; both layouts work. Local paths resolve to full
 native addresses from the actual file URL. Hosted demos cannot access drives.

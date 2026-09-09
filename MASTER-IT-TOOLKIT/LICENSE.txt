@@ -1,9 +1,9 @@
-Neighbor Circuit Toolkit Source-Available License 1.0
+Master IT Toolkit Source-Available License 1.0
 
 Copyright (c) 2026 Samiran Kakoty. All rights reserved except as granted below.
 
 1. Scope
-This license covers the original Neighbor Circuit Toolkit dashboard, source
+This license covers the original Master IT Toolkit dashboard, source
 code, documentation, and scripts in this repository. Third-party software,
 linked tools, trademarks, and other separately licensed materials remain
 subject to their owners' terms. No third-party rights are granted here.
@@ -16,13 +16,13 @@ comply with all conditions below.
 
 3. Retain the name and attribution
 Every copy or modified version must retain this license and copyright notice.
-The dashboard must retain the visible product name "Neighbor Circuit Toolkit"
-and accessible attribution links to https://neighborcircuit.com/ and
-https://github.com/samirank/neighbor-circuit-toolkit.
+The dashboard must retain the visible product name "Master IT Toolkit"
+and visible copyright attribution to Samiran Kakoty, with an accessible link to
+https://github.com/samirank/master-it-toolkit.
 You must not remove, hide, obscure, or replace this name or attribution, rename
 the toolkit, or present it as your own product. Extracted substantial portions
 of the code must retain this license, copyright notice, and attribution to
-Neighbor Circuit Toolkit in accompanying documentation and any resulting UI.
+Master IT Toolkit in accompanying documentation and any resulting UI.
 You may add your own contributor or deployment information alongside the
 original attribution, provided it does not replace or obscure it.
 
@@ -30,8 +30,8 @@ original attribution, provided it does not replace or obscure it.
 Clearly identify modifications and their author in accompanying documentation.
 Redistribute covered materials under this same license and do not impose terms
 that remove the permissions granted here. Do not imply that a modified version
-is an official release or endorsed by Neighbor Circuit or the copyright holder.
-No permission to use the Neighbor Circuit name for unrelated products or to
+is an official release or endorsed by the copyright holder.
+No permission to use the Master IT Toolkit name for unrelated products or to
 claim trademark ownership is granted.
 
 5. Termination

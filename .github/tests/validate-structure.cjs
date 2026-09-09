@@ -1,5 +1,5 @@
 const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert');
-const root=process.env.TOOLKIT_ROOT||path.resolve(__dirname,'../../NEIGHBOR-CIRCUIT-TOOLKIT'),scope={window:{}};
+const root=process.env.TOOLKIT_ROOT||path.resolve(__dirname,'../../MASTER-IT-TOOLKIT'),scope={window:{}};
 for(const f of ['tools-data.js','categories.js','guides-data.js','inventory-default.js','metadata.js'])vm.runInNewContext(fs.readFileSync(path.join(root,'assets/js',f),'utf8'),scope);
 const data=scope.window.TOOLKIT_DATA,checks=[];const test=(name,fn)=>{fn();checks.push(name);console.log('PASS '+name)};
 test('221 unique maintainable records',()=>{assert.equal(data.length,221);assert.equal(new Set(data.map(t=>t.id)).size,data.length)});

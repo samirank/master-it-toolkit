@@ -1,7 +1,7 @@
 /* Developer verification only. Uses Playwright externally; dashboard needs no runtime. */
 const fs=require('fs'),path=require('path'),{pathToFileURL}=require('url'),assert=require('assert');
 const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
-const root=process.env.TOOLKIT_ROOT||path.resolve(__dirname,'../../NEIGHBOR-CIRCUIT-TOOLKIT'),url=pathToFileURL(path.join(root,'index.html')).href;
+const root=process.env.TOOLKIT_ROOT||path.resolve(__dirname,'../../MASTER-IT-TOOLKIT'),url=pathToFileURL(path.join(root,'index.html')).href;
 const out=process.env.VALIDATION_OUT||path.resolve(__dirname,'../../.development/browser-validation');fs.mkdirSync(out,{recursive:true});
 const results=[],errors=[],network=[];
 function pass(name){results.push({name,passed:true});console.log('PASS '+name)}
@@ -11,7 +11,7 @@ function pass(name){results.push({name,passed:true});console.log('PASS '+name)}
  await context.setOffline(true);
  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url()))network.push(r.url())});
  await page.goto(url);await page.waitForSelector('h1');
- assert.equal(await page.title(),'Neighbor Circuit Toolkit');assert((await page.locator('h1').innerText()).includes('Ready'));pass('Direct file:// startup with network offline');
+ assert.equal(await page.title(),'Master IT Toolkit');assert((await page.locator('h1').innerText()).includes('Ready'));pass('Direct file:// startup with network offline');
  const dependencyCheck=await page.evaluate(()=>[...document.querySelectorAll('script[src],link[rel=stylesheet],img')].map(e=>({url:e.src||e.href,ok:e.tagName!=='IMG'||e.complete&&e.naturalWidth>0})));
  assert(dependencyCheck.every(x=>x.url.startsWith('file:')&&x.ok));for(const x of dependencyCheck)assert(fs.existsSync(require('url').fileURLToPath(x.url)));pass('All dashboard dependencies are local and present');
  await page.screenshot({path:path.join(out,'overview-dark-1440.png'),fullPage:true});

@@ -1,10 +1,10 @@
-# Neighbor Circuit Toolkit
+# Master IT Toolkit
 
 An offline PC rescue and field-service dashboard. Search tools, work through a repair, and keep the right commands and references close at hand.
 
-**[Try the demo](https://samirank.github.io/neighbor-circuit-toolkit/)** · **[Download the offline ZIP](https://samirank.github.io/neighbor-circuit-toolkit/NEIGHBOR-CIRCUIT-TOOLKIT.zip)** · **[Setup and maintenance guide](NEIGHBOR-CIRCUIT-TOOLKIT/README.txt)**
+**[Try the demo](https://samirank.github.io/master-it-toolkit/)** · **[Download the offline ZIP](https://samirank.github.io/master-it-toolkit/MASTER-IT-TOOLKIT.zip)** · **[Setup and maintenance guide](MASTER-IT-TOOLKIT/README.txt)**
 
-![Neighbor Circuit Toolkit dashboard](NEIGHBOR-CIRCUIT-TOOLKIT/assets/images/dashboard.png)
+![Master IT Toolkit dashboard](MASTER-IT-TOOLKIT/assets/images/dashboard.png)
 
 ## What is included
 
@@ -21,8 +21,8 @@ The dashboard is plain HTML, CSS, and JavaScript. **No server, Node.js, Python, 
 
 ## Quick start
 
-1. Download and extract `NEIGHBOR-CIRCUIT-TOOLKIT.zip`.
-2. Open the top-level `index.html`. It opens the dashboard inside `NEIGHBOR-CIRCUIT-TOOLKIT`.
+1. Download and extract `MASTER-IT-TOOLKIT.zip`.
+2. Open the top-level `index.html`. It opens the dashboard inside `MASTER-IT-TOOLKIT`.
 3. Use **Missing downloads** to obtain selected tools from their official sources.
 4. Save/extract each tool to the displayed destination. Keep portable packages' directory structures intact.
 5. Run an inventory updater, then reload the dashboard.
@@ -31,9 +31,9 @@ You can move the whole folder to another drive or computer. The catalog retains 
 
 | Host | Example displayed / copied destination |
 | --- | --- |
-| Windows | `E:\NEIGHBOR-CIRCUIT-TOOLKIT\20_PORTABLE_APPS\Misc\CrystalDiskInfo` |
-| Linux | `/media/sam/TOOLKIT/NEIGHBOR-CIRCUIT-TOOLKIT/20_PORTABLE_APPS/Misc/CrystalDiskInfo` |
-| macOS | `/Volumes/TOOLKIT/NEIGHBOR-CIRCUIT-TOOLKIT/20_PORTABLE_APPS/Misc/CrystalDiskInfo` |
+| Windows | `E:\MASTER-IT-TOOLKIT\20_PORTABLE_APPS\Misc\CrystalDiskInfo` |
+| Linux | `/media/sam/TOOLKIT/MASTER-IT-TOOLKIT/20_PORTABLE_APPS/Misc/CrystalDiskInfo` |
+| macOS | `/Volumes/TOOLKIT/MASTER-IT-TOOLKIT/20_PORTABLE_APPS/Misc/CrystalDiskInfo` |
 
 These are examples; the app uses the actual path from its local file URL, including nested folders, spaces, drive letters, and mount points. Windows network-share URLs resolve to UNC paths. A browser cannot infer a friendly volume label beyond what appears in its URL.
 
@@ -42,11 +42,11 @@ The **hosted demo cannot see your drives or launch local programs**. It labels d
 ## Clean layout
 
 ```text
-neighbor-circuit-toolkit/
+master-it-toolkit/
 ├── index.html                     # Entry point
 ├── README.md
-├── NEIGHBOR-CIRCUIT-TOOLKIT.zip     # Ready-to-use download
-└── NEIGHBOR-CIRCUIT-TOOLKIT/
+├── MASTER-IT-TOOLKIT.zip     # Ready-to-use download
+└── MASTER-IT-TOOLKIT/
     ├── index.html                 # Actual dashboard
     ├── assets/                    # Local styles, data and application
     ├── 00_BOOT/
@@ -67,7 +67,7 @@ Repository automation and tests live in `.github/`. Local development backups an
 
 The **dashboard** works in modern desktop browsers on these systems. It has no OS-specific browser dependency. Individual catalog tools and commands retain their actual OS requirements: a Windows executable is not made Linux-compatible by the dashboard. Mobile file browsing depends on the browser and OS; a desktop is recommended for field work.
 
-Run maintenance from inside `NEIGHBOR-CIRCUIT-TOOLKIT`:
+Run maintenance from inside `MASTER-IT-TOOLKIT`:
 
 **Windows PowerShell 5.1 or PowerShell 7 on Windows**
 
@@ -99,16 +99,16 @@ The download helper requires confirmation, skips existing files unless explicitl
 
 ## Using a Ventoy SSD
 
-Neighbor Circuit Toolkit is independent of Ventoy and is not affiliated with or endorsed by the Ventoy project. Ventoy is an optional way to boot the rescue images cataloged here.
+Master IT Toolkit is independent of Ventoy and is not affiliated with or endorsed by the Ventoy project. Ventoy is an optional way to boot the rescue images cataloged here.
 
 1. Back up the SSD before installing Ventoy; initial installation repartitions the selected drive.
 2. Install Ventoy from its official project source and verify the target drive carefully.
 3. Copy the extracted toolkit folder and root `index.html` to the **data partition**, not the small EFI partition.
-4. Copy boot ISO files into `NEIGHBOR-CIRCUIT-TOOLKIT/00_BOOT/` and its categories. Do not flash those ISOs over the data partition.
+4. Copy boot ISO files into `MASTER-IT-TOOLKIT/00_BOOT/` and its categories. Do not flash those ISOs over the data partition.
 5. Ventoy normally searches subdirectories; if you configured a search-root restriction, include this nested `00_BOOT` location.
 6. Test your selected images on representative BIOS/UEFI hardware before a service visit.
 
-You may also copy only the contents of `NEIGHBOR-CIRCUIT-TOOLKIT` to the data partition root. Both layouts work because paths resolve from the dashboard's actual location. Keep at least 20–30 GB free on a 256 GB drive and use separate healthy media for recovery output.
+You may also copy only the contents of `MASTER-IT-TOOLKIT` to the data partition root. Both layouts work because paths resolve from the dashboard's actual location. Keep at least 20–30 GB free on a 256 GB drive and use separate healthy media for recovery output.
 
 ## Notes, privacy, and local state
 
@@ -120,9 +120,9 @@ All account recovery guidance is **AUTHORIZED SYSTEMS ONLY**. No authentication 
 
 ## Catalog and source notes
 
-Edit `NEIGHBOR-CIRCUIT-TOOLKIT/assets/js/tools-data.js`, keeping its assigned array valid JSON. Then run `Export-ToolkitManifest.ps1` on Windows, or regenerate the JSON manifest with an equivalent JSON-only authoring step. Keep IDs stable so favorites and task guides continue to work.
+Edit `MASTER-IT-TOOLKIT/assets/js/tools-data.js`, keeping its assigned array valid JSON. Then run `Export-ToolkitManifest.ps1` on Windows, or regenerate the JSON manifest with an equivalent JSON-only authoring step. Keep IDs stable so favorites and task guides continue to work.
 
-Primary sources were reviewed during the September 2026 build. Source reachability is separate from current-version verification. Unknown versions remain unknown. Some sources reject automated checks; read the [source-review report](NEIGHBOR-CIRCUIT-TOOLKIT/70_DOCUMENTATION/source-review.html). Free personal use is not equivalent to a commercial/technician license. Tool vendors retain their respective names and licensing terms.
+Primary sources were reviewed during the September 2026 build. Source reachability is separate from current-version verification. Unknown versions remain unknown. Some sources reject automated checks; read the [source-review report](MASTER-IT-TOOLKIT/70_DOCUMENTATION/source-review.html). Free personal use is not equivalent to a commercial/technician license. Tool vendors retain their respective names and licensing terms.
 
 ## GitHub Pages and development
 
@@ -143,6 +143,6 @@ For contributions, describe the technician use case, use official sources, keep 
 
 ## License and attribution
 
-Copyright © 2026 Samiran Kakoty. The toolkit uses the custom [Neighbor Circuit Toolkit Source-Available License](NEIGHBOR-CIRCUIT-TOOLKIT/LICENSE.txt). Personal and commercial use, modification, and redistribution are allowed, subject to retaining the product name, copyright notice, license, and visible attribution links. Rebranding or presenting it as your own product is not permitted. Modified versions must identify their changes and must not imply official endorsement.
+Copyright © 2026 Samiran Kakoty. The toolkit uses the custom [Master IT Toolkit Source-Available License](MASTER-IT-TOOLKIT/LICENSE.txt). Personal and commercial use, modification, and redistribution are allowed, subject to retaining the product name, copyright notice, license, and visible attribution links. Rebranding or presenting it as your own product is not permitted. Modified versions must identify their changes and must not imply official endorsement.
 
-This is source-available software, not an OSI-approved open-source release. Third-party tools retain their own licenses. See [NeighborCircuit.com](https://neighborcircuit.com/) for the project brand.
+This is source-available software, not an OSI-approved open-source release. Third-party tools retain their own licenses.

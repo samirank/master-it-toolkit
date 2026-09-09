@@ -1,4 +1,5 @@
-[
+// Central catalog. Source checks are not software or license certification.
+window.TOOLKIT_DATA = [
   {
     "id": "windows11",
     "name": "Windows 11 ISO",
@@ -894,7 +895,7 @@
         "url": "https://github.com/Raphire/Win11Debloat",
         "status": 200,
         "finalUrl": "https://github.com/Raphire/Win11Debloat",
-        "title": "GitHub - Raphire/Win11Debloat: A simple, lightweight PowerShell script that allows you to remove pre-installed apps, disable telemetry, as well as perform various other changes to declutter and customize your Windows experience. Win11Debloat works for both Windows 10 and Windows 11. \u00b7 GitHub",
+        "title": "GitHub - Raphire/Win11Debloat: A simple, lightweight PowerShell script that allows you to remove pre-installed apps, disable telemetry, as well as perform various other changes to declutter and customize your Windows experience. Win11Debloat works for both Windows 10 and Windows 11. · GitHub",
         "checkedAt": "2026-09-09T20:17:52.179886+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -902,7 +903,7 @@
         "url": "https://github.com/Raphire/Win11Debloat/releases",
         "status": 200,
         "finalUrl": "https://github.com/Raphire/Win11Debloat/releases",
-        "title": "Releases \u00b7 Raphire/Win11Debloat \u00b7 GitHub",
+        "title": "Releases · Raphire/Win11Debloat · GitHub",
         "checkedAt": "2026-09-09T20:17:52.555819+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -968,7 +969,7 @@
         "url": "https://github.com/ChrisTitusTech/winutil",
         "status": 200,
         "finalUrl": "https://github.com/ChrisTitusTech/winutil",
-        "title": "GitHub - ChrisTitusTech/winutil: Chris Titus Tech's Windows Utility - Install Programs, Tweaks, Fixes, and Updates \u00b7 GitHub",
+        "title": "GitHub - ChrisTitusTech/winutil: Chris Titus Tech's Windows Utility - Install Programs, Tweaks, Fixes, and Updates · GitHub",
         "checkedAt": "2026-09-09T20:17:52.084613+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -976,7 +977,7 @@
         "url": "https://github.com/ChrisTitusTech/winutil/releases",
         "status": 200,
         "finalUrl": "https://github.com/ChrisTitusTech/winutil/releases",
-        "title": "Releases \u00b7 ChrisTitusTech/winutil \u00b7 GitHub",
+        "title": "Releases · ChrisTitusTech/winutil · GitHub",
         "checkedAt": "2026-09-09T20:17:52.851087+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -1107,7 +1108,7 @@
         "url": "https://github.com/hellzerg/optimizerNXT",
         "status": 200,
         "finalUrl": "https://github.com/hellzerg/optimizerNXT",
-        "title": "GitHub - hellzerg/optimizerNXT: The finest Windows Optimizer CLI \u00b7 GitHub",
+        "title": "GitHub - hellzerg/optimizerNXT: The finest Windows Optimizer CLI · GitHub",
         "checkedAt": "2026-09-09T20:17:52.354293+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -1115,7 +1116,7 @@
         "url": "https://github.com/hellzerg/optimizerNXT/releases",
         "status": 200,
         "finalUrl": "https://github.com/hellzerg/optimizerNXT/releases",
-        "title": "Releases \u00b7 hellzerg/optimizerNXT \u00b7 GitHub",
+        "title": "Releases · hellzerg/optimizerNXT · GitHub",
         "checkedAt": "2026-09-09T20:17:52.423548+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -2412,7 +2413,7 @@
         "url": "https://crystalmark.info/en/software/crystaldiskinfo/",
         "status": 200,
         "finalUrl": "https://crystalmark.info/en/software/crystaldiskinfo/",
-        "title": "CrystalDiskInfo \u2013 Crystal Dew World",
+        "title": "CrystalDiskInfo – Crystal Dew World",
         "checkedAt": "2026-09-09T20:17:51.769542+00:00",
         "contentType": "text/html; charset=UTF-8"
       },
@@ -2420,7 +2421,7 @@
         "url": "https://crystalmark.info/en/software/crystaldiskinfo/",
         "status": 200,
         "finalUrl": "https://crystalmark.info/en/software/crystaldiskinfo/",
-        "title": "CrystalDiskInfo \u2013 Crystal Dew World",
+        "title": "CrystalDiskInfo – Crystal Dew World",
         "checkedAt": "2026-09-09T20:17:51.769542+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
@@ -2480,7 +2481,7 @@
         "url": "https://crystalmark.info/en/software/crystaldiskmark/",
         "status": 200,
         "finalUrl": "https://crystalmark.info/en/software/crystaldiskmark/",
-        "title": "CrystalDiskMark \u2013 Crystal Dew World",
+        "title": "CrystalDiskMark – Crystal Dew World",
         "checkedAt": "2026-09-09T20:17:52.329734+00:00",
         "contentType": "text/html; charset=UTF-8"
       },
@@ -2488,7 +2489,7 @@
         "url": "https://crystalmark.info/en/software/crystaldiskmark/",
         "status": 200,
         "finalUrl": "https://crystalmark.info/en/software/crystaldiskmark/",
-        "title": "CrystalDiskMark \u2013 Crystal Dew World",
+        "title": "CrystalDiskMark – Crystal Dew World",
         "checkedAt": "2026-09-09T20:17:52.329734+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
@@ -2549,7 +2550,7 @@
         "url": "https://gsmartcontrol.shaduri.dev/downloads",
         "status": 200,
         "finalUrl": "https://gsmartcontrol.shaduri.dev/downloads",
-        "title": "Downloads \u00b7 GSmartControl",
+        "title": "Downloads · GSmartControl",
         "checkedAt": "2026-09-09T20:17:52.491691+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -2557,7 +2558,7 @@
         "url": "https://gsmartcontrol.shaduri.dev/downloads",
         "status": 200,
         "finalUrl": "https://gsmartcontrol.shaduri.dev/downloads",
-        "title": "Downloads \u00b7 GSmartControl",
+        "title": "Downloads · GSmartControl",
         "checkedAt": "2026-09-09T20:17:52.491691+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -3926,7 +3927,7 @@
         "url": "https://www.snappy-driver-installer.org/",
         "status": 200,
         "finalUrl": "https://www.snappy-driver-installer.org/",
-        "title": "Snappy Driver Installer Origin \u2013 The original driver installation tool for Windows.",
+        "title": "Snappy Driver Installer Origin – The original driver installation tool for Windows.",
         "checkedAt": "2026-09-09T20:17:58.510676+00:00",
         "contentType": "text/html"
       },
@@ -3934,7 +3935,7 @@
         "url": "https://www.snappy-driver-installer.org/",
         "status": 200,
         "finalUrl": "https://www.snappy-driver-installer.org/",
-        "title": "Snappy Driver Installer Origin \u2013 The original driver installation tool for Windows.",
+        "title": "Snappy Driver Installer Origin – The original driver installation tool for Windows.",
         "checkedAt": "2026-09-09T20:17:58.510676+00:00",
         "contentType": "text/html"
       }
@@ -3994,7 +3995,7 @@
         "url": "https://www.wireshark.org/download.html",
         "status": 200,
         "finalUrl": "https://www.wireshark.org/download.html",
-        "title": "Wireshark \u2022 Go Deep | Download",
+        "title": "Wireshark • Go Deep | Download",
         "checkedAt": "2026-09-09T20:17:58.801670+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -4002,7 +4003,7 @@
         "url": "https://www.wireshark.org/download.html",
         "status": 200,
         "finalUrl": "https://www.wireshark.org/download.html",
-        "title": "Wireshark \u2022 Go Deep | Download",
+        "title": "Wireshark • Go Deep | Download",
         "checkedAt": "2026-09-09T20:17:58.801670+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -4266,7 +4267,7 @@
         "url": "https://software.es.net/iperf/obtaining.html",
         "status": 200,
         "finalUrl": "https://software.es.net/iperf/obtaining.html",
-        "title": "Obtaining iperf3 \u2014 iperf3 3.21 documentation",
+        "title": "Obtaining iperf3 — iperf3 3.21 documentation",
         "checkedAt": "2026-09-09T20:17:54.093349+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -4274,7 +4275,7 @@
         "url": "https://software.es.net/iperf/obtaining.html",
         "status": 200,
         "finalUrl": "https://software.es.net/iperf/obtaining.html",
-        "title": "Obtaining iperf3 \u2014 iperf3 3.21 documentation",
+        "title": "Obtaining iperf3 — iperf3 3.21 documentation",
         "checkedAt": "2026-09-09T20:17:54.093349+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -5217,7 +5218,7 @@
         "url": "https://github.com/M2Team/NanaZip",
         "status": 200,
         "finalUrl": "https://github.com/M2Team/NanaZip",
-        "title": "GitHub - M2Team/NanaZip: The 7-Zip derivative intended for the modern Windows experience \u00b7 GitHub",
+        "title": "GitHub - M2Team/NanaZip: The 7-Zip derivative intended for the modern Windows experience · GitHub",
         "checkedAt": "2026-09-09T20:17:52.356294+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -5225,7 +5226,7 @@
         "url": "https://github.com/M2Team/NanaZip/releases",
         "status": 200,
         "finalUrl": "https://github.com/M2Team/NanaZip/releases",
-        "title": "Releases \u00b7 M2Team/NanaZip \u00b7 GitHub",
+        "title": "Releases · M2Team/NanaZip · GitHub",
         "checkedAt": "2026-09-09T20:17:52.448588+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -5626,7 +5627,7 @@
         "url": "https://www.jam-software.com/treesize_free",
         "status": 200,
         "finalUrl": "https://www.jam-software.com/treesize",
-        "title": "TreeSize \u2013 Official Free Download",
+        "title": "TreeSize – Official Free Download",
         "checkedAt": "2026-09-09T20:17:58.315469+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -5634,7 +5635,7 @@
         "url": "https://www.jam-software.com/treesize_free",
         "status": 200,
         "finalUrl": "https://www.jam-software.com/treesize",
-        "title": "TreeSize \u2013 Official Free Download",
+        "title": "TreeSize – Official Free Download",
         "checkedAt": "2026-09-09T20:17:58.315469+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -5900,7 +5901,7 @@
         "url": "https://github.com/pdfarranger/pdfarranger",
         "status": 200,
         "finalUrl": "https://github.com/pdfarranger/pdfarranger",
-        "title": "GitHub - pdfarranger/pdfarranger: Small python-gtk application, which helps the user to merge or split PDF documents and rotate, crop and rearrange their pages using an interactive and intuitive graphical interface. \u00b7 GitHub",
+        "title": "GitHub - pdfarranger/pdfarranger: Small python-gtk application, which helps the user to merge or split PDF documents and rotate, crop and rearrange their pages using an interactive and intuitive graphical interface. · GitHub",
         "checkedAt": "2026-09-09T20:17:52.922293+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -5908,7 +5909,7 @@
         "url": "https://github.com/pdfarranger/pdfarranger/releases",
         "status": 200,
         "finalUrl": "https://github.com/pdfarranger/pdfarranger/releases",
-        "title": "Releases \u00b7 pdfarranger/pdfarranger \u00b7 GitHub",
+        "title": "Releases · pdfarranger/pdfarranger · GitHub",
         "checkedAt": "2026-09-09T20:17:52.751312+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -6310,7 +6311,7 @@
         "url": "https://www.audacityteam.org/download/windows/",
         "status": 200,
         "finalUrl": "https://www.audacityteam.org/download/windows/",
-        "title": "Audacity \u00ae | Download for Windows",
+        "title": "Audacity ® | Download for Windows",
         "checkedAt": "2026-09-09T20:17:54.948400+00:00",
         "contentType": "text/html; charset=UTF-8"
       },
@@ -6318,7 +6319,7 @@
         "url": "https://www.audacityteam.org/download/windows/",
         "status": 200,
         "finalUrl": "https://www.audacityteam.org/download/windows/",
-        "title": "Audacity \u00ae | Download for Windows",
+        "title": "Audacity ® | Download for Windows",
         "checkedAt": "2026-09-09T20:17:54.948400+00:00",
         "contentType": "text/html; charset=UTF-8"
       }
@@ -6515,7 +6516,7 @@
         "url": "https://github.com/PowerShell/PowerShell",
         "status": 200,
         "finalUrl": "https://github.com/PowerShell/PowerShell",
-        "title": "GitHub - PowerShell/PowerShell: PowerShell for every system! \u00b7 GitHub",
+        "title": "GitHub - PowerShell/PowerShell: PowerShell for every system! · GitHub",
         "checkedAt": "2026-09-09T20:17:52.298158+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -6523,7 +6524,7 @@
         "url": "https://github.com/PowerShell/PowerShell/releases",
         "status": 200,
         "finalUrl": "https://github.com/PowerShell/PowerShell/releases",
-        "title": "Releases \u00b7 PowerShell/PowerShell \u00b7 GitHub",
+        "title": "Releases · PowerShell/PowerShell · GitHub",
         "checkedAt": "2026-09-09T20:17:52.579368+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -6583,7 +6584,7 @@
         "url": "https://git-scm.com/downloads/win",
         "status": 200,
         "finalUrl": "https://git-scm.com/downloads/win",
-        "title": "Redirecting\u2026",
+        "title": "Redirecting…",
         "checkedAt": "2026-09-09T20:17:51.413700+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -6591,7 +6592,7 @@
         "url": "https://git-scm.com/downloads/win",
         "status": 200,
         "finalUrl": "https://git-scm.com/downloads/win",
-        "title": "Redirecting\u2026",
+        "title": "Redirecting…",
         "checkedAt": "2026-09-09T20:17:51.413700+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -7264,7 +7265,7 @@
         "url": "https://github.com/Devolutions/UniGetUI",
         "status": 200,
         "finalUrl": "https://github.com/Devolutions/UniGetUI",
-        "title": "GitHub - Devolutions/UniGetUI: UniGetUI: The Graphical Interface for your package managers. Could be terribly described as a package manager manager to manage your package managers \u00b7 GitHub",
+        "title": "GitHub - Devolutions/UniGetUI: UniGetUI: The Graphical Interface for your package managers. Could be terribly described as a package manager manager to manage your package managers · GitHub",
         "checkedAt": "2026-09-09T20:17:52.380847+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -7272,7 +7273,7 @@
         "url": "https://github.com/Devolutions/UniGetUI/releases",
         "status": 200,
         "finalUrl": "https://github.com/Devolutions/UniGetUI/releases",
-        "title": "Releases \u00b7 Devolutions/UniGetUI \u00b7 GitHub",
+        "title": "Releases · Devolutions/UniGetUI · GitHub",
         "checkedAt": "2026-09-09T20:17:52.490186+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -14106,7 +14107,7 @@
         "url": "https://docs.kernel.org/admin-guide/md.html",
         "status": 200,
         "finalUrl": "https://docs.kernel.org/admin-guide/md.html",
-        "title": "RAID arrays \u2014 The Linux Kernel documentation",
+        "title": "RAID arrays — The Linux Kernel documentation",
         "checkedAt": "2026-09-09T20:17:51.159597+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -14114,7 +14115,7 @@
         "url": "https://docs.kernel.org/admin-guide/md.html",
         "status": 200,
         "finalUrl": "https://docs.kernel.org/admin-guide/md.html",
-        "title": "RAID arrays \u2014 The Linux Kernel documentation",
+        "title": "RAID arrays — The Linux Kernel documentation",
         "checkedAt": "2026-09-09T20:17:51.159597+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -14240,7 +14241,7 @@
         "url": "https://openzfs.github.io/openzfs-docs/",
         "status": 200,
         "finalUrl": "https://openzfs.github.io/openzfs-docs/",
-        "title": "OpenZFS Documentation \u2014 OpenZFS documentation",
+        "title": "OpenZFS Documentation — OpenZFS documentation",
         "checkedAt": "2026-09-09T20:17:53.919791+00:00",
         "contentType": "text/html; charset=utf-8"
       },
@@ -14248,7 +14249,7 @@
         "url": "https://openzfs.github.io/openzfs-docs/",
         "status": 200,
         "finalUrl": "https://openzfs.github.io/openzfs-docs/",
-        "title": "OpenZFS Documentation \u2014 OpenZFS documentation",
+        "title": "OpenZFS Documentation — OpenZFS documentation",
         "checkedAt": "2026-09-09T20:17:53.919791+00:00",
         "contentType": "text/html; charset=utf-8"
       }
@@ -14592,7 +14593,7 @@
   {
     "id": "unattend",
     "name": "Windows unattended language template",
-    "developer": "Neighbor Circuit Toolkit",
+    "developer": "Master IT Toolkit",
     "description": "Language-only template for Windows Setup. No account bypass, credentials or disk operations. Validate against the exact image.",
     "categories": [
       "Account & OOBE",
@@ -14646,7 +14647,7 @@
   {
     "id": "reference",
     "name": "Offline technician reference",
-    "developer": "Neighbor Circuit Toolkit",
+    "developer": "Master IT Toolkit",
     "description": "24 local cheat sheets covering recovery, BitLocker, boot keys, networking, Linux and privacy.",
     "categories": [
       "Documentation"
@@ -14699,7 +14700,7 @@
   {
     "id": "inventory-script",
     "name": "Update toolkit inventory",
-    "developer": "Neighbor Circuit Toolkit",
+    "developer": "Master IT Toolkit",
     "description": "Scan expected files and record local availability without executing tools.",
     "categories": [
       "Technician Scripts"
@@ -14751,7 +14752,7 @@
   {
     "id": "metadata-script",
     "name": "Update toolkit metadata",
-    "developer": "Neighbor Circuit Toolkit",
+    "developer": "Master IT Toolkit",
     "description": "Optional online official-source and release checks; no software replacement.",
     "categories": [
       "Technician Scripts"
@@ -14803,7 +14804,7 @@
   {
     "id": "download-script",
     "name": "Preview / download reviewed tools",
-    "developer": "Neighbor Circuit Toolkit",
+    "developer": "Master IT Toolkit",
     "description": "Preview the reviewed direct-download subset; explicit confirmation, no execution.",
     "categories": [
       "Technician Scripts"
@@ -14855,7 +14856,7 @@
   {
     "id": "diagnostic-script",
     "name": "Collect PC diagnostics",
-    "developer": "Neighbor Circuit Toolkit",
+    "developer": "Master IT Toolkit",
     "description": "Read-only hardware report; requires an explicit new output file. Contains device identifiers.",
     "categories": [
       "Technician Scripts",
@@ -14908,7 +14909,7 @@
   {
     "id": "network-script",
     "name": "Inspect network configuration",
-    "developer": "Neighbor Circuit Toolkit",
+    "developer": "Master IT Toolkit",
     "description": "Read adapter, IP and DNS configuration without resets or scans.",
     "categories": [
       "Technician Scripts",
@@ -14961,7 +14962,7 @@
   {
     "id": "repair-script",
     "name": "Windows system file repair helper",
-    "developer": "Neighbor Circuit Toolkit",
+    "developer": "Master IT Toolkit",
     "description": "Check current component-store status by default. Optional elevated repair is confirmed separately.",
     "categories": [
       "Technician Scripts",
@@ -15011,4 +15012,4 @@
     "sourceCheckedAt": "2026-09-09",
     "localReference": "70_DOCUMENTATION/reference.html"
   }
-]
+];

@@ -32,7 +32,7 @@ foreach ($tool in $manifest) {
         $repo=Get-OptionalProperty $tool 'githubRepo'
         if ($repo) {
             if ($repo -notmatch '^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$') { throw 'Invalid GitHub repository ID.' }
-            $release=Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases/latest" -Headers @{'User-Agent'='NeighborCircuitToolkit-Metadata';'Accept'='application/vnd.github+json'} -TimeoutSec $TimeoutSec
+            $release=Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases/latest" -Headers @{'User-Agent'='MasterITToolkit-Metadata';'Accept'='application/vnd.github+json'} -TimeoutSec $TimeoutSec
             if ($release.tag_name -and -not $release.draft -and -not $release.prerelease) {
                 $entry.latestVersion=$release.tag_name
                 $entry.lastChecked=$now

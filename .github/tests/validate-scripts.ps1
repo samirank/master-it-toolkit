@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param()
 $ErrorActionPreference='Stop'
-$root=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../NEIGHBOR-CIRCUIT-TOOLKIT'))
+$root=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../../MASTER-IT-TOOLKIT'))
 $workspaceRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $fixture=Join-Path $workspaceRoot '.development\script-fixture'
 $prefix=$workspaceRoot.TrimEnd('\')+'\'
