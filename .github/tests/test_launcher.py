@@ -1,4 +1,5 @@
 import importlib.util
+import sys
 import io
 import json
 from pathlib import Path
@@ -11,6 +12,7 @@ import zipfile
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2] / 'MASTER-IT-TOOLKIT'
+sys.path.insert(0, str(ROOT))
 spec = importlib.util.spec_from_file_location('launcher', ROOT / 'launcher.py')
 launcher = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(launcher)

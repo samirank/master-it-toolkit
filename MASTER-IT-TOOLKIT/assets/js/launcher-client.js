@@ -19,7 +19,7 @@
         button.disabled = busy || !item.enabled;
         button.title = item.path || 'Update application, scripts and documentation; preserve downloaded tools and local data.';
         button.onclick = async () => {
-          const message = item.id === 'update' ? 'Download and apply the latest toolkit from samirank/master-it-toolkit? Existing files are backed up; locally modified managed files stop the update. Restart the launcher afterward.' : 'Run ' + item.name + '?\n' + item.path + '\nReview the script terminal for prompts and results.';
+          const message = item.id === 'update' ? 'Download and apply the latest toolkit from samirank/master-it-toolkit? Existing files are backed up; locally modified managed files stop the update. Restart the launcher afterward.' : 'Run ' + item.name + '?\n' + item.path + '\nReview the script terminal for prompts and results. PowerShell uses a process-only execution policy; organization policy still applies.';
           if (!confirm(message)) return;
           button.disabled = true;
           try {

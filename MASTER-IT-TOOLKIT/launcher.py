@@ -17,6 +17,9 @@ import zipfile
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = Path(sys.executable if getattr(sys, 'frozen', False) else __file__).resolve().parent
+if (ROOT / 'MASTER-IT-TOOLKIT' / 'launcher.py').is_file(): ROOT = ROOT / 'MASTER-IT-TOOLKIT'
+sys.path.insert(0, str(ROOT))
+import tool_downloads
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
 SCRIPTS = {
@@ -46,7 +49,7 @@ def safe_path(root, name):
 def managed_name(name):
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
-    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
+    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
         return name != MANIFEST and name != 'assets/js/local-inventory.js' and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
@@ -129,6 +132,9 @@ def update():
     blob = download('https://raw.githubusercontent.com/' + REPO + '/' + commit + '/MASTER-IT-TOOLKIT.zip', 50_000_000)
     return install_archive(blob) + ' Source commit: ' + commit[:12]
 
+def powershell_command(powershell, script, key):
+    return [powershell, '-NoProfile', '-ExecutionPolicy', 'Bypass', '-NoExit', '-File', str(script), *(['-Repair'] if key == 'repair' else [])]
+
 def run_script(key):
     label, relative, platform = SCRIPTS[key]
     script = safe_path(ROOT, relative)
@@ -136,8 +142,7 @@ def run_script(key):
         if os.name != 'nt': raise ValueError('This script requires Windows')
         powershell = shutil.which('powershell.exe')
         if not powershell: raise ValueError('Windows PowerShell is unavailable')
-        arguments = ['-Repair'] if key == 'repair' else []
-        process = subprocess.Popen([powershell, '-NoProfile', '-NoExit', '-File', str(script), *arguments], cwd=ROOT, creationflags=subprocess.CREATE_NEW_CONSOLE)
+        process = subprocess.Popen(powershell_command(powershell, script, key), cwd=ROOT, creationflags=subprocess.CREATE_NEW_CONSOLE)
         process.wait()
         return label + ': terminal closed. Review the terminal output for the script result.'
     command = [sys.executable, '--inventory'] if getattr(sys, 'frozen', False) else [sys.executable, str(script)]
@@ -154,9 +159,12 @@ class Server(ThreadingHTTPServer):
         self.state = {'busy': False, 'message': 'Ready.'}
         super().__init__(('127.0.0.1', port), Handler)
         self.origin = 'http://127.0.0.1:' + str(self.server_port)
-    def job(self, action):
+    def job(self, action, body=None):
         try:
-            message = update() if action == 'update' else run_script(action)
+            if action == 'download':
+                message = tool_downloads.save_selected(self.root, body['tool'], body['assets'], safe_path,
+                    lambda message: setattr(self, 'state', {'busy': True, 'message': message}))
+            else: message = update() if action == 'update' else run_script(action)
             self.state = {'busy': False, 'message': message}
         except Exception as error:
             self.state = {'busy': False, 'message': 'Stopped: ' + str(error)}
@@ -183,6 +191,11 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         route = self.route()
         if route is None: return self.reply(403, {'error': 'Open the URL printed by your launcher.'})
+        if route == 'api/download-options':
+            try:
+                query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
+                return self.reply(200, tool_downloads.options(self.server.root, query.get('tool', [''])[0]))
+            except Exception as error: return self.reply(400, {'error': str(error)})
         if route == 'api/status':
             return self.reply(200, dict(self.server.state, scripts=[{'id': key, 'name': label, 'enabled': platform == 'all' or os.name == 'nt', 'path': path} for key, (label, path, platform) in SCRIPTS.items()]))
         try:
@@ -205,11 +218,13 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < size <= 1024: raise ValueError()
             body = json.loads(self.rfile.read(size))
             action = body['action']
-            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update'): raise ValueError()
+            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download'): raise ValueError()
+            if action == 'download':
+                if not isinstance(body.get('tool'), str) or not isinstance(body.get('assets'), list) or not 1 <= len(body['assets']) <= 50 or any(not isinstance(a, str) for a in body['assets']): raise ValueError()
         except (ValueError, KeyError, TypeError): return self.reply(400, {'error': 'Invalid action'})
         if not self.server.lock.acquire(False): return self.reply(409, {'error': 'Another action is still running. Close its script terminal first.'})
         self.server.state = {'busy': True, 'message': 'Working: ' + action + '. Review any script terminal that opens.'}
-        threading.Thread(target=self.server.job, args=(action,), daemon=True).start()
+        threading.Thread(target=self.server.job, args=(action, body), daemon=True).start()
         self.reply(202, self.server.state)
 
 if __name__ == '__main__':

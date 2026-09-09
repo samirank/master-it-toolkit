@@ -12,8 +12,9 @@ executable = root / 'dist' / binary
 subprocess.run([str(executable), '--self-test'], check=True)
 output = root / ('standalone-' + label + '.zip')
 with zipfile.ZipFile(root / 'MASTER-IT-TOOLKIT.zip') as source, zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as target:
-    for info in source.infolist(): target.writestr(info, source.read(info.filename))
-    info = zipfile.ZipInfo('MASTER-IT-TOOLKIT/' + binary)
+    for info in source.infolist():
+        if info.filename.startswith('MASTER-IT-TOOLKIT/'): target.writestr(info, source.read(info.filename))
+    info = zipfile.ZipInfo(binary)
     info.external_attr = 0o100755 << 16
     info.compress_type = zipfile.ZIP_DEFLATED
     target.writestr(info, executable.read_bytes())
@@ -26,7 +27,7 @@ with zipfile.ZipFile(root / 'MASTER-IT-TOOLKIT.zip') as source, zipfile.ZipFile(
             target.writestr('MASTER-IT-TOOLKIT/runtime-licenses/PYINSTALLER-COPYING.txt', distribution.locate_file(file).read_bytes())
 with tempfile.TemporaryDirectory() as temporary:
     with zipfile.ZipFile(output) as z: z.extractall(temporary)
-    exe = Path(temporary) / 'MASTER-IT-TOOLKIT' / binary
+    exe = Path(temporary) / binary
     exe.chmod(0o755)
     subprocess.run([str(exe), '--inventory'], check=True, timeout=120)
 print(output)

@@ -143,9 +143,9 @@ For contributions, describe the technician use case, use official sources, keep 
 
 ## Optional standalone launcher
 
-Download a package from [GitHub Releases](https://github.com/samirank/master-it-toolkit/releases/latest), extract the entire ZIP, and open `MASTER-IT-TOOLKIT/Master-IT-Toolkit.exe` on Windows. Linux x64 and macOS Apple Silicon packages contain `Master-IT-Toolkit` instead. These packages include the runtime; Python does not need to be installed. The unsigned builds may require approval under your operating system's application policy.
+Download a package from [GitHub Releases](https://github.com/samirank/master-it-toolkit/releases/latest), extract the entire ZIP, and open the root `Master-IT-Toolkit.exe` on Windows. Linux x64 and macOS Apple Silicon packages contain `Master-IT-Toolkit` instead. These packages include the runtime; Python does not need to be installed. The unsigned builds may require approval under your operating system's application policy.
 
-The launcher opens your browser at a private loopback address. Keep its terminal open and use **Run scripts & update toolkit**. Close script terminals when finished; only one action runs at a time. Windows repair requires an administrator launcher, and the PowerShell scripts retain their own confirmation prompts and execution-policy requirements. Linux and macOS support the inventory scan and toolkit updater; Windows scripts require Windows.
+The launcher opens your browser at a private loopback address. Keep its terminal open and use **Run scripts & update toolkit**. Close script terminals when finished; only one action runs at a time. Windows repair requires an administrator launcher, and the PowerShell scripts retain their own confirmation prompts and organization-policy requirements. The launcher uses a process-only PowerShell execution-policy bypass for these explicitly selected bundled scripts; it does not change the machine or user execution policy. Linux and macOS support the inventory scan and toolkit updater; Windows scripts require Windows.
 
 The source ZIP remains usable without the launcher. For launcher mode from source, install Python 3.9+ and open `Start-Toolkit.cmd`, or run `python3 launcher.py` from the toolkit folder on Linux/macOS. If port 8765 is occupied, close the existing launcher first. Browser storage is separate from direct-file mode; export and import your workspace backup when switching modes.
 
@@ -158,3 +158,9 @@ For a manual rollback, close the launcher, copy files from the timestamped backu
 Copyright © 2026 Samiran Kakoty. The toolkit uses the custom [Master IT Toolkit Source-Available License](MASTER-IT-TOOLKIT/LICENSE.txt). Personal and commercial use, modification, and redistribution are allowed, subject to retaining the product name, copyright notice, license, and visible attribution links. Rebranding or presenting it as your own product is not permitted. Modified versions must identify their changes and must not imply official endorsement.
 
 This is source-available software, not an OSI-approved open-source release. Third-party tools retain their own licenses.
+
+### Per-tool downloads
+
+Click **Download** on a tool card or Missing downloads row. In launcher mode, supported publisher GitHub releases (including 7-Zip) show platform and filename choices: select one, a platform, all platforms, or any combination, then **Download selected to SSD**. Files go to that tool's folder. Existing files are kept; partial downloads are cleaned up, and GitHub SHA256 digests are checked when provided. Packages are never executed or extracted automatically. Publishers with license, sign-in, or custom download flows retain an official download link. The hosted demo offers browser downloads; it cannot write directly to your SSD.
+
+Standalone ZIPs contain the executable at the root beside `MASTER-IT-TOOLKIT/`; root HTML and README files are omitted. Keep that folder beside the executable. Existing nested launchers remain supported, but download a new standalone package to get the root executable layout.

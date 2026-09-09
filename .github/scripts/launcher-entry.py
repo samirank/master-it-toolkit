@@ -9,6 +9,8 @@ import sys
 from pathlib import Path
 
 root = Path(sys.executable).resolve().parent
+if (root / 'MASTER-IT-TOOLKIT' / 'launcher.py').is_file(): root = root / 'MASTER-IT-TOOLKIT'
+sys.path.insert(0, str(root))
 if '--self-test' in sys.argv:
     print('Master IT Toolkit standalone runtime ready.')
 elif '--inventory' in sys.argv:
