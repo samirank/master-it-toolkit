@@ -141,6 +141,18 @@ Cross-platform CI runs on Windows, Linux, and macOS. Browser tests use Playwrigh
 
 For contributions, describe the technician use case, use official sources, keep license and OS restrictions explicit, and avoid adding payloads or speculative “optimization” tweaks. Include relevant tests for paths, inventory, or behavior changes.
 
+## Optional standalone launcher
+
+Download a package from [GitHub Releases](https://github.com/samirank/master-it-toolkit/releases/latest), extract the entire ZIP, and open `MASTER-IT-TOOLKIT/Master-IT-Toolkit.exe` on Windows. Linux x64 and macOS Apple Silicon packages contain `Master-IT-Toolkit` instead. These packages include the runtime; Python does not need to be installed. The unsigned builds may require approval under your operating system's application policy.
+
+The launcher opens your browser at a private loopback address. Keep its terminal open and use **Run scripts & update toolkit**. Close script terminals when finished; only one action runs at a time. Windows repair requires an administrator launcher, and the PowerShell scripts retain their own confirmation prompts and execution-policy requirements. Linux and macOS support the inventory scan and toolkit updater; Windows scripts require Windows.
+
+The source ZIP remains usable without the launcher. For launcher mode from source, install Python 3.9+ and open `Start-Toolkit.cmd`, or run `python3 launcher.py` from the toolkit folder on Linux/macOS. If port 8765 is occupied, close the existing launcher first. Browser storage is separate from direct-file mode; export and import your workspace backup when switching modes.
+
+**Update toolkit from GitHub** downloads the committed distribution ZIP from a fixed commit in `samirank/master-it-toolkit`. It checks distribution hashes, backs up replaced files in `.toolkit-backups`, and stops when managed files have local edits. Downloaded utilities, local inventory, and service notes are excluded. It updates toolkit code, scripts and documentation, not vendor applications or the embedded Python runtime. Restart the launcher after an update. A newer standalone runtime, when needed, comes from a new release package.
+
+For a manual rollback, close the launcher, copy files from the timestamped backup back to matching toolkit paths, and consult its `changes.json`: entries marked `false` were newly added and can be removed. Back up your workspace before restoring. Updates require internet; ordinary launcher use and inventory scanning work offline.
+
 ## License and attribution
 
 Copyright © 2026 Samiran Kakoty. The toolkit uses the custom [Master IT Toolkit Source-Available License](MASTER-IT-TOOLKIT/LICENSE.txt). Personal and commercial use, modification, and redistribution are allowed, subject to retaining the product name, copyright notice, license, and visible attribution links. Rebranding or presenting it as your own product is not permitted. Modified versions must identify their changes and must not imply official endorsement.

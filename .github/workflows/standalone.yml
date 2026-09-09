@@ -1,0 +1,53 @@
+name: Build standalone launchers
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            label: windows-x64
+            binary: Master-IT-Toolkit.exe
+          - os: ubuntu-22.04
+            label: linux-x64
+            binary: Master-IT-Toolkit
+          - os: macos-14
+            label: macos-arm64
+            binary: Master-IT-Toolkit
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pyinstaller==6.20.0
+      - run: python .github/tests/test_launcher.py
+      - run: python -m PyInstaller --onefile --name Master-IT-Toolkit --paths MASTER-IT-TOOLKIT .github/scripts/launcher-entry.py
+      - run: python .github/scripts/package_launcher.py "${{ matrix.binary }}" "${{ matrix.label }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: standalone-${{ matrix.label }}
+          path: standalone-*.zip
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: standalone-*
+          merge-multiple: true
+      - name: Publish standalone packages
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_REF: ${{ github.ref_name }}
+        run: |
+          tag="$RELEASE_REF"
+          if [ "$tag" = "main" ]; then tag="launcher-preview"; fi
+          gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" --title "Master IT Toolkit — standalone launcher" --notes "Extract the complete package and open the Master-IT-Toolkit executable. No Python installation required. Windows x64, Linux x64, and macOS Apple Silicon builds. Scripts retain their OS and administrator requirements. Builds are unsigned. Keep the launcher terminal open; use Ctrl+C to stop."
+          gh release upload "$tag" standalone-*.zip --clobber

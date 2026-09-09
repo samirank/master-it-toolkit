@@ -18,3 +18,4 @@ jobs:
       - run: node .github/tests/validate-paths.cjs
       - run: node .github/tests/validate-structure.cjs
       - run: python .github/tests/test_inventory.py
+      - run: python .github/tests/test_launcher.py

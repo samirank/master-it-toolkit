@@ -31,6 +31,13 @@ def main():
     parser.add_argument('--site',type=Path,help='Optional fresh Pages output directory')
     args=parser.parse_args()
     files=source_files()
+    manifest_name = NAME+'/assets/distribution-files.json'
+    files.pop(manifest_name, None)
+    manifest = {name[len(NAME)+1:]: hashlib.sha256(body).hexdigest() for name,body in files.items()
+                if name.startswith(NAME+'/') and not name.endswith('/local-inventory.js')}
+    manifest_bytes = json.dumps(manifest, indent=2, sort_keys=True).encode('utf-8')
+    (ROOT/manifest_name).write_bytes(manifest_bytes)
+    files[manifest_name] = manifest_bytes
     archive=ROOT/(NAME+'.zip')
     catalog=json.loads(files[NAME+'/assets/toolkit-manifest.json'])
     folders={t['localFolder'] for t in catalog if t['localFolder']}
