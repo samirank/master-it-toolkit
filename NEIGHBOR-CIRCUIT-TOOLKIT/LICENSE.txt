@@ -1,0 +1,50 @@
+Neighbor Circuit Toolkit Source-Available License 1.0
+
+Copyright (c) 2026 Samiran Kakoty. All rights reserved except as granted below.
+
+1. Scope
+This license covers the original Neighbor Circuit Toolkit dashboard, source
+code, documentation, and scripts in this repository. Third-party software,
+linked tools, trademarks, and other separately licensed materials remain
+subject to their owners' terms. No third-party rights are granted here.
+
+2. Permission
+You may use this toolkit free of charge for personal, educational, and
+commercial work, including paid technician services. You may download, copy,
+back up, modify, and redistribute it, including hosting a demo, provided you
+comply with all conditions below.
+
+3. Retain the name and attribution
+Every copy or modified version must retain this license and copyright notice.
+The dashboard must retain the visible product name "Neighbor Circuit Toolkit"
+and accessible attribution links to https://neighborcircuit.com/ and
+https://github.com/samirank/neighbor-circuit-toolkit.
+You must not remove, hide, obscure, or replace this name or attribution, rename
+the toolkit, or present it as your own product. Extracted substantial portions
+of the code must retain this license, copyright notice, and attribution to
+Neighbor Circuit Toolkit in accompanying documentation and any resulting UI.
+You may add your own contributor or deployment information alongside the
+original attribution, provided it does not replace or obscure it.
+
+4. Modified versions and redistribution
+Clearly identify modifications and their author in accompanying documentation.
+Redistribute covered materials under this same license and do not impose terms
+that remove the permissions granted here. Do not imply that a modified version
+is an official release or endorsed by Neighbor Circuit or the copyright holder.
+No permission to use the Neighbor Circuit name for unrelated products or to
+claim trademark ownership is granted.
+
+5. Termination
+Permission terminates automatically if you violate these conditions. Rights
+not expressly granted are reserved. Separate written permission from the
+copyright holder is required for uses outside these terms, including rebranding.
+
+6. Disclaimer
+THE TOOLKIT IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+NONINFRINGEMENT. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE COPYRIGHT HOLDER
+AND CONTRIBUTORS ARE NOT LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY
+ARISING FROM USE OF OR DEALINGS IN THE TOOLKIT.
+
+This is a custom source-available license, not an OSI-approved open-source
+license. It permits use and modification subject to the branding conditions.

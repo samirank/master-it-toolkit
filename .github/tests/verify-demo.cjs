@@ -8,6 +8,10 @@ const root=path.resolve(__dirname,'../..'),out=path.join(root,'.development/publ
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(process.env.DEMO_URL||'https://samirank.github.io/neighbor-circuit-toolkit/',{waitUntil:'networkidle'});
  assert.equal(await page.title(),'Neighbor Circuit Toolkit');assert((await page.locator('main').innerText()).includes('HOSTED DEMO'));
+ assert.equal(await page.locator('.brand img, link[rel="icon"]').count(),0);
+ assert.equal(await page.getByRole('link',{name:'NeighborCircuit.com'}).getAttribute('href'),'https://neighborcircuit.com/');
+ assert.equal(await page.getByRole('link',{name:'GitHub repository'}).getAttribute('href'),'https://github.com/samirank/neighbor-circuit-toolkit');
+ const license=await context.request.get(new URL('LICENSE.txt',page.url()).href);assert(license.ok());assert((await license.text()).includes('Source-Available License 1.0'));
  const [archive]=await Promise.all([page.waitForEvent('download'),page.getByRole('link',{name:'Download offline ZIP'}).click()]);
  await archive.saveAs(path.join(out,'NEIGHBOR-CIRCUIT-TOOLKIT.zip'));
  assert(fs.statSync(path.join(out,'NEIGHBOR-CIRCUIT-TOOLKIT.zip')).size>100000);

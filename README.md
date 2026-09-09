@@ -140,3 +140,9 @@ python3 .github/scripts/build_distribution.py
 Cross-platform CI runs on Windows, Linux, and macOS. Browser tests use Playwright as a **development-only** dependency; set `PLAYWRIGHT_PATH` and optionally `BROWSER_EXECUTABLE` for your environment. The shipped dashboard has no such dependency.
 
 For contributions, describe the technician use case, use official sources, keep license and OS restrictions explicit, and avoid adding payloads or speculative “optimization” tweaks. Include relevant tests for paths, inventory, or behavior changes.
+
+## License and attribution
+
+Copyright © 2026 Samiran Kakoty. The toolkit uses the custom [Neighbor Circuit Toolkit Source-Available License](NEIGHBOR-CIRCUIT-TOOLKIT/LICENSE.txt). Personal and commercial use, modification, and redistribution are allowed, subject to retaining the product name, copyright notice, license, and visible attribution links. Rebranding or presenting it as your own product is not permitted. Modified versions must identify their changes and must not imply official endorsement.
+
+This is source-available software, not an OSI-approved open-source release. Third-party tools retain their own licenses. See [NeighborCircuit.com](https://neighborcircuit.com/) for the project brand.
