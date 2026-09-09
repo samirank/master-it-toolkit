@@ -82,6 +82,8 @@ def install_archive(blob, root=ROOT):
             replacements[name] = data
     changes = {}
     for name in set(old) | set(incoming):
+        # Older packages tracked this generated metadata file; retain local refreshes.
+        if name == 'assets/js/metadata.js': continue
         if not managed_name(name): raise ValueError('Invalid existing manifest')
         p = safe_path(root, name)
         current = p.read_bytes() if p.exists() else None

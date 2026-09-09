@@ -251,7 +251,6 @@
   "assets/js/inventory-default.js": "8a43fe812c6147ff9aba34bdc1bc3fd0aed5910e963672137eb9656d3f1ea806",
   "assets/js/launcher-client.js": "ce347a49282fb0af6c63c54a88eefed6d03fe07cd7146d6613c32715cfedaa3d",
   "assets/js/local-inventory.example.js": "645e6ac54cb166e84567c79349ff9df4a1da4a4f7c506061969589c1af8636db",
-  "assets/js/metadata.js": "09b12801b3b9d9bd2d886861a7a3d45e3397b7409de58d89504c7ec661af5c65",
   "assets/js/paths.js": "b818293989b9ee0ae5efe564e79566a17b8b10358c6e62cd25eecd8358a941c3",
   "assets/js/reference.js": "989da0dead37c16e478abb1b99594b388692832f4b19383ba3811cb686258b65",
   "assets/js/site-config.js": "6d41623e718f1262c53d63645f714875d1a65c06c036c4a721c228bcb8551fce",
@@ -259,6 +258,6 @@
   "assets/source-audit.json": "aabb5c691e40581491fddcc1dd04f4a47da6685278603e74552899c0fcf50e83",
   "assets/toolkit-manifest.json": "9a58877bbfbc915d2f7a14de937b9c37ff987ae0ade25fb5d398bc4c8fd97e2e",
   "index.html": "b36d90c533980cb8749bfa466fa06a3972ed1d46753ee2101d75a8818258d2e0",
-  "launcher.py": "3a11eaa247eb9b33c3f39de6a918404991aadf011cc247056dcb129b4af1cdce",
+  "launcher.py": "6e417a68a80b76f42a029550cf6631020f21c15cf7a12ae3a07e6a67f29ea880",
   "tool_downloads.py": "5c2e4bdb39621d2186a232db0a95b3e999308a75638e33b80f9bb26d2b5a3a44"
 }

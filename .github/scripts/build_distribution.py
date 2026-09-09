@@ -34,7 +34,7 @@ def main():
     manifest_name = NAME+'/assets/distribution-files.json'
     files.pop(manifest_name, None)
     manifest = {name[len(NAME)+1:]: hashlib.sha256(body).hexdigest() for name,body in files.items()
-                if name.startswith(NAME+'/') and not name.endswith('/local-inventory.js')}
+                if name.startswith(NAME+'/') and not name.endswith(('/local-inventory.js','/metadata.js'))}
     manifest_bytes = json.dumps(manifest, indent=2, sort_keys=True).encode('utf-8')
     (ROOT/manifest_name).write_bytes(manifest_bytes)
     files[manifest_name] = manifest_bytes

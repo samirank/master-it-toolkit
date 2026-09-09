@@ -48,6 +48,11 @@ class UpdateTests(unittest.TestCase):
         (self.root / 'index.html').write_bytes(b'my edits')
         with self.assertRaisesRegex(ValueError, 'Local changes'): launcher.install_archive(archive({'index.html': b'new'}), self.root)
         self.assertEqual((self.root / 'index.html').read_bytes(), b'my edits')
+    def test_local_metadata_survives_old_manifest_migration(self):
+        p=self.root/'assets/js/metadata.js';p.parent.mkdir(parents=True);p.write_bytes(b'local refreshed versions')
+        m=self.root/launcher.MANIFEST;data=json.loads(m.read_text());data['assets/js/metadata.js']=launcher.digest(b'old metadata');m.write_text(json.dumps(data))
+        launcher.install_archive(archive({'index.html':b'new'}),self.root)
+        self.assertEqual(p.read_bytes(),b'local refreshed versions')
     def test_traversal_and_inventory_rejected(self):
         for name in ('../outside', '/outside', 'C:/outside', 'assets/js/local-inventory.js'):
             with self.assertRaises(ValueError): launcher.install_archive(archive({name: b'bad'}), self.root)
