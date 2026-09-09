@@ -45,6 +45,7 @@ def safe_path(root, name):
 
 def managed_name(name):
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
+    if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
     if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):

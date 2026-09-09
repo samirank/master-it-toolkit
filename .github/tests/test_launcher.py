@@ -23,6 +23,11 @@ def archive(files):
     return output.getvalue()
 
 class UpdateTests(unittest.TestCase):
+    def test_shipped_archive_is_complete_and_repeatable(self):
+        blob = (ROOT.parent / 'MASTER-IT-TOOLKIT.zip').read_bytes()
+        with tempfile.TemporaryDirectory() as temporary:
+            with zipfile.ZipFile(io.BytesIO(blob)) as z: z.extractall(temporary)
+            self.assertEqual(launcher.install_archive(blob, Path(temporary) / 'MASTER-IT-TOOLKIT'), 'Already up to date.')
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
