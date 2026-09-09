@@ -46,11 +46,12 @@
    if(!dialog.isConnected)return;
    status.className='';status.textContent=info.reason||'Target computer: '+info.host+'. Choose an installer below. Unsigned files require explicit official-source confirmation. Windows will request administrator permission; review its publisher and installer prompts.';
    dialog.querySelectorAll('[data-recovery]').forEach(button=>button.disabled=info.windows===false);
+   if(info.installedOnHost)status.textContent='Already detected on '+info.host+': '+info.hostMatches.map(p=>p.name+' '+p.version).join(', ')+'. Use installed programs to manage it; continue only for an intentional repair, upgrade or reinstall.';
    history(info.history);choices.replaceChildren();
    for(const file of info.files){
     const row=el('div');row.className='download-option';const description=el('div');
     description.append(el('strong',file.name),el('p',file.signature?.publisher||'Publisher unavailable'),el('code',file.path),el('small','SHA256: '+(file.sha256||'Unavailable')));
-    const button=el('button','Create checkpoint & install');button.disabled=!!info.reason||file.signature?.status!=='Valid';
+    const button=el('button',info.installedOnHost?'Create checkpoint & reinstall':'Create checkpoint & install');button.disabled=!!info.reason||file.signature?.status!=='Valid';
     description.append(el('small','Signature: '+(file.signature?.status||'Unavailable')));
     let unsignedApproval=null;
     if(!info.reason&&file.signature?.status==='NotSigned'){
@@ -59,7 +60,7 @@
      description.append(label);unsignedApproval.onchange=()=>button.disabled=!unsignedApproval.checked;
     }
     button.onclick=async()=>{
-     if(!confirm('Install '+file.name+' on '+info.host+'?\nPublisher: '+(file.signature.publisher||'Unsigned — source confirmation required')+'\nA verified new restore point is required. The interactive installer may request a restart. Save your work first.'))return;
+     if(!confirm((info.installedOnHost?'Repair, upgrade or reinstall ':'Install ')+file.name+' on '+info.host+'?\nPublisher: '+(file.signature.publisher||'Unsigned — source confirmation required')+'\nA verified new restore point is required. The interactive installer may request a restart. Save your work first.'))return;
      button.disabled=true;status.classList.add('is-loading');status.textContent='Preparing recovery checkpoint. Check Windows UAC and installer prompts…';
      try{await send({action:'install',tool:tool.id,package:file.path,sha256:file.sha256,acceptUnsigned:unsignedApproval?.checked===true});running=true;}catch(error){status.className='';status.textContent=error.message;button.disabled=false;}
     };

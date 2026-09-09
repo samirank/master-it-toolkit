@@ -21,6 +21,7 @@ if (ROOT / 'MASTER-IT-TOOLKIT' / 'launcher.py').is_file(): ROOT = ROOT / 'MASTER
 sys.path.insert(0, str(ROOT))
 import tool_downloads
 import install_tools
+import host_inventory
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
 SCRIPTS = {
@@ -51,7 +52,7 @@ def safe_path(root, name):
 def managed_name(name):
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
-    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
+    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
         return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
@@ -172,6 +173,7 @@ class Server(ThreadingHTTPServer):
         try:
             if action == 'install':
                 message = install_tools.install(self.root, body, safe_path)
+                message += '\n' + run_script('inventory')
             elif action in ('installed-apps','system-restore'):
                 message = install_tools.recovery(action)
             elif action == 'download':
@@ -238,7 +240,11 @@ class Handler(BaseHTTPRequestHandler):
         if route == 'api/inventory':
             try:
                 text=(self.server.root/'assets/js/local-inventory.js').read_text('utf-8-sig')
-                return self.reply(200,json.loads(text.split('window.LOCAL_INVENTORY =',1)[1].strip().rstrip(';')))
+                inventory=json.loads(text.split('window.LOCAL_INVENTORY =',1)[1].strip().rstrip(';'))
+                if inventory.get('host',{}).get('id') != host_inventory.host_id():
+                    for record in inventory.get('tools',{}).values(): record.update(hostInstalled=None,hostMatches=[],hostVersion='')
+                    if inventory.get('host'): inventory['host']['stale']=True
+                return self.reply(200,inventory)
             except (OSError,ValueError,IndexError): return self.reply(200,{'tools':{}})
         try:
             route = route or 'index.html'
@@ -248,7 +254,7 @@ class Handler(BaseHTTPRequestHandler):
             if not p.is_file(): raise ValueError()
             data = p.read_bytes()
             if route == 'index.html':
-                config = '<script>window.TOOLKIT_LAUNCHER=true;window.TOOLKIT_LOCAL_BASE=' + json.dumps((self.server.root / 'index.html').as_uri()) + ';</script>'
+                config = '<script>window.TOOLKIT_LAUNCHER=true;window.TOOLKIT_HOST_ID=' + json.dumps(host_inventory.host_id()) + ';window.TOOLKIT_LOCAL_BASE=' + json.dumps((self.server.root / 'index.html').as_uri()) + ';</script>'
                 data = data.replace(b'</head>', config.encode() + b'<script defer src="assets/js/launcher-client.js"></script></head>')
             return self.reply(200, data, mimetypes.guess_type(route)[0] or 'text/plain')
         except (ValueError, OSError): return self.reply(404, {'error': 'Unavailable'})
@@ -348,6 +354,10 @@ if __name__ == '__main__':
     server = Server()
     url = server.origin + '/' + server.token + '/index.html'
     print('Master IT Toolkit launcher. Keep this terminal open; Ctrl+C stops it.\n' + url, flush=True)
+    if '--no-startup-scan' not in sys.argv:
+        server.lock.acquire()
+        server.state = {'busy':True,'startedAt':time.time(),'message':'Scanning this PC and organizing SSD packages…'}
+        threading.Thread(target=server.job,args=('inventory',),daemon=True).start()
     open_app(url)
     try: server.serve_forever()
     except KeyboardInterrupt: pass

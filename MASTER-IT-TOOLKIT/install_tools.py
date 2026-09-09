@@ -9,6 +9,7 @@ import shutil
 import socket
 import subprocess
 import time
+import host_inventory
 
 def ps_quote(value): return "'" + str(value).replace("'", "''") + "'"
 
@@ -45,7 +46,7 @@ def candidates(root, tool_id, safe_path):
             for item in inventory.get('tools',{}).get(tool_id,{}).get('files',[]):
                 path=safe_path(root,item['path']);path.relative_to(folder)
                 # An arbitrary portable EXE is not an installer. MSI or recognizable setup names only.
-                setup=path.suffix.lower()=='.msi' or (path.suffix.lower()=='.exe' and (re.search(r'setup|install',path.name,re.I) or (tool_id=='7zip' and re.fullmatch(r'7z\d+(-x64|-arm64)?\.exe',path.name,re.I))))
+                setup=path.suffix.lower()=='.msi' or (path.suffix.lower()=='.exe' and (re.search(r'setup|(?:^|[-_.])install(?:er)?(?:[-_.]|$)',path.name,re.I) or (tool_id=='7zip' and re.fullmatch(r'7z\d+(-x64|-arm64)?\.exe',path.name,re.I))))
                 if setup and path.is_file() and path.stat().st_size:
                     records.append({'path':item['path'],'name':path.name,'size':path.stat().st_size})
         except (OSError,ValueError,KeyError,IndexError): pass
@@ -61,7 +62,9 @@ def options(root, tool_id, safe_path):
             result=subprocess.run([shell(),'-NoProfile','-NonInteractive','-Command',command],capture_output=True,text=True,timeout=60)
             item['signature']=json.loads(result.stdout) if result.returncode==0 and result.stdout.strip() else {'status':'Unavailable','publisher':''}
         if not files: reason='No recognized installer is downloaded. Download an installer and scan first. Portable apps do not need installation.'
-    return {'tool':tool_id,'name':tool['name'],'host':socket.gethostname(),'windows':os.name=='nt','files':files,'reason':reason,'history':history(root,safe_path,tool_id)}
+    host=host_inventory.survey()
+    host_matches=host_inventory.matches(tool,host['programs'],host['platform'])
+    return {'hostMatches':host_matches,'installedOnHost':bool(host_matches),'tool':tool_id,'name':tool['name'],'host':socket.gethostname(),'windows':os.name=='nt','files':files,'reason':reason,'history':history(root,safe_path,tool_id)}
 
 def history(root,safe_path,tool_id=None):
     folder=history_folder(root,safe_path)

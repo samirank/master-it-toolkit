@@ -14,6 +14,33 @@ import tempfile
 import zipfile
 import hashlib
 import stat
+import sys
+
+def installer_file(path, tool):
+    name=path.name.casefold()
+    return path.suffix.lower()=='.msi' or (path.suffix.lower()=='.exe' and (tool.get('kind')=='Installer' or
+        re.search(r'setup|(?:^|[-_.])install(?:er)?(?:[-_.]|$)',name) or (tool['id']=='7zip' and re.match(r'^7z\d+',name))))
+
+def archive_target(archive):
+    info=archive.stat();signature={'size':info.st_size,'mtimeNs':info.st_mtime_ns}
+    relative=archive.relative_to(ROOT).as_posix()
+    identity=hashlib.sha256((relative+json.dumps(signature,sort_keys=True)).encode()).hexdigest()[:16]
+    target=safe_path((archive.parent/'Ready'/(archive.stem[:80]+'-'+identity)).relative_to(ROOT).as_posix())
+    return target,signature
+
+def extracted(archive, known_files=None):
+    try:
+        target,signature=archive_target(archive);marker=target/'.toolkit-extracted.json'
+        if not (marker.is_file() and not reparse(marker) and json.loads(marker.read_text())==signature): return False
+        with zipfile.ZipFile(archive) as source:
+            for member in source.infolist():
+                if member.is_dir(): continue
+                path=target.joinpath(*member.filename.replace('\\','/').split('/'))
+                if known_files is not None:
+                    if known_files.get(path)!=member.file_size:return False
+                elif reparse(path) or not path.is_file() or path.stat().st_size!=member.file_size:return False
+        return True
+    except (OSError,ValueError,zipfile.BadZipFile):return False
 
 ROOT = Path(__file__).resolve().parents[2]
 FOLDERS = ['00_BOOT','10_WINDOWS_TOOLBOX','20_PORTABLE_APPS','30_DRIVERS',
@@ -64,7 +91,7 @@ def scan(full_storage=False):
     roots=[]
     for folder in requested:
         if not any(folder==r or folder.startswith(r+'/') for r in roots): roots.append(folder)
-    indexed={}; failures={}
+    indexed={}; failures={}; abandoned=[]
     for folder in roots:
         entries=[]
         try:
@@ -75,12 +102,14 @@ def scan(full_storage=False):
                         st=entry.stat(follow_symlinks=False)
                         if entry.is_symlink() or getattr(st,'st_file_attributes',0)&0x400: continue
                         if entry.is_dir(follow_symlinks=False):
-                            if not entry.name.startswith('.extract-'): walk(entry.path)
+                            if entry.name.startswith('.extract-'):
+                                if datetime.datetime.now().timestamp()-st.st_mtime>86400: abandoned.append(Path(entry.path))
+                            else: walk(entry.path)
                         elif entry.is_file(follow_symlinks=False): entries.append((Path(entry.path),st))
             if base.is_dir(): walk(base)
         except (OSError, ValueError) as error: failures[folder]=str(error)
         indexed[folder]=entries
-    candidates={}
+    candidates={}; known_files={p:s.st_size for values in indexed.values() for p,s in values}; archive_checks={}
     for tool in catalog:
         record=dict(installed=False, downloaded=False, ready=False, localPath='',files=[],sizeBytes=0,lastModified='',version='',scanError='')
         folder=tool.get('localFolder'); patterns=tool.get('inventoryPatterns',[])
@@ -92,8 +121,9 @@ def scan(full_storage=False):
                 if folder not in candidates: candidates[folder]=[(f,st) for f,st in indexed[root] if base in f.parents and st.st_size>0]
                 pool=candidates[folder]
                 matches=[(f,st) for f,st in pool if any(fnmatch.fnmatchcase(f.name.casefold(),p.casefold()) for p in patterns)]
-                complete=bool(matches)
-                if tool.get('inventoryMatch')=='all': complete=complete and all(any(fnmatch.fnmatchcase(f.name.casefold(),p.casefold()) for f,st in matches) for p in patterns)
+                runnable=[(f,st) for f,st in matches if not installer_file(f,tool) and not f.name.lower().endswith(('.zip','.7z','.tar.gz','.tar.xz','.tar.bz2','.tgz'))]
+                complete=bool(runnable)
+                if tool.get('inventoryMatch')=='all': complete=complete and all(any(fnmatch.fnmatchcase(f.name.casefold(),p.casefold()) for f,st in runnable) for p in patterns)
                 packages=[(f,st) for f,st in pool if any(fnmatch.fnmatchcase(f.name.casefold(),p.casefold()) for p in tool.get('packagePatterns',[]))]
                 trusted=[]
                 for receipt in receipts.get(tool['id'],[]):
@@ -102,17 +132,29 @@ def scan(full_storage=False):
                             packages.append((f,st)); trusted.append(receipt)
                 combined={str(f):(f,st) for f,st in matches+packages}
                 if combined:
-                    selected=max(combined.values(),key=lambda pair:pair[1].st_mtime)
+                    selected=max(runnable or list(combined.values()),key=lambda pair:pair[1].st_mtime)
                     if tool.get('localExecutable'):
                         expected=safe_path(tool['localExecutable'])
-                        selected=next((pair for pair in matches if pair[0]==expected),selected)
+                        selected=next((pair for pair in runnable if pair[0]==expected),selected)
                     f,st=selected
-                    record.update(installed=complete,ready=complete,downloaded=bool(complete or packages),localPath=f.relative_to(ROOT).as_posix(),sizeBytes=sum(st.st_size for f,st in combined.values()),lastModified=iso_time(st.st_mtime),files=[dict(path=f.relative_to(ROOT).as_posix(),sizeBytes=st.st_size,lastModified=iso_time(st.st_mtime)) for f,st in combined.values()])
+                    record.update(installed=complete,ready=complete,downloaded=bool(combined),localPath=f.relative_to(ROOT).as_posix(),sizeBytes=sum(st.st_size for f,st in combined.values()),lastModified=iso_time(st.st_mtime),files=[dict(path=f.relative_to(ROOT).as_posix(),sizeBytes=st.st_size,lastModified=iso_time(st.st_mtime)) for f,st in combined.values()])
                     if trusted: record['version']=max(trusted,key=lambda r:r.get('savedAt','')).get('version','')
                     if not record['version'] and tool.get('packageVersionPattern'):
                         parsed=re.search(tool['packageVersionPattern'],f.name,re.I)
                         if parsed: record['version']='.'.join(parsed.groups())
                     record['latestVersion']=receipts.get('_latest',{}).get(tool['id'],'')
+                record['needsExtraction']=[]
+                record['cleanupReview']=[]
+                for path,st in ((p,s) for p,s in indexed[root] if base in p.parents):
+                    name=path.name.lower()
+                    if 'Ready' not in path.parts and str(path) in combined and name.endswith(('.zip','.7z','.tar.gz','.tar.xz','.tar.bz2','.tgz')):
+                        if path not in archive_checks:archive_checks[path]=name.endswith('.zip') and extracted(path,known_files)
+                        if not archive_checks[path]:
+                            record['needsExtraction'].append({'path':path.relative_to(ROOT).as_posix(),'automatic':name.endswith('.zip')})
+                    if name.endswith(('.partial','.part','.crdownload','.tmp')) and datetime.datetime.now().timestamp()-st.st_mtime>86400:
+                        record['cleanupReview'].append(path.relative_to(ROOT).as_posix())
+                record['cleanupReview'] += [p.relative_to(ROOT).as_posix() for p in abandoned if base in p.parents]
+                record['packageState']='ready' if complete else 'needs-extraction' if record['needsExtraction'] else 'installer' if any(installer_file(f,tool) for f,st in combined.values()) else 'downloaded' if record['downloaded'] else 'missing'
             except (OSError, ValueError, StopIteration) as error:
                 record['scanError']=str(error);inventory['errors'].append(tool['id']+': '+str(error))
         inventory['tools'][tool['id']]=record
@@ -129,7 +171,10 @@ def organize(inventory):
     result = {'extracted': [], 'skipped': [], 'errors': []}
     candidates = {f['path'] for t in inventory['tools'].values() for f in t['files']
                   if f['path'].lower().endswith('.zip') and 'Ready' not in Path(f['path']).parts}
+    pending={item['path'] for record in inventory['tools'].values() for item in record.get('needsExtraction',[]) if item['automatic']}
     for relative in sorted(candidates):
+        if relative not in pending:
+            result['skipped'].append(relative);continue
         stage = None
         try:
             archive = safe_path(relative)
@@ -139,10 +184,7 @@ def organize(inventory):
             target = safe_path((archive.parent / 'Ready' / (archive.stem[:80] + '-' + identity)).relative_to(ROOT).as_posix())
             marker = target / '.toolkit-extracted.json'
             if target.exists():
-                if marker.is_file() and not reparse(marker) and json.loads(marker.read_text()) == signature:
-                    result['skipped'].append(relative)
-                    continue
-                raise ValueError('Destination already exists; preserving its contents')
+                raise ValueError('Extraction folder exists but is incomplete or changed; preserving its contents. Review the Ready folder before extracting again.')
             with zipfile.ZipFile(archive) as source:
                 members = source.infolist()
                 total = sum(m.file_size for m in members)
@@ -203,8 +245,17 @@ def main():
         if organization['extracted']:
             inventory = scan(args.full_storage)
         inventory['organization'] = organization
+        for record in inventory['tools'].values():
+            record['organizationErrors']=[error for error in organization['errors'] if any(error.startswith(f['path']+': ') for f in record['files'])]
         print('ZIP organization:', len(organization['extracted']), 'extracted;', len(organization['skipped']), 'already organized;', len(organization['errors']), 'issues.')
         for error in organization['errors']: print(error)
+    sys.path.insert(0,str(ROOT))
+    import host_inventory
+    text=safe_path('assets/js/tools-data.js').read_text('utf-8-sig')
+    catalog=json.loads(re.search(r'window\.TOOLKIT_DATA\s*=\s*(\[.*\])\s*;?\s*$',text,re.S).group(1))
+    host_inventory.apply(catalog,inventory)
+    print('Host detection:',sum(t.get('hostInstalled') is True for t in inventory['tools'].values()),'catalog tools registered on',inventory['host']['name'],';',inventory['host']['durationMs'],'ms.')
+    print('Needs extraction:',sum(bool(t.get('needsExtraction')) for t in inventory['tools'].values()),'; cleanup review:',sum(bool(t.get('cleanupReview')) for t in inventory['tools'].values()),'(no original downloads or recovery records deleted).')
     print('Downloaded or ready files present for', sum(t['downloaded'] for t in inventory['tools'].values()),
           'records;', len(inventory['errors']), 'scan errors.')
     if args.what_if:
