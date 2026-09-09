@@ -143,7 +143,7 @@ For contributions, describe the technician use case, use official sources, keep 
 
 ## Optional standalone launcher
 
-Download a package from [GitHub Releases](https://github.com/samirank/master-it-toolkit/releases/latest), extract the entire ZIP, and open the root `Master-IT-Toolkit.exe` on Windows. Linux x64 and macOS Apple Silicon packages contain `Master-IT-Toolkit` instead. These packages include the runtime; Python does not need to be installed. The unsigned builds may require approval under your operating system's application policy.
+Download a package from [GitHub Releases](https://github.com/samirank/master-it-toolkit/releases/latest), extract the entire ZIP, and open the root `Master-IT-Toolkit.exe` on Windows. Linux x64 and macOS Apple Silicon packages contain `Start-Master-IT-Toolkit` instead. These packages include the runtime; Python does not need to be installed. The unsigned builds may require approval under your operating system's application policy.
 
 The launcher opens your browser at a private loopback address. Keep its terminal open and use **Run scripts & update toolkit**. Close script terminals when finished; only one action runs at a time. Windows repair requires an administrator launcher, and the PowerShell scripts retain their own confirmation prompts and organization-policy requirements. The launcher uses a process-only PowerShell execution-policy bypass for these explicitly selected bundled scripts; it does not change the machine or user execution policy. Linux and macOS support the inventory scan and toolkit updater; Windows scripts require Windows.
 
