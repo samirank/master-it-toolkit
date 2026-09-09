@@ -167,15 +167,17 @@ class Server(ThreadingHTTPServer):
         super().__init__(('127.0.0.1', port), Handler)
         self.origin = 'http://127.0.0.1:' + str(self.server_port)
     def job(self, action, body=None):
+        context = {'tool': (body or {}).get('tool')}
         try:
             if action == 'download':
                 message = tool_downloads.save_selected(self.root, body['tool'], body['assets'], safe_path,
-                    lambda message: setattr(self, 'state', {'busy': True, 'message': message}))
+                    lambda progress: setattr(self, 'state', dict(context, busy=True, **progress)))
+                self.state = dict(context, busy=True, message='Scanning and organizing saved packages…', stage='scan')
                 message += '\n' + run_script('inventory')
             else: message = update() if action == 'update' else run_script(action)
-            self.state = {'busy': False, 'message': message}
+            self.state = dict(context, busy=False, message=message, stage='complete')
         except Exception as error:
-            self.state = {'busy': False, 'message': 'Stopped: ' + str(error)}
+            self.state = dict(context, busy=False, message='Stopped: ' + str(error), stage='error')
         finally: self.lock.release()
 
 class Handler(BaseHTTPRequestHandler):
@@ -199,6 +201,23 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         route = self.route()
         if route is None: return self.reply(403, {'error': 'Open the URL printed by your launcher.'})
+        if route == 'api/tool-files':
+            try:
+                query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
+                folder = tool_folder(self.server.root, query.get('tool', [''])[0])
+                files = []
+                if folder.exists():
+                    for entry in folder.iterdir():
+                        try:
+                            p = safe_path(self.server.root, entry.relative_to(self.server.root).as_posix())
+                            if (p.is_file() or p.is_dir()) and p.name != 'PLACE-FILES-HERE.txt' and not p.name.startswith('.extract-'):
+                                st = p.stat()
+                                files.append(dict(name=p.name, path=str(p), size=st.st_size if p.is_file() else 0, kind='folder' if p.is_dir() else 'file', modified=st.st_mtime_ns,
+                                    partial=p.name.lower().endswith(('.partial', '.crdownload', '.part', '.tmp'))))
+                        except (ValueError, OSError): continue
+                        if len(files) >= 1000: break
+                return self.reply(200, dict(folder=str(folder), files=sorted(files, key=lambda f: f['name'])))
+            except (ValueError, OSError, StopIteration) as error: return self.reply(400, {'error': str(error)})
         if route == 'api/download-options':
             try:
                 query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
@@ -236,15 +255,86 @@ class Handler(BaseHTTPRequestHandler):
                 if not isinstance(body.get('tool'), str) or not isinstance(body.get('assets'), list) or not 1 <= len(body['assets']) <= 50 or any(not isinstance(a, str) for a in body['assets']): raise ValueError()
         except (ValueError, KeyError, TypeError): return self.reply(400, {'error': 'Invalid action'})
         if not self.server.lock.acquire(False): return self.reply(409, {'error': 'Another action is still running. Close its script terminal first.'})
-        self.server.state = {'busy': True, 'message': 'Working: ' + action + '. Review any script terminal that opens.'}
+        self.server.state = {'busy': True, 'tool': body.get('tool'), 'message': 'Working: ' + action + '. Review any script terminal that opens.'}
         threading.Thread(target=self.server.job, args=(action, body), daemon=True).start()
         self.reply(202, self.server.state)
+
+    def do_PUT(self):
+        if self.route() != 'api/import' or self.headers.get('Origin') != self.server.origin:
+            return self.reply(403, {'error': 'Invalid local session'})
+        if not self.server.lock.acquire(False): return self.reply(409, {'error': 'Another action is running'})
+        temporary = None
+        handed_off = False
+        try:
+            query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
+            tool = query.get('tool', [''])[0]; name = query.get('name', [''])[0]
+            folder = tool_folder(self.server.root, tool)
+            if not name or Path(name).name != name or '/' in name or '\\' in name or ':' in name or name.startswith('.'):
+                raise ValueError('Invalid package filename')
+            if Path(name).suffix.lower() not in ('.exe', '.msi', '.msix', '.zip', '.7z', '.gz', '.xz', '.bz2', '.dmg', '.pkg', '.deb', '.rpm', '.appimage', '.iso'):
+                raise ValueError('Select a downloaded software package')
+            size = int(self.headers.get('Content-Length', '0'))
+            if not 0 < size <= 8_000_000_000: raise ValueError('Package must be between 1 byte and 8 GB')
+            folder.mkdir(parents=True, exist_ok=True)
+            if size * 2 + 100_000_000 > shutil.disk_usage(folder).free: raise ValueError('Not enough free space')
+            destination = safe_path(self.server.root, (folder / name).relative_to(self.server.root).as_posix())
+            if destination.exists(): raise ValueError('A file with that name already exists; it was preserved')
+            temporary = folder / ('.import-' + secrets.token_hex(8) + '.partial')
+            self.connection.settimeout(60)
+            received = 0
+            with temporary.open('xb') as output:
+                while received < size:
+                    chunk = self.rfile.read(min(1024 * 1024, size-received))
+                    if not chunk: raise ValueError('Import interrupted')
+                    output.write(chunk); received += len(chunk)
+                    self.server.state = dict(busy=True, tool=tool, message='Importing ' + name, stage='import', received=received, total=size, file=name)
+            with destination.open('xb') as output, temporary.open('rb') as source:
+                try: shutil.copyfileobj(source, output)
+                except Exception:
+                    output.close(); destination.unlink(); raise
+            self.server.state = dict(busy=True, tool=tool, message='Scanning imported package…', stage='scan')
+            threading.Thread(target=self.server.job, args=('inventory', {'tool': tool}), daemon=True).start()
+            handed_off = True
+            # The job now owns the lock.
+            self.reply(202, self.server.state)
+            return
+        except Exception as error:
+            if not handed_off:
+                self.server.state = dict(busy=False, message='Import stopped: ' + str(error), stage='error')
+                self.reply(400, {'error': str(error)})
+        finally:
+            if not handed_off: self.server.lock.release()
+            if temporary is not None and temporary.exists(): temporary.unlink()
+
+
+def tool_folder(root, tool_id):
+    catalog = json.loads((root / 'assets/toolkit-manifest.json').read_text('utf-8'))
+    tool = next((t for t in catalog if t['id'] == tool_id), None)
+    if not tool or not tool.get('localFolder'): raise ValueError('Unknown tool destination')
+    return safe_path(root, tool['localFolder'])
+
+
+def open_app(url):
+    """Use the installed browser engine in a dedicated window, without new dependencies."""
+    candidates = [shutil.which(n) for n in ('msedge', 'google-chrome', 'chromium', 'chromium-browser')]
+    if os.name == 'nt':
+        candidates = [str(Path(os.environ.get(key, 'C:/Program Files')) / relative)
+            for key in ('PROGRAMFILES(X86)', 'PROGRAMFILES', 'LOCALAPPDATA')
+            for relative in ('Microsoft/Edge/Application/msedge.exe', 'Google/Chrome/Application/chrome.exe')] + candidates
+    elif sys.platform == 'darwin':
+        candidates += ['/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge', '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome']
+    for candidate in candidates:
+        if candidate and Path(candidate).is_file():
+            subprocess.Popen([candidate, '--app=' + url, '--window-size=1280,860'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return
+    print('Edge or Chromium was not found; opening the default browser instead.', flush=True)
+    webbrowser.open(url)
 
 if __name__ == '__main__':
     server = Server()
     url = server.origin + '/' + server.token + '/index.html'
     print('Master IT Toolkit launcher. Keep this terminal open; Ctrl+C stops it.\n' + url, flush=True)
-    webbrowser.open(url)
+    open_app(url)
     try: server.serve_forever()
     except KeyboardInterrupt: pass
     finally: server.server_close()

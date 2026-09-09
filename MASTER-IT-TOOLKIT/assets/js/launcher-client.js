@@ -7,7 +7,7 @@
   let busy = false;
   let initialized = false;
   let lastMessage = '';
-  panel.innerHTML = '<h2>Local launcher connected</h2><p>Run a bundled script in its own terminal, or update the toolkit from GitHub. Windows scripts require Windows; repair may require an administrator launcher.</p><div id="launcher-actions" class="actions"></div><p id="launcher-status" role="status">Connecting…</p>';
+  panel.innerHTML = '<h2>Local launcher connected</h2><p>Run a bundled script in its own terminal, or update the toolkit from GitHub. Windows scripts require Windows; repair may require an administrator launcher.</p><div id="launcher-actions" class="actions"></div><progress id="launcher-progress" aria-label="Current transfer progress" max="100" hidden></progress><p id="launcher-status" role="status">Connecting…</p>';
   document.querySelector('.local-label').textContent = 'LAUNCHER MODE';
   async function refresh() {
     try {
@@ -20,7 +20,8 @@
         initialized=true;
       }
       lastMessage=state.message;
-      document.getElementById('launcher-status').textContent = state.message;
+      document.getElementById('launcher-status').textContent = state.message+(state.received!==undefined?' · '+(state.received/1048576).toFixed(1)+' MB'+(state.total?' / '+(state.total/1048576).toFixed(1)+' MB':''):'');
+      const meter=document.getElementById('launcher-progress');meter.hidden=!state.busy||state.received===undefined;if(state.total)meter.value=state.received/state.total*100;else meter.removeAttribute('value');
       const actions = document.getElementById('launcher-actions'); actions.replaceChildren();
       for (const item of [...state.scripts, {id:'update', name:'Update toolkit from GitHub', enabled:true}]) {
         const button = document.createElement('button'); button.textContent = item.name;

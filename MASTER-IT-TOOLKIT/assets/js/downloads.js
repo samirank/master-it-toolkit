@@ -3,11 +3,11 @@
  'use strict';
  const element=(tag,text)=>{const e=document.createElement(tag);if(text)e.textContent=text;return e;};
  document.addEventListener('click',async event=>{
-  const trigger=event.target.closest('[data-download]');if(!trigger)return;
-  const tool=window.TOOLKIT_DATA.find(t=>t.id===trigger.dataset.download);if(!tool)return;
+  const trigger=event.target.closest('[data-download],[data-manage-download]');if(!trigger)return;
+  const tool=window.TOOLKIT_DATA.find(t=>t.id===(trigger.dataset.download||trigger.dataset.manageDownload));if(!tool)return;
   const dialog=element('dialog');dialog.className='download-dialog';
   const close=element('button','Close');close.className='dialog-close';close.onclick=()=>dialog.close();dialog.append(close);
-  dialog.append(element('h2','Download '+tool.name));
+  dialog.append(element('h2','Downloads · '+tool.name));
   const status=element('p','Loading publisher choices…');status.setAttribute('role','status');dialog.append(status);
   document.body.append(dialog);dialog.addEventListener('close',()=>dialog.remove());dialog.showModal();
   const pathLabel=element('label','Save in this toolkit folder');pathLabel.className='note-field';
@@ -15,7 +15,50 @@
   pathField.value=window.ToolkitPaths.resolve(tool.localFolder,window.TOOLKIT_LOCAL_BASE||location.href).filesystemPath||tool.localFolder;
   pathLabel.append(pathField);dialog.append(pathLabel);
   const copyPath=element('button','Copy destination path');copyPath.onclick=async()=>{try{await navigator.clipboard.writeText(pathField.value);copyPath.textContent='Path copied';}catch{pathField.focus();pathField.select();copyPath.textContent=document.execCommand('copy')?'Path copied':'Select the path and copy manually';}};dialog.append(copyPath);
-  const official=()=>{const a=element('a','Open publisher downloads ↗');a.href=tool.officialDownload;a.target='_blank';a.rel='noopener noreferrer';dialog.append(a);};
+  let watching=false, tracking=false, baseline=null, stable=null, repeats=0, polling=false;
+  const meter=element('progress');meter.max=100;meter.hidden=true;meter.setAttribute('aria-label','Download progress');dialog.append(meter);
+  const transfer=element('p');transfer.setAttribute('role','status');dialog.append(transfer);
+  const fileList=element('div');fileList.className='download-files';dialog.append(fileList);
+  const api=(name)=>new URL('api/'+name,location.href);
+  const refreshInventory=async()=>{const r=await fetch(api('inventory'));if(r.ok)window.dispatchEvent(new CustomEvent('toolkit-inventory',{detail:await r.json()}));};
+  const rescan=async()=>{
+   const r=await fetch(api('action'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'inventory',tool:tool.id,confirmed:true})});
+   const b=await r.json();if(!r.ok)throw Error(b.error);tracking=true;transfer.textContent='Scanning and organizing files…';
+  };
+  async function poll(){
+   if(polling||!dialog.isConnected)return;polling=true;
+   try{
+    const [sr,fr]=await Promise.all([fetch(api('status')),fetch(api('tool-files?tool='+encodeURIComponent(tool.id)))]);
+    if(!sr.ok||!fr.ok)throw Error('Launcher connection unavailable');
+    const state=await sr.json(),folder=await fr.json();pathField.value=folder.folder;
+    fileList.replaceChildren(element('h3','Files in destination'));
+    if(!folder.files.length)fileList.append(element('p','No downloaded files in this folder yet.'));
+    for(const f of folder.files){const row=element('div');row.className='download-file';row.append(element('strong',f.name+(f.partial?' · In progress':'')),element('small',f.kind==='folder'?'Folder':(f.size/1048576).toFixed(2)+' MB'),element('code',f.path));fileList.append(row);}
+    if(state.tool===tool.id){
+     if(state.busy){tracking=true;transfer.textContent=state.message+(state.received!==undefined?' · '+(state.received/1048576).toFixed(1)+' MB'+(state.total?' / '+(state.total/1048576).toFixed(1)+' MB':''):'')+(state.count?' · File '+state.index+' of '+state.count:'');meter.hidden=false;if(state.total)meter.value=state.received/state.total*100;else meter.removeAttribute('value');}
+     else if(tracking){tracking=false;meter.hidden=true;transfer.textContent=state.message;await refreshInventory();}
+    }
+    const signature=JSON.stringify(folder.files.filter(f=>!f.partial&&f.kind!=='folder').map(f=>[f.name,f.size,f.modified]));
+    if(baseline===null)baseline=signature;
+    if(signature===stable)repeats++;else{stable=signature;repeats=0;}
+    if(watching&&signature!==baseline&&repeats>=2&&!folder.files.some(f=>f.partial)&&!state.busy){await rescan();baseline=signature;}
+   }catch(error){transfer.textContent=error.message;}finally{polling=false;}
+  }
+  if(window.TOOLKIT_LAUNCHER){
+   const controls=element('div');controls.className='actions';
+   const scan=element('button','Refresh files & scan');scan.onclick=()=>rescan().catch(e=>transfer.textContent=e.message);
+   const picker=element('input');picker.type='file';picker.hidden=true;picker.accept='.exe,.msi,.msix,.zip,.7z,.gz,.xz,.bz2,.dmg,.pkg,.deb,.rpm,.AppImage,.iso';
+   const upload=element('button','Import downloaded file…');upload.onclick=()=>picker.click();
+   picker.onchange=()=>{const file=picker.files[0];if(!file)return;upload.disabled=true;
+    const request=new XMLHttpRequest();request.open('PUT',api('import?tool='+encodeURIComponent(tool.id)+'&name='+encodeURIComponent(file.name)));
+    request.upload.onprogress=e=>{meter.hidden=false;if(e.lengthComputable){meter.value=e.loaded/e.total*100;transfer.textContent='Importing '+file.name+' · '+Math.round(meter.value)+'%';}};
+    request.onload=()=>{upload.disabled=false;picker.value='';let body;try{body=JSON.parse(request.responseText);}catch{body={error:'Import failed'};}if(request.status!==202){transfer.textContent=body.error;meter.hidden=true;}else{tracking=true;transfer.textContent='Imported. Scanning and organizing…';poll();}};
+    request.onerror=()=>{upload.disabled=false;meter.hidden=true;transfer.textContent='Import interrupted. Reconnect the launcher and try again.';};request.send(file);
+   };
+   controls.append(scan,upload,picker);dialog.append(controls);poll();const timer=setInterval(poll,1500);dialog.addEventListener('close',()=>clearInterval(timer));
+  }
+  const official=()=>{const a=element('a','Open publisher downloads ↗');a.href=tool.officialDownload;a.target='_blank';a.rel='noopener noreferrer';
+   a.onclick=event=>{event.preventDefault();watching=true;window.open(tool.officialDownload,'_blank','popup,width=1100,height=800,noopener,noreferrer');transfer.textContent=window.TOOLKIT_LAUNCHER?'Publisher window opened. Save to the destination above, or import the file here. Completed files trigger a local scan; publisher transfer progress remains in its browser download panel.':'Publisher window opened. Local file management requires the launcher.';};dialog.append(a);};
   let info;
   try{
    if(window.TOOLKIT_LAUNCHER){
@@ -54,7 +97,7 @@
      try{
       const response=await fetch(new URL('api/action',location.href),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'download',tool:tool.id,assets,confirmed:true})});
       const body=await response.json();if(!response.ok)throw Error(body.error);
-      status.textContent='Download started. Progress and full saved paths appear in the launcher panel.';
+      tracking=true;status.textContent='Download started. Progress and saved files appear below.';poll();
       document.querySelector('.launcher-panel').open=true;
      }catch(error){status.textContent=error.message;submit.disabled=false;}
     };dialog.append(submit);

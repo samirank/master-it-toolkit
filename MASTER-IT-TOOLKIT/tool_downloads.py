@@ -56,7 +56,7 @@ def save_selected(root, tool_id, selected, safe_path, progress):
     folder = safe_path(root, info['folder'])
     folder.mkdir(parents=True, exist_ok=True)
     results = []
-    for key in selected:
+    for index, key in enumerate(selected, 1):
         asset = assets[key]
         destination = safe_path(root, info['folder'] + '/' + asset['name'])
         if destination.exists():
@@ -68,6 +68,7 @@ def save_selected(root, tool_id, selected, safe_path, progress):
         try:
             request = urllib.request.Request(asset['url'], headers={'User-Agent': 'MasterITToolkit'})
             with urllib.request.urlopen(request, timeout=60) as response, temporary.open('xb') as output:
+                transfer_size = size or int(getattr(response, 'headers', {}).get('Content-Length', '0'))
                 final = urlsplit(response.url)
                 if final.scheme != 'https' or final.hostname not in ('github.com', 'release-assets.githubusercontent.com', 'objects.githubusercontent.com', 'download.sysinternals.com'): raise ValueError('Unexpected publisher redirect')
                 while True:
@@ -76,7 +77,7 @@ def save_selected(root, tool_id, selected, safe_path, progress):
                     total += len(chunk)
                     if total > 8_000_000_000: raise ValueError('Package exceeds 8 GB transfer limit')
                     output.write(chunk); digest.update(chunk)
-                    progress('Downloading ' + asset['name'] + ': ' + str(total // 1048576) + ' MB')
+                    progress({'message': 'Downloading ' + asset['name'], 'file': asset['name'], 'received': total, 'total': transfer_size or None, 'index': index, 'count': len(selected), 'stage': 'download'})
             if size and total != size: raise ValueError('Incomplete publisher download')
             expected = asset.get('digest') or ''
             if expected.startswith('sha256:') and digest.hexdigest() != expected[7:]: raise ValueError('Publisher SHA256 mismatch')
