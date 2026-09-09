@@ -21,8 +21,9 @@ class TransferTests(unittest.TestCase):
         self.base=self.server.origin+'/'+self.server.token+'/api/'
     def tearDown(self):
         self.server.shutdown();self.server.server_close();self.thread.join();self.temp.cleanup()
-    def put(self,name='tool.zip',origin=None):
-        return urllib.request.urlopen(urllib.request.Request(self.base+'import?tool=app&name='+name,data=b'fixture',method='PUT',headers={'Origin':origin or self.server.origin}),timeout=5)
+    # Rejected requests send headers only: Windows may reset sockets with unread request bodies.
+    def put(self,name='tool.zip',origin=None,rejected=False):
+        return urllib.request.urlopen(urllib.request.Request(self.base+'import?tool=app&name='+name,data=b'' if rejected else b'fixture',method='PUT',headers={'Origin':origin or self.server.origin,'Content-Length':'7'}),timeout=5)
     def test_import_preserve_and_callback(self):
         event=threading.Event()
         def scan(key): self.assertEqual(key,'inventory');event.set();return 'Inventory refreshed'
@@ -32,7 +33,7 @@ class TransferTests(unittest.TestCase):
             # Wait for job lock handoff before trying the second import.
             self.assertTrue(self.server.lock.acquire(timeout=3));self.server.lock.release()
             self.assertEqual((self.root/'tools/app/tool.zip').read_bytes(),b'fixture')
-            with self.assertRaises(urllib.error.HTTPError) as error: self.put()
+            with self.assertRaises(urllib.error.HTTPError) as error: self.put(rejected=True)
             self.assertEqual(error.exception.code,400)
         with urllib.request.urlopen(self.base+'tool-files?tool=app') as r:
             data=json.load(r);self.assertEqual(data['files'][0]['name'],'tool.zip')
@@ -40,7 +41,7 @@ class TransferTests(unittest.TestCase):
         self.assertFalse(list(self.root.rglob('*.partial')))
     def test_reject_origin_traversal_and_unknown_tool(self):
         for name,origin in [('tool.zip','https://evil.invalid'),('..%2Fescape.zip',None),('note.txt',None)]:
-            with self.assertRaises(urllib.error.HTTPError): self.put(name,origin)
+            with self.assertRaises(urllib.error.HTTPError): self.put(name,origin,rejected=True)
         with self.assertRaises(urllib.error.HTTPError): urllib.request.urlopen(self.base+'tool-files?tool=unknown')
         self.assertFalse((self.root/'escape.zip').exists())
     def test_app_mode_argument(self):
