@@ -104,7 +104,7 @@ def save_selected(root, tool_id, selected, safe_path, progress):
     if info.get('version'): receipts.setdefault('_latest',{})[tool_id]=info['version']
     temp=receipt_path.with_name('.download-receipts-'+secrets.token_hex(6)+'.tmp')
     temp.write_text(json.dumps(receipts,indent=2),encoding='utf-8');os.replace(temp,receipt_path)
-    return '\n'.join(results) + '\nPackages were not installed or extracted. Extract portable tools before running them.'
+    return '\n'.join(results) + '\nPackages saved. The following scan extracts recognized ZIP packages; installers are never run automatically.'
 
 def check_updates(root, safe_path):
     inventory=(root/'assets/js/local-inventory.js').read_text('utf-8-sig')

@@ -153,7 +153,7 @@
   "60_SCRIPTS/Inventory/Toolkit-Common.ps1": "58dbb8ded04a6135fe04117f99c816bc749738f3847128ab5d1d273267e20b5e",
   "60_SCRIPTS/Inventory/Update-ToolkitInventory.ps1": "097d8722af24fbe4d080dfdda6f50dc99e145ded09fd11b812338427b6b9f3be",
   "60_SCRIPTS/Inventory/Update-ToolkitMetadata.ps1": "a9993ba2a7b0a71a3de2c88d193260542196941912ad94cae5a6046971e01af0",
-  "60_SCRIPTS/Inventory/update_toolkit_inventory.py": "0a1133dfcaf646655c4353982c382623dd69e063ba5d2181636dcff0f29b3264",
+  "60_SCRIPTS/Inventory/update_toolkit_inventory.py": "519b3f1d13b0257c24d9c479a155749f6ca11ffd714544de0162236be31df6fc",
   "60_SCRIPTS/Network/Get-NetworkDiagnostics.ps1": "9d7b5dd98440d9a7b6ebb9c176f8d8e4867f97cd84c3a5506ca5ea9217dc0621",
   "60_SCRIPTS/Network/PLACE-FILES-HERE.txt": "c8e4bae74260905e6100bb9f6a82161e6e7396791a5afef23c1ca8522cf6c10d",
   "60_SCRIPTS/Windows-Repair/PLACE-FILES-HERE.txt": "7a8fe4e484d5cc5c652033ede6adee4c50e36ce02050af5868bc46cbdf9a1cd4",
@@ -237,7 +237,7 @@
   "80_LICENSED_TOOLS/Revo/PLACE-FILES-HERE.txt": "a2c5bb83839b133bf908b49d71e9cb53c7ac49de06d94f134a0563b53a26d5a9",
   "90_TEMP/README.txt": "9d2f3febd3766bd8b23fdcd98ad86823c85f89227e8d24ee24beefefabc91b19",
   "LICENSE.txt": "933dd068e9c3c6fab1d3a17bd61980addbb283151f682aadd7def40c2dada2df",
-  "README.txt": "c32509bcdca2ab7c3b54be5a4859bed83f4289755db65a0404f9657423d9b391",
+  "README.txt": "4fdb4815862a263ef460dd4e2dbb69d3e64776e33c6f84c867d31eb1c87c204d",
   "START-HERE.txt": "7781fc6742fd83f0cccc212f2acda5ea251356b1df33a90ccc7f275bb0e8f5b2",
   "Start-Toolkit.cmd": "5fe2b2f0eadc99abf88d82d6849e4927bb9c182fd3b0b8e758633ad2860437c4",
   "Start-Toolkit.command": "a733888b5c622f6af74a5a789fe1c917c6cb6cb371d7e12604d67f1b7157088c",
@@ -246,7 +246,7 @@
   "assets/images/dashboard.png": "c33bfc4b94d4316b3d56f827315835193727b27851527ee94ed2b4f4fac353fe",
   "assets/js/app.js": "e443336a9cc7e66769238fa8dadb5b621592ee4b80210efd0bb2ac0592bdad1c",
   "assets/js/categories.js": "b53ddd219926bf79f5538e09fc1e0ecb8267e4af4fa235f5220333e5b7fb6d54",
-  "assets/js/downloads.js": "7ae600407b8692bb75e185ac71bbbb75faee2c88c9c82329f80033018f0fb3eb",
+  "assets/js/downloads.js": "a509a5360033e70cb56f6a77a2ef0b65085c4c5dd194aab9cc4f6989b8bb5f66",
   "assets/js/guides-data.js": "32ed0c896c3441f57858661538309fe3e8069edf193b68ab8c7f6be78b1ad7a8",
   "assets/js/inventory-default.js": "8a43fe812c6147ff9aba34bdc1bc3fd0aed5910e963672137eb9656d3f1ea806",
   "assets/js/launcher-client.js": "ce347a49282fb0af6c63c54a88eefed6d03fe07cd7146d6613c32715cfedaa3d",
@@ -258,6 +258,6 @@
   "assets/source-audit.json": "aabb5c691e40581491fddcc1dd04f4a47da6685278603e74552899c0fcf50e83",
   "assets/toolkit-manifest.json": "9a58877bbfbc915d2f7a14de937b9c37ff987ae0ade25fb5d398bc4c8fd97e2e",
   "index.html": "b36d90c533980cb8749bfa466fa06a3972ed1d46753ee2101d75a8818258d2e0",
-  "launcher.py": "6e417a68a80b76f42a029550cf6631020f21c15cf7a12ae3a07e6a67f29ea880",
-  "tool_downloads.py": "5c2e4bdb39621d2186a232db0a95b3e999308a75638e33b80f9bb26d2b5a3a44"
+  "launcher.py": "a0d6bc5f4ab1c64bcfdbcf0f19ff100090df45116335f41310fbbca9369c661a",
+  "tool_downloads.py": "53592df3340d0d8f7e1c838ae96f0303d40d59759f206fbabac61a1e9758a3db"
 }

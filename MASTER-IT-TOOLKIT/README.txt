@@ -200,3 +200,6 @@ source responds. Avoid lookalike domains; use the linked publisher sources.
 Test boot media on representative BIOS/UEFI hardware before field deployment.
 This build validates the dashboard and maintenance behavior; it cannot certify
 boot compatibility, Secure Boot support or binaries that have not been added.
+
+AUTOMATIC ZIP ORGANIZATION
+Launcher scans extract recognized ZIP packages into Ready folders beside the original archive. Original downloads are preserved; unchanged archives are skipped. Partial extraction files from the current scan are cleaned up. EXE/MSI installers are never run. Non-ZIP and encrypted archives require manual extraction. Use --no-organize on the Python inventory script for inventory only; --what-if makes no changes.

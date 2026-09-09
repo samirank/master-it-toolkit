@@ -155,7 +155,7 @@ def run_script(key):
     command = [sys.executable, '--inventory'] if getattr(sys, 'frozen', False) else [sys.executable, str(script)]
     result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, timeout=600)
     if result.returncode: raise RuntimeError((result.stderr or result.stdout)[-3000:])
-    return label + ' completed. Reload the dashboard to read the new inventory.'
+    return label + ' completed. ' + result.stdout[-3000:]
 
 class Server(ThreadingHTTPServer):
     daemon_threads = True
@@ -171,7 +171,7 @@ class Server(ThreadingHTTPServer):
             if action == 'download':
                 message = tool_downloads.save_selected(self.root, body['tool'], body['assets'], safe_path,
                     lambda message: setattr(self, 'state', {'busy': True, 'message': message}))
-                run_script('inventory')
+                message += '\n' + run_script('inventory')
             else: message = update() if action == 'update' else run_script(action)
             self.state = {'busy': False, 'message': message}
         except Exception as error:

@@ -47,3 +47,6 @@ build/
 dist/
 *.spec
 MASTER-IT-TOOLKIT/assets/download-receipts.json
+
+**/Ready/
+**/.extract-*/

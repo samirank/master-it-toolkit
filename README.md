@@ -170,3 +170,11 @@ Standalone ZIPs contain the executable at the root beside `MASTER-IT-TOOLKIT/`; 
 The default inventory scan indexes each relevant directory once and reuses file metadata. Full folder sizing is optional: run `python3 60_SCRIPTS/Inventory/update_toolkit_inventory.py --full-storage`. Downloaded installers/archives and ready-to-run files are tracked separately. Save vendor downloads into the copyable directory shown in the download popup. Files saved in your browser Downloads directory are not scanned.
 
 Launcher downloads save version receipts and automatically refresh inventory. **Check downloaded tool updates** compares supported publisher releases without downloading them. Tool cards show **Downloaded** for existing files and **Update** only when a newer known version is available; unknown versions remain unknown. The catalog now includes the EaseUS product families and platform variants listed in its product/download centers (license editions are grouped), plus video editors, recording, notes, email and remote-support applications. Every tool detail includes an offline quick start and an official documentation link.
+
+### Automatic ZIP organization
+
+Local launcher scans extract recognized ZIP downloads into `Ready/<archive-name>-<fingerprint>/` beside the original download, then refresh availability. Original archives remain as backups. Existing files are never overwritten. Temporary extraction files are cleaned after success or failure, and unchanged archives are skipped on later scans. First extraction takes longer than an inventory-only scan.
+
+Only catalog-recognized packages inside toolkit folders are eligible. Unrelated files are left alone. Paths, links, duplicate names, CRC checks, free space and extraction limits are checked. Encrypted ZIPs, archives over 8 GiB expanded or 50,000 entries, and non-ZIP formats require manual extraction. EXE/MSI installers are never run automatically. ZIPs containing installers still require installation. The hosted demo cannot organize local files.
+
+Run `python 60_SCRIPTS/Inventory/update_toolkit_inventory.py --no-organize` from the toolkit folder for inventory only; `--what-if` also leaves files untouched. Organization works through the Python/frozen scanner on Windows, Linux and macOS. The legacy PowerShell-only fallback scans without extraction.

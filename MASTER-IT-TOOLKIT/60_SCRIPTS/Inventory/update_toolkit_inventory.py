@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Optional inventory for Windows/Linux/macOS, Python 3.9+. Dashboard needs no Python.
-Reads filenames and metadata only. Never executes a tool. --what-if does not write.
+Recognized ZIP downloads are organized during CLI scans. Never executes a tool. --what-if does not write.
 """
 import argparse
 import datetime
@@ -11,6 +11,9 @@ from pathlib import Path
 import re
 import shutil
 import tempfile
+import zipfile
+import hashlib
+import stat
 
 ROOT = Path(__file__).resolve().parents[2]
 FOLDERS = ['00_BOOT','10_WINDOWS_TOOLBOX','20_PORTABLE_APPS','30_DRIVERS',
@@ -71,7 +74,8 @@ def scan(full_storage=False):
                     for entry in children:
                         st=entry.stat(follow_symlinks=False)
                         if entry.is_symlink() or getattr(st,'st_file_attributes',0)&0x400: continue
-                        if entry.is_dir(follow_symlinks=False): walk(entry.path)
+                        if entry.is_dir(follow_symlinks=False):
+                            if not entry.name.startswith('.extract-'): walk(entry.path)
                         elif entry.is_file(follow_symlinks=False): entries.append((Path(entry.path),st))
             if base.is_dir(): walk(base)
         except (OSError, ValueError) as error: failures[folder]=str(error)
@@ -120,12 +124,87 @@ def scan(full_storage=False):
     inventory['storage']['volume']=dict(totalBytes=usage.total,freeBytes=usage.free)
     return inventory
 
+def organize(inventory):
+    """Extract recognized ZIP packages transactionally; retain source downloads."""
+    result = {'extracted': [], 'skipped': [], 'errors': []}
+    candidates = {f['path'] for t in inventory['tools'].values() for f in t['files']
+                  if f['path'].lower().endswith('.zip') and 'Ready' not in Path(f['path']).parts}
+    for relative in sorted(candidates):
+        stage = None
+        try:
+            archive = safe_path(relative)
+            info = archive.stat()
+            signature = {'size': info.st_size, 'mtimeNs': info.st_mtime_ns}
+            identity = hashlib.sha256((relative + json.dumps(signature, sort_keys=True)).encode()).hexdigest()[:16]
+            target = safe_path((archive.parent / 'Ready' / (archive.stem[:80] + '-' + identity)).relative_to(ROOT).as_posix())
+            marker = target / '.toolkit-extracted.json'
+            if target.exists():
+                if marker.is_file() and not reparse(marker) and json.loads(marker.read_text()) == signature:
+                    result['skipped'].append(relative)
+                    continue
+                raise ValueError('Destination already exists; preserving its contents')
+            with zipfile.ZipFile(archive) as source:
+                members = source.infolist()
+                total = sum(m.file_size for m in members)
+                if len(members) > 50000 or total > 8 * 1024**3:
+                    raise ValueError('Archive exceeds automatic extraction limits')
+                if total + 256 * 1024**2 > shutil.disk_usage(ROOT).free:
+                    raise ValueError('Insufficient free space to retain and extract archive')
+                names = set()
+                for member in members:
+                    name = member.filename.replace('\\', '/')
+                    parts = name.rstrip('/').split('/')
+                    mode = member.external_attr >> 16
+                    if (not name or name.startswith('/') or any(p in ('', '.', '..') or ':' in p or p.endswith((' ', '.')) or
+                        re.match(r'^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\.|$)', p, re.I) for p in parts)
+                        or any(c in name for c in '<>"|?*') or any(ord(c) < 32 for c in name)
+                        or (stat.S_IFMT(mode) and not (stat.S_ISREG(mode) or stat.S_ISDIR(mode)))
+                        or member.flag_bits & 1 or name.casefold().rstrip('/') in names
+                        or name.casefold().rstrip('/') == '.toolkit-extracted.json'):
+                        raise ValueError('Unsafe, encrypted, or duplicate archive member: ' + name)
+                    names.add(name.casefold().rstrip('/'))
+                target.parent.mkdir(parents=True, exist_ok=True)
+                stage = Path(tempfile.mkdtemp(prefix='.extract-', dir=target.parent))
+                for member in members:
+                    output = stage.joinpath(*member.filename.replace('\\', '/').rstrip('/').split('/'))
+                    if member.is_dir():
+                        output.mkdir(parents=True, exist_ok=True)
+                    else:
+                        output.parent.mkdir(parents=True, exist_ok=True)
+                        with source.open(member) as src, output.open('xb') as dst:
+                            shutil.copyfileobj(src, dst, 1024 * 1024)  # ZipFile verifies CRC while reading.
+                        if os.name != 'nt' and (member.external_attr >> 16) & 0o111:
+                            output.chmod(0o755)
+                if archive.stat().st_mtime_ns != info.st_mtime_ns or archive.stat().st_size != info.st_size:
+                    raise ValueError('Archive changed during extraction; retry scan')
+                (stage / '.toolkit-extracted.json').write_text(json.dumps(signature), encoding='utf-8')
+                stage.rename(target)
+                stage = None
+                result['extracted'].append(relative)
+        except (OSError, ValueError, RuntimeError, zipfile.BadZipFile, NotImplementedError) as error:
+            result['errors'].append(relative + ': ' + str(error))
+        finally:
+            if stage is not None:
+                # Only this invocation's validated, uniquely created staging directory.
+                stage.resolve().relative_to(ROOT.resolve())
+                shutil.rmtree(stage)
+    return result
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--what-if', action='store_true', help='Scan without writing')
     parser.add_argument('--full-storage', action='store_true', help='Also measure every storage folder; slower on large SSDs')
+    parser.add_argument('--no-organize', action='store_true', help='Inventory only; leave ZIP packages untouched')
     args = parser.parse_args()
     inventory = scan(args.full_storage)
+    if not args.what_if and not args.no_organize:
+        organization = organize(inventory)
+        if organization['extracted']:
+            inventory = scan(args.full_storage)
+        inventory['organization'] = organization
+        print('ZIP organization:', len(organization['extracted']), 'extracted;', len(organization['skipped']), 'already organized;', len(organization['errors']), 'issues.')
+        for error in organization['errors']: print(error)
     print('Downloaded or ready files present for', sum(t['downloaded'] for t in inventory['tools'].values()),
           'records;', len(inventory['errors']), 'scan errors.')
     if args.what_if:

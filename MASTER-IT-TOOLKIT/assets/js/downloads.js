@@ -27,7 +27,7 @@
    }
    if(!dialog.isConnected)return;
    if(!info.assets.length){status.textContent='This publisher uses its own download or license flow. Choose the platform on the official page, then save the file to '+tool.localFolder+'.';official();return;}
-   status.textContent=window.TOOLKIT_LAUNCHER?'Select the packages to save on your SSD. Downloads are not installed or extracted.':'Open a package link to download through your browser. Start the local launcher for multi-select downloads straight to your SSD.';
+   status.textContent=window.TOOLKIT_LAUNCHER?'Select the packages to save on your SSD. The scan organizes ZIP downloads into Ready folders. Installers are not run.':'Open a package link to download through your browser. Start the local launcher for multi-select downloads straight to your SSD.';
    const inputs=[];
    if(window.TOOLKIT_LAUNCHER){
     const controls=element('div');controls.className='actions';
