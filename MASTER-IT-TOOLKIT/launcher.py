@@ -167,7 +167,7 @@ class Server(ThreadingHTTPServer):
         super().__init__(('127.0.0.1', port), Handler)
         self.origin = 'http://127.0.0.1:' + str(self.server_port)
     def job(self, action, body=None):
-        context = {'tool': (body or {}).get('tool')}
+        context = {'tool': (body or {}).get('tool'), 'startedAt': self.state.get('startedAt',time.time())}
         try:
             if action == 'download':
                 message = tool_downloads.save_selected(self.root, body['tool'], body['assets'], safe_path,
@@ -255,7 +255,8 @@ class Handler(BaseHTTPRequestHandler):
                 if not isinstance(body.get('tool'), str) or not isinstance(body.get('assets'), list) or not 1 <= len(body['assets']) <= 50 or any(not isinstance(a, str) for a in body['assets']): raise ValueError()
         except (ValueError, KeyError, TypeError): return self.reply(400, {'error': 'Invalid action'})
         if not self.server.lock.acquire(False): return self.reply(409, {'error': 'Another action is still running. Close its script terminal first.'})
-        self.server.state = {'busy': True, 'tool': body.get('tool'), 'message': 'Working: ' + action + '. Review any script terminal that opens.'}
+        label = SCRIPTS[action][0] if action in SCRIPTS else ('Updating toolkit from GitHub' if action == 'update' else 'Downloading selected packages')
+        self.server.state = {'busy': True, 'startedAt': time.time(), 'tool': body.get('tool'), 'message': label + '…' + (' Check the script terminal for prompts; close it when finished.' if action in SCRIPTS and SCRIPTS[action][2] == 'windows' else '')}
         threading.Thread(target=self.server.job, args=(action, body), daemon=True).start()
         self.reply(202, self.server.state)
 
@@ -265,6 +266,7 @@ class Handler(BaseHTTPRequestHandler):
         if not self.server.lock.acquire(False): return self.reply(409, {'error': 'Another action is running'})
         temporary = None
         handed_off = False
+        started_at = time.time()
         try:
             query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
             tool = query.get('tool', [''])[0]; name = query.get('name', [''])[0]
@@ -287,12 +289,12 @@ class Handler(BaseHTTPRequestHandler):
                     chunk = self.rfile.read(min(1024 * 1024, size-received))
                     if not chunk: raise ValueError('Import interrupted')
                     output.write(chunk); received += len(chunk)
-                    self.server.state = dict(busy=True, tool=tool, message='Importing ' + name, stage='import', received=received, total=size, file=name)
+                    self.server.state = dict(busy=True, startedAt=started_at, tool=tool, message='Importing ' + name, stage='import', received=received, total=size, file=name)
             with destination.open('xb') as output, temporary.open('rb') as source:
                 try: shutil.copyfileobj(source, output)
                 except Exception:
                     output.close(); destination.unlink(); raise
-            self.server.state = dict(busy=True, tool=tool, message='Scanning imported package…', stage='scan')
+            self.server.state = dict(busy=True, startedAt=started_at, tool=tool, message='Scanning imported package…', stage='scan')
             threading.Thread(target=self.server.job, args=('inventory', {'tool': tool}), daemon=True).start()
             handed_off = True
             # The job now owns the lock.

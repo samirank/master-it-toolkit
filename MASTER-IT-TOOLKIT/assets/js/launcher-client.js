@@ -7,9 +7,25 @@
   let busy = false;
   let initialized = false;
   let lastMessage = '';
+  let refreshing=false, startedAt=0;
+  const activity=document.createElement('aside');activity.id='toolkit-activity';activity.hidden=true;activity.setAttribute('aria-label','Background activity');
+  activity.innerHTML='<span class="activity-spinner" aria-hidden="true"></span><div class="activity-copy"><strong id="activity-title"></strong><p id="activity-message" role="status"></p><small id="activity-elapsed" aria-hidden="true"></small></div><button aria-label="Dismiss activity notification" hidden>×</button>';
+  document.body.append(activity);
+  activity.querySelector('button').onclick=()=>activity.hidden=true;
+  function showActivity(state){
+    activity.hidden=false;activity.classList.toggle('is-working',!!state.busy);activity.classList.toggle('is-error',state.stage==='error');activity.setAttribute('aria-busy',String(!!state.busy));
+    activity.querySelector('button').hidden=!!state.busy;
+    document.getElementById('activity-title').textContent=state.busy?'Working…':state.stage==='error'?'Action stopped':'Finished';
+    document.getElementById('activity-message').textContent=state.message;
+    if(state.busy){if(state.startedAt)startedAt=state.startedAt*1000;else if(!startedAt)startedAt=Date.now();}
+    else{startedAt=0;document.getElementById('activity-elapsed').textContent='';}
+  }
+  setInterval(()=>{if(startedAt){const seconds=Math.floor((Date.now()-startedAt)/1000);document.getElementById('activity-elapsed').textContent='Running · '+Math.floor(seconds/60)+'m '+seconds%60+'s';}},1000);
+  window.addEventListener('toolkit-activity',event=>{showActivity({busy:true,...event.detail});});
   panel.innerHTML = '<h2>Local launcher connected</h2><p>Run a bundled script in its own terminal, or update the toolkit from GitHub. Windows scripts require Windows; repair may require an administrator launcher.</p><div id="launcher-actions" class="actions"></div><progress id="launcher-progress" aria-label="Current transfer progress" max="100" hidden></progress><p id="launcher-status" role="status">Connecting…</p>';
   document.querySelector('.local-label').textContent = 'LAUNCHER MODE';
   async function refresh() {
+    if(refreshing)return;refreshing=true;
     try {
       const response = await fetch(new URL('status', endpoint));
       if (!response.ok) throw new Error('Session unavailable');
@@ -19,9 +35,11 @@
         if(snapshot.ok)window.dispatchEvent(new CustomEvent('toolkit-inventory',{detail:await snapshot.json()}));
         initialized=true;
       }
+      if(state.busy||completed||state.message!==lastMessage&&initialized&&state.stage)showActivity(state);
       lastMessage=state.message;
+      panel.setAttribute('aria-busy',String(busy));
       document.getElementById('launcher-status').textContent = state.message+(state.received!==undefined?' · '+(state.received/1048576).toFixed(1)+' MB'+(state.total?' / '+(state.total/1048576).toFixed(1)+' MB':''):'');
-      const meter=document.getElementById('launcher-progress');meter.hidden=!state.busy||state.received===undefined;if(state.total)meter.value=state.received/state.total*100;else meter.removeAttribute('value');
+      const meter=document.getElementById('launcher-progress');meter.hidden=!state.busy;if(state.total)meter.value=state.received/state.total*100;else meter.removeAttribute('value');
       const actions = document.getElementById('launcher-actions'); actions.replaceChildren();
       for (const item of [...state.scripts, {id:'update', name:'Update toolkit from GitHub', enabled:true}]) {
         const button = document.createElement('button'); button.textContent = item.name;
@@ -30,17 +48,17 @@
         button.onclick = async () => {
           const message = item.id === 'update' ? 'Download and apply the latest toolkit from samirank/master-it-toolkit? Existing files are backed up; locally modified managed files stop the update. Restart the launcher afterward.' : 'Run ' + item.name + '?\n' + item.path + '\nReview the script terminal for prompts and results. PowerShell uses a process-only execution policy; organization policy still applies.';
           if (!confirm(message)) return;
-          button.disabled = true;
+          button.disabled = true;showActivity({busy:true,message:'Starting '+item.name+'…'});
           try {
             const result = await fetch(new URL('action', endpoint), {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:item.id, confirmed:true})});
             const data = await result.json();
             if (!result.ok) throw new Error(data.error);
             await refresh();
-          } catch (error) {document.getElementById('launcher-status').textContent = error.message;}
+          } catch (error) {document.getElementById('launcher-status').textContent = error.message;showActivity({busy:false,stage:'error',message:error.message});await refresh();}
         };
         actions.append(button);
       }
-    } catch (error) {document.getElementById('launcher-status').textContent = 'Launcher disconnected. Restart it to continue.';}
+    } catch (error) {document.getElementById('launcher-status').textContent = 'Launcher disconnected. Restart it to continue.';document.getElementById('launcher-progress').hidden=true;panel.setAttribute('aria-busy','false');showActivity({busy:false,stage:'error',message:'Launcher disconnected. Reconnect to check the task status.'});} finally {refreshing=false;}
   }
   refresh(); setInterval(refresh, 2500);
 })();

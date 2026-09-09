@@ -11,7 +11,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   assert.equal(await page.locator('.local-label').innerText(),'LAUNCHER MODE');
   assert(!(await page.locator('main').innerText()).includes('HOSTED DEMO'));
   page.once('dialog',d=>d.accept());await page.getByRole('button',{name:'Scan local inventory',exact:true}).click();
-  await page.getByText('Test action completed',{exact:true}).waitFor();
+  await page.locator('#launcher-status').filter({hasText:'Test action completed'}).waitFor();
   assert(await page.getByRole('button',{name:'Update toolkit from GitHub',exact:true}).isEnabled());
   assert(!(await page.locator('.page-heading').innerText()).includes('Hosted demo'));
   await page.route('**/api/download-options?tool=7zip',route=>route.fulfill({json:{assets:[{id:'win',name:'test-x64.exe',platform:'Windows'},{id:'linux',name:'test-linux.tar.xz',platform:'Linux'}]}}));
@@ -55,6 +55,26 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.locator('.download-dialog').getByRole('button',{name:'Close',exact:true}).click();
   await page.setViewportSize({width:390,height:844});
   assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  let activityState={busy:true,message:'Scanning fixture files…',startedAt:Date.now()/1000-3,scripts:[]};
+  await page.route('**/api/status',route=>route.fulfill({json:activityState}));
+  await page.waitForFunction(()=>document.getElementById('activity-message').textContent==='Scanning fixture files…');
+  await page.evaluate(()=>document.getElementById('launcher-panel').closest('details').open=false);
+  assert(await page.locator('#toolkit-activity .activity-spinner').isVisible());
+  assert.equal(await page.locator('#toolkit-activity').getAttribute('aria-busy'),'true');
+  assert.equal(await page.locator('#launcher-progress').getAttribute('value'),null);
+  await page.waitForFunction(()=>document.getElementById('activity-elapsed').textContent.includes('Running'));
+  await page.screenshot({path:path.resolve(__dirname,'../../.development/background-activity.png')});
+  for(const message of ['Bulk download running…','Updating toolkit…']){
+   activityState={...activityState,message};await page.waitForFunction(message=>document.getElementById('activity-message').textContent===message,message);
+   assert(await page.locator('#toolkit-activity .activity-spinner').isVisible());
+  }
+  activityState={busy:false,stage:'complete',message:'Fixture work finished',scripts:[]};
+  await page.waitForFunction(()=>document.getElementById('activity-title').textContent==='Finished');
+  assert(!(await page.locator('#toolkit-activity .activity-spinner').isVisible()));
+  activityState={busy:false,stage:'error',message:'Fixture failure',scripts:[]};
+  await page.waitForFunction(()=>document.getElementById('activity-title').textContent==='Action stopped');
+  await page.getByRole('button',{name:'Dismiss activity notification'}).click();
+  assert(!(await page.locator('#toolkit-activity').isVisible()));
   assert.deepEqual(errors,[]);
   console.log('PASS launcher connection, action confirmation, status, update button, mobile layout and no browser errors');
  }finally{if(browser)await browser.close();process.kill();}
