@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+WinSCP
+Official source: https://winscp.net/eng/downloads.php
+Expected files: WinSCP.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

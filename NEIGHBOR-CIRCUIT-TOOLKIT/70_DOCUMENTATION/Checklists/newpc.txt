@@ -1,0 +1,19 @@
+New Windows PC Setup
+
+[ ] Confirm ownership, scope and backup preferences
+[ ] Record model, serial and Windows edition
+[ ] Create a restore point or recoverable baseline backup
+[ ] Run Windows Update and restart; recheck
+[ ] Review BIOS/firmware model, release notes and stable power
+[ ] Install OEM chipset, network and GPU drivers
+[ ] Remove unwanted OEM trialware with owner approval
+[ ] Review supported privacy, advertising and telemetry settings
+[ ] Review Copilot, Recall, Click to Do and app AI preferences
+[ ] Confirm OneDrive known-folder backup and account preferences
+[ ] Check BitLocker status and owner-held recovery-key access
+[ ] Install browser, office suite, PDF reader, 7-Zip and media player
+[ ] Install required Visual C++ / .NET runtimes
+[ ] Test audio, webcam, networking, sleep and peripheral devices
+[ ] Record versions, changes and owner handover
+
+Use index.html > Checklists for interactive saved state.

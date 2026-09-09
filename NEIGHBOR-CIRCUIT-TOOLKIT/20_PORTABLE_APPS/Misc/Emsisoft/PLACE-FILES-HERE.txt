@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Emsisoft Emergency Kit
+Official source: https://www.emsisoft.com/en/emergency-kit/
+Expected files: Start Emergency Kit Scanner.exe
+Commercial/technician use may require a separate paid license. A personal or trial edition does not establish service rights.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

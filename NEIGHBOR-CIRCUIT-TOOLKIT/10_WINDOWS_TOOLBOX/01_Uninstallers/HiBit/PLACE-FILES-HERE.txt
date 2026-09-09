@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+HiBit Uninstaller
+Official source: https://www.hibitsoft.ir/Uninstaller.html
+Expected files: HiBitUninstaller*.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

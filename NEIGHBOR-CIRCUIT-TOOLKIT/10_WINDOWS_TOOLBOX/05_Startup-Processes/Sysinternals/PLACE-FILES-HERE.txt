@@ -1,0 +1,78 @@
+TOOLKIT FILE DESTINATION
+
+Sysinternals Suite
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite
+Expected files: procexp64.exe, Autoruns64.exe
+Review vendor terms for commercial service work and redistribution.
+
+Autoruns
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns
+Expected files: autoruns64.exe
+Review vendor terms for commercial service work and redistribution.
+
+Process Explorer
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer
+Expected files: procexp64.exe
+Review vendor terms for commercial service work and redistribution.
+
+Process Monitor
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/procmon
+Expected files: Procmon64.exe
+Review vendor terms for commercial service work and redistribution.
+
+TCPView
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview
+Expected files: tcpview64.exe
+Review vendor terms for commercial service work and redistribution.
+
+RAMMap
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/rammap
+Expected files: RAMMap64.exe
+Review vendor terms for commercial service work and redistribution.
+
+Disk2vhd
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/disk2vhd
+Expected files: disk2vhd64.exe
+Review vendor terms for commercial service work and redistribution.
+
+Sigcheck
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/sigcheck
+Expected files: sigcheck64.exe
+Review vendor terms for commercial service work and redistribution.
+
+PsTools
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/pstools
+Expected files: PsInfo64.exe
+Review vendor terms for commercial service work and redistribution.
+
+ProcDump
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/procdump
+Expected files: procdump64.exe
+Review vendor terms for commercial service work and redistribution.
+
+Handle
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/handle
+Expected files: handle64.exe
+Review vendor terms for commercial service work and redistribution.
+
+Strings
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/strings
+Expected files: strings64.exe
+Review vendor terms for commercial service work and redistribution.
+
+SDelete
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/sdelete
+Expected files: sdelete64.exe
+Review vendor terms for commercial service work and redistribution.
+
+ZoomIt
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit
+Expected files: ZoomIt64.exe
+Review vendor terms for commercial service work and redistribution.
+
+PsPing
+Official source: https://learn.microsoft.com/en-us/sysinternals/downloads/psping
+Expected files: psping64.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

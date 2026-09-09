@@ -1,0 +1,14 @@
+Gaming PC Troubleshooting
+
+[ ] Record game, symptom and reproducible workload
+[ ] Review Reliability Monitor and crash timestamps
+[ ] Return CPU/GPU/RAM tuning to defaults for baseline
+[ ] Check temperatures, cooling and power connectors
+[ ] Check RAM and storage health
+[ ] Stage and install model-matched GPU drivers
+[ ] Verify required runtimes and game files
+[ ] Test one subsystem at a time while monitoring temperatures
+[ ] Preserve Xbox/anti-cheat dependencies required by games
+[ ] Repeat original workload and record result
+
+Use index.html > Checklists for interactive saved state.

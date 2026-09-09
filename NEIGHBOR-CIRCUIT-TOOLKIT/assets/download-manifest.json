@@ -1,0 +1,14 @@
+[
+  {
+    "id": "sysinternals",
+    "name": "Sysinternals Suite archive",
+    "url": "https://download.sysinternals.com/files/SysinternalsSuite.zip",
+    "allowedHosts": ["download.sysinternals.com"],
+    "destination": "10_WINDOWS_TOOLBOX/05_Startup-Processes/Sysinternals/SysinternalsSuite.zip",
+    "sourcePage": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite",
+    "sha256": "",
+    "checksumPublished": false,
+    "licenseRequired": false,
+    "notes": "Official Microsoft archive. No publisher SHA256 is recorded here. Extract manually and verify Microsoft Authenticode signatures before use. Other downloads remain manual until a reviewed direct URL and checksum policy are added."
+  }
+]

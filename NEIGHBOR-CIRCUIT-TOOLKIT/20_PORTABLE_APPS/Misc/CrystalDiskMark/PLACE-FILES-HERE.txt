@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+CrystalDiskMark
+Official source: https://crystalmark.info/en/software/crystaldiskmark/
+Expected files: DiskMark64.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

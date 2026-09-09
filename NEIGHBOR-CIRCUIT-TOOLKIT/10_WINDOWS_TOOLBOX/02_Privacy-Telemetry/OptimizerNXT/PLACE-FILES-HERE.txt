@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+OptimizerNXT
+Official source: https://github.com/hellzerg/optimizerNXT/releases
+Expected files: optimizerNXT.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

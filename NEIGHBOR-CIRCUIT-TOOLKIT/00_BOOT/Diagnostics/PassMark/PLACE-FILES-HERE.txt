@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+PassMark MemTest86
+Official source: https://www.memtest86.com/download.htm
+Expected files: memtest86*.img
+Commercial/technician use may require a separate paid license. A personal or trial edition does not establish service rights.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

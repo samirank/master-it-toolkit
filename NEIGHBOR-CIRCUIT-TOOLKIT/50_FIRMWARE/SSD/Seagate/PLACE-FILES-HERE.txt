@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+SeaTools
+Official source: https://www.seagate.com/support/downloads/seatools/
+Expected files: *.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

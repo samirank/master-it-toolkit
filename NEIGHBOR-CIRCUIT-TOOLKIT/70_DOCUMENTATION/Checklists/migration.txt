@@ -1,0 +1,14 @@
+Data Migration
+
+[ ] Identify source, destination and owner-approved data scope
+[ ] Check source health, encryption and cloud-only placeholders
+[ ] Create an independent backup before migration
+[ ] Download necessary synced files and verify availability
+[ ] Preview copy paths; avoid mirror/delete modes
+[ ] Copy to healthy destination with verification
+[ ] Compare counts, sizes and open critical sample files
+[ ] Confirm Desktop, Documents, Pictures and application data
+[ ] Do not transfer unknown persistence or compromised executables
+[ ] Keep original until the owner approves the migration
+
+Use index.html > Checklists for interactive saved state.

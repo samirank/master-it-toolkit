@@ -1,0 +1,14 @@
+Failing Disk
+
+[ ] Stop unnecessary use and writes
+[ ] Discuss professional recovery for physical damage or irreplaceable files
+[ ] Record drive serial, capacity and minimal health observations
+[ ] Prepare a healthy destination large enough for image and recovery output
+[ ] Image first with a resumable mapfile, if appropriate
+[ ] Preserve source and original image
+[ ] Recover from a working image copy
+[ ] Save recovered files to separate healthy storage
+[ ] Verify critical files with owner
+[ ] Replace failed media and document outcome
+
+Use index.html > Checklists for interactive saved state.

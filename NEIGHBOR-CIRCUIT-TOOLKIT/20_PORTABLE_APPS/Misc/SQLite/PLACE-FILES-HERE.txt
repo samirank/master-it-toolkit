@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+SQLite tools
+Official source: https://sqlite.org/download.html
+Expected files: sqlite3.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

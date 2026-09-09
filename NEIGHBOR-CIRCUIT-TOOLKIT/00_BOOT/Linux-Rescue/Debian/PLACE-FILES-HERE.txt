@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Debian Live
+Official source: https://www.debian.org/CD/live/
+Expected files: debian-live*.iso
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

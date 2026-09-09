@@ -1,0 +1,18 @@
+TOOLKIT FILE DESTINATION
+
+SystemRescue
+Official source: https://www.system-rescue.org/Download/
+Expected files: systemrescue*.iso
+Review vendor terms for commercial service work and redistribution.
+
+GParted Live
+Official source: https://gparted.org/download.php
+Expected files: gparted-live*.iso
+Review vendor terms for commercial service work and redistribution.
+
+Ubuntu Live
+Official source: https://ubuntu.com/download/desktop
+Expected files: ubuntu*.iso
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

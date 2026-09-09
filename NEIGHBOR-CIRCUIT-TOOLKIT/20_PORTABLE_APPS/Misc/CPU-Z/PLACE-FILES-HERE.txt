@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+CPU-Z
+Official source: https://www.cpuid.com/softwares/cpu-z.html
+Expected files: cpuz_x64.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

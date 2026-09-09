@@ -1,0 +1,14 @@
+PC Won't Boot
+
+[ ] Record error, recent changes and firmware boot mode
+[ ] Check power, cables and firmware disk detection
+[ ] Confirm BitLocker key availability with owner
+[ ] Check drive health before filesystem or boot repair
+[ ] Back up / image important data
+[ ] Use Windows RE Startup Repair
+[ ] Identify Windows and EFI partitions before manual repair
+[ ] Review BCD and WinRE configuration without blanket changes
+[ ] Test repeated cold boots
+[ ] Record cause and successful recovery steps
+
+Use index.html > Checklists for interactive saved state.

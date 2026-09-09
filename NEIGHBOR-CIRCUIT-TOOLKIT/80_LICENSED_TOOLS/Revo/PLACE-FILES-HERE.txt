@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Revo Uninstaller Pro Portable
+Official source: https://www.revouninstaller.com/revo-uninstaller-free-download/
+Expected files: RevoUPPort.exe
+Portable licensing is per user rather than per computer. Obtain the paid portable package from your account and verify the current license scope for client service.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

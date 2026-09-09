@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+AnyDesk
+Official source: https://anydesk.com/en/downloads/windows
+Expected files: AnyDesk.exe
+Commercial/technician use may require a separate paid license. A personal or trial edition does not establish service rights.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

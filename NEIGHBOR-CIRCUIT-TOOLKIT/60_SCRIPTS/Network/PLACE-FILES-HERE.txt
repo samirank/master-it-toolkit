@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Inspect network configuration
+Official source: Included local asset
+Expected files: Get-NetworkDiagnostics.ps1
+Review and adapt to the authorized service task.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

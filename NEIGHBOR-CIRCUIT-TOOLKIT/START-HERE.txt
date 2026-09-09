@@ -1,0 +1,29 @@
+NEIGHBOR CIRCUIT TOOLKIT
+Offline PC Rescue & Field Service Toolkit
+
+1. Open index.html in Edge, Chrome or Firefox. No server or internet is needed
+   for the dashboard. Software downloads and certain tools need internet.
+2. This package contains the dashboard, catalog, scripts and references.
+   It DOES NOT include tool binaries, ISOs, drivers or commercial licenses.
+3. To prepare the SSD, back up existing data, then install Ventoy using its
+   official installer. INITIAL VENTOY INSTALLATION ERASES THE SELECTED DRIVE.
+   Verify the correct Gigastone SSD by model and capacity before proceeding.
+4. Copy this project's contents to the Ventoy DATA partition root, so that
+   index.html is at X:\index.html. Do not copy to the small EFI partition.
+5. Open Missing Downloads. Start with P1 boot tools, offline network drivers
+   and portable diagnostics. Download from the official links; extract
+   portable archives into the destinations shown. Do not rename an installer
+   to masquerade as a portable executable.
+6. Open PowerShell in the toolkit root and review/run:
+   .\60_SCRIPTS\Inventory\Update-ToolkitInventory.ps1
+   Then reload index.html. PowerShell is for maintenance only, not browsing.
+7. Keep at least 20-30 GB free. Store customer recovery output on separate
+   healthy media, never on the damaged source.
+8. Read README.txt for licensing, inventory limitations, updates and backups.
+
+Favorites, checklists and notes are saved in this browser on this PC, not
+automatically on the SSD. Use Settings > Export workspace backup to move them.
+Never record customer passwords, recovery codes or authentication secrets.
+
+AUTHORIZED SYSTEMS ONLY. No authentication or BitLocker bypass is included.
+No unattended remote access is automatically configured.

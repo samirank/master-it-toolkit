@@ -1,0 +1,14 @@
+Before Returning Customer PC
+
+[ ] Verify the original issue is resolved using the original workload
+[ ] Check updates, Defender, firewall and restore configuration
+[ ] Verify user data, applications, printing and peripherals
+[ ] Confirm BitLocker recovery key is held by the owner
+[ ] Remove temporary remote access and technician accounts if created
+[ ] Remove customer copies from toolkit according to agreed retention
+[ ] Remove test files and close customer sessions
+[ ] Export service notes without credentials
+[ ] Document changes, licenses and remaining issues
+[ ] Obtain owner acceptance and disconnect toolkit safely
+
+Use index.html > Checklists for interactive saved state.

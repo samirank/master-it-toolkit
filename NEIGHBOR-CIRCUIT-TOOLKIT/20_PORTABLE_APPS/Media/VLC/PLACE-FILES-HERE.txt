@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+VLC Portable
+Official source: https://portableapps.com/apps/music_video/vlc_portable
+Expected files: VLCPortable.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+iperf3
+Official source: https://software.es.net/iperf/obtaining.html
+Expected files: iperf3
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

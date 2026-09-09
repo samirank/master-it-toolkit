@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Scoop
+Official source: https://scoop.sh/
+Expected files: online setup only
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

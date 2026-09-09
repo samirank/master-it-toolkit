@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+DirectX End-User Runtimes
+Official source: https://www.microsoft.com/en-us/download/details.aspx?id=8109
+Expected files: directx*.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

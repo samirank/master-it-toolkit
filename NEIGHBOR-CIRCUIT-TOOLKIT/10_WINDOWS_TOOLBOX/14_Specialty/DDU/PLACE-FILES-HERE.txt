@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Display Driver Uninstaller
+Official source: https://www.wagnardsoft.com/display-driver-uninstaller-DDU-
+Expected files: Display Driver Uninstaller.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Chris Titus Tech WinUtil
+Official source: https://github.com/ChrisTitusTech/winutil/releases
+Expected files: winutil.ps1
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

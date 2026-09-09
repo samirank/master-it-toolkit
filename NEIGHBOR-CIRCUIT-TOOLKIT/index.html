@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Neighbor Circuit Toolkit</title>
+  <link rel="icon" href="assets/icons/toolkit.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <script defer src="assets/js/tools-data.js"></script>
+  <script defer src="assets/js/categories.js"></script>
+  <script defer src="assets/js/guides-data.js"></script>
+  <script defer src="assets/js/paths.js"></script>
+  <script defer src="assets/js/site-config.js"></script>
+  <script defer src="assets/js/inventory-default.js"></script>
+  <script defer src="assets/js/local-inventory.js" onerror="window.LOCAL_INVENTORY={tools:{}}"></script>
+  <script defer src="assets/js/metadata.js" onerror="window.TOOLKIT_METADATA={}"></script>
+  <script defer src="assets/js/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to workspace</a>
+  <aside class="sidebar" aria-label="Main navigation">
+    <a class="brand" href="#home"><img src="assets/icons/toolkit.svg" alt="" width="34" height="34"><span>NEIGHBOR<span class="brand-sub">CIRCUIT TOOLKIT</span></span><span class="edition">V1</span></a>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav id="primary-nav"></nav>
+    <div class="workspace-label category-label">TOOL CATEGORIES <span id="category-count"></span></div>
+    <nav id="category-nav"></nav>
+    <div class="sidebar-foot"><span class="dot"></span> OFFLINE WORKSPACE <small>Local files. Ready when you are.</small></div>
+  </aside>
+  <div class="shell">
+    <header class="topbar"><div><div class="app-title">Neighbor Circuit Toolkit</div><div class="subtitle">Offline PC Rescue &amp; Field Service Toolkit</div></div><div class="header-actions"><span class="local-label"><span class="dot"></span> LOCAL MODE</span><button id="theme" title="Toggle dark/light theme" aria-label="Toggle dark/light theme">☼</button><button data-nav="settings" aria-label="Settings" title="Settings">⚙</button></div></header>
+    <div class="searchbar"><label class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search tools, symptoms, commands…" autocomplete="off" aria-label="Search toolkit"><kbd>/</kbd></label><button id="favorites-filter" aria-pressed="false">☆ Favorites</button><button id="installed-filter" aria-pressed="false">✓ Installed only</button></div>
+    <main id="main" tabindex="-1"></main>
+    <footer class="footer"><span>NEIGHBOR CIRCUIT <span class="muted">/</span> FIELD SERVICE EDITION</span><span id="inventory-footer">Inventory has not been scanned</span><a href="START-HERE.txt">Start here ↗</a></footer>
+  </div>
+  <dialog id="detail" aria-labelledby="dialog-title"><button class="dialog-close" aria-label="Close dialog">✕</button><div id="detail-body"></div></dialog>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <noscript>This offline dashboard needs JavaScript enabled. No server is required. Open START-HERE.txt for instructions.</noscript>
+</body>
+</html>

@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Veeam Agent for Microsoft Windows
+Official source: https://www.veeam.com/products/free/microsoft-windows.html
+Expected files: *.exe
+Commercial/technician use may require a separate paid license. A personal or trial edition does not establish service rights.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

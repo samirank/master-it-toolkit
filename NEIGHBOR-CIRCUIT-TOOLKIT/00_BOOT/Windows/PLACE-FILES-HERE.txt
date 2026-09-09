@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Windows 11 ISO
+Official source: https://www.microsoft.com/en-us/software-download/windows11
+Expected files: Win11*.iso
+Commercial/technician use may require a separate paid license. A personal or trial edition does not establish service rights.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

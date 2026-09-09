@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+GPU-Z
+Official source: https://www.techpowerup.com/gpuz/
+Expected files: GPU-Z*.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

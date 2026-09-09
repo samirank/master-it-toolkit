@@ -1,0 +1,13 @@
+TOOLKIT FILE DESTINATION
+
+Rescuezilla
+Official source: https://rescuezilla.com/download
+Expected files: rescuezilla*.iso
+Review vendor terms for commercial service work and redistribution.
+
+Clonezilla Live
+Official source: https://clonezilla.org/downloads.php
+Expected files: clonezilla-live*.iso
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

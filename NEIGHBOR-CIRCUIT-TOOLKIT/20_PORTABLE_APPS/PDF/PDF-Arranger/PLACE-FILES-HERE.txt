@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+PDF Arranger
+Official source: https://github.com/pdfarranger/pdfarranger/releases
+Expected files: pdfarranger.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

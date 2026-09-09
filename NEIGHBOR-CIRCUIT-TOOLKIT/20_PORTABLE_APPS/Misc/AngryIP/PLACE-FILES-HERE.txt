@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Angry IP Scanner
+Official source: https://angryip.org/download/
+Expected files: ipscan*.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

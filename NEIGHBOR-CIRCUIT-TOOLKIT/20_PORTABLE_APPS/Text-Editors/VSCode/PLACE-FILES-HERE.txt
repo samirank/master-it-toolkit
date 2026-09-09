@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Visual Studio Code Portable
+Official source: https://code.visualstudio.com/docs/setup/portable
+Expected files: Code.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

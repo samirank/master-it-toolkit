@@ -1,0 +1,18 @@
+TOOLKIT FILE DESTINATION
+
+Update toolkit inventory
+Official source: Included local asset
+Expected files: Update-ToolkitInventory.ps1
+Review and adapt to the authorized service task.
+
+Update toolkit metadata
+Official source: Included local asset
+Expected files: Update-ToolkitMetadata.ps1
+Review and adapt to the authorized service task.
+
+Preview / download reviewed tools
+Official source: Included local asset
+Expected files: Download-MissingTools.ps1
+Review and adapt to the authorized service task.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

@@ -1,0 +1,13 @@
+TOOLKIT FILE DESTINATION
+
+TestDisk
+Official source: https://www.cgsecurity.org/wiki/TestDisk_Download
+Expected files: testdisk_win.exe
+Review vendor terms for commercial service work and redistribution.
+
+PhotoRec
+Official source: https://www.cgsecurity.org/wiki/TestDisk_Download
+Expected files: photorec_win.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

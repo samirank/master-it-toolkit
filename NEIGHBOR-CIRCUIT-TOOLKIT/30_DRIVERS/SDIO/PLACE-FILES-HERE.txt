@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Snappy Driver Installer Origin
+Official source: https://www.snappy-driver-installer.org/
+Expected files: SDIO_x64*.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

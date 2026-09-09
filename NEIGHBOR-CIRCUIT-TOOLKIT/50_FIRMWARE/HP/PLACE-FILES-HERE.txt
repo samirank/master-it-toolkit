@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+HP firmware / BIOS support
+Official source: https://support.hp.com/us-en/drivers
+Expected files: *.exe, *.msi, *.zip, *.cab, *.inf, *.bin, *.cap
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

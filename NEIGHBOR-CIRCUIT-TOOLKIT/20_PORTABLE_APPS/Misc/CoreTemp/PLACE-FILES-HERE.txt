@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Core Temp
+Official source: https://www.alcpu.com/CoreTemp/
+Expected files: Core Temp.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

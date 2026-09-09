@@ -1,0 +1,14 @@
+SSD Upgrade
+
+[ ] Confirm interface, form factor and capacity compatibility
+[ ] Check source health and encryption
+[ ] Create verified backup and confirm recovery-key access
+[ ] Record both disk serials before cloning
+[ ] Use guided clone/image tool for healthy media
+[ ] Do not interrupt copy; maintain stable power
+[ ] Disconnect original before first boot of clone
+[ ] Verify partitions, files, applications and boot behavior
+[ ] Check SSD health and available space
+[ ] Retain original until verification and handover are complete
+
+Use index.html > Checklists for interactive saved state.

@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+PuTTY
+Official source: https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+Expected files: putty.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

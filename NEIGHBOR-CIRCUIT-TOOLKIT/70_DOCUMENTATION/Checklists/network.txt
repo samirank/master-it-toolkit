@@ -1,0 +1,14 @@
+Network Troubleshooting
+
+[ ] Check cable, link LEDs, airplane mode and adapter state
+[ ] Confirm driver hardware ID and link speed
+[ ] Record IP, mask, gateway, DNS and DHCP status
+[ ] Test the gateway and another LAN device
+[ ] Compare known external IP and DNS lookup results
+[ ] Check duplicate IP against DHCP leases / neighbor table
+[ ] Test required TCP port and proxy/VPN configuration
+[ ] Compare known-good Ethernet cable and Wi-Fi location
+[ ] Run authorized throughput or packet capture tests if needed
+[ ] Document changes and restore temporary test settings
+
+Use index.html > Checklists for interactive saved state.

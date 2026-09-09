@@ -1,0 +1,1388 @@
+[
+  {
+    "url": "https://angryip.org/download/",
+    "status": 200,
+    "finalUrl": "https://angryip.org/download/",
+    "title": "Angry IP Scanner - Download for Windows, Mac or Linux",
+    "checkedAt": "2026-09-09T20:17:51.192186+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://anydesk.com/en/downloads/windows",
+    "status": "unconfirmed",
+    "error": "HTTP Error 403: Forbidden",
+    "checkedAt": "2026-09-09T20:17:51.239282+00:00"
+  },
+  {
+    "url": "https://chocolatey.org/install",
+    "status": 200,
+    "finalUrl": "https://chocolatey.org/install",
+    "title": "Chocolatey Software | Installing Chocolatey",
+    "checkedAt": "2026-09-09T20:17:51.290904+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://chromeenterprise.google/download/",
+    "status": 200,
+    "finalUrl": "https://chromeenterprise.google/download/",
+    "title": "Enterprise Browser Download for Windows & Mac - Chrome Enterprise",
+    "checkedAt": "2026-09-09T20:17:51.389132+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://clonezilla.org/downloads.php",
+    "status": "unconfirmed",
+    "error": "HTTP Error 403: Forbidden",
+    "checkedAt": "2026-09-09T20:17:51.215242+00:00"
+  },
+  {
+    "url": "https://code.visualstudio.com/docs/setup/portable",
+    "status": 200,
+    "finalUrl": "https://code.visualstudio.com/docs/setup/portable",
+    "title": "Portable mode",
+    "checkedAt": "2026-09-09T20:17:51.490880+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://crystalmark.info/en/software/crystaldiskinfo/",
+    "status": 200,
+    "finalUrl": "https://crystalmark.info/en/software/crystaldiskinfo/",
+    "title": "CrystalDiskInfo \u2013 Crystal Dew World",
+    "checkedAt": "2026-09-09T20:17:51.769542+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://crystalmark.info/en/software/crystaldiskmark/",
+    "status": 200,
+    "finalUrl": "https://crystalmark.info/en/software/crystaldiskmark/",
+    "title": "CrystalDiskMark \u2013 Crystal Dew World",
+    "checkedAt": "2026-09-09T20:17:52.329734+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://curl.se/windows/",
+    "status": 200,
+    "finalUrl": "https://curl.se/windows/",
+    "title": "curl for Windows",
+    "checkedAt": "2026-09-09T20:17:51.314966+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://diskanalyzer.com/download",
+    "status": 200,
+    "finalUrl": "https://diskanalyzer.com/download",
+    "title": "Download WizTree",
+    "checkedAt": "2026-09-09T20:17:51.543019+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://dmde.com/download.html",
+    "status": 200,
+    "finalUrl": "https://dmde.com/download.html",
+    "title": "Download DMDE - All Versions (DM Disk Editor and Data Recovery Software)",
+    "checkedAt": "2026-09-09T20:17:51.136549+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://docs.kernel.org/admin-guide/md.html",
+    "status": 200,
+    "finalUrl": "https://docs.kernel.org/admin-guide/md.html",
+    "title": "RAID arrays \u2014 The Linux Kernel documentation",
+    "checkedAt": "2026-09-09T20:17:51.159597+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://dotnet.microsoft.com/en-us/download/dotnet",
+    "status": 200,
+    "finalUrl": "https://dotnet.microsoft.com/en-us/download/dotnet",
+    "title": "Browse all .NET versions to download | .NET",
+    "checkedAt": "2026-09-09T20:17:51.241788+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://download.battle.net/",
+    "status": 200,
+    "finalUrl": "https://download.battle.net/en-us/",
+    "title": "Download Battle.net | Battle.net",
+    "checkedAt": "2026-09-09T20:17:52.421533+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://etcher.balena.io/",
+    "status": 200,
+    "finalUrl": "https://etcher.balena.io/",
+    "title": "balenaEtcher - Flash OS images to SD cards & USB drives",
+    "checkedAt": "2026-09-09T20:17:51.464317+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://fastcopy.jp/",
+    "status": 200,
+    "finalUrl": "https://fastcopy.jp/",
+    "title": "FastCopy",
+    "checkedAt": "2026-09-09T20:17:51.736451+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://freefilesync.org/download.php",
+    "status": 200,
+    "finalUrl": "https://freefilesync.org/download.php",
+    "title": "Download the Latest Version - FreeFileSync",
+    "checkedAt": "2026-09-09T20:17:51.617205+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://ftp.ext.hp.com/pub/caps-softpaq/cmit/HPIA.html",
+    "status": 200,
+    "finalUrl": "https://ftp.ext.hp.com/pub/caps-softpaq/cmit/HPIA.html",
+    "title": "HP Image Assistant | HP Client Management Solutions",
+    "checkedAt": "2026-09-09T20:17:51.363576+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://geeks3d.com/furmark/",
+    "status": 200,
+    "finalUrl": "https://geeks3d.com/furmark/",
+    "title": "FurMark Homepage",
+    "checkedAt": "2026-09-09T20:17:51.805662+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://geekuninstaller.com/download",
+    "status": 200,
+    "finalUrl": "https://geekuninstaller.com/download",
+    "title": "Geek Uninstaller - Download",
+    "checkedAt": "2026-09-09T20:17:51.438751+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://git-scm.com/downloads/win",
+    "status": 200,
+    "finalUrl": "https://git-scm.com/downloads/win",
+    "title": "Redirecting\u2026",
+    "checkedAt": "2026-09-09T20:17:51.413700+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/ChrisTitusTech/winutil",
+    "status": 200,
+    "finalUrl": "https://github.com/ChrisTitusTech/winutil",
+    "title": "GitHub - ChrisTitusTech/winutil: Chris Titus Tech's Windows Utility - Install Programs, Tweaks, Fixes, and Updates \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.084613+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/ChrisTitusTech/winutil/releases",
+    "status": 200,
+    "finalUrl": "https://github.com/ChrisTitusTech/winutil/releases",
+    "title": "Releases \u00b7 ChrisTitusTech/winutil \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.851087+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/Devolutions/UniGetUI",
+    "status": 200,
+    "finalUrl": "https://github.com/Devolutions/UniGetUI",
+    "title": "GitHub - Devolutions/UniGetUI: UniGetUI: The Graphical Interface for your package managers. Could be terribly described as a package manager manager to manage your package managers \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.380847+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/Devolutions/UniGetUI/releases",
+    "status": 200,
+    "finalUrl": "https://github.com/Devolutions/UniGetUI/releases",
+    "title": "Releases \u00b7 Devolutions/UniGetUI \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.490186+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/M2Team/NanaZip",
+    "status": 200,
+    "finalUrl": "https://github.com/M2Team/NanaZip",
+    "title": "GitHub - M2Team/NanaZip: The 7-Zip derivative intended for the modern Windows experience \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.356294+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/M2Team/NanaZip/releases",
+    "status": 200,
+    "finalUrl": "https://github.com/M2Team/NanaZip/releases",
+    "title": "Releases \u00b7 M2Team/NanaZip \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.448588+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/PowerShell/PowerShell",
+    "status": 200,
+    "finalUrl": "https://github.com/PowerShell/PowerShell",
+    "title": "GitHub - PowerShell/PowerShell: PowerShell for every system! \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.298158+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/PowerShell/PowerShell/releases",
+    "status": 200,
+    "finalUrl": "https://github.com/PowerShell/PowerShell/releases",
+    "title": "Releases \u00b7 PowerShell/PowerShell \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.579368+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/Raphire/Win11Debloat",
+    "status": 200,
+    "finalUrl": "https://github.com/Raphire/Win11Debloat",
+    "title": "GitHub - Raphire/Win11Debloat: A simple, lightweight PowerShell script that allows you to remove pre-installed apps, disable telemetry, as well as perform various other changes to declutter and customize your Windows experience. Win11Debloat works for both Windows 10 and Windows 11. \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.179886+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/Raphire/Win11Debloat/releases",
+    "status": 200,
+    "finalUrl": "https://github.com/Raphire/Win11Debloat/releases",
+    "title": "Releases \u00b7 Raphire/Win11Debloat \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.555819+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/hellzerg/optimizerNXT",
+    "status": 200,
+    "finalUrl": "https://github.com/hellzerg/optimizerNXT",
+    "title": "GitHub - hellzerg/optimizerNXT: The finest Windows Optimizer CLI \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.354293+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/hellzerg/optimizerNXT/releases",
+    "status": 200,
+    "finalUrl": "https://github.com/hellzerg/optimizerNXT/releases",
+    "title": "Releases \u00b7 hellzerg/optimizerNXT \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.423548+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/pdfarranger/pdfarranger",
+    "status": 200,
+    "finalUrl": "https://github.com/pdfarranger/pdfarranger",
+    "title": "GitHub - pdfarranger/pdfarranger: Small python-gtk application, which helps the user to merge or split PDF documents and rotate, crop and rearrange their pages using an interactive and intuitive graphical interface. \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.922293+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://github.com/pdfarranger/pdfarranger/releases",
+    "status": 200,
+    "finalUrl": "https://github.com/pdfarranger/pdfarranger/releases",
+    "title": "Releases \u00b7 pdfarranger/pdfarranger \u00b7 GitHub",
+    "checkedAt": "2026-09-09T20:17:52.751312+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://gparted.org/download.php",
+    "status": 200,
+    "finalUrl": "https://gparted.org/download.php",
+    "title": "GParted -- Download",
+    "checkedAt": "2026-09-09T20:17:52.491691+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://gsmartcontrol.shaduri.dev/downloads",
+    "status": 200,
+    "finalUrl": "https://gsmartcontrol.shaduri.dev/downloads",
+    "title": "Downloads \u00b7 GSmartControl",
+    "checkedAt": "2026-09-09T20:17:52.491691+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://handbrake.fr/downloads.php",
+    "status": 200,
+    "finalUrl": "https://handbrake.fr/downloads.php",
+    "title": "HandBrake: Downloads",
+    "checkedAt": "2026-09-09T20:17:53.151057+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://hddscan.com/",
+    "status": 200,
+    "finalUrl": "https://hddscan.com/",
+    "title": "HDDScan - FREE HDD and SSD Test Diagnostics Software with RAID and USB Flash support",
+    "checkedAt": "2026-09-09T20:17:52.958872+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://jqlang.org/download/",
+    "status": 200,
+    "finalUrl": "https://jqlang.org/download/",
+    "title": "Download jq",
+    "checkedAt": "2026-09-09T20:17:52.685670+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170",
+    "title": "Latest Supported Visual C++ Redistributable Downloads | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:52.985979+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/defender-endpoint/safety-scanner-download",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/defender-endpoint/safety-scanner-download",
+    "title": "Microsoft Safety Scanner Download - Microsoft Defender for Endpoint | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:52.653572+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/surface/manage-surface-driver-and-firmware-updates",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/surface/manage-surface-driver-and-firmware-updates",
+    "title": "Manage & deploy Surface driver & firmware updates - Surface | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:52.716237+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns",
+    "title": "Autoruns - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:52.811989+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/disk2vhd",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/disk2vhd",
+    "title": "Disk2vhd - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:52.752323+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/handle",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/handle",
+    "title": "Handle - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.014554+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/procdump",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/procdump",
+    "title": "ProcDump - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:52.809473+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer",
+    "title": "Process Explorer - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:52.847580+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/procmon",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/procmon",
+    "title": "Process Monitor - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.069848+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/psping",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/psping",
+    "title": "PsPing - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.015556+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/pstools",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/pstools",
+    "title": "PsTools - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.072367+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/rammap",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/rammap",
+    "title": "RAMMap - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.069848+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sdelete",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/sdelete",
+    "title": "SDelete - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.189679+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sigcheck",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/sigcheck",
+    "title": "Sigcheck - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.420190+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/strings",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/strings",
+    "title": "Strings - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.220255+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite",
+    "title": "Sysinternals Suite - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.326785+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview",
+    "title": "TCPView for Windows - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.327784+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit",
+    "title": "ZoomIt - Sysinternals | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.377090+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/what-is-dism",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/what-is-dism?view=windows-11",
+    "title": "DISM Overview | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.703748+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/arp",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/arp",
+    "title": "arp | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.296213+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/bcdedit",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/bcdedit",
+    "title": "bcdedit | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.704749+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk",
+    "title": "chkdsk | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.421701+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cipher",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cipher",
+    "title": "cipher | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.529281+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/diskpart",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/diskpart",
+    "title": "diskpart | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.566388+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig",
+    "title": "ipconfig | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.505223+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/manage-bde",
+    "title": "manage-bde | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.565389+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/msinfo32",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/msinfo32",
+    "title": "msinfo32 | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.451061+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup",
+    "title": "nslookup | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.648594+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping",
+    "title": "ping | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.649592+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/powercfg",
+    "status": "unconfirmed",
+    "error": "HTTP Error 404: Not Found",
+    "checkedAt": "2026-09-09T20:17:53.564390+00:00"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy",
+    "title": "Robocopy | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.773919+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/sfc",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/sfc",
+    "title": "sfc | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:54.787105+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tracert",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tracert",
+    "title": "tracert | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.804496+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands",
+    "status": 200,
+    "finalUrl": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands",
+    "title": "Windows commands | Microsoft Learn",
+    "checkedAt": "2026-09-09T20:17:53.837080+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://mediaarea.net/en/MediaInfo/Download/Windows",
+    "status": 200,
+    "finalUrl": "https://mediaarea.net/en/MediaInfo/Download/Windows",
+    "title": "MediaInfo - Download MediaInfo for Microsoft Windows",
+    "checkedAt": "2026-09-09T20:17:53.885220+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://memtest.org/",
+    "status": 200,
+    "finalUrl": "https://memtest.org/",
+    "title": "Memtest86+ | The Open-Source Memory Testing Tool",
+    "checkedAt": "2026-09-09T20:17:54.521547+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://nmap.org/download.html",
+    "status": 200,
+    "finalUrl": "https://nmap.org/download.html",
+    "title": "Download the Free Nmap Security Scanner for Linux/Mac/Windows",
+    "checkedAt": "2026-09-09T20:17:53.835079+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://notepad-plus-plus.org/downloads/",
+    "status": 200,
+    "finalUrl": "https://notepad-plus-plus.org/downloads/",
+    "title": "Downloads | Notepad++",
+    "checkedAt": "2026-09-09T20:17:54.579181+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://openzfs.github.io/openzfs-docs/",
+    "status": 200,
+    "finalUrl": "https://openzfs.github.io/openzfs-docs/",
+    "title": "OpenZFS Documentation \u2014 OpenZFS documentation",
+    "checkedAt": "2026-09-09T20:17:53.919791+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://portableapps.com/apps/internet/firefox_portable",
+    "status": 200,
+    "finalUrl": "https://portableapps.com/apps/internet/firefox_portable",
+    "title": "Mozilla Firefox, Portable Edition | PortableApps.com",
+    "checkedAt": "2026-09-09T20:17:54.640842+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://portableapps.com/apps/music_video/vlc_portable",
+    "status": 200,
+    "finalUrl": "https://portableapps.com/apps/music_video/vlc_portable",
+    "title": "VLC Media Player Portable | PortableApps.com",
+    "checkedAt": "2026-09-09T20:17:54.305933+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://portableapps.com/apps/office/libreoffice_portable",
+    "status": 200,
+    "finalUrl": "https://portableapps.com/apps/office/libreoffice_portable",
+    "title": "LibreOffice Portable Stable | PortableApps.com",
+    "checkedAt": "2026-09-09T20:17:54.405224+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://rescuezilla.com/download",
+    "status": 200,
+    "finalUrl": "https://rescuezilla.com/download",
+    "title": "Download | Rescuezilla (Clonezilla GUI)",
+    "checkedAt": "2026-09-09T20:17:53.920790+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://rsync.samba.org/",
+    "status": 200,
+    "finalUrl": "https://rsync.samba.org/",
+    "title": "rsync",
+    "checkedAt": "2026-09-09T20:17:54.580181+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://rufus.ie/",
+    "status": 200,
+    "finalUrl": "https://rufus.ie/",
+    "title": "Rufus - The Official Website (Download, New Releases)",
+    "checkedAt": "2026-09-09T20:17:53.976953+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://rustdesk.com/",
+    "status": 200,
+    "finalUrl": "https://rustdesk.com/",
+    "title": "RustDesk: Open-Source Remote Desktop with Self-Hosted Server Solutions",
+    "checkedAt": "2026-09-09T20:17:54.164054+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://scoop.sh/",
+    "status": 200,
+    "finalUrl": "https://scoop.sh/",
+    "title": "",
+    "checkedAt": "2026-09-09T20:17:54.126937+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://semiconductor.samsung.com/consumer-storage/magician/",
+    "status": 200,
+    "finalUrl": "https://semiconductor.samsung.com/consumer-storage/magician/",
+    "title": "Samsung Magician Software Download | Consumer Storage | Samsung Semiconductor Global",
+    "checkedAt": "2026-09-09T20:17:54.198156+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://software.es.net/iperf/obtaining.html",
+    "status": 200,
+    "finalUrl": "https://software.es.net/iperf/obtaining.html",
+    "title": "Obtaining iperf3 \u2014 iperf3 3.21 documentation",
+    "checkedAt": "2026-09-09T20:17:54.093349+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://sourceware.org/lvm2/",
+    "status": 200,
+    "finalUrl": "https://sourceware.org/lvm2/",
+    "title": "LVM2 Resource Page",
+    "checkedAt": "2026-09-09T20:17:54.502509+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://sqlite.org/download.html",
+    "status": 200,
+    "finalUrl": "https://sqlite.org/download.html",
+    "title": "SQLite Download Page",
+    "checkedAt": "2026-09-09T20:17:54.462399+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://store.epicgames.com/en-US/download",
+    "status": "unconfirmed",
+    "error": "HTTP Error 403: Forbidden",
+    "checkedAt": "2026-09-09T20:17:54.065202+00:00"
+  },
+  {
+    "url": "https://store.steampowered.com/about/",
+    "status": 200,
+    "finalUrl": "https://store.steampowered.com/about/",
+    "title": "Steam, The Ultimate Online Game Platform",
+    "checkedAt": "2026-09-09T20:17:54.372627+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://support-en.wd.com/",
+    "status": 200,
+    "finalUrl": "https://www.westerndigital.com/support",
+    "title": "",
+    "checkedAt": "2026-09-09T20:17:55.052759+00:00",
+    "contentType": "text/html;charset=utf-8"
+  },
+  {
+    "url": "https://support.hp.com/us-en/drivers",
+    "status": 200,
+    "finalUrl": "https://support.hp.com/us-en/drivers",
+    "title": "",
+    "checkedAt": "2026-09-09T20:17:54.407221+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://support.lenovo.com/",
+    "status": "unconfirmed",
+    "error": "HTTP Error 403: Forbidden",
+    "checkedAt": "2026-09-09T20:17:54.303938+00:00"
+  },
+  {
+    "url": "https://support.lenovo.com/us/en/solutions/ht003029",
+    "status": "unconfirmed",
+    "error": "HTTP Error 403: Forbidden",
+    "checkedAt": "2026-09-09T20:17:54.269819+00:00"
+  },
+  {
+    "url": "https://tailscale.com/download/windows",
+    "status": 200,
+    "finalUrl": "https://tailscale.com/download/windows",
+    "title": "Download | Tailscale",
+    "checkedAt": "2026-09-09T20:17:54.547609+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://ubuntu.com/download/desktop",
+    "status": 200,
+    "finalUrl": "https://ubuntu.com/download/desktop",
+    "title": "Download Ubuntu Desktop | Ubuntu",
+    "checkedAt": "2026-09-09T20:17:55.411012+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://winaero.com/winaero-tweaker/",
+    "status": 200,
+    "finalUrl": "https://winaero.com/winaero-tweaker/",
+    "title": "Winaero Tweaker",
+    "checkedAt": "2026-09-09T20:17:55.010055+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://winmerge.org/downloads/",
+    "status": 200,
+    "finalUrl": "https://winmerge.org/downloads/",
+    "title": "Download WinMerge - WinMerge",
+    "checkedAt": "2026-09-09T20:17:54.856733+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://winscp.net/eng/downloads.php",
+    "status": 200,
+    "finalUrl": "https://winscp.net/eng/downloads.php",
+    "title": "All Downloads :: WinSCP",
+    "checkedAt": "2026-09-09T20:17:55.315799+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.7-zip.org/download.html",
+    "status": 200,
+    "finalUrl": "https://www.7-zip.org/download.html",
+    "title": "Download",
+    "checkedAt": "2026-09-09T20:17:55.295770+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.acer.com/us-en/support/drivers-and-manuals",
+    "status": "unconfirmed",
+    "error": "The read operation timed out",
+    "checkedAt": "2026-09-09T20:18:19.720693+00:00"
+  },
+  {
+    "url": "https://www.advanced-ip-scanner.com/",
+    "status": 200,
+    "finalUrl": "https://www.advanced-ip-scanner.com/",
+    "title": "Advanced IP Scanner - Download Free Network Scanner",
+    "checkedAt": "2026-09-09T20:17:55.647042+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.alcpu.com/CoreTemp/",
+    "status": 200,
+    "finalUrl": "https://www.alcpu.com/CoreTemp/",
+    "title": "Core Temp",
+    "checkedAt": "2026-09-09T20:17:55.011561+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.amd.com/en/support/download/drivers.html",
+    "status": 200,
+    "finalUrl": "https://www.amd.com/en/support/download/drivers.html",
+    "title": "Drivers and Support for Processors and Graphics",
+    "checkedAt": "2026-09-09T20:17:54.990020+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.asus.com/support/download-center/",
+    "status": 200,
+    "finalUrl": "https://www.asus.com/support/download-center/",
+    "title": "Download Center | Official Support | ASUS Global",
+    "checkedAt": "2026-09-09T20:17:54.835696+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.audacityteam.org/download/windows/",
+    "status": 200,
+    "finalUrl": "https://www.audacityteam.org/download/windows/",
+    "title": "Audacity \u00ae | Download for Windows",
+    "checkedAt": "2026-09-09T20:17:54.948400+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.bcuninstaller.com/",
+    "status": 200,
+    "finalUrl": "https://www.bcuninstaller.com/",
+    "title": "Bulk Crap Uninstaller - Remove large amounts of unwanted applications",
+    "checkedAt": "2026-09-09T20:17:54.857733+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.ccleaner.com/recuva/download",
+    "status": 200,
+    "finalUrl": "https://www.ccleaner.com/recuva/download",
+    "title": "Recuva - Free Download",
+    "checkedAt": "2026-09-09T20:17:54.969444+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.cgsecurity.org/wiki/TestDisk_Download",
+    "status": 200,
+    "finalUrl": "https://www.cgsecurity.org/wiki/TestDisk_Download",
+    "title": "TestDisk Download - CGSecurity",
+    "checkedAt": "2026-09-09T20:17:55.726221+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
+    "status": 200,
+    "finalUrl": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
+    "title": "Download PuTTY: latest release (0.85)",
+    "checkedAt": "2026-09-09T20:17:55.519250+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.cpuid.com/softwares/cpu-z.html",
+    "status": 200,
+    "finalUrl": "https://www.cpuid.com/softwares/cpu-z.html",
+    "title": "CPU-Z | Softwares | CPUID",
+    "checkedAt": "2026-09-09T20:17:56.159097+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.cpuid.com/softwares/hwmonitor.html",
+    "status": 200,
+    "finalUrl": "https://www.cpuid.com/softwares/hwmonitor.html",
+    "title": "HWMONITOR | Softwares | CPUID",
+    "checkedAt": "2026-09-09T20:17:55.941695+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.crucial.com/support/storage-executive",
+    "status": 200,
+    "finalUrl": "https://www.crucial.com/support/storage-executive",
+    "title": "Request Rejected",
+    "checkedAt": "2026-09-09T20:17:55.089341+00:00",
+    "contentType": "text/plain"
+  },
+  {
+    "url": "https://www.debian.org/CD/live/",
+    "status": 200,
+    "finalUrl": "https://www.debian.org/CD/live/",
+    "title": "Debian -- Live install images",
+    "checkedAt": "2026-09-09T20:17:55.169491+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.dell.com/support/home/en-us?app=drivers",
+    "status": 200,
+    "finalUrl": "https://www.dell.com/support/home/en-us?app=drivers",
+    "title": "Drivers & Downloads | Dell US",
+    "checkedAt": "2026-09-09T20:17:55.452614+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.dell.com/support/kbdoc/en-us/000177325/dell-command-update",
+    "status": 200,
+    "finalUrl": "https://www.dell.com/support/kbdoc/en-us/000177325/dell-command-update",
+    "title": "Dell Command | Update | Dell US",
+    "checkedAt": "2026-09-09T20:17:55.569855+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.diskgenius.com/download.php",
+    "status": 200,
+    "finalUrl": "https://www.diskgenius.com/download.php",
+    "title": "DiskGenius Download Center | Free Download DiskGenius",
+    "checkedAt": "2026-09-09T20:17:55.224607+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.diskpart.com/download.html",
+    "status": 200,
+    "finalUrl": "https://www.diskpart.com/download.html",
+    "title": "Free Download Hard Disk Partition Manager Software | AOMEI Partition Assistant Download",
+    "checkedAt": "2026-09-09T20:17:55.544811+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.easeus.com/partition-manager/",
+    "status": 200,
+    "finalUrl": "https://www.easeus.com/partition-manager/",
+    "title": "EaseUS Partition Master | Best Partition Software for All Windows Users.",
+    "checkedAt": "2026-09-09T20:17:55.255165+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.emsisoft.com/en/emergency-kit/",
+    "status": 200,
+    "finalUrl": "https://www.emsisoft.com/en/emergency-kit/",
+    "title": "Emsisoft Emergency Kit: Free Portable Malware & Virus Scanner",
+    "checkedAt": "2026-09-09T20:17:56.602708+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.gigabyte.com/Support",
+    "status": "unconfirmed",
+    "error": "HTTP Error 403: Forbidden",
+    "checkedAt": "2026-09-09T20:17:55.362405+00:00"
+  },
+  {
+    "url": "https://www.gimp.org/downloads/",
+    "status": 200,
+    "finalUrl": "https://www.gimp.org/downloads/",
+    "title": "GIMP - Downloads",
+    "checkedAt": "2026-09-09T20:17:55.363412+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.gnu.org/software/coreutils/manual/html_node/dd-invocation.html",
+    "status": 200,
+    "finalUrl": "https://www.gnu.org/software/coreutils/manual/html_node/dd-invocation.html",
+    "title": "dd invocation (GNU Coreutils 9.11)",
+    "checkedAt": "2026-09-09T20:17:55.702162+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.gnu.org/software/ddrescue/",
+    "status": 200,
+    "finalUrl": "https://www.gnu.org/software/ddrescue/",
+    "title": "Ddrescue - GNU Project - Free Software Foundation (FSF)",
+    "checkedAt": "2026-09-09T20:17:55.671088+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.hibitsoft.ir/Uninstaller.html",
+    "status": 200,
+    "finalUrl": "https://www.hibitsoft.ir/Uninstaller.html",
+    "title": "HiBit Uninstaller",
+    "checkedAt": "2026-09-09T20:17:56.941318+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.hirensbootcd.org/download/",
+    "status": 200,
+    "finalUrl": "https://www.hirensbootcd.org/download/",
+    "title": "Download | Hiren's BootCD PE",
+    "checkedAt": "2026-09-09T20:17:56.892630+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.hwinfo.com/download/",
+    "status": 200,
+    "finalUrl": "https://www.hwinfo.com/download/",
+    "title": "Free Download HWiNFO Sofware | Installer & Portable for Windows, DOS",
+    "checkedAt": "2026-09-09T20:17:56.156087+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.intel.com/content/www/us/en/download-center/home.html",
+    "status": "unconfirmed",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)>",
+    "checkedAt": "2026-09-09T20:17:55.592407+00:00"
+  },
+  {
+    "url": "https://www.irfanview.com/",
+    "status": 200,
+    "finalUrl": "https://www.irfanview.com/",
+    "title": "IrfanView - Official Homepage - One of the Most Popular Viewers Worldwide",
+    "checkedAt": "2026-09-09T20:17:56.239772+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.jam-software.com/treesize_free",
+    "status": 200,
+    "finalUrl": "https://www.jam-software.com/treesize",
+    "title": "TreeSize \u2013 Official Free Download",
+    "checkedAt": "2026-09-09T20:17:58.315469+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.kaspersky.com/downloads/free-rescue-disk",
+    "status": 200,
+    "finalUrl": "https://www.kaspersky.com/downloads/free-rescue-disk",
+    "title": "Free Rescue Disk Download | Kaspersky",
+    "checkedAt": "2026-09-09T20:17:57.554921+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.kernel.org/pub/linux/utils/net/iproute2/",
+    "status": 200,
+    "finalUrl": "https://www.kernel.org/pub/linux/utils/net/iproute2/",
+    "title": "Index of /pub/linux/utils/net/iproute2/",
+    "checkedAt": "2026-09-09T20:17:55.775338+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.kernel.org/pub/linux/utils/util-linux/",
+    "status": 200,
+    "finalUrl": "https://www.kernel.org/pub/linux/utils/util-linux/",
+    "title": "Index of /pub/linux/utils/util-linux/",
+    "checkedAt": "2026-09-09T20:17:55.728219+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.kingston.com/en/support/technical/ssdmanager",
+    "status": "unconfirmed",
+    "error": "HTTP Error 403: Forbidden",
+    "checkedAt": "2026-09-09T20:17:55.823954+00:00"
+  },
+  {
+    "url": "https://www.macrium.com/products/home",
+    "status": 200,
+    "finalUrl": "https://www.macrium.com/products/home",
+    "title": "Macrium Reflect Home | The complete backup solution for personal use.",
+    "checkedAt": "2026-09-09T20:17:56.841494+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.malwarebytes.com/adwcleaner",
+    "status": 200,
+    "finalUrl": "https://www.malwarebytes.com/adwcleaner",
+    "title": "AdwCleaner: Free Adware Removal & Cleaner Tool",
+    "checkedAt": "2026-09-09T20:17:55.915145+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.malwarebytes.com/mwb-download",
+    "status": 200,
+    "finalUrl": "https://www.malwarebytes.com/mwb-download",
+    "title": "Malwarebytes Free: Free Antivirus 2026 | 100% Free & Easy Install",
+    "checkedAt": "2026-09-09T20:17:55.969749+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.maxon.net/en/cinebench",
+    "status": 200,
+    "finalUrl": "https://www.maxon.net/en/cinebench",
+    "title": "Evaluate your computer's hardware capabilities | Cinebench from Maxon",
+    "checkedAt": "2026-09-09T20:17:57.374569+00:00",
+    "contentType": "text/html;charset=utf-8"
+  },
+  {
+    "url": "https://www.memtest86.com/download.htm",
+    "status": 200,
+    "finalUrl": "https://www.memtest86.com/download.htm",
+    "title": "MemTest86 - Download now!",
+    "checkedAt": "2026-09-09T20:17:56.356922+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.mersenne.org/download/",
+    "status": 200,
+    "finalUrl": "https://www.mersenne.org/download/",
+    "title": "GIMPS - Free Prime95 software downloads - PrimeNet",
+    "checkedAt": "2026-09-09T20:17:56.078654+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.microsoft.com/en-us/download/details.aspx?id=8109",
+    "status": 200,
+    "finalUrl": "https://www.microsoft.com/en-us/download/details.aspx?id=8109",
+    "title": "Download DirectX End-User Runtimes (June 2010) from Official Microsoft Download Center",
+    "checkedAt": "2026-09-09T20:18:06.625398+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.microsoft.com/en-us/edge/business/download",
+    "status": 200,
+    "finalUrl": "https://explore.microsoft.com/en-us/edge/business/download?form=MA13FJ",
+    "title": "Download and Deploy Microsoft Edge for Business",
+    "checkedAt": "2026-09-09T20:18:00.132104+00:00",
+    "contentType": "text/html;charset=utf-8"
+  },
+  {
+    "url": "https://www.microsoft.com/en-us/software-download/windows11",
+    "status": 200,
+    "finalUrl": "https://www.microsoft.com/en-us/software-download/windows11",
+    "title": "Download Windows 11",
+    "checkedAt": "2026-09-09T20:17:57.239917+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.msi.com/support/download",
+    "status": "unconfirmed",
+    "error": "HTTP Error 403: Forbidden",
+    "checkedAt": "2026-09-09T20:17:56.489148+00:00"
+  },
+  {
+    "url": "https://www.nirsoft.net/utils/usb_devices_view.html",
+    "status": 200,
+    "finalUrl": "https://www.nirsoft.net/utils/usb_devices_view.html",
+    "title": "View any installed/connected USB device on your system",
+    "checkedAt": "2026-09-09T20:17:57.376581+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.ntlite.com/download/",
+    "status": 200,
+    "finalUrl": "https://ntlite.com/download/",
+    "title": "Download | NTLite",
+    "checkedAt": "2026-09-09T20:17:57.138313+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.nvidia.com/en-us/drivers/",
+    "status": 200,
+    "finalUrl": "https://www.nvidia.com/en-us/drivers/",
+    "title": "Download The Official NVIDIA Drivers | NVIDIA",
+    "checkedAt": "2026-09-09T20:17:56.868563+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.ocbase.com/download",
+    "status": 200,
+    "finalUrl": "https://www.ocbase.com/download-personal",
+    "title": "OCCT Personal Download - OCBASE/OCCT",
+    "checkedAt": "2026-09-09T20:17:58.907065+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.onlyoffice.com/download-desktop.aspx",
+    "status": 200,
+    "finalUrl": "https://www.onlyoffice.com/download-desktop",
+    "title": "ONLYOFFICE desktop and mobile apps | ONLYOFFICE",
+    "checkedAt": "2026-09-09T20:17:57.071511+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.oo-software.com/en/ooappbuster",
+    "status": 200,
+    "finalUrl": "https://www.oo-software.com/en/ooappbuster",
+    "title": "O&O AppBuster - O&O Software GmbH",
+    "checkedAt": "2026-09-09T20:17:58.180100+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.oo-software.com/en/shutup10",
+    "status": 200,
+    "finalUrl": "https://www.oo-software.com/en/shutup10",
+    "title": "O&O ShutUp10 - O&O Software GmbH",
+    "checkedAt": "2026-09-09T20:18:02.619848+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.openssh.com/manual.html",
+    "status": 200,
+    "finalUrl": "https://www.openssh.org/manual.html",
+    "title": "OpenSSH: Manual Pages",
+    "checkedAt": "2026-09-09T20:17:57.725982+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.partitionwizard.com/download.html",
+    "status": 200,
+    "finalUrl": "https://www.partitionwizard.com/download.html",
+    "title": "Free Download MiniTool Partition Wizard for Windows PC and Server",
+    "checkedAt": "2026-09-09T20:17:57.371045+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.proxmox.com/en/downloads",
+    "status": 200,
+    "finalUrl": "https://www.proxmox.com/en/downloads",
+    "title": "Download Proxmox software, datasheets, agreements",
+    "checkedAt": "2026-09-09T20:17:58.243917+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.python.org/downloads/windows/",
+    "status": 200,
+    "finalUrl": "https://www.python.org/downloads/windows/",
+    "title": "",
+    "checkedAt": "2026-09-09T20:17:57.550894+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.r-studio.com/data-recovery-software/",
+    "status": 200,
+    "finalUrl": "https://www.r-studio.com/data-recovery-software/",
+    "title": "R-STUDIO Data Recovery Software",
+    "checkedAt": "2026-09-09T20:17:57.802833+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.realtek.com/Download/List",
+    "status": 200,
+    "finalUrl": "https://www.realtek.com/Download/List",
+    "title": "Realtek",
+    "checkedAt": "2026-09-09T20:17:58.334569+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.resplendence.com/latencymon",
+    "status": 200,
+    "finalUrl": "https://www.resplendence.com/latencymon",
+    "title": "Resplendence Software - LatencyMon: suitability checker for real-time audio and other tasks",
+    "checkedAt": "2026-09-09T20:17:58.319466+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.revouninstaller.com/revo-uninstaller-free-download/",
+    "status": 200,
+    "finalUrl": "https://www.revouninstaller.com/revo-uninstaller-free-download/",
+    "title": "Download Revo Uninstaller Freeware - Free and Full Download",
+    "checkedAt": "2026-09-09T20:17:58.355650+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.seagate.com/support/downloads/seatools/",
+    "status": 200,
+    "finalUrl": "https://www.seagate.com/support/downloads/seatools/",
+    "title": "SeaTools | Seagate US",
+    "checkedAt": "2026-09-09T20:17:57.871611+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.smartmontools.org/",
+    "status": 200,
+    "finalUrl": "https://www.smartmontools.org/",
+    "title": "Making sure you're not a bot!",
+    "checkedAt": "2026-09-09T20:17:58.508673+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.snappy-driver-installer.org/",
+    "status": 200,
+    "finalUrl": "https://www.snappy-driver-installer.org/",
+    "title": "Snappy Driver Installer Origin \u2013 The original driver installation tool for Windows.",
+    "checkedAt": "2026-09-09T20:17:58.510676+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.solidigm.com/support-page/drivers-downloads.html",
+    "status": 200,
+    "finalUrl": "https://www.solidigm.com/support/drivers-downloads.html",
+    "title": "Drivers & Downloads",
+    "checkedAt": "2026-09-09T20:17:58.600002+00:00",
+    "contentType": "text/html;charset=utf-8"
+  },
+  {
+    "url": "https://www.sumatrapdfreader.org/download-free-pdf-viewer",
+    "status": 200,
+    "finalUrl": "https://www.sumatrapdfreader.org/download-free-pdf-viewer",
+    "title": "Sumatra PDF reader download page",
+    "checkedAt": "2026-09-09T20:17:58.659324+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.system-rescue.org/Download/",
+    "status": 200,
+    "finalUrl": "https://www.system-rescue.org/Download/",
+    "title": "SystemRescue - Download",
+    "checkedAt": "2026-09-09T20:17:58.593999+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.techpowerup.com/gpuz/",
+    "status": 200,
+    "finalUrl": "https://www.techpowerup.com/gpuz/",
+    "title": "GPU-Z Graphics Card GPU Information Utility",
+    "checkedAt": "2026-09-09T20:17:58.901035+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.ufsexplorer.com/",
+    "status": 200,
+    "finalUrl": "https://www.ufsexplorer.com/",
+    "title": "Tried and trusted data recovery software solutions",
+    "checkedAt": "2026-09-09T20:17:59.017604+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.uwe-sieber.de/usbtreeview_e.html",
+    "status": 200,
+    "finalUrl": "https://www.uwe-sieber.de/usbtreeview_e.html",
+    "title": "USB Device Tree Viewer",
+    "checkedAt": "2026-09-09T20:17:59.267967+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.veeam.com/products/free/microsoft-windows.html",
+    "status": 200,
+    "finalUrl": "https://www.veeam.com/products/free/microsoft-windows.html",
+    "title": "Free Windows Backup Solution for PCs and Endpoints",
+    "checkedAt": "2026-09-09T20:17:59.197256+00:00",
+    "contentType": "text/html; charset=UTF-8"
+  },
+  {
+    "url": "https://www.ventoy.net/en/download.html",
+    "status": 200,
+    "finalUrl": "https://www.ventoy.net/en/download.html",
+    "title": "Download . Ventoy",
+    "checkedAt": "2026-09-09T20:17:59.597408+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.voidtools.com/downloads/",
+    "status": 200,
+    "finalUrl": "https://www.voidtools.com/downloads/",
+    "title": "Downloads - voidtools",
+    "checkedAt": "2026-09-09T20:17:59.070885+00:00",
+    "contentType": "text/html"
+  },
+  {
+    "url": "https://www.wagnardsoft.com/display-driver-uninstaller-DDU-",
+    "status": 200,
+    "finalUrl": "https://www.wagnardsoft.com/display-driver-uninstaller-ddu",
+    "title": "Download Display Driver Uninstaller (DDU) Official Latest Version | Wagnardsoft",
+    "checkedAt": "2026-09-09T20:17:59.273487+00:00",
+    "contentType": "text/html; charset=utf-8"
+  },
+  {
+    "url": "https://www.wireshark.org/download.html",
+    "status": 200,
+    "finalUrl": "https://www.wireshark.org/download.html",
+    "title": "Wireshark \u2022 Go Deep | Download",
+    "checkedAt": "2026-09-09T20:17:58.801670+00:00",
+    "contentType": "text/html; charset=utf-8"
+  }
+]

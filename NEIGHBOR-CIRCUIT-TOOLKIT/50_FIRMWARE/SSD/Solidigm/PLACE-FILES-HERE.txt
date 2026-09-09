@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Solidigm Storage Tool
+Official source: https://www.solidigm.com/support-page/drivers-downloads.html
+Expected files: *.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

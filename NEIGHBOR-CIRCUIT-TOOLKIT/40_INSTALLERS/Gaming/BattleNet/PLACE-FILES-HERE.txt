@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Battle.net
+Official source: https://download.battle.net/
+Expected files: Battle.net*.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

@@ -1,0 +1,16 @@
+Windows Reinstallation
+
+[ ] Confirm owner authorization, Windows license and edition
+[ ] Back up data and application/license records without passwords
+[ ] Verify recovery keys and cloud sync completeness
+[ ] Stage correct offline network, chipset and storage drivers
+[ ] Create trusted Windows media and verify source
+[ ] Review partition selection carefully; installation can erase data
+[ ] Use supported account/OOBE choices agreed with owner
+[ ] Install drivers, Windows updates and required runtimes
+[ ] Restore verified data and install approved applications
+[ ] Review privacy, AI, OneDrive and BitLocker preferences
+[ ] Test hardware, apps, activation and recovery options
+[ ] Document build and return the PC with owner acceptance
+
+Use index.html > Checklists for interactive saved state.

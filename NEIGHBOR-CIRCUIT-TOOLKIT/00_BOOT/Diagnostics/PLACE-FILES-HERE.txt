@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+MemTest86+
+Official source: https://memtest.org/
+Expected files: memtest86plus*.iso, mt86plus*.iso
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

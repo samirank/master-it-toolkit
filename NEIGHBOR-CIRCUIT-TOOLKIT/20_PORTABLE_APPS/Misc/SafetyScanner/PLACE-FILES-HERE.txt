@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Microsoft Safety Scanner
+Official source: https://learn.microsoft.com/en-us/defender-endpoint/safety-scanner-download
+Expected files: msert.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

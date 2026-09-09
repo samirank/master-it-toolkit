@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+curl
+Official source: https://curl.se/windows/
+Expected files: curl.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

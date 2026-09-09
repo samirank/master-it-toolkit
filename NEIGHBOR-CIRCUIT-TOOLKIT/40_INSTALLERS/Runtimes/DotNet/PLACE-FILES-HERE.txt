@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+.NET Desktop Runtime
+Official source: https://dotnet.microsoft.com/en-us/download/dotnet
+Expected files: windowsdesktop-runtime*.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

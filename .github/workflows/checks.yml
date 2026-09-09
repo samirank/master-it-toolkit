@@ -1,0 +1,20 @@
+name: Cross-platform checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  check:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: node .github/tests/validate-paths.cjs
+      - run: node .github/tests/validate-structure.cjs
+      - run: python .github/tests/test_inventory.py

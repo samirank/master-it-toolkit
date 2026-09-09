@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Microsoft Visual C++ Redistributables
+Official source: https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist
+Expected files: vc_redist*.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Notepad++
+Official source: https://notepad-plus-plus.org/downloads/
+Expected files: notepad++.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

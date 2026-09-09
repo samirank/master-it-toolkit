@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Hiren's BootCD PE
+Official source: https://www.hirensbootcd.org/download/
+Expected files: HBCD_PE*.iso
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

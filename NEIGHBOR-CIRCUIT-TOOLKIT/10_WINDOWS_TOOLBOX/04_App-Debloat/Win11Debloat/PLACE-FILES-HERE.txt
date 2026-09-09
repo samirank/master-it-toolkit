@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+Win11Debloat
+Official source: https://github.com/Raphire/Win11Debloat/releases
+Expected files: Win11Debloat.ps1
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.

@@ -1,0 +1,8 @@
+TOOLKIT FILE DESTINATION
+
+7-Zip
+Official source: https://www.7-zip.org/download.html
+Expected files: 7z.exe, 7za.exe
+Review vendor terms for commercial service work and redistribution.
+
+Extract portable archives with their complete directory structure. File presence does not verify authenticity or hardware compatibility.
