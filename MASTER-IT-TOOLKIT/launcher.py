@@ -20,6 +20,7 @@ ROOT = Path(sys.executable if getattr(sys, 'frozen', False) else __file__).resol
 if (ROOT / 'MASTER-IT-TOOLKIT' / 'launcher.py').is_file(): ROOT = ROOT / 'MASTER-IT-TOOLKIT'
 sys.path.insert(0, str(ROOT))
 import tool_downloads
+import install_tools
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
 SCRIPTS = {
@@ -50,7 +51,7 @@ def safe_path(root, name):
 def managed_name(name):
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
-    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
+    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
         return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
@@ -169,7 +170,11 @@ class Server(ThreadingHTTPServer):
     def job(self, action, body=None):
         context = {'tool': (body or {}).get('tool'), 'startedAt': self.state.get('startedAt',time.time())}
         try:
-            if action == 'download':
+            if action == 'install':
+                message = install_tools.install(self.root, body, safe_path)
+            elif action in ('installed-apps','system-restore'):
+                message = install_tools.recovery(action)
+            elif action == 'download':
                 message = tool_downloads.save_selected(self.root, body['tool'], body['assets'], safe_path,
                     lambda progress: setattr(self, 'state', dict(context, busy=True, **progress)))
                 self.state = dict(context, busy=True, message='Scanning and organizing saved packages…', stage='scan')
@@ -201,6 +206,11 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         route = self.route()
         if route is None: return self.reply(403, {'error': 'Open the URL printed by your launcher.'})
+        if route == 'api/install-options':
+            try:
+                query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
+                return self.reply(200, install_tools.options(self.server.root, query.get('tool',[''])[0], safe_path))
+            except Exception as error: return self.reply(400, {'error':str(error)})
         if route == 'api/tool-files':
             try:
                 query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
@@ -250,12 +260,14 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < size <= 1024: raise ValueError()
             body = json.loads(self.rfile.read(size))
             action = body['action']
-            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download'): raise ValueError()
+            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'install', 'installed-apps', 'system-restore'): raise ValueError()
+            if action == 'install':
+                if not all(isinstance(body.get(key), str) for key in ('tool','package','sha256')): raise ValueError()
             if action == 'download':
                 if not isinstance(body.get('tool'), str) or not isinstance(body.get('assets'), list) or not 1 <= len(body['assets']) <= 50 or any(not isinstance(a, str) for a in body['assets']): raise ValueError()
         except (ValueError, KeyError, TypeError): return self.reply(400, {'error': 'Invalid action'})
         if not self.server.lock.acquire(False): return self.reply(409, {'error': 'Another action is still running. Close its script terminal first.'})
-        label = SCRIPTS[action][0] if action in SCRIPTS else ('Updating toolkit from GitHub' if action == 'update' else 'Downloading selected packages')
+        label = SCRIPTS[action][0] if action in SCRIPTS else {'update':'Updating toolkit from GitHub','download':'Downloading selected packages','install':'Preparing recovery checkpoint and installing application (check UAC and installer prompts)','installed-apps':'Opening installed programs','system-restore':'Opening System Restore'}[action]
         self.server.state = {'busy': True, 'startedAt': time.time(), 'tool': body.get('tool'), 'message': label + '…' + (' Check the script terminal for prompts; close it when finished.' if action in SCRIPTS and SCRIPTS[action][2] == 'windows' else '')}
         threading.Thread(target=self.server.job, args=(action, body), daemon=True).start()
         self.reply(202, self.server.state)
