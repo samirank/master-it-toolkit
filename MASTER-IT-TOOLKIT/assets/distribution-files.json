@@ -273,8 +273,8 @@
   "assets/download-manifest.json": "91ffeafaf88440010348fbd097a386b85f58426f9120f519c4315e76fa23a9d9",
   "assets/download-sources.json": "f919877935841c9b473e81955a2c087b1339ea42e85aa8216d858443d722fb78",
   "assets/images/dashboard.png": "c33bfc4b94d4316b3d56f827315835193727b27851527ee94ed2b4f4fac353fe",
-  "assets/js/app.js": "09b6bdd734c6ffc079243185895bd7b378d2530cc17ba4603923e20116acdb78",
-  "assets/js/catalog-downloads.js": "a9ca0a7d2906d8b8853af24297ca52373c55db7f3b18be19a097a14d14eccb6d",
+  "assets/js/app.js": "caf58d36d9c32ac26855bcb0934ef2c6c05750dd19fa7c7845cbc3cf2f07ff02",
+  "assets/js/catalog-downloads.js": "40e2f00d2e6434531bbac50ad1b9e1697e9d6c6f44f41924d75ce890d92f1d6c",
   "assets/js/categories.js": "a8b492fa77bdfc156632cfa0f18f6d257fcdca61eb60e6267d6efe0fd60ade7b",
   "assets/js/download-redirect.js": "168bf681259257106dc507de49ec582ad4306e3403495111692db180738c8bec",
   "assets/js/downloads.js": "fde8eb59c2b62a0c4562c7a91a70e5ec527bb04f3e15f38a62ff8ca1d509e342",
@@ -1223,5 +1223,5 @@
   "runtime-extensions/ubol/web_accessible_resources/scorecardresearch_beacon.js": "c177360b3723b924a168fc72ed728f924fe72e40cfc0c1d3fb5237849c590946",
   "runtime-extensions/ubol/web_accessible_resources/sensors-analytics.js": "976b60cda987b64505d8faa361a371720dbb5a78daffb280cc2f18d7e5a40278",
   "runtime-extensions/ubol/zapper-ui.html": "2afbdfcad9405c07e035299f8a27b0b5fdb399813f813275a5236e1d8d8099d6",
-  "tool_downloads.py": "1e96c30aca2763b1ff6e45804ed3992a848a3d2b4dc4fa4441cddf3bfba27038"
+  "tool_downloads.py": "0701ac50d1e9d3d9a0c49e42cd2018d531457b7c876f3492bc9d77e0bc39ce1f"
 }

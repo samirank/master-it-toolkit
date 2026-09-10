@@ -82,6 +82,22 @@ class CatalogTests(unittest.TestCase):
                         d.bulk_download(root,{'tools':selected},launcher.safe_path,lambda _:None,lambda:None,lambda:None)
                 self.assertEqual(saved.call_count,1)
 
+    def test_queue_filters_intersect_before_downloading(self):
+        tools=[{'id':id,'name':id,'officialDownload':'https://example.com','kind':'Installer','license':'Free','priority':priority,'categories':[category]} for id,priority,category in [('a','P1','Network'),('b','P2','Network'),('c','P1','Disk')]]
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);(root/'assets/js').mkdir(parents=True)
+            (root/'assets/toolkit-manifest.json').write_text(json.dumps(tools))
+            (root/'assets/js/local-inventory.js').write_text('window.LOCAL_INVENTORY = {"tools":{}};')
+            with patch.object(d,'options',return_value={'assets':[asset()]}),patch.object(d,'save_selected',return_value='Saved') as saved:
+                selection={'filters':{'priority':'P1','category':'Network','kind':'Installer','license':'Free'}}
+                d.bulk_download(root,selection,launcher.safe_path,lambda _:None,lambda:None,lambda:None)
+                self.assertEqual([call.args[1] for call in saved.call_args_list],['a'])
+                saved.reset_mock()
+                d.bulk_download(root,{**selection,'tools':['b']},launcher.safe_path,lambda _:None,lambda:None,lambda:None)
+                saved.assert_not_called()
+                with self.assertRaises(ValueError):
+                    d.bulk_download(root,{'filters':{'priority':'invalid'}},launcher.safe_path,lambda _:None,lambda:None,lambda:None)
+
     def test_changed_same_filename_keeps_previous(self):
         old=b'old';new=b'new';sha=launcher.digest(new);a=dict(asset(),digest='sha256:'+sha)
         class Response(io.BytesIO):url=a['url']

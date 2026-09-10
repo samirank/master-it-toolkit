@@ -39,6 +39,8 @@
     if(!body.tools.length)throw Error('Select at least one tool.');
     body.platform=document.getElementById('selection-platform').value;
     body.architecture=document.getElementById('selection-architecture').value;
+   }else if(body.action==='bulk-download'){
+    body.filters=Object.fromEntries(['priority','category','kind','license'].map(key=>[key,document.getElementById('bulk-'+key)?.value||'']));
    }
    window.dispatchEvent(new CustomEvent('toolkit-activity',{detail:{busy:true,message:body.action==='bulk-download'?'Starting download queue…':'Stopping after the current transfer…'}}));
    const response=await fetch(api('action'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});

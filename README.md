@@ -350,3 +350,5 @@ not advertised as current automatic downloads. A vendor changing its API entirel
 can require a resolver update; the monitor reports this instead of guessing a URL.
 
 Select tools using the **Select** checkboxes in All tools, Missing downloads, or Updates. The bulk-action bar supports selecting all matching results, clearing selection, downloading selected missing/latest packages by platform, adding favorites, and exporting the selected catalog entries. Selection persists across filters for the current session. Download queues never install or execute the selected programs.
+
+The whole-catalog download panel has independent priority, category, package-type and license filters alongside platform and architecture. All chosen filters apply together to the queue; Reset queue filters restores the defaults. The selected-tools action bar uses its explicit tool selection instead.

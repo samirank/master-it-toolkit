@@ -12,7 +12,16 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.locator('#bulk-platform').selectOption('Linux');await page.locator('#bulk-architecture').selectOption('arm64');
   await page.locator('.bulk-download-panel [data-bulk-download="missing"]').click();
   await page.waitForFunction(()=>document.querySelector('#activity-message').textContent.includes('Starting download queue'));
-  assert.deepEqual(action,{action:'bulk-download',confirmed:true,platform:'Linux',architecture:'arm64',mode:'missing'});
+  assert.deepEqual(action,{action:'bulk-download',confirmed:true,platform:'Linux',architecture:'arm64',mode:'missing',filters:{priority:'',category:'',kind:'',license:''}});
+  await page.locator('#bulk-priority').selectOption('P1');
+  await page.locator('#bulk-category').selectOption('Boot & Recovery');
+  await page.locator('#bulk-kind').selectOption('Boot ISO');
+  await page.locator('#bulk-license').selectOption('Open source');
+  await page.locator('.bulk-download-panel [data-bulk-download="missing"]').click();
+  assert.deepEqual(action.filters,{priority:'P1',category:'Boot & Recovery',kind:'Boot ISO',license:'Open source'});
+  await page.locator('#search').fill('Clonezilla');
+  assert.equal(await page.locator('#bulk-priority').inputValue(),'P1');
+  await page.locator('[data-bulk-reset]').click();assert.equal(await page.locator('#bulk-priority').inputValue(),'');
   await page.locator('.bulk-download-panel [data-cancel-downloads]').click();assert.equal(action.action,'cancel-downloads');
   await page.locator('#search').fill('Clonezilla');
   await page.locator('[data-selection="all"]').click();

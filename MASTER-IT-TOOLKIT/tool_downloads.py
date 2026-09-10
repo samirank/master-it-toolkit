@@ -293,12 +293,19 @@ def bulk_download(root, selection, safe_path, progress, scan, completed, cancell
     platform,arch=selection.get('platform','Windows'),selection.get('architecture','x64')
     mode=selection.get('mode','missing')
     catalog=json.loads((root/'assets/toolkit-manifest.json').read_text('utf-8'))
+    filters=selection.get('filters',{})
+    if not isinstance(filters,dict) or set(filters)-{'priority','category','kind','license'}:
+        raise ValueError('Invalid queue filters')
+    for key,value in filters.items():
+        valid={v for t in catalog for v in (t.get('categories',[]) if key=='category' else [t.get(key,'')])}
+        if not isinstance(value,str) or (value and value not in valid): raise ValueError('Invalid queue filter: '+key)
     selected=selection.get('tools')
     if selected is not None:
         known={t['id'] for t in catalog}
         if not isinstance(selected,list) or not 1 <= len(selected) <= 500 or any(not isinstance(id,str) or id not in known for id in selected):
             raise ValueError('Select valid tools before starting the queue')
         catalog=[t for t in catalog if t['id'] in selected]
+    catalog=[t for t in catalog if all(not value or (value in t.get('categories',[]) if key=='category' else t.get(key)==value) for key,value in filters.items())]
     progress({'message':'Scanning existing files before downloading…','stage':'scan'})
     scan();completed()
     inventory=json.loads((root/'assets/js/local-inventory.js').read_text('utf-8-sig').split('window.LOCAL_INVENTORY =',1)[1].strip().rstrip(';')).get('tools',{})
