@@ -277,6 +277,9 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         route = self.route()
         if route is None: return self.reply(403, {'error': 'Open the URL printed by your launcher.'})
+        if route == 'api/workspace':
+            try: return self.reply(200, self.server.history.workspace())
+            except Exception as error: return self.reply(503, {'error': str(error)})
         if route == 'api/events':
             self.send_response(200)
             self.send_header('Content-Type','text/event-stream')
@@ -362,6 +365,16 @@ class Handler(BaseHTTPRequestHandler):
             return self.reply(200, data, mimetypes.guess_type(route)[0] or 'text/plain')
         except (ValueError, OSError): return self.reply(404, {'error': 'Unavailable'})
     def do_POST(self):
+        if self.route() == 'api/workspace' and self.headers.get('Origin') == self.server.origin:
+            try:
+                size = int(self.headers.get('Content-Length', '0'))
+                if not 0 < size <= 2_100_000: raise ValueError('Workspace request is too large')
+                body = json.loads(self.rfile.read(size))
+                if not isinstance(body.get('key'), str): raise ValueError('Invalid workspace key')
+                self.server.history.workspace(body['key'], body['value'])
+                return self.reply(200, {'saved': True})
+            except (ValueError, KeyError, TypeError) as error: return self.reply(400, {'error': str(error)})
+            except Exception as error: return self.reply(503, {'error': str(error)})
         if self.route() != 'api/action' or self.headers.get('Origin') != self.server.origin:
             return self.reply(403, {'error': 'Invalid local session'})
         try:

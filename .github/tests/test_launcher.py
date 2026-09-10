@@ -140,6 +140,22 @@ class ServerTests(unittest.TestCase):
     def test_external_origin_and_unknown_action_rejected(self):
         for action, origin in [('inventory', 'https://example.com'), ('cmd /c anything', self.server.origin)]:
             with self.assertRaises(urllib.error.HTTPError): self.request('api/action', {'action': action, 'confirmed': True}, origin)
+    def test_workspace_database_persists_and_rejects_external_writes(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            store = launcher.activity_store.Store(root, launcher.safe_path)
+            with patch.object(self.server, 'history', store):
+                payload = {'key':'notes', 'value':{'issue':'Line one\nLine two <script>text</script>'}}
+                with self.request('api/workspace', payload, self.server.origin) as response:
+                    self.assertTrue(json.load(response)['saved'])
+                with self.request('api/workspace') as response:
+                    self.assertEqual(json.load(response)['notes'], payload['value'])
+                with self.assertRaises(urllib.error.HTTPError):
+                    self.request('api/workspace', payload, 'https://example.com')
+                with self.assertRaises(urllib.error.HTTPError):
+                    self.request('api/workspace', {'key':'arbitrary','value':1}, self.server.origin)
+            reopened = launcher.activity_store.Store(root, launcher.safe_path)
+            self.assertEqual(reopened.workspace()['notes'], payload['value'])
     def test_completion_stream_publishes_new_revision(self):
         with self.request('api/events') as stream:
             self.assertEqual(stream.headers['Content-Type'],'text/event-stream')

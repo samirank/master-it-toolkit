@@ -52,11 +52,12 @@ DASHBOARD
   only an expected-file match, not authenticity, completeness or compatibility.
 
 LOCAL STATE AND CUSTOMER DATA
-Favorites, checklists, notes, capacity and display settings use localStorage.
-Under file:// this storage is browser/profile/file-URL dependent. It does NOT
-travel automatically with the drive or survive a drive-letter change in all
-browsers. Private browsing or policy may disable it. A visible warning appears
-if storage is unavailable. Settings exports/imports a JSON workspace backup.
+Launcher mode stores favorites, checklists, notes, capacity and display settings
+in 70_DOCUMENTATION/Service-Notes/Activity/activity.sqlite alongside job history.
+This data travels with the SSD. No account or sign-in is needed. Existing browser
+values migrate when absent from SQLite. Hosted demo/direct HTML mode still uses
+browser storage. Settings exports/imports a JSON workspace backup. Download
+receipts and generated inventory remain compatibility JSON files.
 Notes also export to TXT/JSON; checklists export with their item definitions.
 Exports use browser Blob downloads. Choose a destination in your browser;
 the dashboard cannot silently write notes back to the SSD.

@@ -1,6 +1,7 @@
 """Bounded local job history. No network, account passwords or session tokens."""
 import threading
 import time
+import json
 
 
 class Store:
@@ -16,7 +17,9 @@ class Store:
             self.path.parent.mkdir(parents=True, exist_ok=True)
             db = self.connect()
             try:
-                with db: db.execute('CREATE TABLE IF NOT EXISTS jobs (id INTEGER PRIMARY KEY, finished REAL, action TEXT, tool TEXT, stage TEXT, message TEXT)')
+                with db:
+                    db.execute('CREATE TABLE IF NOT EXISTS jobs (id INTEGER PRIMARY KEY, finished REAL, action TEXT, tool TEXT, stage TEXT, message TEXT)')
+                    db.execute('CREATE TABLE IF NOT EXISTS workspace (key TEXT PRIMARY KEY, value TEXT NOT NULL)')
             finally: db.close()
         except Exception as error:
             self.error = 'Local history unavailable: ' + str(error)
@@ -26,6 +29,21 @@ class Store:
         for suffix in ('', '-journal', '-wal', '-shm'):
             self.safe_path(self.root, self.path.relative_to(self.root).as_posix() + suffix)
         return self.sqlite.connect(str(self.path), timeout=5)
+
+    def workspace(self, key=None, value=None):
+        if self.error: raise RuntimeError(self.error)
+        if key is not None and key not in ('preferences', 'favorites', 'notes', 'checklists', 'capacity'):
+            raise ValueError('Unknown workspace setting')
+        encoded = json.dumps(value, allow_nan=False)
+        if len(encoded.encode('utf-8')) > 2_000_000: raise ValueError('Workspace setting is too large')
+        with self.lock:
+            db = self.connect()
+            try:
+                if key is not None:
+                    with db:
+                        db.execute('INSERT OR REPLACE INTO workspace(key,value) VALUES (?,?)', (key, encoded))
+                return {k: json.loads(v) for k, v in db.execute('SELECT key,value FROM workspace')}
+            finally: db.close()
 
     def record(self, action, state):
         if self.error: return

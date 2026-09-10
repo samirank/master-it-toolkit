@@ -112,7 +112,7 @@ You may also copy only the contents of `MASTER-IT-TOOLKIT` to the data partition
 
 ## Notes, privacy, and local state
 
-Favorites, notes, preferences, and checklists live in this browser profile's `localStorage`. They do **not** automatically travel with the drive. Browser policies, private browsing, and file-URL changes can affect persistence. Use **Settings → Export workspace backup** before moving or switching browsers.
+In launcher mode, favorites, notes, preferences, checklists and capacity settings persist in the local SQLite database alongside activity history: `MASTER-IT-TOOLKIT/70_DOCUMENTATION/Service-Notes/Activity/activity.sqlite`. They travel with the SSD; no account or sign-in is required. Existing browser data migrates when a database setting is first used, without overwriting saved database values. The hosted demo and direct HTML mode still use browser storage. Settings can export/import a JSON workspace backup. Database saves show failures visibly; keep an export if storage is unavailable. Download receipts and generated inventory remain compatibility JSON files.
 
 Never record customer passwords, BitLocker recovery keys, recovery codes, or other authentication secrets. Store approved service records privately and clear job data before handing over the device. The hosted demo also uses browser storage and does not submit notes to a server.
 
