@@ -78,6 +78,48 @@ class UpdateTests(unittest.TestCase):
         except OSError: self.skipTest('No symlink permission')
         with self.assertRaises(ValueError): launcher.safe_path(self.root, 'link/file')
 
+class ArchiveCleanupTests(unittest.TestCase):
+    def test_success_noop_failure_and_scoped_cleanup(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            parent = Path(temporary)
+            root = parent / 'MASTER-IT-TOOLKIT'
+            (root / 'assets').mkdir(parents=True)
+            files = {'index.html': b'old', 'launcher.py': b'launcher'}
+            blob = archive(files)
+            with zipfile.ZipFile(io.BytesIO(blob)) as z: z.extractall(parent)
+            (parent / 'Master-IT-Toolkit.exe').write_bytes(b'launcher')
+            leftover = parent / 'standalone-windows-x64.zip'
+            leftover.write_bytes(blob)
+            unrelated = parent / 'tools.zip'; unrelated.write_bytes(blob)
+            invalid = parent / 'MASTER-IT-TOOLKIT.zip'
+            invalid.write_bytes(b'not a toolkit archive')
+            (root / 'index.html').write_bytes(b'local edit')
+            with self.assertRaises(ValueError): launcher.install_archive(blob, root)
+            self.assertTrue(leftover.exists())
+            (root / 'index.html').write_bytes(b'old')
+            self.assertIn('Removed installer archive', launcher.install_archive(blob, root))
+            self.assertFalse(leftover.exists())
+            self.assertTrue(unrelated.exists())
+            self.assertTrue(invalid.exists())
+            leftover.write_bytes(blob)
+            self.assertIn('Updated toolkit files', launcher.install_archive(archive({**files, 'index.html': b'new'}), root))
+            self.assertFalse(leftover.exists())
+            leftover.write_bytes(blob)
+            (parent / '.git').mkdir()
+            launcher.cleanup_update_archives(root)
+            self.assertTrue(leftover.exists())
+
+    def test_locked_archive_reports_cleanup_without_failing_update(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            parent = Path(temporary); root = parent / 'MASTER-IT-TOOLKIT'; root.mkdir()
+            (parent / 'Master-IT-Toolkit.exe').write_bytes(b'launcher')
+            leftover = parent / 'standalone-windows-x64.zip'
+            leftover.write_bytes(archive({'index.html': b'html', 'launcher.py': b'launcher'}))
+            with patch.object(Path, 'unlink', side_effect=PermissionError('File in use')):
+                self.assertIn('cleanup skipped', launcher.cleanup_update_archives(root))
+            self.assertTrue(leftover.exists())
+
+
 class ServerTests(unittest.TestCase):
     def setUp(self):
         self.server = launcher.Server(ROOT, port=0)

@@ -71,6 +71,33 @@ def managed_name(name):
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
+def cleanup_update_archives(root):
+    """Remove known installer ZIPs from an installed launcher root, never a repo."""
+    root = Path(root).absolute()
+    parent = root.parent
+    if root.name != 'MASTER-IT-TOOLKIT' or (parent / '.git').exists():
+        return ''
+    if not any((parent / name).is_file() for name in ('Master-IT-Toolkit.exe', 'Master-IT-Toolkit')):
+        return ''
+    messages = []
+    for name in ('MASTER-IT-TOOLKIT.zip', 'standalone-windows-x64.zip',
+                 'standalone-linux-x64.zip', 'standalone-macos-arm64.zip'):
+        try:
+            path = safe_path(parent, name)
+            if not path.is_file():
+                continue
+            with zipfile.ZipFile(path) as package:
+                required = {'MASTER-IT-TOOLKIT/launcher.py', 'MASTER-IT-TOOLKIT/index.html',
+                            'MASTER-IT-TOOLKIT/' + MANIFEST}
+                if not required.issubset(package.namelist()):
+                    continue
+            path.unlink()
+            messages.append('Removed installer archive: ' + name + '.')
+        except (OSError, ValueError, zipfile.BadZipFile) as error:
+            messages.append('Installer cleanup skipped for ' + name + ': ' + str(error))
+    return ('\n' + '\n'.join(messages)) if messages else ''
+
+
 def install_archive(blob, root=ROOT):
     """Validate first; preserve changes; back up originals; roll back failed writes."""
     with zipfile.ZipFile(io.BytesIO(blob)) as archive:
@@ -102,7 +129,7 @@ def install_archive(blob, root=ROOT):
         if current is not None and digest(current) != old.get(name):
             raise ValueError('Local changes preserved; update stopped: ' + name)
         changes[name] = (current, desired)
-    if not changes: return 'Already up to date.'
+    if not changes: return 'Already up to date.' + cleanup_update_archives(root)
     changes[MANIFEST] = ((root / MANIFEST).read_bytes(), manifest_bytes)
     backup = safe_path(root, '.toolkit-backups/' + time.strftime('%Y%m%d-%H%M%S') + '-' + secrets.token_hex(3))
     backup.mkdir(parents=True)
@@ -130,7 +157,7 @@ def install_archive(blob, root=ROOT):
                 if p.exists(): p.unlink()
             else: p.write_bytes(before)
         raise
-    return 'Updated toolkit files. Backup: ' + str(backup) + '. Close and restart the launcher to load the new version.'
+    return 'Updated toolkit files. Backup: ' + str(backup) + '. Close and restart the launcher to load the new version.' + cleanup_update_archives(root)
 
 def download(url, limit):
     request = urllib.request.Request(url, headers={'User-Agent': 'MasterITToolkit-Updater', 'Accept': 'application/vnd.github+json'})
