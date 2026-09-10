@@ -41,3 +41,9 @@
 .assistant-state[aria-busy="true"]::before { content: ""; display: inline-block; width: .8em; height: .8em; margin-right: .6em; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: assistant-spin 1s linear infinite; }
 @keyframes assistant-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .assistant-state[aria-busy="true"]::before { animation: none; } }
+
+.extensive-filters { margin-block: 1rem; }
+.extensive-filters summary { cursor: pointer; font-weight: 600; }
+.filter-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,220px),1fr)); gap: 1rem; margin-top: 1rem; }
+.filter-grid label { display: grid; gap: .45rem; }
+.filter-grid select { width: 100%; min-width: 0; }
