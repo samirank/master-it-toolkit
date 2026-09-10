@@ -1,0 +1,3 @@
+Canon Printer & Scanner Support
+Use the toolkit download dialog to save packages here.
+Official source: https://www.usa.canon.com/support

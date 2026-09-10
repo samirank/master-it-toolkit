@@ -1,0 +1,3 @@
+Sublime Text
+Use the toolkit download dialog to save packages here.
+Official source: https://www.sublimetext.com/download

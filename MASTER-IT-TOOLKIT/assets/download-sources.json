@@ -332,5 +332,49 @@
   "latencymon": {
     "provider": "winget",
     "package": "Resplendence.LatencyMon"
+  },
+  "windirstat": {
+    "provider": "github",
+    "repo": "windirstat/windirstat"
+  },
+  "sharex": {
+    "provider": "github",
+    "repo": "ShareX/ShareX"
+  },
+  "powertoys": {
+    "provider": "github",
+    "repo": "microsoft/PowerToys"
+  },
+  "sublime": {
+    "provider": "winget",
+    "package": "SublimeHQ.SublimeText.4"
+  },
+  "brave": {
+    "provider": "github",
+    "repo": "brave/brave-browser"
+  },
+  "scrcpy": {
+    "provider": "github",
+    "repo": "Genymobile/scrcpy"
+  },
+  "naps2": {
+    "provider": "github",
+    "repo": "cyanfish/naps2"
+  },
+  "platform-tools": {
+    "provider": "winget",
+    "package": "Google.PlatformTools"
+  },
+  "wifiinfoview": {
+    "provider": "winget",
+    "package": "NirSoft.WifiInfoView"
+  },
+  "wifidiagnostics": {
+    "provider": "winget",
+    "package": "NirSoft.WifiDiagnosticsView"
+  },
+  "wirelesswatcher": {
+    "provider": "winget",
+    "package": "NirSoft.WirelessNetworkWatcher"
   }
 }

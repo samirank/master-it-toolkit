@@ -1,0 +1,3 @@
+ShareX
+Use the toolkit download dialog to save packages here.
+Official source: https://getsharex.com/downloads.html

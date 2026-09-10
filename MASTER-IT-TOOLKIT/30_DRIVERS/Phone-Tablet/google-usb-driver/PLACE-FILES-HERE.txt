@@ -1,0 +1,3 @@
+Google USB Driver
+Use the toolkit download dialog to save packages here.
+Official source: https://developer.android.com/studio/run/win-usb

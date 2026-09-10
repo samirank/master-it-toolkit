@@ -5037,7 +5037,9 @@
       "Networking"
     ],
     "tags": [
-      "packet loss DNS DHCP"
+      "packet loss DNS DHCP",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P1",
@@ -5126,7 +5128,9 @@
       "Networking"
     ],
     "tags": [
-      "LAN discovery port scan"
+      "LAN discovery port scan",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P1",
@@ -5215,7 +5219,9 @@
       "Networking"
     ],
     "tags": [
-      "LAN discovery"
+      "LAN discovery",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -5304,7 +5310,9 @@
       "Networking"
     ],
     "tags": [
-      "LAN discovery"
+      "LAN discovery",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P4",
@@ -5393,7 +5401,9 @@
       "Networking"
     ],
     "tags": [
-      "slow Ethernet slow Wi-Fi throughput"
+      "slow Ethernet slow Wi-Fi throughput",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P1",
@@ -5482,7 +5492,9 @@
       "Networking"
     ],
     "tags": [
-      "SSH serial homelab"
+      "SSH serial homelab",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P1",
@@ -5571,7 +5583,9 @@
       "Networking"
     ],
     "tags": [
-      "SFTP SSH"
+      "SFTP SSH",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P1",
@@ -6277,7 +6291,8 @@
     "developer": "Mozilla / PortableApps.com",
     "description": "Portable browser package published by PortableApps.com; web browsing needs connectivity.",
     "categories": [
-      "Portable Apps"
+      "Portable Apps",
+      "Browsers"
     ],
     "tags": [
       "browser"
@@ -6366,7 +6381,8 @@
     "developer": "Google",
     "description": "Official browser installer; choose an offline enterprise package when needed.",
     "categories": [
-      "Software Installers"
+      "Software Installers",
+      "Browsers"
     ],
     "tags": [
       "browser"
@@ -6455,7 +6471,8 @@
     "developer": "Microsoft",
     "description": "Official Edge for Business offline installer selection.",
     "categories": [
-      "Software Installers"
+      "Software Installers",
+      "Browsers"
     ],
     "tags": [
       "browser"
@@ -6811,14 +6828,16 @@
   },
   {
     "id": "vscode",
-    "name": "Visual Studio Code Portable",
+    "name": "Visual Studio Code (VS Code / portable)",
     "developer": "Microsoft",
     "description": "Extract the ZIP and create a data folder beside Code.exe to enable portable mode.",
     "categories": [
       "Developer Tools"
     ],
     "tags": [
-      "code editor"
+      "code editor",
+      "vs code",
+      "vscode"
     ],
     "useCases": [],
     "priority": "P2",
@@ -12529,7 +12548,9 @@
       "Malware & Security"
     ],
     "tags": [
-      "network malware"
+      "network malware",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -13262,7 +13283,9 @@
       "Networking"
     ],
     "tags": [
-      "packet loss port test"
+      "packet loss port test",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -15066,7 +15089,9 @@
       "Networking"
     ],
     "tags": [
-      "ncpa.cpl"
+      "ncpa.cpl",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -15850,7 +15875,9 @@
       "Networking"
     ],
     "tags": [
-      "ipconfig /all"
+      "ipconfig /all",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -15922,7 +15949,9 @@
       "Networking"
     ],
     "tags": [
-      "nslookup example.com"
+      "nslookup example.com",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -15994,7 +16023,9 @@
       "Networking"
     ],
     "tags": [
-      "tracert -d example.com"
+      "tracert -d example.com",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -16066,7 +16097,9 @@
       "Networking"
     ],
     "tags": [
-      "Test-NetConnection example.com -Port 443"
+      "Test-NetConnection example.com -Port 443",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -16139,7 +16172,9 @@
     ],
     "tags": [
       "Get-NetAdapter ",
-      " Format-Table Name, Status, LinkSpeed"
+      " Format-Table Name, Status, LinkSpeed",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -16211,7 +16246,9 @@
       "Networking"
     ],
     "tags": [
-      "Get-NetIPConfiguration"
+      "Get-NetIPConfiguration",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -16283,7 +16320,9 @@
       "Networking"
     ],
     "tags": [
-      "ipconfig /flushdns"
+      "ipconfig /flushdns",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -16355,7 +16394,9 @@
       "Networking"
     ],
     "tags": [
-      "netsh winsock reset"
+      "netsh winsock reset",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -16427,7 +16468,9 @@
       "Networking"
     ],
     "tags": [
-      "ping -n 20 example.com"
+      "ping -n 20 example.com",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -16499,7 +16542,9 @@
       "Networking"
     ],
     "tags": [
-      "netsh wlan show interfaces"
+      "netsh wlan show interfaces",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -16571,7 +16616,9 @@
       "Networking"
     ],
     "tags": [
-      "arp -a"
+      "arp -a",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -18079,7 +18126,9 @@
     ],
     "tags": [
       "offline",
-      "PowerShell"
+      "PowerShell",
+      "network",
+      "network tools"
     ],
     "useCases": [],
     "priority": "P2",
@@ -19081,7 +19130,9 @@
     "tags": [
       "Syncthing",
       "Networking",
-      "open source"
+      "open source",
+      "network",
+      "network tools"
     ],
     "useCases": [
       "Synchronize folders between approved devices."
@@ -21784,7 +21835,9 @@
       "Networking",
       "vendor software",
       "EaseUS",
-      "EverySync"
+      "EverySync",
+      "network",
+      "network tools"
     ],
     "useCases": [
       "EaseUS EverySync product and edition reference."
@@ -22210,5 +22263,1704 @@
     ],
     "packagePatterns": [],
     "editions": "Select Free / trial / Pro / business / technician as offered by this product; licenses differ."
+  },
+  {
+    "id": "foldersize",
+    "name": "Folder Size (MindGems)",
+    "developer": "MindGems",
+    "description": "Disk and folder usage analysis; identify large files before choosing what to clean.",
+    "categories": [
+      "Storage Diagnostics",
+      "Portable Apps"
+    ],
+    "tags": [
+      "folder size",
+      "foldersize",
+      "disk usage",
+      "space analyzer"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free / paid options",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.mindgems.com/products/Folder-Size/Folder-Size.html",
+    "officialDownload": "https://www.mindgems.com/products/Folder-Size/Folder-Size.html",
+    "documentation": "https://www.mindgems.com/products/Folder-Size/Folder-Size.html",
+    "localFolder": "20_PORTABLE_APPS/Storage-Diagnostics/foldersize",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "FolderSize.exe",
+      "FolderSize*.exe"
+    ],
+    "packagePatterns": [
+      "foldersize*.zip",
+      "foldersize*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Choose a drive or folder to scan.",
+      "Sort by size and inspect large folders.",
+      "Review contents and backups before deleting anything."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://www.mindgems.com/products/Folder-Size/Folder-Size.html",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://www.mindgems.com/products/Folder-Size/Folder-Size.html"
+  },
+  {
+    "id": "windirstat",
+    "name": "WinDirStat",
+    "developer": "WinDirStat contributors",
+    "description": "Open-source disk usage visualizer and large-file investigation.",
+    "categories": [
+      "Storage Diagnostics",
+      "Portable Apps"
+    ],
+    "tags": [],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://windirstat.net/",
+    "officialDownload": "https://windirstat.net/",
+    "documentation": "https://github.com/windirstat/windirstat",
+    "localFolder": "20_PORTABLE_APPS/Storage-Diagnostics/windirstat",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "WinDirStat*.exe"
+    ],
+    "packagePatterns": [
+      "windirstat*.zip",
+      "windirstat*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": false,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Select the drive to analyze.",
+      "Use the treemap to locate large files.",
+      "Open and review the containing folder before cleanup."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://github.com/windirstat/windirstat",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://windirstat.net/"
+  },
+  {
+    "id": "sharex",
+    "name": "ShareX",
+    "developer": "ShareX Team",
+    "description": "Screen capture, recording, annotation and configurable capture workflows.",
+    "categories": [
+      "Media",
+      "Portable Apps"
+    ],
+    "tags": [
+      "screenshot",
+      "screen capture",
+      "sharex"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://getsharex.com/downloads.html",
+    "officialDownload": "https://getsharex.com/downloads.html",
+    "documentation": "https://getsharex.com/docs",
+    "localFolder": "20_PORTABLE_APPS/Media/sharex",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "ShareX.exe"
+    ],
+    "packagePatterns": [
+      "sharex*.zip",
+      "sharex*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": false,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Choose Capture → Region for a screenshot.",
+      "Annotate or save the result locally.",
+      "Review after-capture and upload tasks before capturing customer data."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://getsharex.com/docs",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://getsharex.com/downloads.html"
+  },
+  {
+    "id": "jdownloader",
+    "name": "JDownloader 2",
+    "developer": "AppWork / JDownloader",
+    "description": "Download manager with queues, link collection and publisher-specific plugins.",
+    "categories": [
+      "Networking",
+      "Software Installers"
+    ],
+    "tags": [
+      "jdownload",
+      "jdownloader",
+      "download manager",
+      "network",
+      "network tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://jdownloader.org/download/index",
+    "officialDownload": "https://jdownloader.org/download/index",
+    "documentation": "https://support.jdownloader.org/knowledgebase",
+    "localFolder": "40_INSTALLERS/Networking/jdownloader",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "JDownloader2.exe",
+      "JDownloader*.exe"
+    ],
+    "packagePatterns": [
+      "jdownloader*.zip",
+      "jdownloader*.exe"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Use the current installer linked by the official site.",
+      "Set the download directory before adding links to LinkGrabber.",
+      "Review the queue and select Start downloads; some hosts require accounts."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://support.jdownloader.org/knowledgebase",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://jdownloader.org/download/index"
+  },
+  {
+    "id": "powertoys",
+    "name": "Microsoft PowerToys",
+    "developer": "Microsoft",
+    "description": "Windows productivity utilities including FancyZones, PowerRename and keyboard tools.",
+    "categories": [
+      "Windows Tweaks",
+      "Software Installers"
+    ],
+    "tags": [
+      "power toys",
+      "powertoys",
+      "window layout",
+      "bulk rename"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://github.com/microsoft/PowerToys/releases",
+    "officialDownload": "https://github.com/microsoft/PowerToys/releases",
+    "documentation": "https://learn.microsoft.com/en-us/windows/powertoys/",
+    "localFolder": "40_INSTALLERS/Windows-Tweaks/powertoys",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "PowerToys.exe",
+      "PowerToys*Setup*.exe"
+    ],
+    "packagePatterns": [
+      "powertoys*.zip",
+      "powertoys*.exe"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": false,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Install the architecture matching this PC.",
+      "Open PowerToys Settings and enable only the utilities you need.",
+      "Preview PowerRename changes before applying them."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://learn.microsoft.com/en-us/windows/powertoys/",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://github.com/microsoft/PowerToys/releases"
+  },
+  {
+    "id": "sublime",
+    "name": "Sublime Text",
+    "developer": "Sublime HQ",
+    "description": "Text and code editor with evaluation downloads; continued use requires a license.",
+    "categories": [
+      "Developer Tools",
+      "Portable Apps"
+    ],
+    "tags": [
+      "sublime text",
+      "editor"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free / trial / paid",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.sublimetext.com/download",
+    "officialDownload": "https://www.sublimetext.com/download",
+    "documentation": "https://www.sublimetext.com/docs/",
+    "localFolder": "20_PORTABLE_APPS/Developer-Tools/sublime",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "sublime_text.exe",
+      "sublime_text*.exe"
+    ],
+    "packagePatterns": [
+      "sublime*.zip",
+      "sublime*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": false,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Choose the installer or portable archive for your platform.",
+      "Open a folder or file and use the command palette.",
+      "Purchase a license for continued use after evaluation."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://www.sublimetext.com/docs/",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://www.sublimetext.com/download"
+  },
+  {
+    "id": "brave",
+    "name": "Brave Browser",
+    "developer": "Brave Software",
+    "description": "Chromium-based browser with built-in Shields for blocking ads and trackers.",
+    "categories": [
+      "Browsers",
+      "Software Installers"
+    ],
+    "tags": [],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://brave.com/download/",
+    "officialDownload": "https://brave.com/download/",
+    "documentation": "https://support.brave.com/",
+    "localFolder": "40_INSTALLERS/Browsers/brave",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "brave.exe",
+      "BraveBrowser*Setup*.exe"
+    ],
+    "packagePatterns": [
+      "brave*.zip",
+      "brave*.exe"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": false,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Download and install the correct platform build.",
+      "Use a separate profile for technician work.",
+      "Review Shields per site if a legitimate page fails to load."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://support.brave.com/",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://brave.com/download/"
+  },
+  {
+    "id": "chromium",
+    "name": "Chromium",
+    "developer": "The Chromium Authors",
+    "description": "Upstream Chromium browser builds for testing; downloaded snapshots do not auto-update.",
+    "categories": [
+      "Browsers",
+      "Developer Tools"
+    ],
+    "tags": [
+      "chromium",
+      "browser testing"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.chromium.org/getting-involved/download-chromium/",
+    "officialDownload": "https://www.chromium.org/getting-involved/download-chromium/",
+    "documentation": "https://www.chromium.org/getting-involved/download-chromium/",
+    "localFolder": "20_PORTABLE_APPS/Browsers/chromium",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "chrome.exe",
+      "chromium.exe",
+      "chrome-win*.zip"
+    ],
+    "packagePatterns": [
+      "chromium*.zip",
+      "chromium*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Choose the platform using the official Chromium build instructions.",
+      "Extract the build and keep its application files together.",
+      "Refresh snapshots manually; distinguish Chromium from Chrome for Testing."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://www.chromium.org/getting-involved/download-chromium/",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://www.chromium.org/getting-involved/download-chromium/"
+  },
+  {
+    "id": "platform-tools",
+    "name": "Android SDK Platform-Tools (ADB & Fastboot)",
+    "developer": "Google / Android Open Source Project",
+    "description": "Command-line Android debugging, device communication and model-specific fastboot operations.",
+    "categories": [
+      "Phone & Tablet",
+      "Developer Tools"
+    ],
+    "tags": [
+      "phone debug",
+      "android",
+      "adb",
+      "fastboot",
+      "flash",
+      "firmware"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://developer.android.com/tools/releases/platform-tools",
+    "officialDownload": "https://developer.android.com/tools/releases/platform-tools",
+    "documentation": "https://developer.android.com/tools/adb",
+    "localFolder": "20_PORTABLE_APPS/Phone-Tablet/platform-tools",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "adb.exe",
+      "fastboot.exe",
+      "adb",
+      "fastboot"
+    ],
+    "packagePatterns": [
+      "platform-tools*.zip",
+      "platform-tools*.exe"
+    ],
+    "kind": "Command-line",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "HIGH RISK",
+    "caution": "Flashing, unlocking, resetting or restoring can erase data or disable the device. Confirm the exact model, back up data and review the vendor procedure.",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Extract the platform-tools directory for your computer OS.",
+      "Enable USB debugging on the phone and approve this computer’s RSA prompt.",
+      "From that directory run adb devices; follow official documentation for debugging or fastboot operations."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://developer.android.com/tools/adb",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://developer.android.com/tools/releases/platform-tools"
+  },
+  {
+    "id": "scrcpy",
+    "name": "scrcpy",
+    "developer": "Genymobile",
+    "description": "Display and control an authorized Android phone over USB or supported network connections.",
+    "categories": [
+      "Phone & Tablet",
+      "Remote Support"
+    ],
+    "tags": [
+      "phone debug",
+      "android mirror",
+      "screen mirror"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://github.com/Genymobile/scrcpy/releases",
+    "officialDownload": "https://github.com/Genymobile/scrcpy/releases",
+    "documentation": "https://github.com/Genymobile/scrcpy/tree/master/doc",
+    "localFolder": "20_PORTABLE_APPS/Phone-Tablet/scrcpy",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "scrcpy.exe"
+    ],
+    "packagePatterns": [
+      "scrcpy*.zip",
+      "scrcpy*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": false,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Extract the complete release package.",
+      "Enable USB debugging and approve the phone’s authorization prompt.",
+      "Run scrcpy to mirror the phone; see official options for recording and connection modes."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://github.com/Genymobile/scrcpy/tree/master/doc",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://github.com/Genymobile/scrcpy/releases"
+  },
+  {
+    "id": "android-flash",
+    "name": "Android Flash Tool",
+    "developer": "Google / Android Open Source Project",
+    "description": "Browser-based flashing for supported Android devices, including supported Pixel models.",
+    "categories": [
+      "Phone & Tablet",
+      "Firmware"
+    ],
+    "tags": [
+      "phone flash",
+      "firmware flashing",
+      "pixel",
+      "android recovery"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": false,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://flash.android.com/",
+    "officialDownload": "https://flash.android.com/",
+    "documentation": "https://source.android.com/docs/setup/test/flash",
+    "localFolder": "",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "packagePatterns": [
+      "android-flash*.zip",
+      "android-flash*.exe"
+    ],
+    "kind": "Online",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "HIGH RISK",
+    "caution": "Flashing, unlocking, resetting or restoring can erase data or disable the device. Confirm the exact model, back up data and review the vendor procedure.",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Confirm that the exact device is supported and back up its data.",
+      "Follow Google’s USB, browser and bootloader prerequisites.",
+      "Select the intended build and review all erase/unlock prompts before flashing."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://source.android.com/docs/setup/test/flash",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://flash.android.com/"
+  },
+  {
+    "id": "google-usb-driver",
+    "name": "Google USB Driver",
+    "developer": "Google",
+    "description": "Windows USB driver for supported Google Android development devices.",
+    "categories": [
+      "Phone & Tablet",
+      "Drivers"
+    ],
+    "tags": [
+      "adb driver",
+      "phone debug",
+      "android usb"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://developer.android.com/studio/run/win-usb",
+    "officialDownload": "https://developer.android.com/studio/run/win-usb",
+    "documentation": "https://developer.android.com/studio/run/win-usb",
+    "localFolder": "30_DRIVERS/Phone-Tablet/google-usb-driver",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "android_winusb.inf"
+    ],
+    "packagePatterns": [
+      "google-usb-driver*.zip",
+      "google-usb-driver*.exe"
+    ],
+    "kind": "Driver",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Confirm that the device uses Google’s USB driver.",
+      "Download the official package and follow Device Manager instructions.",
+      "Reconnect the device and verify it with adb devices."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://developer.android.com/studio/run/win-usb",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://developer.android.com/studio/run/win-usb"
+  },
+  {
+    "id": "samsung-smartswitch",
+    "name": "Samsung Smart Switch",
+    "developer": "Samsung",
+    "description": "Samsung device data transfer, backup and restore using supported desktop and phone workflows.",
+    "categories": [
+      "Phone & Tablet",
+      "Imaging & Cloning"
+    ],
+    "tags": [
+      "samsung",
+      "phone backup",
+      "phone migration"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.samsung.com/us/apps/smart-switch/",
+    "officialDownload": "https://www.samsung.com/us/apps/smart-switch/",
+    "documentation": "https://www.samsung.com/us/apps/smart-switch/",
+    "localFolder": "40_INSTALLERS/Phone-Tablet/samsung-smartswitch",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "SmartSwitchPC.exe",
+      "SmartSwitch*.exe"
+    ],
+    "packagePatterns": [
+      "samsung-smartswitch*.zip",
+      "samsung-smartswitch*.exe"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Check device and desktop compatibility on Samsung’s page.",
+      "Connect and unlock the phone, then approve the requested access.",
+      "Create and verify a backup before restore or migration."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://www.samsung.com/us/apps/smart-switch/",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://www.samsung.com/us/apps/smart-switch/"
+  },
+  {
+    "id": "libimobiledevice",
+    "name": "libimobiledevice",
+    "developer": "libimobiledevice contributors",
+    "description": "Command-line libraries and tools for communicating with authorized iOS devices.",
+    "categories": [
+      "Phone & Tablet",
+      "Developer Tools"
+    ],
+    "tags": [
+      "iphone",
+      "ios",
+      "phone debug"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Linux",
+      "macOS",
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://libimobiledevice.org/",
+    "officialDownload": "https://libimobiledevice.org/",
+    "documentation": "https://docs.libimobiledevice.org/",
+    "localFolder": "20_PORTABLE_APPS/Phone-Tablet/libimobiledevice",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "packagePatterns": [
+      "libimobiledevice*.zip",
+      "libimobiledevice*.exe"
+    ],
+    "kind": "Command-line",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Install packages for your OS using the project’s instructions.",
+      "Unlock the device and approve Trust This Computer.",
+      "Use the documented device-information tools before backup or restore operations."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://docs.libimobiledevice.org/",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://libimobiledevice.org/"
+  },
+  {
+    "id": "naps2",
+    "name": "NAPS2",
+    "developer": "NAPS2 contributors",
+    "description": "Document scanning to PDF/images with profiles, OCR and documented command-line support.",
+    "categories": [
+      "Printers & Scanners",
+      "Office & PDF"
+    ],
+    "tags": [
+      "printer",
+      "scanner",
+      "scan pdf",
+      "ocr"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.naps2.com/download",
+    "officialDownload": "https://www.naps2.com/download",
+    "documentation": "https://www.naps2.com/doc",
+    "localFolder": "20_PORTABLE_APPS/Printers-Scanners/naps2",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "NAPS2.exe",
+      "naps2*.exe"
+    ],
+    "packagePatterns": [
+      "naps2*.zip",
+      "naps2*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": false,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Create a scan profile and select the correct scanner/driver.",
+      "Scan one test page, then check resolution, color and page order.",
+      "Save the document; use the official command-line guide for repeatable jobs."
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "source": "https://www.naps2.com/doc/command-line",
+      "notes": "Use named scan profiles and the documented console interface."
+    },
+    "licenseSource": "https://www.naps2.com/download"
+  },
+  {
+    "id": "cups",
+    "name": "CUPS / OpenPrinting",
+    "developer": "OpenPrinting",
+    "description": "Linux and Unix printing administration, queues and driverless IPP printing.",
+    "categories": [
+      "Printers & Scanners",
+      "Homelab / Linux"
+    ],
+    "tags": [
+      "printer",
+      "print queue",
+      "ipp",
+      "cups"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://openprinting.github.io/cups/",
+    "officialDownload": "https://openprinting.github.io/cups/",
+    "documentation": "https://openprinting.github.io/documentation/05-User-Manual",
+    "localFolder": "20_PORTABLE_APPS/Printers-Scanners/cups",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "packagePatterns": [
+      "cups*.zip",
+      "cups*.exe"
+    ],
+    "kind": "Command-line",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Install your distribution’s CUPS packages and printer administration tools.",
+      "Inspect printer and queue status with lpstat.",
+      "Add a supported IPP printer or matching driver and print a test page."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://openprinting.github.io/documentation/05-User-Manual",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://openprinting.github.io/cups/"
+  },
+  {
+    "id": "hp-printer",
+    "name": "HP Printer Drivers",
+    "developer": "HP",
+    "description": "Model-specific printer/scanner drivers and publisher support utilities.",
+    "categories": [
+      "Printers & Scanners",
+      "Drivers"
+    ],
+    "tags": [
+      "printer drivers",
+      "scanner drivers"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS",
+      "Linux"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://support.hp.com/us-en/drivers/printers",
+    "officialDownload": "https://support.hp.com/us-en/drivers/printers",
+    "documentation": "https://support.hp.com/us-en/drivers/printers",
+    "localFolder": "30_DRIVERS/Printers-Scanners/hp-printer",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "packagePatterns": [
+      "hp-printer*.zip",
+      "hp-printer*.exe"
+    ],
+    "kind": "Driver",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Identify the exact printer/scanner model and OS version.",
+      "Select the matching driver or utility from the publisher.",
+      "Install according to its instructions, then test printing and scanning separately."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://support.hp.com/us-en/drivers/printers",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://support.hp.com/us-en/drivers/printers"
+  },
+  {
+    "id": "brother-printer",
+    "name": "Brother Printer & Scanner Support",
+    "developer": "Brother",
+    "description": "Model-specific printer/scanner drivers and publisher support utilities.",
+    "categories": [
+      "Printers & Scanners",
+      "Drivers"
+    ],
+    "tags": [
+      "printer drivers",
+      "scanner drivers"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS",
+      "Linux"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://support.brother.com/",
+    "officialDownload": "https://support.brother.com/",
+    "documentation": "https://support.brother.com/",
+    "localFolder": "30_DRIVERS/Printers-Scanners/brother-printer",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "packagePatterns": [
+      "brother-printer*.zip",
+      "brother-printer*.exe"
+    ],
+    "kind": "Driver",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Identify the exact printer/scanner model and OS version.",
+      "Select the matching driver or utility from the publisher.",
+      "Install according to its instructions, then test printing and scanning separately."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://support.brother.com/",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://support.brother.com/"
+  },
+  {
+    "id": "epson-printer",
+    "name": "Epson Printer & Scanner Support",
+    "developer": "Epson",
+    "description": "Model-specific printer/scanner drivers and publisher support utilities.",
+    "categories": [
+      "Printers & Scanners",
+      "Drivers"
+    ],
+    "tags": [
+      "printer drivers",
+      "scanner drivers"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS",
+      "Linux"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://epson.com/Support/sl/s",
+    "officialDownload": "https://epson.com/Support/sl/s",
+    "documentation": "https://epson.com/Support/sl/s",
+    "localFolder": "30_DRIVERS/Printers-Scanners/epson-printer",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "packagePatterns": [
+      "epson-printer*.zip",
+      "epson-printer*.exe"
+    ],
+    "kind": "Driver",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Identify the exact printer/scanner model and OS version.",
+      "Select the matching driver or utility from the publisher.",
+      "Install according to its instructions, then test printing and scanning separately."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://epson.com/Support/sl/s",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://epson.com/Support/sl/s"
+  },
+  {
+    "id": "canon-printer",
+    "name": "Canon Printer & Scanner Support",
+    "developer": "Canon",
+    "description": "Model-specific printer/scanner drivers and publisher support utilities.",
+    "categories": [
+      "Printers & Scanners",
+      "Drivers"
+    ],
+    "tags": [
+      "printer drivers",
+      "scanner drivers"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS",
+      "Linux"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.usa.canon.com/support",
+    "officialDownload": "https://www.usa.canon.com/support",
+    "documentation": "https://www.usa.canon.com/support",
+    "localFolder": "30_DRIVERS/Printers-Scanners/canon-printer",
+    "localExecutable": "",
+    "inventoryPatterns": [],
+    "packagePatterns": [
+      "canon-printer*.zip",
+      "canon-printer*.exe"
+    ],
+    "kind": "Driver",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Identify the exact printer/scanner model and OS version.",
+      "Select the matching driver or utility from the publisher.",
+      "Install according to its instructions, then test printing and scanning separately."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://www.usa.canon.com/support",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://www.usa.canon.com/support"
+  },
+  {
+    "id": "wifiinfoview",
+    "name": "WifiInfoView",
+    "developer": "NirSoft",
+    "description": "View nearby wireless networks, channels and signal information.",
+    "categories": [
+      "Wi-Fi Tools",
+      "Networking"
+    ],
+    "tags": [
+      "wifi",
+      "wi-fi",
+      "wireless",
+      "network",
+      "network tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.nirsoft.net/utils/wifi_information_view.html",
+    "officialDownload": "https://www.nirsoft.net/utils/wifi_information_view.html",
+    "documentation": "https://www.nirsoft.net/utils/wifi_information_view.html",
+    "localFolder": "20_PORTABLE_APPS/Wi-Fi-Tools/wifiinfoview",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "WifiInfoView.exe"
+    ],
+    "packagePatterns": [
+      "wifiinfoview*.zip",
+      "wifiinfoview*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Extract the package and run WifiInfoView.",
+      "Compare signal and channel usage near the affected PC.",
+      "Use findings to review access-point placement/channel settings."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://www.nirsoft.net/utils/wifi_information_view.html",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://www.nirsoft.net/utils/wifi_information_view.html"
+  },
+  {
+    "id": "wifidiagnostics",
+    "name": "WifiDiagnosticsView",
+    "developer": "NirSoft",
+    "description": "Monitor Windows Wi-Fi connection and disconnection events.",
+    "categories": [
+      "Wi-Fi Tools",
+      "Networking"
+    ],
+    "tags": [
+      "wifi",
+      "wi-fi",
+      "wireless",
+      "network",
+      "network tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.nirsoft.net/utils/wifi_diagnostics_view.html",
+    "officialDownload": "https://www.nirsoft.net/utils/wifi_diagnostics_view.html",
+    "documentation": "https://www.nirsoft.net/utils/wifi_diagnostics_view.html",
+    "localFolder": "20_PORTABLE_APPS/Wi-Fi-Tools/wifidiagnostics",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "WifiDiagnosticsView.exe"
+    ],
+    "packagePatterns": [
+      "wifidiagnostics*.zip",
+      "wifidiagnostics*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Run the tool on the affected Windows PC.",
+      "Reproduce the connection problem while monitoring events.",
+      "Save the relevant event list with timestamps for troubleshooting."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://www.nirsoft.net/utils/wifi_diagnostics_view.html",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://www.nirsoft.net/utils/wifi_diagnostics_view.html"
+  },
+  {
+    "id": "wirelesswatcher",
+    "name": "Wireless Network Watcher",
+    "developer": "NirSoft",
+    "description": "Discover devices on the connected network for local inventory.",
+    "categories": [
+      "Wi-Fi Tools",
+      "Networking"
+    ],
+    "tags": [
+      "network diagnostics",
+      "network",
+      "network tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.nirsoft.net/utils/wireless_network_watcher.html",
+    "officialDownload": "https://www.nirsoft.net/utils/wireless_network_watcher.html",
+    "documentation": "https://www.nirsoft.net/utils/wireless_network_watcher.html",
+    "localFolder": "20_PORTABLE_APPS/Wi-Fi-Tools/wirelesswatcher",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "WNetWatcher.exe"
+    ],
+    "packagePatterns": [
+      "wirelesswatcher*.zip",
+      "wirelesswatcher*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Select the active network adapter.",
+      "Scan a network you administer and compare detected devices with inventory.",
+      "Treat device names and vendor labels as clues, not proof of identity."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://www.nirsoft.net/utils/wireless_network_watcher.html",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://www.nirsoft.net/utils/wireless_network_watcher.html"
+  },
+  {
+    "id": "currports",
+    "name": "CurrPorts",
+    "developer": "NirSoft",
+    "description": "Inspect open TCP/UDP ports and their owning Windows processes.",
+    "categories": [
+      "Networking"
+    ],
+    "tags": [
+      "network diagnostics",
+      "network",
+      "network tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.nirsoft.net/utils/cports.html",
+    "officialDownload": "https://www.nirsoft.net/utils/cports.html",
+    "documentation": "https://www.nirsoft.net/utils/cports.html",
+    "localFolder": "20_PORTABLE_APPS/Networking/currports",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "cports.exe"
+    ],
+    "packagePatterns": [
+      "currports*.zip",
+      "currports*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Run CurrPorts and sort by process or port.",
+      "Correlate unexpected connections with the application and destination.",
+      "Export findings; review before closing connections or processes."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://www.nirsoft.net/utils/cports.html",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://www.nirsoft.net/utils/cports.html"
+  },
+  {
+    "id": "networklatency",
+    "name": "NetworkLatencyView",
+    "developer": "NirSoft",
+    "description": "Measure observed TCP connection latency with supported packet capture.",
+    "categories": [
+      "Networking"
+    ],
+    "tags": [
+      "network diagnostics",
+      "network",
+      "network tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Free",
+    "personalLicenseNotes": "Use the publisher’s license for the selected edition.",
+    "technicianLicenseNotes": "Check commercial-service and redistribution terms before using on customer systems.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64; other builds vary"
+    ],
+    "estimatedSizeMB": 150,
+    "officialWebsite": "https://www.nirsoft.net/utils/network_latency_view.html",
+    "officialDownload": "https://www.nirsoft.net/utils/network_latency_view.html",
+    "documentation": "https://www.nirsoft.net/utils/network_latency_view.html",
+    "localFolder": "20_PORTABLE_APPS/Networking/networklatency",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "NetworkLatencyView.exe"
+    ],
+    "packagePatterns": [
+      "networklatency*.zip",
+      "networklatency*.exe"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "SAFE",
+    "caution": "",
+    "notes": "",
+    "sourceStatus": "Official source linked; download availability is tracked separately",
+    "command": "",
+    "defaultFavorite": false,
+    "quickStart": [
+      "Read the capture-driver and permissions prerequisites.",
+      "Choose the adapter and reproduce the affected traffic.",
+      "Compare latency across destinations and export the relevant samples."
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "source": "https://www.nirsoft.net/utils/network_latency_view.html",
+      "notes": "Follow the publisher documentation; no automatic device changes are configured."
+    },
+    "licenseSource": "https://www.nirsoft.net/utils/network_latency_view.html"
   }
 ]

@@ -8,7 +8,7 @@ An offline PC rescue and field-service dashboard. Search tools, work through a r
 
 ## What is included
 
-- 275 catalog records: software, built-in commands, driver and firmware libraries, and supplied scripts/references.
+- 300 catalog records: software, built-in commands, driver and firmware libraries, and supplied scripts/references.
 - 16 task guides, 11 saved checklists, and 24 offline reference sections.
 - Instant search by symptom, category, vendor, platform, tag, and command.
 - Favorites; installed, bootable, portable, priority, type, and update filters.

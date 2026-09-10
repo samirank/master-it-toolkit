@@ -1,0 +1,3 @@
+NAPS2
+Use the toolkit download dialog to save packages here.
+Official source: https://www.naps2.com/download
