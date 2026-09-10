@@ -1,4 +1,4 @@
-MASTER IT TOOLKIT TOOLKIT
+MASTER IT TOOLKIT
 Offline PC Rescue & Field Service Toolkit
 
 1. Open index.html in Edge, Chrome or Firefox. No server or internet is needed
@@ -27,3 +27,12 @@ Never record customer passwords, recovery codes or authentication secrets.
 
 AUTHORIZED SYSTEMS ONLY. No authentication or BitLocker bypass is included.
 No unattended remote access is automatically configured.
+
+LOCAL LAUNCHER
+For executable buttons, downloads and reviewed workflows, open the standalone
+Master-IT-Toolkit.exe next to the MASTER-IT-TOOLKIT folder. Source ZIP users can
+run Start-Toolkit.cmd with Python installed. Restart the launcher after updates.
+Use Run portable for scanned portable Windows programs. Start workflow supports
+manual or automatic launches with review checkpoints. Use Stop workflow to stop
+future launches; it leaves open apps running. Export the record before closing
+the launcher. See README.txt for migration guidance and platform limitations.

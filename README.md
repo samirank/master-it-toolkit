@@ -9,7 +9,7 @@ An offline PC rescue and field-service dashboard. Search tools, work through a r
 ## What is included
 
 - 275 catalog records: software, built-in commands, driver and firmware libraries, and supplied scripts/references.
-- 16 task guides, 10 saved checklists, and 24 offline reference sections.
+- 16 task guides, 11 saved checklists, and 24 offline reference sections.
 - Instant search by symptom, category, vendor, platform, tag, and command.
 - Favorites; installed, bootable, portable, priority, type, and update filters.
 - Dark/light themes and card, list, and compact views.
@@ -37,7 +37,7 @@ You can move the whole folder to another drive or computer. The catalog retains 
 
 These are examples; the app uses the actual path from its local file URL, including nested folders, spaces, drive letters, and mount points. Windows network-share URLs resolve to UNC paths. A browser cannot infer a friendly volume label beyond what appears in its URL.
 
-The **hosted demo cannot see your drives or launch local programs**. It labels destinations as templates and disables local-folder access. Download the project and open it locally for actual paths. Browser policy can still restrict opening executables; use **Copy path** with your operating system's file manager. The dashboard never executes programs automatically.
+The **hosted demo cannot see your drives or launch local programs**. It labels destinations as templates and disables local-folder access. Download the project and open it locally for actual paths. Browser policy can still restrict opening executables; use **Copy path** with your operating system's file manager. The static dashboard cannot execute programs. The optional local Windows launcher supports explicit portable launches and reviewed workflows.
 
 ## Clean layout
 
@@ -206,3 +206,15 @@ The launcher starts a background scan automatically (use --no-startup-scan to op
 Windows detection reads current-user and machine uninstall registry entries in 32/64-bit views without launching applications or invoking Win32_Product. Linux reads dpkg/rpm package databases; macOS reads application bundle metadata in standard Applications folders. Detection is conservative: exact normalized names and curated aliases/package IDs are used. Store-only apps, unsupported package managers, unregistered portable apps and uncommon installation locations can be missed; Not detected is not proof of absence. The detail view shows the evidence, version and coverage.
 
 Recognized ZIP archives are extracted once. Other archive formats are identified for manual extraction. Installer executables are not confused with portable executables. Partially downloaded files and toolkit extraction staging folders older than 24 hours are listed for cleanup review, including their paths. Original downloads and installation/recovery records are preserved; review candidates are not automatically deleted.
+
+## Portable tools and workflows
+
+In the Windows launcher, **Run portable** opens a recognized, scanned portable EXE with one click. If multiple executables are present, choose the intended file. Installers, archives, boot images and arbitrary command lines are excluded. Download the portable edition and scan first. Tools requiring administrator access must be opened explicitly as administrator; the runner does not elevate automatically.
+
+Checklists and task guides now have **Start workflow** controls and launch buttons on supported steps. Choose **Manual launches** or **Automatic launches**. Automatic mode launches the available tool for the next supported step; every step pauses for technician verification before advancing. This is supervised automation: malware detections, consent, destructive operations and migration settings are never approved by a process exit code. Helper processes may outlive their parent; review all tool windows and results before continuing.
+
+The runner records verified and skipped steps separately. **Stop workflow** prevents further launches and leaves open applications running. Closing the panel does not stop the runner; reopen **Workflow status** to continue. Export the workflow record before restarting the launcher or starting another workflow. Records are session-only and do not silently check off the browser's saved checklist. Other toolkit jobs wait until the workflow is stopped or finished; stop it first if a missing package needs downloading.
+
+**Data Migration** and **New PC / profile migration** cover source health, independent backups, fully downloaded cloud files, approved folder selection, a visible FastCopy copy with Verify enabled, copy-log review, sample-file checks and owner acceptance. Select source and destination in FastCopy; use Copy, not Move or deletion/mirroring. Application installation and supported profile imports are separate from copying data; copying Windows or Program Files is not an OS migration. Originals remain until acceptance.
+
+Portable process launching currently supports Windows EXEs. Linux/macOS still provide the dashboard, inventory and guided checklist content; use native tools there. The hosted demo previews workflows but cannot run programs. A bootable toolkit ISO is a future roadmap item, not part of this release.

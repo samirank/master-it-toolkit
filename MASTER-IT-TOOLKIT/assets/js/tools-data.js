@@ -6560,7 +6560,8 @@ window.TOOLKIT_DATA = [
     "localExecutable": "",
     "inventoryPatterns": [
       "7z.exe",
-      "7za.exe"
+      "7za.exe",
+      "7zFM.exe"
     ],
     "kind": "Portable",
     "localVersion": "",

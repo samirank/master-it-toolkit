@@ -231,3 +231,27 @@ The launcher starts a background scan automatically (use --no-startup-scan to op
 Windows detection reads current-user and machine uninstall registry entries in 32/64-bit views without launching applications or invoking Win32_Product. Linux reads dpkg/rpm package databases; macOS reads application bundle metadata in standard Applications folders. Detection is conservative: exact normalized names and curated aliases/package IDs are used. Store-only apps, unsupported package managers, unregistered portable apps and uncommon installation locations can be missed; Not detected is not proof of absence. The detail view shows the evidence, version and coverage.
 
 Recognized ZIP archives are extracted once. Other archive formats are identified for manual extraction. Installer executables are not confused with portable executables. Partially downloaded files and toolkit extraction staging folders older than 24 hours are listed for cleanup review, including their paths. Original downloads and installation/recovery records are preserved; review candidates are not automatically deleted.
+
+PORTABLE LAUNCHES AND REVIEWED WORKFLOWS
+On Windows, use Run portable to open a scanned portable EXE from its catalog
+folder. Multiple matches require selecting the intended executable. Download
+portable editions and scan/extract them first; an EXE installer is not portable.
+Linux/macOS: run native applications manually; the guided content still works.
+
+Start workflow from a checklist or task guide. Manual mode waits for a launch;
+automatic mode opens a supported step's available tool. Both pause for your
+verification before continuing. Review tool prompts, findings and child windows;
+a zero exit code is not proof of repair, a clean system or a successful migration.
+Stop prevents future launches, without terminating applications already running.
+Closing the panel leaves the workflow active; use Workflow status to reopen it.
+Stop a workflow before downloading missing tools or running other toolkit jobs.
+Export its record before restarting or starting another workflow. Skips remain
+unverified. This session record does not change saved manual checklist boxes.
+
+Migration: select owner-approved data folders, back up independently, download
+cloud placeholders, choose a healthy destination and use FastCopy Copy + Verify.
+Review its copy log, compare counts/sizes and open critical files. Keep originals
+until owner acceptance. Reinstall apps and use supported settings/profile imports;
+do not treat copying Windows or Program Files as bootable operating-system migration.
+Administrator tools need explicit native elevation. No silent elevation occurs.
+Bootable ISO support is planned for a future update, not provided here.

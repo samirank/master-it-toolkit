@@ -22,6 +22,7 @@ sys.path.insert(0, str(ROOT))
 import tool_downloads
 import install_tools
 import host_inventory
+import portable_tools
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
 SCRIPTS = {
@@ -52,7 +53,7 @@ def safe_path(root, name):
 def managed_name(name):
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
-    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
+    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
         return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
@@ -166,12 +167,21 @@ class Server(ThreadingHTTPServer):
         self.token = secrets.token_urlsafe(32)
         self.lock = threading.Lock()
         self.state = {'busy': False, 'message': 'Ready.'}
+        self.workflow = None
         super().__init__(('127.0.0.1', port), Handler)
         self.origin = 'http://127.0.0.1:' + str(self.server_port)
     def job(self, action, body=None):
         context = {'tool': (body or {}).get('tool'), 'startedAt': self.state.get('startedAt',time.time())}
         try:
-            if action == 'install':
+            if action == 'run-portable':
+                message = portable_tools.launch(self.root, body['tool'], body['executable'], safe_path,
+                    lambda message: setattr(self, 'state', dict(context, busy=True, message=message, stage='running')))
+            elif action == 'workflow':
+                self.workflow = portable_tools.Workflow(self.root, body['workflow'], body['mode'], safe_path,
+                    lambda state: setattr(self, 'state', dict(context, busy=True, stage='workflow', **state)))
+                message = self.workflow.run()
+                context['workflowRecord'] = self.workflow.history
+            elif action == 'install':
                 message = install_tools.install(self.root, body, safe_path)
                 message += '\n' + run_script('inventory')
             elif action in ('installed-apps','system-restore'):
@@ -185,7 +195,9 @@ class Server(ThreadingHTTPServer):
             self.state = dict(context, busy=False, message=message, stage='complete')
         except Exception as error:
             self.state = dict(context, busy=False, message='Stopped: ' + str(error), stage='error')
-        finally: self.lock.release()
+        finally:
+            self.workflow = None
+            self.lock.release()
 
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args): pass  # Never log the session token.
@@ -208,6 +220,11 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         route = self.route()
         if route is None: return self.reply(403, {'error': 'Open the URL printed by your launcher.'})
+        if route == 'api/run-options':
+            try:
+                query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
+                return self.reply(200, portable_tools.options(self.server.root, query.get('tool',[''])[0], safe_path))
+            except Exception as error: return self.reply(400, {'error':str(error)})
         if route == 'api/install-options':
             try:
                 query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
@@ -266,14 +283,22 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < size <= 1024: raise ValueError()
             body = json.loads(self.rfile.read(size))
             action = body['action']
-            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'install', 'installed-apps', 'system-restore'): raise ValueError()
+            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'install', 'installed-apps', 'system-restore', 'run-portable', 'workflow', 'workflow-control'): raise ValueError()
+            if action == 'run-portable' and not all(isinstance(body.get(k),str) for k in ('tool','executable')): raise ValueError()
+            if action == 'workflow' and not all(isinstance(body.get(k),str) for k in ('workflow','mode')): raise ValueError()
             if action == 'install':
                 if not all(isinstance(body.get(key), str) for key in ('tool','package','sha256')): raise ValueError()
             if action == 'download':
                 if not isinstance(body.get('tool'), str) or not isinstance(body.get('assets'), list) or not 1 <= len(body['assets']) <= 50 or any(not isinstance(a, str) for a in body['assets']): raise ValueError()
         except (ValueError, KeyError, TypeError): return self.reply(400, {'error': 'Invalid action'})
+        if action == 'workflow-control':
+            try:
+                if not self.server.workflow: raise ValueError('No workflow is running')
+                self.server.workflow.control(body)
+                return self.reply(200, {'message':'Workflow control accepted'})
+            except ValueError as error: return self.reply(409, {'error':str(error)})
         if not self.server.lock.acquire(False): return self.reply(409, {'error': 'Another action is still running. Close its script terminal first.'})
-        label = SCRIPTS[action][0] if action in SCRIPTS else {'update':'Updating toolkit from GitHub','download':'Downloading selected packages','install':'Preparing recovery checkpoint and installing application (check UAC and installer prompts)','installed-apps':'Opening installed programs','system-restore':'Opening System Restore'}[action]
+        label = SCRIPTS[action][0] if action in SCRIPTS else {'run-portable':'Opening portable application','workflow':'Starting reviewed workflow','update':'Updating toolkit from GitHub','download':'Downloading selected packages','install':'Preparing recovery checkpoint and installing application (check UAC and installer prompts)','installed-apps':'Opening installed programs','system-restore':'Opening System Restore'}[action]
         self.server.state = {'busy': True, 'startedAt': time.time(), 'tool': body.get('tool'), 'message': label + '…' + (' Check the script terminal for prompts; close it when finished.' if action in SCRIPTS and SCRIPTS[action][2] == 'windows' else '')}
         threading.Thread(target=self.server.job, args=(action, body), daemon=True).start()
         self.reply(202, self.server.state)
