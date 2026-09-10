@@ -1,4 +1,5 @@
 """Publisher release choices and download-only transfers. Never executes packages."""
+import fnmatch
 import hashlib
 import datetime
 import json
@@ -43,7 +44,7 @@ def options(root, tool_id):
             if re.search(r'(^|[-_.])(src|source|sdk)([-_.]|$)', name, re.I) or (tool_id == '7zip' and name.startswith('lzma')): continue
             if not name or name != Path(name).name or '\\' in name or ':' in name: continue
             if not url.startswith('https://github.com/' + repo + '/releases/download/'): continue
-            if not re.search(r'\.(exe|msi|msix|msixbundle|zip|7z|gz|xz|bz2|dmg|pkg|deb|rpm|appimage|iso)$', name, re.I): continue
+            if not re.search(r'\.(exe|msi|msix|msixbundle|zip|7z|gz|xz|bz2|dmg|pkg|deb|rpm|appimage|iso)$', name, re.I) and not (name.lower().endswith('.ps1') and any(fnmatch.fnmatchcase(name.casefold(),p.casefold()) for p in tool.get('inventoryPatterns',[]) if p.lower().endswith('.ps1'))): continue
             result['assets'].append({'id': str(asset['id']), 'name': name, 'url': url, 'size': asset.get('size', 0), 'digest': asset.get('digest'), 'platform': platform_for(name, tool['os'])})
     elif tool_id == 'sysinternals':
         result['assets'] = [{'id': 'suite', 'name': 'SysinternalsSuite.zip', 'url': 'https://download.sysinternals.com/files/SysinternalsSuite.zip', 'size': 0, 'digest': None, 'platform': 'Windows'}]

@@ -24,6 +24,11 @@ class DownloadsTests(unittest.TestCase):
         with patch.object(downloads,'fetch_json',return_value=release) as fetch:
             self.assertEqual(len(downloads.options(ROOT,'7zip')['assets']),1)
             self.assertEqual(fetch.call_args.args[0],'https://api.github.com/repos/ip7z/7zip/releases/latest')
+    def test_winutil_release_script_is_offered(self):
+        release={'assets':[{'id':1,'name':'winutil.ps1','browser_download_url':'https://github.com/ChrisTitusTech/winutil/releases/download/test/winutil.ps1'},
+            {'id':2,'name':'unrelated.ps1','browser_download_url':'https://github.com/ChrisTitusTech/winutil/releases/download/test/unrelated.ps1'}]}
+        with patch.object(downloads,'fetch_json',return_value=release):
+            self.assertEqual([a['name'] for a in downloads.options(ROOT,'winutil')['assets']],['winutil.ps1'])
     def test_download_checksum_existing_and_invalid_selection(self):
         payload=b'test package'; checksum=launcher.digest(payload)
         asset={'id':'1','name':'tool.zip','url':'https://github.com/ip7z/7zip/releases/download/v/tool.zip','size':len(payload),'digest':'sha256:'+checksum}

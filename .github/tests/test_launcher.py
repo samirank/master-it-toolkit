@@ -98,6 +98,12 @@ class ServerTests(unittest.TestCase):
     def test_external_origin_and_unknown_action_rejected(self):
         for action, origin in [('inventory', 'https://example.com'), ('cmd /c anything', self.server.origin)]:
             with self.assertRaises(urllib.error.HTTPError): self.request('api/action', {'action': action, 'confirmed': True}, origin)
+    def test_completion_stream_publishes_new_revision(self):
+        with self.request('api/events') as stream:
+            self.assertEqual(stream.headers['Content-Type'],'text/event-stream')
+            self.assertIn(b'"revision": 0',stream.readline());stream.readline()
+            self.server.publish_completion()
+            self.assertIn(b'"revision": 1',stream.readline())
     def test_approved_action_and_busy_lock(self):
         gate = threading.Event()
         with patch.object(launcher, 'run_script', side_effect=lambda key: gate.wait(3) or 'done'):

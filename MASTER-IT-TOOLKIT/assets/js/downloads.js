@@ -15,9 +15,9 @@
   pathField.value=window.ToolkitPaths.resolve(tool.localFolder,window.TOOLKIT_LOCAL_BASE||location.href).filesystemPath||tool.localFolder;
   pathLabel.append(pathField);dialog.append(pathLabel);
   const copyPath=element('button','Copy destination path');copyPath.onclick=async()=>{try{await navigator.clipboard.writeText(pathField.value);copyPath.textContent='Path copied';}catch{pathField.focus();pathField.select();copyPath.textContent=document.execCommand('copy')?'Path copied':'Select the path and copy manually';}};dialog.append(copyPath);
-  let watching=false, tracking=false, baseline=null, stable=null, repeats=0, polling=false;
+  let watching=false, tracking=false, baseline=null, stable=null, repeats=0, polling=false, lastResult='';
   const meter=element('progress');meter.max=100;meter.hidden=true;meter.setAttribute('aria-label','Download progress');dialog.append(meter);
-  const transfer=element('p');transfer.setAttribute('role','status');dialog.append(transfer);
+  const transfer=element('p');transfer.className='transfer-report';transfer.setAttribute('role','status');dialog.append(transfer);
   const fileList=element('div');fileList.className='download-files';dialog.append(fileList);
   const api=(name)=>new URL('api/'+name,location.href);
   const refreshInventory=async()=>{const r=await fetch(api('inventory'));if(r.ok)window.dispatchEvent(new CustomEvent('toolkit-inventory',{detail:await r.json()}));};
@@ -40,7 +40,7 @@
     for(const f of folder.files){const row=element('div');row.className='download-file';row.append(element('strong',f.name+(f.partial?' · In progress':'')),element('small',f.kind==='folder'?'Folder':(f.size/1048576).toFixed(2)+' MB'),element('code',f.path));fileList.append(row);}
     if(state.tool===tool.id){
      if(state.busy){transfer.classList.add('is-loading');tracking=true;transfer.textContent=state.message+(state.received!==undefined?' · '+(state.received/1048576).toFixed(1)+' MB'+(state.total?' / '+(state.total/1048576).toFixed(1)+' MB':''):'')+(state.count?' · File '+state.index+' of '+state.count:'');meter.hidden=false;if(state.total)meter.value=state.received/state.total*100;else meter.removeAttribute('value');}
-     else if(tracking){transfer.classList.remove('is-loading');tracking=false;meter.hidden=true;transfer.textContent=state.message;await refreshInventory();}
+     else if(tracking||(['complete','error'].includes(state.stage)&&lastResult!==state.startedAt+'|'+state.message)){lastResult=state.startedAt+'|'+state.message;transfer.classList.remove('is-loading');tracking=false;meter.hidden=true;transfer.textContent=state.message;await refreshInventory();}
     }
     const signature=JSON.stringify(folder.files.filter(f=>!f.partial&&f.kind!=='folder').map(f=>[f.name,f.size,f.modified]));
     if(baseline===null)baseline=signature;
@@ -51,7 +51,7 @@
   if(window.TOOLKIT_LAUNCHER){
    const controls=element('div');controls.className='actions';
    const scan=element('button','Refresh files & scan');scan.onclick=()=>rescan().catch(e=>transfer.textContent=e.message);
-   const picker=element('input');picker.type='file';picker.hidden=true;picker.accept='.exe,.msi,.msix,.zip,.7z,.gz,.xz,.bz2,.dmg,.pkg,.deb,.rpm,.AppImage,.iso';
+   const picker=element('input');picker.type='file';picker.hidden=true;picker.accept='.ps1,.exe,.msi,.msix,.zip,.7z,.gz,.xz,.bz2,.dmg,.pkg,.deb,.rpm,.AppImage,.iso';
    const upload=element('button','Import downloaded file…');upload.onclick=()=>picker.click();
    picker.onchange=()=>{const file=picker.files[0];if(!file)return;upload.disabled=true;transfer.classList.add('is-loading');activity('Importing '+file.name+'…');
     const request=new XMLHttpRequest();request.open('PUT',api('import?tool='+encodeURIComponent(tool.id)+'&name='+encodeURIComponent(file.name)));
@@ -59,9 +59,10 @@
     request.onload=()=>{upload.disabled=false;picker.value='';let body;try{body=JSON.parse(request.responseText);}catch{body={error:'Import failed'};}if(request.status!==202){transfer.textContent=body.error;meter.hidden=true;transfer.classList.remove('is-loading');activity(body.error,false);}else{tracking=true;transfer.textContent='Imported. Scanning and organizing…';poll();}};
     request.onerror=()=>{upload.disabled=false;transfer.classList.remove('is-loading');activity('Import interrupted. Reconnect and try again.',false);meter.hidden=true;transfer.textContent='Import interrupted. Reconnect the launcher and try again.';};request.send(file);
    };
-   controls.append(scan,upload,picker);dialog.append(controls);poll();const timer=setInterval(poll,1500);dialog.addEventListener('close',()=>clearInterval(timer));
+   const open=element('button','Open destination folder');open.onclick=async()=>{try{const response=await fetch(api('action'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'open-folder',tool:tool.id,confirmed:true})});const result=await response.json();if(!response.ok)throw Error(result.error);transfer.textContent='📁 '+result.message+'\n'+result.folder;}catch(error){transfer.textContent=error.message;}};
+   controls.append(open,scan,upload,picker);dialog.append(controls);poll();const timer=setInterval(poll,1500);window.addEventListener('toolkit-completed',poll);dialog.addEventListener('close',()=>{clearInterval(timer);window.removeEventListener('toolkit-completed',poll);});
   }
-  const official=()=>{const a=element('a','Open publisher downloads ↗');a.href=tool.officialDownload;a.target='_blank';a.rel='noopener noreferrer';
+  const official=()=>{if(window.TOOLKIT_LAUNCHER){const label=element('label',' Block ads on publisher site');const toggle=element('input');toggle.type='checkbox';toggle.checked=info?.adBlocking!==false;toggle.onchange=async()=>{try{const r=await fetch(api('action'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'adblock-site',tool:tool.id,enabled:toggle.checked,confirmed:true})});const body=await r.json();if(!r.ok)throw Error(body.error);transfer.textContent=body.message+'\nReload the publisher page to apply the change to already loaded content.';}catch(error){transfer.textContent=error.message;}};label.prepend(toggle);dialog.append(label);}const a=element('a','Open publisher downloads ↗');a.href=tool.officialDownload;a.target='_blank';a.rel='noopener noreferrer';
    a.onclick=async event=>{event.preventDefault();
     if(window.TOOLKIT_LAUNCHER){
      try{const r=await fetch(api('action'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'vendor-window',tool:tool.id,confirmed:true})});const data=await r.json();if(!r.ok)throw Error(data.error);tracking=true;transfer.textContent=data.message;}

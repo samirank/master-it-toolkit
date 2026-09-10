@@ -8,6 +8,7 @@ import tempfile
 import threading
 import time
 import unittest
+import zipfile
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from unittest.mock import AsyncMock, Mock
 
@@ -37,11 +38,27 @@ class BrowserTests(unittest.TestCase):
         self.assertEqual(p.read_bytes(),b'original')
 
     def test_busy_download_is_cancelled_without_overwriting_job(self):
-        self.server.lock.acquire(); self.server.state={'busy':True,'message':'Existing job'}
+        self.server.lock.acquire(); self.server.state={'busy':True,'message':'Existing job'};self.host.stop.set()
         download=Mock(cancel=AsyncMock())
         asyncio.run(self.host.save(download,'test',self.root))
         download.cancel.assert_awaited_once(); self.scan.assert_not_called()
         self.assertEqual(self.server.state['message'],'Existing job');self.server.lock.release()
+
+    def test_queued_download_waits_then_saves_and_cleans_only_its_file(self):
+        stage=self.root/'stage';stage.mkdir();source=stage/'transfer';source.write_bytes(b'fixture')
+        unrelated=stage/'unrelated';unrelated.write_bytes(b'preserve')
+        async def remove():
+            if source.exists():source.unlink()
+        download=Mock(suggested_filename='package.zip',path=AsyncMock(return_value=source),delete=AsyncMock(side_effect=remove),cancel=AsyncMock())
+        download.page.context.pages=[object()]
+        self.server.lock.acquire()
+        async def run():
+            async def release():await asyncio.sleep(.05);self.server.lock.release()
+            await asyncio.gather(release(),self.host.save(download,'test',stage))
+        asyncio.run(run())
+        self.assertEqual((self.root/'apps/package.zip').read_bytes(),b'fixture')
+        self.assertFalse(source.exists());self.assertEqual(unrelated.read_bytes(),b'preserve')
+        download.cancel.assert_not_awaited();self.scan.assert_called_once();self.server.publish_completion.assert_called_once()
 
     def test_sqlite_history_persists_and_redacts_token(self):
         self.server.history.record('test',{'tool':'test','stage':'error','message':'Example SECRET-TOKEN log'})
@@ -49,6 +66,38 @@ class BrowserTests(unittest.TestCase):
         row=another.recent()['jobs'][0]
         self.assertEqual(row['message'],'Example [session] log');self.assertEqual(row['stage'],'error')
         self.assertTrue(another.path.is_relative_to(self.root/'70_DOCUMENTATION/Service-Notes'))
+
+    def test_ps1_only_for_catalogued_scripts_and_identical_detection(self):
+        self.assertTrue(browser_host.allowed_package({'inventoryPatterns':['winutil*.ps1']},'WinUtil (1).ps1'))
+        self.assertFalse(browser_host.allowed_package({'inventoryPatterns':['tool.exe']},'arbitrary.ps1'))
+        a=self.root/'a';b=self.root/'b';a.write_bytes(b'known');b.write_bytes(b'known')
+        self.assertTrue(self.host.same_file(a,b));b.write_bytes(b'other');self.assertFalse(self.host.same_file(a,b))
+
+    @unittest.skipUnless(importlib.util.find_spec('playwright'),'Requires bundled browser test environment')
+    def test_real_adblocking_and_site_exception(self):
+        with zipfile.ZipFile(ROOT.parent/'.github/vendor/ubol-2026.907.2003.zip') as archive:archive.extractall(self.root/'extension')
+        os.environ['PLAYWRIGHT_BROWSERS_PATH']=str(ROOT/'runtime-browser')
+        async def check():
+            from playwright.async_api import async_playwright
+            async with async_playwright() as runtime:
+                extension=str(self.root/'extension')
+                context=await runtime.chromium.launch_persistent_context(str(self.root/'profile'),headless=True,channel='chromium',ignore_default_args=['--disable-extensions'],args=['--disable-extensions-except='+extension,'--load-extension='+extension])
+                try:
+                    worker=context.service_workers[0] if context.service_workers else await context.wait_for_event('serviceworker')
+                    base=worker.url.split('/js/')[0]
+                    await self.host.set_filter(context,base,'fixture.test',True)
+                    await context.route('https://fixture.test/**',lambda route:route.fulfill(body='<title>Fixture</title>',content_type='text/html'))
+                    await context.route('https://googleads.g.doubleclick.net/**',lambda route:route.fulfill(body='fixture',headers={'Access-Control-Allow-Origin':'*'}))
+                    page=await context.new_page();await page.goto('https://fixture.test/')
+                    blocked=[];page.on('requestfailed',lambda request:blocked.append(request.failure))
+                    result=await page.evaluate("()=>fetch('https://googleads.g.doubleclick.net/pagead/ads').then(async r=>({body:await r.text(),url:r.url})).catch(()=>({body:'blocked',url:''}))")
+                    self.assertNotEqual(result['body'],'fixture');self.assertTrue(result['url'].startswith('chrome-extension://') or any('BLOCKED_BY_CLIENT' in failure for failure in blocked),result)
+                    await self.host.set_filter(context,base,'fixture.test',False)
+                    await page.reload()
+                    result=await page.evaluate("()=>fetch('https://googleads.g.doubleclick.net/pagead/ads').then(async r=>({body:await r.text(),url:r.url})).catch(()=>({body:'blocked',url:''}))")
+                    self.assertEqual(result['body'],'fixture')
+                finally:await context.close()
+        asyncio.run(check())
 
     @unittest.skipUnless(importlib.util.find_spec('playwright'),'Requires bundled browser test environment')
     def test_real_chromium_download_routes_to_tool_and_calls_scan(self):
@@ -65,6 +114,8 @@ class BrowserTests(unittest.TestCase):
                 self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data)
         fixture=ThreadingHTTPServer(('127.0.0.1',0),Fixture)
         threading.Thread(target=fixture.serve_forever,daemon=True).start()
+        with zipfile.ZipFile(ROOT.parent/'.github/vendor/ubol-2026.907.2003.zip') as archive: archive.extractall(self.root/'extension')
+        self.host.extension=self.root/'extension'
         previous=os.environ.get('TOOLKIT_BROWSER_TEST_HEADLESS')
         os.environ['TOOLKIT_BROWSER_TEST_HEADLESS']='1'
         os.environ['PLAYWRIGHT_BROWSERS_PATH']=str(ROOT/'runtime-browser')

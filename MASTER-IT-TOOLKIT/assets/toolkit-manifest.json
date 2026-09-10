@@ -1144,7 +1144,7 @@
     "localFolder": "10_WINDOWS_TOOLBOX/03_Windows-Tweaks/WinUtil",
     "localExecutable": "10_WINDOWS_TOOLBOX/03_Windows-Tweaks/WinUtil/winutil.ps1",
     "inventoryPatterns": [
-      "winutil.ps1"
+      "winutil*.ps1"
     ],
     "kind": "Portable",
     "localVersion": "",
@@ -1156,7 +1156,7 @@
     "freshDownloadRequired": false,
     "risk": "HIGH RISK",
     "caution": "May overwrite data or make the system unbootable. Verify the target and a recoverable backup before proceeding.",
-    "notes": "",
+    "notes": "Downloaded PowerShell script. Review the source before running; downloading does not execute it.",
     "sourceStatus": "Official page reachable",
     "command": "",
     "defaultFavorite": true,
@@ -1200,7 +1200,8 @@
       "*.rpm",
       "*.AppImage",
       "*.tar.xz",
-      "*.tar.gz"
+      "*.tar.gz",
+      "winutil*.ps1"
     ]
   },
   {

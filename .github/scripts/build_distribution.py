@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import subprocess
 import zipfile
+import io
 
 ROOT=Path(__file__).resolve().parents[2]
 NAME='MASTER-IT-TOOLKIT'
@@ -24,6 +25,14 @@ def source_files():
             result[name]=p.read_bytes()
     if NAME+'/index.html' not in result:raise ValueError('Stage the toolkit source before building.')
     result[NAME+'/assets/js/local-inventory.js']=EMPTY
+    extension=(ROOT/'.github/vendor/ubol-2026.907.2003.zip').read_bytes()
+    if hashlib.sha256(extension).hexdigest()!='56ba6fb728cc272bca1931792b1a4a15963eede4557ea829e5367e85d6057dd9':
+        raise ValueError('uBlock Origin Lite archive integrity failure')
+    with zipfile.ZipFile(io.BytesIO(extension)) as archive:
+        for item in archive.infolist():
+            if item.is_dir(): continue
+            if '..' in Path(item.filename).parts or item.filename.startswith('/') or '\\' in item.filename: raise ValueError('Invalid extension path')
+            result[NAME+'/runtime-extensions/ubol/'+item.filename]=archive.read(item)
     return result
 
 def main():

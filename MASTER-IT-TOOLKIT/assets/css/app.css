@@ -23,3 +23,7 @@
 .workflow-check{display:flex;align-items:center;gap:1rem;border-bottom:1px solid var(--border);padding:.4rem 0}.workflow-check .check-item{flex:1;border:0}.workflow-file{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;padding:1rem 0}.workflow-file code{overflow-wrap:anywhere;flex:1}.workflow-body progress{width:100%;margin:1rem 0}.workflow-body small{display:block;margin-top:1rem}#workflow-status-button{margin:1rem 2rem}.download-dialog li{margin:.65rem 0}@media(max-width:600px){.workflow-check{align-items:flex-start;flex-direction:column}.workflow-check>button{margin:0 0 .75rem 2rem}}
 
 .job-log{margin:.5rem 0}.job-log pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:18rem;overflow:auto;font-size:.8rem;padding:1rem}.launcher-panel #launcher-status{white-space:normal;overflow:hidden;text-overflow:ellipsis}.activity-copy p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+.transfer-report{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.65;max-height:18rem;overflow:auto;padding:.75rem 0}.download-files code{overflow-wrap:anywhere}
+
+#activity-message{white-space:pre-line;-webkit-line-clamp:3}

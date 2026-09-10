@@ -53,6 +53,7 @@ def safe_path(root, name):
     return target
 
 def managed_name(name):
+    if name.startswith('runtime-extensions/ubol/'): return True
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
     if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
@@ -169,11 +170,17 @@ class Server(ThreadingHTTPServer):
         self.token = secrets.token_urlsafe(32)
         self.lock = threading.Lock()
         self.state = {'busy': False, 'message': 'Ready.'}
+        self.events = threading.Condition()
+        self.revision = 0
         self.workflow = None
         self.history = activity_store.Store(root, safe_path, self.token)
         self.browser = browser_host.Host(self, safe_path, lambda: run_script('inventory'))
         super().__init__(('127.0.0.1', port), Handler)
         self.origin = 'http://127.0.0.1:' + str(self.server_port)
+    def publish_completion(self):
+        with self.events:
+            self.revision += 1
+            self.events.notify_all()
     def job(self, action, body=None):
         context = {'tool': (body or {}).get('tool'), 'startedAt': self.state.get('startedAt',time.time())}
         try:
@@ -203,6 +210,7 @@ class Server(ThreadingHTTPServer):
             self.history.record(action, self.state)
             self.workflow = None
             self.lock.release()
+            self.publish_completion()
 
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args): pass  # Never log the session token.
@@ -225,6 +233,21 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         route = self.route()
         if route is None: return self.reply(403, {'error': 'Open the URL printed by your launcher.'})
+        if route == 'api/events':
+            self.send_response(200)
+            self.send_header('Content-Type','text/event-stream')
+            self.send_header('Cache-Control','no-store')
+            self.send_header('Referrer-Policy','no-referrer')
+            self.end_headers()
+            revision = -1
+            try:
+                while True:
+                    with self.server.events:
+                        self.server.events.wait_for(lambda: self.server.revision != revision, timeout=15)
+                        revision = self.server.revision
+                    self.wfile.write(('data: '+json.dumps({'revision':revision})+'\n\n').encode())
+                    self.wfile.flush()
+            except (BrokenPipeError,ConnectionResetError,OSError): return
         if route == 'api/history':
             try: return self.reply(200, self.server.history.recent())
             except Exception as error: return self.reply(500, {'error':str(error)})
@@ -258,7 +281,9 @@ class Handler(BaseHTTPRequestHandler):
         if route == 'api/download-options':
             try:
                 query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
-                return self.reply(200, tool_downloads.options(self.server.root, query.get('tool', [''])[0]))
+                info=tool_downloads.options(self.server.root, query.get('tool', [''])[0])
+                info['adBlocking']=self.server.browser.filtering.get(query.get('tool',[''])[0],True)
+                return self.reply(200,info)
             except Exception as error: return self.reply(400, {'error': str(error)})
         if route == 'api/status':
             return self.reply(200, dict(self.server.state, browserNotice=self.server.browser.notice, managedBrowser=self.server.browser.available(), historyError=self.server.history.error, scripts=[{'id': key, 'name': label, 'enabled': platform == 'all' or os.name == 'nt', 'path': path} for key, (label, path, platform) in SCRIPTS.items()]))
@@ -291,7 +316,7 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < size <= 1024: raise ValueError()
             body = json.loads(self.rfile.read(size))
             action = body['action']
-            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'install', 'installed-apps', 'system-restore', 'run-portable', 'workflow', 'workflow-control', 'vendor-window'): raise ValueError()
+            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'install', 'installed-apps', 'system-restore', 'run-portable', 'workflow', 'workflow-control', 'vendor-window', 'open-folder', 'adblock-site'): raise ValueError()
             if action == 'run-portable' and not all(isinstance(body.get(k),str) for k in ('tool','executable')): raise ValueError()
             if action == 'workflow' and not all(isinstance(body.get(k),str) for k in ('workflow','mode')): raise ValueError()
             if action == 'install':
@@ -299,6 +324,21 @@ class Handler(BaseHTTPRequestHandler):
             if action == 'download':
                 if not isinstance(body.get('tool'), str) or not isinstance(body.get('assets'), list) or not 1 <= len(body['assets']) <= 50 or any(not isinstance(a, str) for a in body['assets']): raise ValueError()
         except (ValueError, KeyError, TypeError): return self.reply(400, {'error': 'Invalid action'})
+        if action == 'adblock-site':
+            try:
+                tool_folder(self.server.root,body.get('tool'))
+                if type(body.get('enabled')) is not bool: raise ValueError('Invalid ad blocking setting')
+                self.server.browser.filtering[body['tool']] = body['enabled']
+                return self.reply(200,{'message':'Publisher-site ad blocking '+('enabled' if body['enabled'] else 'disabled')})
+            except Exception as error: return self.reply(400,{'error':str(error)})
+        if action == 'open-folder':
+            try:
+                folder=tool_folder(self.server.root,body.get('tool'))
+                folder.mkdir(parents=True,exist_ok=True)
+                if os.name=='nt': os.startfile(str(folder))
+                else: subprocess.Popen(['open' if sys.platform=='darwin' else 'xdg-open',str(folder)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+                return self.reply(200,{'message':'Opened destination folder','folder':str(folder)})
+            except Exception as error:return self.reply(400,{'error':str(error)})
         if action == 'vendor-window':
             try:
                 catalog = json.loads((self.server.root/'assets/toolkit-manifest.json').read_text('utf-8'))
@@ -332,7 +372,9 @@ class Handler(BaseHTTPRequestHandler):
             folder = tool_folder(self.server.root, tool)
             if not name or Path(name).name != name or '/' in name or '\\' in name or ':' in name or name.startswith('.'):
                 raise ValueError('Invalid package filename')
-            if Path(name).suffix.lower() not in ('.exe', '.msi', '.msix', '.zip', '.7z', '.gz', '.xz', '.bz2', '.dmg', '.pkg', '.deb', '.rpm', '.appimage', '.iso'):
+            catalog=json.loads((self.server.root/'assets/toolkit-manifest.json').read_text('utf-8'))
+            item=next(t for t in catalog if t['id']==tool)
+            if not browser_host.allowed_package(item,name):
                 raise ValueError('Select a downloaded software package')
             size = int(self.headers.get('Content-Length', '0'))
             if not 0 < size <= 8_000_000_000: raise ValueError('Package must be between 1 byte and 8 GB')

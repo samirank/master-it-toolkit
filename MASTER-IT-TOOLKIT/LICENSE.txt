@@ -48,3 +48,8 @@ ARISING FROM USE OF OR DEALINGS IN THE TOOLKIT.
 
 This is a custom source-available license, not an OSI-approved open-source
 license. It permits use and modification subject to the branding conditions.
+
+Third-party exception: bundled uBlock Origin Lite is distributed unmodified under
+its own GPL-3.0 license (runtime-extensions/ubol/LICENSE.txt). The toolkit branding
+restrictions do not apply to that component. Its source and release information:
+https://github.com/uBlockOrigin/uBOL-home/releases/tag/2026.907.2003

@@ -312,3 +312,31 @@ SQLite is a history database, not an authentication or encryption boundary.
 The existing random local session URL and same-origin request protection remain;
 this version adds no technician accounts or password vault. It does not encrypt
 files on the SSD. The bundled desktop window is not a browser-installed PWA.
+
+
+AD BLOCKING AND DOWNLOAD COMPLETION
+Publisher windows include unmodified uBlock Origin Lite 2026.907.2003 with its
+bundled default filters. The Downloads dialog has a Block ads on publisher site
+checkbox. After changing it, reload the publisher page. Exceptions last for the
+launcher session. The offline dashboard does not load this extension.
+Source and license: https://github.com/uBlockOrigin/uBOL-home/releases/tag/2026.907.2003
+The original GPL-3.0 license is included at runtime-extensions/ubol/LICENSE.txt.
+These third-party files are not governed by the toolkit's custom branding license.
+
+Catalogued PowerShell downloads such as WinUtil are supported as files, never
+automatically executed. WinUtil's direct release PS1 is offered in Downloads;
+its inventory also recognizes browser-added filename suffixes. Unrelated PS1
+files are not accepted into arbitrary application folders.
+
+Transfers queue behind active jobs instead of being cancelled immediately.
+Identical destination files are reused; different same-name files are preserved
+and require review. Successful transfers delete their owned staging file after
+saving and scanning. Failed/queued transfers clean up their own temporary files.
+The toolkit does not delete unrelated downloads, installed applications, or the
+final offline package/ZIP in the destination folder. Browser profiles are cleaned
+when publisher windows close. Use Open destination folder inside the toolkit's
+Downloads dialog; the browser's own Show in folder may point to expired staging.
+
+Completion events refresh the dashboard immediately after the inventory is written;
+periodic polling remains a reconnect fallback. Missing-download entries disappear
+once recognized. Download reports preserve line breaks and show completion milestones.

@@ -38,6 +38,13 @@ class InventoryTests(unittest.TestCase):
         self.assertFalse(module.scan()['tools']['suite']['installed'])
         self.write('suite/b.exe','MOCK DATA');self.assertTrue(module.scan()['tools']['suite']['installed'])
     def test_wildcard_iso(self): self.assertTrue(module.scan()['tools']['iso']['installed'])
+    def test_winutil_script_download_with_browser_suffix(self):
+        catalog=json.loads((REPO/'MASTER-IT-TOOLKIT/assets/toolkit-manifest.json').read_text('utf-8'))
+        tool=next(t for t in catalog if t['id']=='winutil')
+        self.write('assets/js/tools-data.js','window.TOOLKIT_DATA = '+json.dumps([tool])+';')
+        self.write(tool['localFolder']+'/WinUtil (1).ps1','# Download fixture; never executed')
+        item=module.scan()['tools']['winutil']
+        self.assertTrue(item['downloaded']);self.assertTrue(item['ready'])
     def test_host_not_installed(self): self.assertFalse(module.scan()['tools']['host']['installed'])
     def test_real_7zip_and_bcu_packages(self):
         catalog=json.loads((REPO/'MASTER-IT-TOOLKIT/assets/toolkit-manifest.json').read_text('utf-8'))

@@ -17,7 +17,8 @@
     activity.hidden=false;activity.classList.toggle('is-working',!!state.busy);activity.classList.toggle('is-error',state.stage==='error');activity.setAttribute('aria-busy',String(!!state.busy));
     activity.querySelector('button').hidden=!!state.busy;
     document.getElementById('activity-title').textContent=state.busy?'Working…':state.stage==='error'?'Action stopped':'Finished';
-    document.getElementById('activity-message').textContent=summary(state.message);
+    const milestones=String(state.message||'').split(/\r?\n/).filter(line=>line.startsWith('✓')).slice(0,3);
+    document.getElementById('activity-message').textContent=state.stage==='complete'&&milestones.length?milestones.join('\n'):summary(state.message);
     if(state.busy){if(state.startedAt)startedAt=state.startedAt*1000;else if(!startedAt)startedAt=Date.now();}
     else{startedAt=0;document.getElementById('activity-elapsed').textContent='';}
   }
@@ -73,5 +74,13 @@
   }
   document.getElementById('activity-history').onclick=history;
   const reportButton=document.createElement('button');reportButton.textContent='Logs';reportButton.onclick=history;activity.append(reportButton);
+  let eventRevision=-1;
+  const events=new EventSource(new URL('events',endpoint));
+  events.onmessage=async event=>{
+    const revision=JSON.parse(event.data).revision;if(revision===eventRevision)return;eventRevision=revision;
+    try{const response=await fetch(new URL('inventory',endpoint));if(response.ok){const inventory=await response.json();if(revision===eventRevision)window.dispatchEvent(new CustomEvent('toolkit-inventory',{detail:inventory}));}}catch{}
+    window.dispatchEvent(new Event('toolkit-completed'));refresh();
+  };
+  window.addEventListener('pagehide',()=>events.close(),{once:true});
   refresh(); setInterval(refresh, 2500);
 })();
