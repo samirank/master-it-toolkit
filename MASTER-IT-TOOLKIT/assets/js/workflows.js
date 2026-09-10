@@ -13,8 +13,8 @@
   if(!window.TOOLKIT_LAUNCHER){status.textContent='Open the local Windows launcher to run portable applications. The demo cannot execute files.';return;}
   try{
    const data=await api('run-options?tool='+encodeURIComponent(id));
-   if(data.files.length===1){await api('action',{action:'run-portable',tool:id,executable:data.files[0].path});activity('Opening '+tool.name+'…');d.close();return;}
-   status.textContent=data.reason||'Runs from the SSD, with no installer switches or automatic elevation. Review the application’s own prompts and results.';
+   if(data.files.length===1&&!data.confirmationRequired){await api('action',{action:'run-portable',tool:id,executable:data.files[0].path});activity('Opening '+tool.name+'…');d.close();return;}
+   status.textContent=data.reason||data.launchNote||'Runs from the SSD, with no installer switches or automatic elevation. Review the application’s own prompts and results.';
    for(const file of data.files){const row=el('section');row.className='workflow-file';row.append(el('code',file.fullPath));row.append(button('Run '+file.name,async()=>{
     try{await api('action',{action:'run-portable',tool:id,executable:file.path});activity('Opening '+tool.name+'…');d.close();}catch(e){status.textContent=e.message;}
    }));d.append(row);}

@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import re
 import secrets
+import shutil
 import subprocess
 import threading
 
@@ -15,6 +16,7 @@ def options(root, tool_id, safe_path):
     if not tool: raise ValueError('Unknown tool')
     reason = ''
     files = []
+    script_tool = tool_id == 'winutil'
     if os.name != 'nt': reason = 'Portable launching currently supports Windows EXEs. Use the native application on this platform.'
     elif tool.get('kind') != 'Portable' or 'Windows' not in tool.get('os', []):
         reason = 'Use this tool’s installation, boot-media or command instructions.'
@@ -27,7 +29,7 @@ def options(root, tool_id, safe_path):
             for item in inventory.get('tools', {}).get(tool_id, {}).get('files', []):
                 try:
                     path = safe_path(root, item['path']); path.relative_to(folder)
-                    if path.suffix.lower() != '.exe' or not path.is_file(): continue
+                    if path.suffix.lower() != ('.ps1' if script_tool else '.exe') or not path.is_file(): continue
                     if re.search(r'setup|(?:^|[-_.])install(?:er)?(?:[-_.]|$)', path.name, re.I): continue
                     if tool_id == '7zip' and re.match(r'7z\d', path.name, re.I): continue
                     if not any(fnmatch.fnmatchcase(path.name.casefold(), p.casefold()) for p in patterns): continue
@@ -35,8 +37,9 @@ def options(root, tool_id, safe_path):
                     files.append({'path': item['path'], 'fullPath': str(path), 'name': path.name})
                 except (OSError, ValueError, KeyError): continue
         except (OSError, ValueError, IndexError): pass
-        if not files: reason = 'No scanned portable executable is available. Download the portable edition, extract it, then scan.'
-    return {'tool': tool_id, 'name': tool['name'], 'files': files[:50], 'reason': reason}
+        if not files: reason = 'No scanned WinUtil PowerShell script is available. Download winutil.ps1, then scan; it does not need extraction.' if script_tool else 'No scanned portable executable is available. Download the portable edition, extract it, then scan.'
+    return {'tool': tool_id, 'name': tool['name'], 'files': files[:50], 'reason': reason,
+            'confirmationRequired':script_tool,'launchNote': 'Runs the downloaded PowerShell script. WinUtil requests administrator access through Windows UAC. Choose changes inside WinUtil; no preset or automatic tweaks are supplied.' if script_tool else ''}
 
 
 def launch(root, tool_id, executable, safe_path, progress, stopped=lambda: False):
@@ -44,15 +47,23 @@ def launch(root, tool_id, executable, safe_path, progress, stopped=lambda: False
     if executable not in [f['path'] for f in available['files']]:
         raise ValueError(available['reason'] or 'Executable is not in this tool’s scanned inventory')
     path = safe_path(root, executable)
-    # Never accept command lines or arguments from the browser. No elevation or shell.
+    # Arguments are fixed here, never supplied by the browser. WinUtil owns its UAC prompt.
     if stopped(): return 'Workflow stopped before launch.'
     try:
-        process = subprocess.Popen([str(path)], cwd=str(path.parent), shell=False)
+        command=[str(path)]
+        kwargs={}
+        if path.suffix.lower()=='.ps1':
+            if tool_id!='winutil':raise ValueError('This script is not enabled for launching')
+            powershell=shutil.which('powershell.exe')
+            if not powershell:raise ValueError('Windows PowerShell is unavailable')
+            command=[powershell,'-NoProfile','-ExecutionPolicy','Bypass','-File',str(path)]
+            kwargs['creationflags']=getattr(subprocess,'CREATE_NEW_CONSOLE',0)
+        process = subprocess.Popen(command, cwd=str(path.parent), shell=False, **kwargs)
     except OSError as error:
         if getattr(error, 'winerror', None) == 740:
             raise ValueError('This tool requires administrator access. Open it explicitly as administrator; this workflow will not elevate automatically.') from error
         raise
-    progress('Tool opened. Follow its prompts, then close it and review the result.')
+    progress('WinUtil PowerShell started. Check the Windows UAC prompt and the WinUtil window.' if tool_id=='winutil' else 'Tool opened. Follow its prompts, then close it and review the result.')
     while True:
         try:
             code = process.wait(timeout=0.5)
@@ -60,6 +71,7 @@ def launch(root, tool_id, executable, safe_path, progress, stopped=lambda: False
         except subprocess.TimeoutExpired:
             if stopped(): return 'Workflow stopped. The already-open application remains running.'
     if code: raise RuntimeError('Application exited with code ' + str(code) + '. Review its results before continuing.')
+    if tool_id=='winutil':return 'WinUtil launcher exited. WinUtil may still be open in its elevated window; check the UAC prompt and application. No tweaks were selected by the toolkit.'
     return 'Application exited. Verify its results; a helper process may still be open. Exit does not certify success.'
 
 
@@ -96,6 +108,7 @@ class Workflow:
     def run_tool(self, step):
         if not step.get('tool'): return 'Manual checkpoint. Complete the instructions before confirming.'
         available = options(self.root, step['tool'], self.safe_path)
+        if available.get('confirmationRequired'):return 'Open this tool using its Run button and review its PowerShell/UAC confirmation before continuing the workflow.'
         if len(available['files']) != 1:
             return available['reason'] or 'Multiple executables found. Stop this workflow to choose one using Run portable, or complete this checkpoint manually in the application.'
         try:

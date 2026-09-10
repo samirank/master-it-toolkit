@@ -15,6 +15,19 @@ import portable_tools as portable
 
 
 class PortableTests(unittest.TestCase):
+    def test_winutil_script_launch_is_explicit_and_has_fixed_arguments(self):
+        self.tool.update(id='winutil',inventoryPatterns=['winutil*.ps1'])
+        (self.root/'assets/toolkit-manifest.json').write_text(json.dumps([self.tool]))
+        (self.root/'apps/winutil.ps1').write_text('# Test fixture, never executed')
+        (self.root/'assets/js/local-inventory.js').write_text('window.LOCAL_INVENTORY = '+json.dumps({'tools':{'winutil':{'files':[{'path':'apps/winutil.ps1'},{'path':'apps/Sample.exe'}]}}})+';')
+        process=Mock();process.wait.return_value=0
+        with patch.object(portable,'os',SimpleNamespace(name='nt')),patch.object(portable.shutil,'which',return_value='powershell.exe'),patch.object(portable.subprocess,'Popen',return_value=process) as popen:
+            data=portable.options(self.root,'winutil',launcher.safe_path)
+            self.assertTrue(data['confirmationRequired']);self.assertEqual(len(data['files']),1)
+            portable.launch(self.root,'winutil','apps/winutil.ps1',launcher.safe_path,lambda _:None)
+            self.assertEqual(popen.call_args.args[0],['powershell.exe','-NoProfile','-ExecutionPolicy','Bypass','-File',str(self.root/'apps/winutil.ps1')])
+            self.assertFalse(popen.call_args.kwargs['shell'])
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)

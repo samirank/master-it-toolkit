@@ -18,6 +18,11 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.route('**/api/action',r=>{const b=r.request().postDataJSON();if(b.action==='run-portable'){run=b;return r.fulfill({status:202,json:{message:'Fixture launch'}});}return r.continue();});
   await page.goto(url+'#tools');await page.locator('#search').fill('Bulk Crap Uninstaller');await page.locator('[data-run-tool="bcu"]').first().click();
   await page.waitForFunction(()=>!document.querySelector('dialog.download-dialog'));assert.equal(run.tool,'bcu');assert.equal(run.executable,'fixture/BCUninstaller.exe');
+  await page.route('**/api/run-options?tool=winutil',r=>r.fulfill({json:{confirmationRequired:true,launchNote:'WinUtil requests administrator access through Windows UAC.',files:[{name:'winutil.ps1',path:'fixture/winutil.ps1',fullPath:'D:\\fixture\\winutil.ps1'}]}}));
+  await page.locator('#search').fill('WinUtil');await page.locator('[data-run-tool="winutil"]').first().click();
+  await page.getByRole('button',{name:'Run winutil.ps1',exact:true}).waitFor();assert.equal(run.tool,'bcu','WinUtil must wait for its explicit Run button');
+  await page.getByRole('button',{name:'Run winutil.ps1',exact:true}).click();
+  await page.waitForFunction(()=>!document.querySelector('dialog.download-dialog'));assert.equal(run.executable,'fixture/winutil.ps1');
   await page.locator('[data-nav="checklists"]').first().click();await page.locator('[data-checklist="migration"]').click();await page.locator('[data-workflow="migration"]').click();
   await page.getByRole('button',{name:'Start · Manual launches',exact:true}).click();
   await page.getByRole('button',{name:'I verified this step · Continue',exact:true}).waitFor();
