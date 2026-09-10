@@ -1,449 +1,130 @@
 # Master IT Toolkit
 
-An offline PC rescue and field-service dashboard. Search tools, work through a repair, and keep the right commands and references close at hand.
+A portable IT service dashboard for finding tools, preparing PCs, running reviewed workflows and keeping temporary job records offline.
 
-**[Try the demo](https://samirank.github.io/master-it-toolkit/)** · **[Download the offline ZIP](https://samirank.github.io/master-it-toolkit/MASTER-IT-TOOLKIT.zip)** · **[Setup and maintenance guide](MASTER-IT-TOOLKIT/README.txt)**
+**[Live demo](https://samirank.github.io/master-it-toolkit/)** · **[Standalone downloads](https://github.com/samirank/master-it-toolkit/releases)** · **[Source ZIP](https://samirank.github.io/master-it-toolkit/MASTER-IT-TOOLKIT.zip)**
 
-![Master IT Toolkit dashboard](MASTER-IT-TOOLKIT/assets/images/dashboard.png)
+![Dashboard](MASTER-IT-TOOLKIT/assets/images/dashboard.png)
 
-## What is included
+## Start here
 
-- 300 catalog records: software, built-in commands, driver and firmware libraries, and supplied scripts/references.
-- 16 task guides, 11 saved checklists, and 24 offline reference sections.
-- Instant search by symptom, category, vendor, platform, tag, and command.
-- Favorites; installed, bootable, portable, priority, type, and update filters.
-- Dark/light themes and card, list, and compact views.
-- Local service notes with text/JSON export and workspace backup/import.
-- Inventory generation, optional official-source metadata checks, and a preview-first download helper.
-- Explicit licensing, freshness, and destructive-operation warnings.
+1. Download the standalone package for Windows x64, Linux x64 or macOS Apple Silicon from Releases. Use its release notes to check the included features.
+2. Extract the complete package onto your SSD. Keep the root launcher beside `MASTER-IT-TOOLKIT/`.
+3. Open `Master-IT-Toolkit.exe` on Windows or `Start-Master-IT-Toolkit` on Linux/macOS. The launcher supplies Python and a dedicated browser window.
+4. Select tools and download their supported platform packages. Vendor-managed sources open in the toolkit's download window.
+5. Scan the SSD, review each tool's quick start, and prepare required software before going offline.
 
-The dashboard is plain HTML, CSS, and JavaScript. **No server, Node.js, Python, database, CDN, or internet connection is needed to browse the downloaded toolkit.** Software payloads, boot images, drivers, and commercial licenses are not included.
+The standalone browser is Chromium with bundled uBlock Origin Lite. Individual vendor sites can require temporarily disabling filtering. Downloads handled by the toolkit go to the displayed tool folder instead of the host's default Downloads folder. The launcher must remain running for local operations.
 
-## Quick start
+The **source ZIP** is a separate option: open its HTML for static browsing, or use Python 3.11+ with `cryptography` and run `python launcher.py` inside the toolkit folder. A current standalone runtime is required for vault encryption; a source update does not add missing Python dependencies to an older executable. Playwright and its Chromium runtime enable the managed browser when running from source.
 
-1. Download and extract `MASTER-IT-TOOLKIT.zip`.
-2. Open the top-level `index.html`. It opens the dashboard inside `MASTER-IT-TOOLKIT`.
-3. Use **Missing downloads** to obtain selected tools from their official sources.
-4. Save/extract each tool to the displayed destination. Keep portable packages' directory structures intact.
-5. Run an inventory updater, then reload the dashboard.
+The hosted demo and direct HTML mode cannot install software, execute scripts, scan drives or manage local downloads. The interface is plain HTML, CSS and JavaScript; it does not use a design framework. Browser storage is used only in static/demo mode.
 
-You can move the whole folder to another drive or computer. The catalog retains relative paths; the interface resolves them to the **complete filesystem address** when opened locally:
+## Find and prepare tools
 
-| Host | Example displayed / copied destination |
-| --- | --- |
-| Windows | `E:\MASTER-IT-TOOLKIT\20_PORTABLE_APPS\Misc\CrystalDiskInfo` |
-| Linux | `/media/sam/TOOLKIT/MASTER-IT-TOOLKIT/20_PORTABLE_APPS/Misc/CrystalDiskInfo` |
-| macOS | `/Volumes/TOOLKIT/MASTER-IT-TOOLKIT/20_PORTABLE_APPS/Misc/CrystalDiskInfo` |
+The catalog contains 332 records, including software, built-in commands, supplied scripts, driver/firmware libraries and references. Third-party applications, operating-system images and commercial licenses are obtained separately from their publishers. Commercial/freeware editions remain clearly labeled; free and open-source choices are prioritized.
 
-These are examples; the app uses the actual path from its local file URL, including nested folders, spaces, drive letters, and mount points. Windows network-share URLs resolve to UNC paths. A browser cannot infer a friendly volume label beyond what appears in its URL.
+Use search, priority and file type, then expand **More filters** for category, platform, architecture, license, risk, offline support and download method. Availability distinguishes:
 
-The **hosted demo cannot see your drives or launch local programs**. It labels destinations as templates and disables local-folder access. Download the project and open it locally for actual paths. Browser policy can still restrict opening executables; use **Copy path** with your operating system's file manager. The static dashboard cannot execute programs. The optional local Windows launcher supports explicit portable launches and reviewed workflows.
+- Not downloaded to SSD / downloaded to SSD.
+- Installed on this PC / not detected on this PC.
+- Ready on SSD / needs extraction / needs attention.
+- Missing on both the host and SSD.
 
-## Clean layout
+**Select all matching** and the selection bar apply bulk actions. Selections survive filter changes: clear them first to restrict a new selection to the current results. The whole-catalog download queue has separately labeled filters.
 
-```text
-master-it-toolkit/
-├── index.html                     # Entry point
-├── README.md
-├── MASTER-IT-TOOLKIT.zip     # Ready-to-use download
-└── MASTER-IT-TOOLKIT/
-    ├── index.html                 # Actual dashboard
-    ├── assets/                    # Local styles, data and application
-    ├── 00_BOOT/
-    ├── 10_WINDOWS_TOOLBOX/
-    ├── 20_PORTABLE_APPS/
-    ├── 30_DRIVERS/
-    ├── 40_INSTALLERS/
-    ├── 50_FIRMWARE/
-    ├── 60_SCRIPTS/
-    ├── 70_DOCUMENTATION/
-    ├── 80_LICENSED_TOOLS/
-    └── 90_TEMP/
-```
+Supported downloads use the repository's maintained catalog, resolve publisher assets and show transfer progress. GitHub Actions refreshes supported sources; upstream filename/version changes are handled by source resolvers. Hashes are checked when provided. License gates, sign-ins, unsupported sources and failed checks remain vendor-managed. “Automatic download available” describes saved metadata, not a guarantee the publisher is reachable now.
 
-Repository automation and tests live in `.github/`. Local development backups and test reports are ignored. The offline ZIP excludes repository automation and development files.
+Finished downloads refresh inventory. Existing packages show management/status controls; updates require evidence of a newer version. Unknown versions remain unknown. Vendor-window transfers show their destination and results. Every tool has an offline quick start and official documentation link.
 
-## Windows, Linux, and macOS
+## Scanning and organization
 
-The **dashboard** works in modern desktop browsers on these systems. It has no OS-specific browser dependency. Individual catalog tools and commands retain their actual OS requirements: a Windows executable is not made Linux-compatible by the dashboard. Mobile file browsing depends on the browser and OS; a desktop is recommended for field work.
+The scanner indexes relevant toolkit folders and reuses file metadata. It distinguishes downloaded installers/archives from runnable portable files and detects supported host installations. Files in unrelated host folders are not assumed to belong to the toolkit.
 
-Run maintenance from inside `MASTER-IT-TOOLKIT`:
+Recognized ZIP packages are safely extracted into `Ready/<archive>-<fingerprint>/`. Unchanged archives are skipped, extraction limits and paths are checked, and temporary extraction files are cleaned. Original archives are retained. Other archive formats and ambiguous packages currently require manual attention. Installers are not executed by scanning.
 
-**Windows PowerShell 5.1 or PowerShell 7 on Windows**
-
-```powershell
-.\60_SCRIPTS\Inventory\Update-ToolkitInventory.ps1
-```
-
-**Linux / macOS, or Windows with Python 3.9+**
+From inside `MASTER-IT-TOOLKIT`:
 
 ```sh
-python3 60_SCRIPTS/Inventory/update_toolkit_inventory.py
+python 60_SCRIPTS/Inventory/update_toolkit_inventory.py
+# Inventory only, without extraction:
+python 60_SCRIPTS/Inventory/update_toolkit_inventory.py --no-organize
+# Optional full folder sizes:
+python 60_SCRIPTS/Inventory/update_toolkit_inventory.py --full-storage
 ```
 
-Use `--what-if` with Python or `-WhatIf` with PowerShell for a scan without writing. Python is optional maintenance tooling, not a dashboard runtime dependency. The cross-platform updater never runs binaries; executable versions remain unknown. The Windows updater can read version resources without launching programs.
+`--what-if` previews without writing. Inventory is evidence of file presence, not proof of authenticity, compatibility or a complete installation. Copied destination paths include the actual drive letter, UNC share or Unix mount path.
 
-Both write `assets/js/local-inventory.js`. A scan records expected-file presence, size, and modification time. It does not prove a complete installation, authenticity, licensing, hardware compatibility, or that a utility is installed on the host PC. The default demo is unscanned, and local snapshots are excluded from Git.
+## Workflows, builds and installation
 
-### Optional online maintenance (Windows)
+PC build profiles cover personal, office, gaming, developer, design, video, study, electronics, 3D printing and support use cases. Custom profiles are saved in SQLite. Specialist entries include FreeCAD, PrusaSlicer, KiCad, Arduino IDE, Blender and Inkscape.
 
-```powershell
-# Official publisher pages and supported GitHub release metadata only.
-.\60_SCRIPTS\Inventory\Update-ToolkitMetadata.ps1
+Each workflow run receives a job ID, starting form, per-step notes and history. Forms are prefilled from the same profile's last run on the current machine. Machine matching uses available hardware/OS identifiers with fallbacks; it is not an authentication mechanism. Source/destination form values currently describe manual migration steps and are not executed as copy commands.
 
-# Preview the small reviewed automatic-download subset.
-.\60_SCRIPTS\Inventory\Download-MissingTools.ps1 -WhatIf
-```
+Automatic preparation can download required packages, organize ZIPs and optionally invoke tracked installation. Existing installations are skipped unless a newer package can be established. Unsupported sources, ambiguous installers and platform restrictions stop for attention. Checkpoint verification remains a technician decision.
 
-The download helper requires confirmation, skips existing files unless explicitly replacing, checks configured publisher SHA256 values, and never runs or extracts downloaded packages. Most downloads remain manual through official catalog links. Licensed tools always require your own authorized source and license.
+Interrupted runs can be reviewed and resumed from saved checkpoints when their machine and workflow definition still match. A resumed run receives a new job ID linked to its predecessor. Completed work is not automatically replayed or declared successful.
 
-## Using a Ventoy SSD
+Windows portable executables and supported PowerShell scripts use reviewed launch actions. Tracked Windows installs validate package signatures, request a recovery checkpoint and record installer outcomes. UAC and interactive installer prompts still apply. Restore points are not universal rollback; third-party changes, firmware and failed installations can require manual recovery. Linux/macOS have the dashboard, inventory and guided content; native install/portable execution parity is not complete.
 
-Master IT Toolkit is independent of Ventoy and is not affiliated with or endorsed by the Ventoy project. Ventoy is an optional way to boot the rescue images cataloged here.
+## Private workspace and backups
 
-1. Back up the SSD before installing Ventoy; initial installation repartitions the selected drive.
-2. Install Ventoy from its official project source and verify the target drive carefully.
-3. Copy the extracted toolkit folder and root `index.html` to the **data partition**, not the small EFI partition.
-4. Copy boot ISO files into `MASTER-IT-TOOLKIT/00_BOOT/` and its categories. Do not flash those ISOs over the data partition.
-5. Ventoy normally searches subdirectories; if you configured a search-root restriction, include this nested `00_BOOT` location.
-6. Test your selected images on representative BIOS/UEFI hardware before a service visit.
+Launcher settings, notes, favorites, checklists, custom builds, chat and job history use:
 
-You may also copy only the contents of `MASTER-IT-TOOLKIT` to the data partition root. Both layouts work because paths resolve from the dashboard's actual location. Keep at least 20–30 GB free on a 256 GB drive and use separate healthy media for recovery output.
+`70_DOCUMENTATION/Service-Notes/Activity/activity.sqlite`
 
-## Notes, privacy, and local state
+No account is required. **Private vault** encrypts this database using AES-256-GCM with a passphrase-derived wrapping key and a separate recovery key. SQLite operates in memory while unlocked; saved snapshots are encrypted and atomically replaced. The vault locks on restart and after 15 minutes of inactivity. Locked workspaces do not fall back to stale browser notes. Save the recovery key separately from the SSD.
 
-In launcher mode, favorites, notes, preferences, checklists and capacity settings persist in the local SQLite database alongside activity history: `MASTER-IT-TOOLKIT/70_DOCUMENTATION/Service-Notes/Activity/activity.sqlite`. They travel with the SSD; no account or sign-in is required. Existing browser data migrates when a database setting is first used, without overwriting saved database values. The hosted demo and direct HTML mode still use browser storage. Settings can export/import a JSON workspace backup. Database saves show failures visibly; keep an export if storage is unavailable. Download receipts and generated inventory remain compatibility JSON files.
+**This does not encrypt every file on the SSD.** Existing diagnostic exports, inventory/receipt files, browser profiles, standalone reports and older plaintext backups remain separate. Encryption does not protect data from administrators or malware on the computer where it is unlocked. It does not securely erase old SSD blocks.
 
-Never record customer passwords, BitLocker recovery keys, recovery codes, or other authentication secrets. Store approved service records privately and clear job data before handing over the device. The hosted demo also uses browser storage and does not submit notes to a server.
+**Temporary workspace only:** do not keep sensitive or long-term records here. Never enter passwords, authentication secrets or recovery codes. Export required job records to approved permanent storage, verify the copy, then clear temporary records. Backups may retain older copies.
 
-All account recovery guidance is **AUTHORIZED SYSTEMS ONLY**. No authentication or encryption bypass is provided. Review HIGH RISK warnings before disk writes, boot repair, firmware changes, aggressive app removal, or stress testing.
+In **Toolkit backup**, choose an existing folder outside the toolkit: a NAS share, mounted drive or a cloud-sync folder. Two engines are available:
 
-## Catalog and source notes
+- Versioned ZIP: checksum-verified, but not encrypted.
+- Restic: encrypted incremental snapshots, optional retention, snapshot listing and restore into an empty folder. Requires restic plus an unlocked vault.
 
-Edit `MASTER-IT-TOOLKIT/assets/js/tools-data.js`, keeping its assigned array valid JSON. Then run `Export-ToolkitManifest.ps1` on Windows, or regenerate the JSON manifest with an equivalent JSON-only authoring step. Keep IDs stable so favorites and task guides continue to work.
+Full backup includes downloaded tools, workspace, runtime and the adjacent launcher. Workspace backup includes assets, scripts and documentation/local data. Browser profiles, temporary files and update rollback folders are excluded. Keep-all is the default; a chosen restic retention limit removes older snapshots after successful backup/checks, per host/path group.
 
-Primary sources were reviewed during the September 2026 build. Source reachability is separate from current-version verification. Unknown versions remain unknown. Some sources reject automated checks; read the [source-review report](MASTER-IT-TOOLKIT/70_DOCUMENTATION/source-review.html). Free personal use is not equivalent to a commercial/technician license. Tool vendors retain their respective names and licensing terms.
+Automatic backups run while the launcher is open, the destination is accessible and the vault is unlocked when needed. They defer during other jobs and retry unavailable destinations. Cloud upload completion remains the sync client's responsibility. Configure destinations and credentials locally, never in source control or chat.
 
-## GitHub Pages and development
+See [encrypted backup setup and SSD-loss recovery](MASTER-IT-TOOLKIT/70_DOCUMENTATION/Encrypted-Backup-Recovery.txt). Test a restore before relying on automatic backups.
 
-GitHub Pages is configured through `.github/workflows/pages.yml`. In a fork, enable **Settings → Pages → Source: GitHub Actions**, update `assets/js/site-config.js` and the README links for your account, then push to `main`. The workflow publishes a clean copy and creates the downloadable ZIP; it does not publish local inventory or customer files.
+## Offline assistant
+
+Catalog guidance works offline without a model. Optional chat uses a locally prepared Ollama `qwen3:0.6b` model. It connects only to loopback, rejects redirects and sends recent chat plus matching catalog/workflow references. It does not execute generated shell text; action buttons use existing toolkit reviews.
+
+Ollama/model weights are not yet bundled as a portable SSD runtime. Prepare them on the host before going offline. Chat history is covered by the private vault when configured; model storage outside the toolkit is not part of its backup.
+
+## Updates and recovery
+
+**Update toolkit from GitHub** fetches the committed distribution from `samirank/master-it-toolkit`, verifies distribution hashes and updates managed application files. Downloaded tools, inventory, local records and SQLite are preserved. Local edits to managed files stop the update instead of being overwritten.
+
+Updates use flushed temporary files, atomic replacement and a rollback journal. If interrupted, the next launcher start restores the previous application files and asks for a restart. Recognized update ZIPs are cleaned up; keep `.toolkit-backups` until recovery is complete. The embedded Python/browser runtime requires a new standalone package when its dependencies change.
+
+These protections improve interruption recovery but cannot guarantee survival of hardware failure, unsaved edits or filesystem corruption. Distribution hashes are not independent publisher signatures. Trusted Windows signing setup is prepared, but requires the owner's signing account/certificate: [signing instructions](MASTER-IT-TOOLKIT/70_DOCUMENTATION/Signing-Setup.txt). Do not disable SmartScreen to compensate for missing signing.
+
+## Boot media
+
+The toolkit works on an ordinary SSD. Ventoy is optional and independent; this project is not affiliated with it. Back up the drive before installing a boot manager. Put the toolkit on its data partition and rescue ISOs under `00_BOOT/`; verify boot images on representative hardware before service work.
+
+A manually triggered experimental Debian live-ISO workflow is provided in `.github/workflows/live-iso.yml`. It is not a validated bootable release, and it does not flash drives automatically. Migration automation and boot/hardware testing remain unfinished.
+
+## Development and publishing
+
+Keep tool IDs stable and synchronize `assets/toolkit-manifest.json` with `assets/js/tools-data.js`. Download resolvers live in `assets/download-sources.json`; generated metadata remains separate from inventory. Do not commit downloaded executables, credentials, customer records or machine snapshots.
 
 ```sh
+python -m pip install cryptography==48.0.1
+python -m unittest discover -s .github/tests -p 'test_*.py'
 node .github/tests/validate-paths.cjs
 node .github/tests/validate-structure.cjs
-python3 .github/tests/test_inventory.py
-
-# Builds from tracked source only; stage new source files first.
-python3 .github/scripts/build_distribution.py
+# Stage new source files before building the tracked-source archive:
+python .github/scripts/build_distribution.py
 ```
 
-Cross-platform CI runs on Windows, Linux, and macOS. Browser tests use Playwright as a **development-only** dependency; set `PLAYWRIGHT_PATH` and optionally `BROWSER_EXECUTABLE` for your environment. The shipped dashboard has no such dependency.
+GitHub Actions runs cross-platform checks, Pages publishing, source resolution and standalone builds. Browser tests use Playwright during development. Pages settings should use GitHub Actions. Standalone signing is conditional and inactive until configured; source updates do not silently enable it.
 
-For contributions, describe the technician use case, use official sources, keep license and OS restrictions explicit, and avoid adding payloads or speculative “optimization” tweaks. Include relevant tests for paths, inventory, or behavior changes.
+## License
 
-## Optional standalone launcher
-
-Download a package from [GitHub Releases](https://github.com/samirank/master-it-toolkit/releases/latest), extract the entire ZIP, and open the root `Master-IT-Toolkit.exe` on Windows. Linux x64 and macOS Apple Silicon packages contain `Start-Master-IT-Toolkit` instead. These packages include the runtime; Python does not need to be installed. The unsigned builds may require approval under your operating system's application policy.
-
-The launcher opens your browser at a private loopback address. Keep its terminal open and use **Run scripts & update toolkit**. Close script terminals when finished; only one action runs at a time. Windows repair requires an administrator launcher, and the PowerShell scripts retain their own confirmation prompts and organization-policy requirements. The launcher uses a process-only PowerShell execution-policy bypass for these explicitly selected bundled scripts; it does not change the machine or user execution policy. Linux and macOS support the inventory scan and toolkit updater; Windows scripts require Windows.
-
-The source ZIP remains usable without the launcher. For launcher mode from source, install Python 3.9+ and open `Start-Toolkit.cmd`, or run `python3 launcher.py` from the toolkit folder on Linux/macOS. If port 8765 is occupied, close the existing launcher first. Browser storage is separate from direct-file mode; export and import your workspace backup when switching modes.
-
-**Update toolkit from GitHub** downloads the committed distribution ZIP from a fixed commit in `samirank/master-it-toolkit`. It checks distribution hashes, backs up replaced files in `.toolkit-backups`, and stops when managed files have local edits. Downloaded utilities, local inventory, and service notes are excluded. It updates toolkit code, scripts and documentation, not vendor applications or the embedded Python runtime. Restart the launcher after an update. A newer standalone runtime, when needed, comes from a new release package.
-
-For a manual rollback, close the launcher, copy files from the timestamped backup back to matching toolkit paths, and consult its `changes.json`: entries marked `false` were newly added and can be removed. Back up your workspace before restoring. Updates require internet; ordinary launcher use and inventory scanning work offline.
-
-## License and attribution
-
-Copyright © 2026 Samiran Kakoty. The toolkit uses the custom [Master IT Toolkit Source-Available License](MASTER-IT-TOOLKIT/LICENSE.txt). Personal and commercial use, modification, and redistribution are allowed, subject to retaining the product name, copyright notice, license, and visible attribution links. Rebranding or presenting it as your own product is not permitted. Modified versions must identify their changes and must not imply official endorsement.
-
-This is source-available software, not an OSI-approved open-source release. Third-party tools retain their own licenses.
-
-### Per-tool downloads
-
-Click **Download** on a tool card or Missing downloads row. In launcher mode, supported publisher GitHub releases (including 7-Zip) show platform and filename choices: select one, a platform, all platforms, or any combination, then **Download selected to SSD**. Files go to that tool's folder. Existing files are kept; partial downloads are cleaned up, and GitHub SHA256 digests are checked when provided. Packages are never executed or extracted automatically. Publishers with license, sign-in, or custom download flows retain an official download link. The hosted demo offers browser downloads; it cannot write directly to your SSD.
-
-Standalone ZIPs contain the executable at the root beside `MASTER-IT-TOOLKIT/`; root HTML and README files are omitted. Keep that folder beside the executable. Existing nested launchers remain supported, but download a new standalone package to get the root executable layout.
-
-### Download detection and quick scans
-
-The default inventory scan indexes each relevant directory once and reuses file metadata. Full folder sizing is optional: run `python3 60_SCRIPTS/Inventory/update_toolkit_inventory.py --full-storage`. Downloaded installers/archives and ready-to-run files are tracked separately. Save vendor downloads into the copyable directory shown in the download popup. Files saved in your browser Downloads directory are not scanned.
-
-Launcher downloads save version receipts and automatically refresh inventory. **Check downloaded tool updates** compares supported publisher releases without downloading them. Tool cards show **Downloaded** for existing files and **Update** only when a newer known version is available; unknown versions remain unknown. The catalog now includes the EaseUS product families and platform variants listed in its product/download centers (license editions are grouped), plus video editors, recording, notes, email and remote-support applications. Every tool detail includes an offline quick start and an official documentation link.
-
-### Automatic ZIP organization
-
-Local launcher scans extract recognized ZIP downloads into `Ready/<archive-name>-<fingerprint>/` beside the original download, then refresh availability. Original archives remain as backups. Existing files are never overwritten. Temporary extraction files are cleaned after success or failure, and unchanged archives are skipped on later scans. First extraction takes longer than an inventory-only scan.
-
-Only catalog-recognized packages inside toolkit folders are eligible. Unrelated files are left alone. Paths, links, duplicate names, CRC checks, free space and extraction limits are checked. Encrypted ZIPs, archives over 8 GiB expanded or 50,000 entries, and non-ZIP formats require manual extraction. EXE/MSI installers are never run automatically. ZIPs containing installers still require installation. The hosted demo cannot organize local files.
-
-Run `python 60_SCRIPTS/Inventory/update_toolkit_inventory.py --no-organize` from the toolkit folder for inventory only; `--what-if` also leaves files untouched. Organization works through the Python/frozen scanner on Windows, Linux and macOS. The legacy PowerShell-only fallback scans without extraction.
-
-Download manager and app window
-
-The launcher opens a dedicated Edge/Chrome/Chromium app window without browser tabs when a supported browser is installed (otherwise it falls back to the default browser). This is a portable launcher with an app window, not an installed PWA: keep its local launcher running for scripts, downloads and SSD access. No browser installation or system settings are changed.
-
-Download dialogs display received/total bytes, a progress bar (indeterminate when the publisher omits the size), selected-file counts, saved paths and scan results. Downloaded tools have a Manage files button. Vendor links open a separate popup; save into the shown folder or use Import downloaded file to copy a package from another folder. While the manager is open, stable changes in the destination trigger a local scan and refresh the dashboard. Browser-managed transfers expose their detailed progress in the publisher window/browser download panel; the toolkit cannot read arbitrary third-party download events. Refresh files & scan is available if automatic detection does not apply. Imports preserve existing files and automatically scan/organize afterward. Closing a dialog does not cancel an active launcher transfer.
-
-Background activity shows a persistent loader, current task and elapsed time during scans, downloads, bulk downloads, imports and updates. It remains visible with the launcher panel collapsed. Measured transfers show progress bars; other tasks use an indeterminate loader. Completion and errors remain visible until dismissed. For terminal-based scripts, the launcher stays busy until the terminal is closed. Reduced-motion preferences are respected.
-
-Tracked application installation
-
-Install on this PC opens a review, never starts an installer immediately. Through the Windows launcher, recognized EXE/MSI installers can run interactively after UAC, an installer/hash check, a before-program snapshot, and creation/verification of a new System Restore checkpoint. Unsigned packages without explicit official-source confirmation, invalid signatures, unavailable System Protection, restore-point frequency limits, or changed files stop the operation before installation. No policy settings or restore-point limits are bypassed. Choose the correct architecture and review installer choices. Firmware, drivers and boot media require their own procedures; portable tools usually need no install. Linux/macOS use their platform installer or package manager.
-
-Install records are stored per computer in 70_DOCUMENTATION/Service-Notes/Install-History and preserved by toolkit updates. They include program lists, installer hash/publisher, return code and checkpoint identity; MSI installs also have a verbose log. These local records are excluded from published packages. A successful process exit is labeled review required, not proof of installation. Programs and Features and System Restore buttons open native interfaces for deliberate recovery. A restore point is not a disk image or a guaranteed complete rollback; keep a verified backup for changes that must be fully reversible.
-
-Revo Uninstaller Pro is suggested for its own traced-install workflow. BCUninstaller is a free/open-source uninstall manager. Neither is installed automatically, and toolkit installs do not claim Revo tracing. For monitored installation, follow Revo's Install Program or installer context-menu workflow after preparing your recovery plan.
-
-Sources: https://www.revouninstaller.com/online-manual/uninstaller/ ; https://www.bcuninstaller.com/ ; https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/checkpoint-computer?view=powershell-5.1 ; https://learn.microsoft.com/en-us/windows/win32/msi/rollback-installation
-
-Unsigned installers require an explicit official-source confirmation in the review dialog. The approved hash and unsigned status are recorded; broken or invalid signatures remain blocked. This is a conscious exception, not publisher authentication.
-
-Smart host and SSD inventory
-
-The launcher starts a background scan automatically (use --no-startup-scan to opt out). Scans separately report registered applications on this computer, ready SSD files, downloaded installers, archives needing extraction, and interrupted files needing review. Host identity is checked so moving the SSD to another computer does not reuse that computer's installed-program status. Install review also checks the host directly. An installed host app does not replace a downloaded SSD package; the Downloaded only filter still refers to SSD files. Use Availability for Installed on this PC, Not detected on this PC, Ready on SSD, Needs extraction, Needs attention, and Missing on PC and SSD. A newer recognized SSD package gets an Update on this PC action.
-
-Windows detection reads current-user and machine uninstall registry entries in 32/64-bit views without launching applications or invoking Win32_Product. Linux reads dpkg/rpm package databases; macOS reads application bundle metadata in standard Applications folders. Detection is conservative: exact normalized names and curated aliases/package IDs are used. Store-only apps, unsupported package managers, unregistered portable apps and uncommon installation locations can be missed; Not detected is not proof of absence. The detail view shows the evidence, version and coverage.
-
-Recognized ZIP archives are extracted once. Other archive formats are identified for manual extraction. Installer executables are not confused with portable executables. Partially downloaded files and toolkit extraction staging folders older than 24 hours are listed for cleanup review, including their paths. Original downloads and installation/recovery records are preserved; review candidates are not automatically deleted.
-
-## Portable tools and workflows
-
-In the Windows launcher, **Run portable** opens a recognized, scanned portable EXE with one click. If multiple executables are present, choose the intended file. Installers, archives, boot images and arbitrary command lines are excluded. Download the portable edition and scan first. Tools requiring administrator access must be opened explicitly as administrator; the runner does not elevate automatically.
-
-Checklists and task guides now have **Start workflow** controls and launch buttons on supported steps. Choose **Manual launches** or **Automatic launches**. Automatic mode launches the available tool for the next supported step; every step pauses for technician verification before advancing. This is supervised automation: malware detections, consent, destructive operations and migration settings are never approved by a process exit code. Helper processes may outlive their parent; review all tool windows and results before continuing.
-
-The runner records verified and skipped steps separately. **Stop workflow** prevents further launches and leaves open applications running. Closing the panel does not stop the runner; reopen **Workflow status** to continue. Export the workflow record before restarting the launcher or starting another workflow. Records are session-only and do not silently check off the browser's saved checklist. Other toolkit jobs wait until the workflow is stopped or finished; stop it first if a missing package needs downloading.
-
-**Data Migration** and **New PC / profile migration** cover source health, independent backups, fully downloaded cloud files, approved folder selection, a reviewed Robocopy/rsync copy and log, copy-log review, sample-file checks and owner acceptance. Preview source and destination paths; avoid Move or deletion/mirroring. Application installation and supported profile imports are separate from copying data; copying Windows or Program Files is not an OS migration. Originals remain until acceptance.
-
-Portable process launching currently supports Windows EXEs. Linux/macOS still provide the dashboard, inventory and guided checklist content; use native tools there. The hosted demo previews workflows but cannot run programs. A bootable toolkit ISO is a future roadmap item, not part of this release.
-
-
-SOFTWARE SELECTION POLICY
-Prefer suitable free and open-source software, then no-cost tools included with
-the operating system or available as freeware. Keep freemium, personal-only,
-trial and paid products as alternatives for a specific required capability.
-Commercial-use and redistribution terms still apply; free does not mean open source.
-
-The default catalog and task recommendations now use this order. The Automation-friendly
-sort favors documented batch/command-line support within each licensing tier.
-A BATCH / CLI AVAILABLE badge describes the vendor capability, not a promise
-that the toolkit can already operate every feature unattended. Prefer explicit
-inputs, logs, documented return codes, preview and recovery options over GUI clicking.
-BCUninstaller is the first uninstall-manager suggestion; Revo Pro tracing is optional.
-
-Migration preference: Robocopy on Windows and rsync on Linux/macOS, with reviewed
-paths, a preview, logs and independent verification. FastCopy remains an optional
-GUI alternative. The copy step is currently a manual checkpoint: this release
-does not introduce a configured, unattended Robocopy/rsync copy adapter. No files
-are copied until the technician explicitly configures and starts the chosen tool.
-
-
-COMPACT REPORTS AND BUNDLED BROWSER
-The launcher controls start collapsed. Status and popup notifications show a short
-summary; expand Full report or open Logs / Job history to read complete output.
-Local SQLite history retains the latest 500 jobs (the dialog shows 100), under
-70_DOCUMENTATION/Service-Notes/Activity/activity.sqlite. It is excluded from
-releases, static serving and toolkit updates. Back up private service notes separately.
-Existing installation records remain available through installation history.
-
-New standalone packages include their own browser engine and driver. Publisher
-windows use isolated temporary profiles and route downloaded software into the
-selected catalog folder, followed by a scan/organization callback. Existing filenames
-are preserved; unsupported files and transfers attempted during another active job
-are rejected and logged. Downloads are staged in 90_TEMP/browser-sessions, never
-in the user's normal Downloads folder, and are never automatically executed.
-Closing a publisher window can cancel its transfers. Some vendors may refuse
-embedded/automated browsers; use a direct publisher package or explicit file import.
-
-Dashboard browser data persists in the private Service-Notes/BrowserProfile folder.
-When moving from your old browser, export its workspace backup and import it into
-the bundled app if you need its notes/favorites. Publisher cookies are temporary.
-Dashboard report exports go to Service-Notes/Exports. Browser software has its own
-third-party notices in runtime-licenses, including the bundled browser credits.
-
-Upgrade the COMPLETE standalone package to obtain new browser/runtime versions;
-the source-only GitHub updater does not replace the browser or launcher EXE.
-Keep the executable beside MASTER-IT-TOOLKIT. Existing source-only installations
-can still use direct downloads/import, but managed publisher windows require the
-new runtime. Source developers: install playwright==1.62.0 in a virtual environment,
-set PLAYWRIGHT_BROWSERS_PATH to the toolkit runtime-browser folder, then run
-python -m playwright install chromium --no-shell (Linux also needs system browser dependencies).
-
-SQLite is a history database, not an authentication or encryption boundary.
-The existing random local session URL and same-origin request protection remain;
-this version adds no technician accounts or password vault. It does not encrypt
-files on the SSD. The bundled desktop window is not a browser-installed PWA.
-
-
-AD BLOCKING AND DOWNLOAD COMPLETION
-Publisher windows include unmodified uBlock Origin Lite 2026.907.2003 with its
-bundled default filters. The Downloads dialog has a Block ads on publisher site
-checkbox. After changing it, reload the publisher page. Exceptions last for the
-launcher session. The offline dashboard does not load this extension.
-Source and license: https://github.com/uBlockOrigin/uBOL-home/releases/tag/2026.907.2003
-The original GPL-3.0 license is included at runtime-extensions/ubol/LICENSE.txt.
-These third-party files are not governed by the toolkit's custom branding license.
-
-Catalogued PowerShell downloads such as WinUtil are supported as files, never
-automatically executed. WinUtil's direct release PS1 is offered in Downloads;
-its inventory also recognizes browser-added filename suffixes. Unrelated PS1
-files are not accepted into arbitrary application folders.
-
-Transfers queue behind active jobs instead of being cancelled immediately.
-Identical destination files are reused; different same-name files are preserved
-and require review. Successful transfers delete their owned staging file after
-saving and scanning. Failed/queued transfers clean up their own temporary files.
-The toolkit does not delete unrelated downloads, installed applications, or the
-final offline package/ZIP in the destination folder. Browser profiles are cleaned
-when publisher windows close. Use Open destination folder inside the toolkit's
-Downloads dialog; the browser's own Show in folder may point to expired staging.
-
-Completion events refresh the dashboard immediately after the inventory is written;
-periodic polling remains a reconnect fallback. Missing-download entries disappear
-once recognized. Download reports preserve line breaks and show completion milestones.
-
-## Repository-managed downloads
-
-In **Missing downloads**, select a platform and architecture, then click **Download
-all supported missing tools**. This scans existing files, processes one suitable
-package per tool, retries transient network failures, and scans/refreshes after
-each tool. Free/open-source tools go first. Windows x64 may use x86 packages when
-the publisher has no x64 build. Boot ISOs are included. **All platforms** and **All
-architectures** opt into additional builds. Downloads never execute installers.
-**Stop queue after current file** retains completed packages. Repeating the queue
-skips recorded files; partial transfers restart. Logs and the private
-`70_DOCUMENTATION/Service-Notes/download-queue.json` report failures and exclusions.
-
-The desktop resolves package identities through our repository's `download-catalog`
-branch, not hardcoded publisher filenames. A bundled snapshot and local cache work
-when catalog refresh is unavailable; downloading still requires network access.
-**Updates → Download latest supported packages** fetches the current catalog's
-packages. Older packages are preserved when checksums or version markers change.
-Receipts let inventory recognize renamed packages. SHA256 is checked when the
-publisher or Microsoft package manifest provides it; packages without a published
-SHA256 are explicitly reported as unverified against a publisher checksum.
-
-The **Refresh download catalog** GitHub Actions workflow runs at 05:23 and 17:23
-UTC, and supports **Run workflow**. `assets/download-sources.json` maps stable tool
-IDs to GitHub repositories, SourceForge stable feeds, Sysinternals archives, or
-Microsoft's WinGet manifests. The workflow discovers versions/filenames, follows
-repository transfers, checks recommended endpoints with one-byte requests, and
-records HTTPS CDN redirects. It publishes metadata only—no third-party binaries.
-It opens a GitHub issue assigned to the repository owner when releases/links
-change or a source newly fails; unchanged checks do not send another notification.
-GitHub email delivery follows your GitHub notification settings. The dashboard
-also checks the small catalog at startup and shows a link to update notifications.
-
-Stable repository-owned download links use:
-`https://samirank.github.io/master-it-toolkit/MASTER-IT-TOOLKIT/70_DOCUMENTATION/download.html?tool=clonezilla&platform=Boot%20ISO&architecture=x64`
-The Pages redirect resolves the current link from the catalog and sends the browser
-to the publisher. Desktop downloads use the same catalog but save through the
-launcher into the SSD. GitHub Pages does not proxy installer bytes.
-
-Coverage is explicit in the catalog: `ready`, `manual`, `error`, or `not-applicable`.
-Licensed editions, sign-in/CAPTCHA flows, hardware-specific firmware/drivers,
-built-in commands and unsupported publishers cannot all be universal one-click
-downloads. Failed sources retain their last good metadata for diagnosis but are
-not advertised as current automatic downloads. A vendor changing its API entirely
-can require a resolver update; the monitor reports this instead of guessing a URL.
-
-Select tools using the **Select** checkboxes in All tools, Missing downloads, or Updates. The bulk-action bar supports selecting all matching results, clearing selection, downloading selected missing/latest packages by platform, adding favorites, and exporting the selected catalog entries. Selection persists across filters for the current session. Download queues never install or execute the selected programs.
-
-The whole-catalog download panel has independent priority, category, package-type and license filters alongside platform and architecture. All chosen filters apply together to the queue; Reset queue filters restores the defaults. The selected-tools action bar uses its explicit tool selection instead.
-
-### PC builds and reusable setup workflows
-
-Open **PC builds** for 18 software setup profiles: personal, office, gaming, 3D printing, electronics, developer without AI, developer with local AI, custom starter, tech support, field technician, Linux, design, video editing, study, streaming/podcast, home lab, accessible family, and research/data.
-
-Review a profile, choose the package architecture and **Download build packages**, then **Start guided build**. Download queues use the repository catalog. Specialist applications not yet in that catalog have explicit official setup links in the relevant steps (FreeCAD, PrusaSlicer, KiCad, Arduino IDE, Ollama, Inkscape and Blender). Those are manual setup steps, not automatic downloads. Some catalog apps offer portable packages rather than installers.
-
-Install steps show existing host detection, available packages and publisher signatures. They require an explicit install choice and use the existing Windows tracked installer/recovery checkpoint. Automatic workflow mode only launches eligible portable tools; it does not silently install apps, choose firmware or erase disks. Verify each step before continuing. Linux/macOS application installation remains a manual native-package-manager step. A profile for a different OS cannot execute on the current host. Builds configure an existing OS; they do not assemble hardware or create an unattended OS image.
-
-**Clone and customize** or **Create custom build** lets you name the build, choose its target OS, select catalog apps, add manual instructions and HTTPS documentation links, and reorder/remove steps. Up to 100 custom builds (200 steps each) persist in SQLite on the SSD. No authentication is required. **Export build definition** saves a portable JSON copy. **Saved run reports** exports the latest 100 completed/stopped workflow records from SQLite. An interrupted live process is not automatically resumed after restart.
-
-Optional Python command-line helper, run from the toolkit folder:
-
-```text
-python 60_SCRIPTS/Setup/build_pc.py --list
-python 60_SCRIPTS/Setup/build_pc.py --profile build-gaming --download --architecture x64
-python 60_SCRIPTS/Setup/build_pc.py --profile build-gaming
-python 60_SCRIPTS/Setup/build_pc.py --profile build-linux --mode manual
-```
-
-The helper reads the same built-in profiles and SQLite custom builds as the dashboard. Download mode only saves packages. Guided mode prompts for review at every checkpoint and logs completed runs locally. The desktop launcher does not require a separate Python installation; this optional CLI does.
-
-### Toolkit backup to NAS or cloud-synced storage
-
-Open **Toolkit backup** and enter an existing absolute destination outside the toolkit directory. Windows supports mapped drives and UNC shares such as `\\NAS\Backups`; Linux/macOS can use mounted paths. Cloud destinations use a folder managed by your existing cloud-sync client or mounted storage. The toolkit does not create cloud accounts or manage provider credentials.
-
-- **Workspace** includes dashboard files, metadata/receipts, scripts, documentation, service notes, settings, custom workflows and SQLite history. Restore onto a fresh toolkit package to recover the full application.
-- **Full** adds downloaded tools, ISOs, bundled browser/runtime and the adjacent standalone launcher when present. It is a file backup, not an SSD partition/boot-sector image.
-- Browser session profiles, temporary files, symlink/junction targets and old updater rollback archives are excluded. Skipped links are listed in the archive manifest.
-- Every run creates a new ZIP and verifies file SHA-256 checksums before renaming it complete. SQLite uses its online backup API, with a database integrity check. Other source files that change during copying cause a clear failure; close external tools and retry. There is no volume-wide filesystem snapshot.
-- **Cancel backup** removes the current incomplete archive, preserving previous backups. **Save destination** persists the path/scope in SQLite. Check the path when moving the SSD to another host.
-- Archives include private notes and are not encrypted. Use a private NAS/cloud location or use Restic, Kopia or Duplicati for native encrypted repositories. rclone can copy completed archives to a configured remote; syncing alone is not a versioned backup.
-- A successful result confirms the local or mounted file was verified. Confirm cloud upload completion separately in your sync client. Retention is manual: old backups are never automatically deleted.
-
-To restore, verify the archive, close the launcher and extract into a separate empty location (or onto a fresh toolkit package for workspace-only backups). Test notes, custom builds and a tool before replacing the original SSD. SQLite restoration must happen with the launcher closed.
-
-Optional command line:
-
-```text
-python 60_SCRIPTS/Backup/toolkit_backup.py --destination Z:\Backups --scope full
-python 60_SCRIPTS/Backup/toolkit_backup.py --verify Z:\Backups\master-it-full-EXAMPLE.zip
-```
-
-Backup & Sync includes Veeam Agent, Restic, Kopia, Duplicati, rclone and existing imaging/sync alternatives. Follow each publisher’s edition, encryption and recovery guidance.
-
-## WordPress development
-
-The WordPress Development category includes Local (LocalWP), WordPress Studio, DDEV, WP-CLI and Composer. Each entry includes official documentation, setup steps and a dedicated download folder. These tools are also available in the custom PC-build editor.
-
-Choose Local or Studio for desktop site management, or DDEV for a container-based environment. DDEV requires a supported Docker provider; Composer and standalone WP-CLI require PHP. Local and DDEV already provide a site-specific WP-CLI environment. Prepare runtimes, container images and project dependencies before going offline. Back up both site files and the database before imports or synchronization; projects stored outside the toolkit are not automatically included in toolkit backups.
-
-## Offline toolkit assistant
-
-Open **Offline assistant** in the desktop launcher. The built-in catalog guide searches tools, how-tos, bundled workflows and custom SQLite builds without any model or internet connection. Chat history stays in the toolkit activity SQLite database (last 40 messages). Clear saved chat removes those records; existing backups may still contain earlier history. The database is not encrypted. Avoid entering passwords or customer secrets.
-
-For natural-language AI chat, install [Ollama](https://ollama.com/download), enable its [local-only mode](https://docs.ollama.com/faq) with `OLLAMA_NO_CLOUD=1`, and start it on its default loopback address. In the assistant setup panel, click **Download local model** while online to prepare [Qwen3 0.6B](https://ollama.com/library/qwen3:0.6b). Then select **Local AI chat**. Once the runtime and model are present, chat works offline; no cloud endpoint or cloud fallback is used. The small model trades answer quality for a smaller footprint, and response speed depends on the computer.
-
-The AI connects only to `127.0.0.1:11434`, bypasses proxy settings and rejects redirects. It receives your recent chat and matching catalog/workflow references, not a filesystem dump or your service notes. It cannot execute generated shell text. Tool and workflow buttons use existing toolkit launch/install/download reviews; diagnostic buttons require an explicit review click and then use existing job progress/logs. Confirm the current OS, errors and backups before following advice. An answer is not evidence that a command ran.
-
-Ollama and model weights are **not bundled in the source ZIP or launcher**. By default they live on the host computer, so prepare each computer before going offline (or configure Ollama's documented model storage location). Toolkit workspace backups include the chat SQLite database, not external model storage. A missing or unavailable model falls back to catalog guidance. Model preparation can take several minutes; keep the launcher open until it reports completion.
-
-## Finding tools with filters
-
-Use **Availability → Not downloaded to SSD** to find packages absent from the saved inventory, independently of whether the application is installed on the host PC. **Downloaded to SSD**, host installation, ready-to-run, extraction and attention states are separate choices. Missing downloads includes every priority; choose P1/P2 when preparing only essentials.
-
-Expand **More filters** to combine download method, category, operating system, architecture, license, risk and offline capability with the existing search, priority and file-type controls. **No automatic download available** includes vendor-managed sources, failed sources and entries without a matching automatic platform/architecture package. Unknown catalog status is separate. **Automatic download available** uses saved package metadata, not a fresh connectivity test. Platform/architecture filters also narrow the tool's advertised support.
-
-Use **Select all matching** and **Download selected missing** to act on the filtered list. Existing selections remain selected when filters change; clear selection first if you want only the current matches. The whole-catalog download queue above the list retains its separately labeled queue filters. Reset filters clears the list criteria.
-
-## Update, interruption and automatic-backup protection
-
-Updates preserve downloaded tool packages, inventory, receipts, service notes, custom workflows and SQLite data. Local changes to managed application files stop an update instead of being overwritten. Toolkit file replacements now use flushed temporary files and atomic replacement, with a checksummed rollback journal committed before the first change. After an interrupted update, the next launcher start restores the previous files and asks you to restart once more to load that restored version. Recovery does not remove tools or personal data. Keep the `.toolkit-backups` folder until recovery is complete.
-
-SQLite explicitly uses FULL synchronization and platform full-fsync support. Completed Windows managed downloads are flushed and renamed from partial files before being published. Backup ZIPs are verified and flushed before receiving their final filename. These measures improve crash recovery; they cannot guarantee survival of hardware failure, interrupted unsaved edits, a drive that ignores flush requests, or filesystem corruption. Interrupted third-party programs and partially completed installations still require their own recovery.
-
-In **Toolkit backup**, choose an existing private destination outside the toolkit (NAS, mounted backup drive or cloud-synced folder), enable **Automatically back up when destination is available**, choose the interval and save. Enabling selects full backup for tools plus workspace; workspace-only is available if desired. The launcher checks once a minute while open, defers during toolkit jobs, and retries unavailable or failed destinations after five minutes. Last successful backup time is stored in SQLite and survives restarts. Versioned backups are retained; ensure destination capacity. A cloud-synced folder confirms only a local snapshot, not completion of the cloud upload. No cloud account is configured or data uploaded without your chosen destination. The launcher must be running; this is not an operating-system background service.
-
-## Workflow preparation and machine job history
-
-Every newly started checklist/workflow/build run has a unique job ID and a SQLite record from the start. **Workflow job history** shows the current machine by default, with an option for all machines. Matching prefers an available BIOS/hardware serial, then OS machine ID, then a hardware MAC or hostname fallback. MAC addresses and serials are shown as evidence; duplicates, virtualization, hardware replacement and randomized network addresses can affect matching. Records include starting details, per-step preparation/results and saved notes. An unfinished record remains visible as incomplete/interrupted after restart; it is not resumed or declared successful automatically.
-
-The start form offers editable ticket, technician, issue, source/destination reference paths and notes, prefilled from the same profile's last run on this machine. Source/destination fields describe manual copy steps and are never interpolated into shell commands. Save checkpoint notes explicitly, or include them when continuing/skipping. Saved job records survive updates and are included in workspace/full backups.
-
-In automatic mode, **Download missing tools and organize recognized archives** runs the repository download queue for each required tool and refreshes inventory. **Fetch latest supported packages** requests latest packages instead. Offline failures retain existing tools. Recognized ZIP extraction and organization use the scanner; original packages and customer files are not deleted. Cleanup requiring a choice remains manual.
-
-Optionally enable tracked installation at the start. Only a single installer with a valid signature is eligible. Existing installations are skipped unless every detected host version can be compared numerically and the scanned package is proven newer, with updates enabled. Recovery-checkpoint creation, UAC and interactive installer prompts still apply. Ambiguous/unsigned packages, unsupported platforms, firmware/drivers and vendor-managed downloads stop for attention. Manual mode does not perform preparation automatically. Checkpoints still require technician verification; preparation is not a diagnosis or proof the requested repair worked.
-
-DATA HANDLING — TEMPORARY WORKSPACE ONLY
-Do not store sensitive or long-term notes/data in this toolkit. Never enter
-passwords, recovery codes, authentication secrets or confidential customer data.
-After each job, export or copy required notes, checklist results and reports to
-your approved permanent storage. Verify that copy before clearing temporary
-records. Backups may retain older copies; clearing live notes does not erase
-those backups. Encryption, when available, does not make the toolkit a suitable
-long-term records system. Current workspace storage is not encrypted.
+Copyright © 2026 Samiran Kakoty. See the [Master IT Toolkit Source-Available License](MASTER-IT-TOOLKIT/LICENSE.txt). Use, modification and redistribution are subject to its attribution, naming and other terms. This is source-available software, not an OSI-approved open-source release. Third-party tools retain their own licenses.

@@ -5,6 +5,7 @@ on:
     tags: ['v*']
 permissions:
   contents: write
+  id-token: write
 jobs:
   build:
     env:
@@ -28,6 +29,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
+      - run: python -m pip install cryptography==48.0.1
       - run: python -m pip install pyinstaller==6.20.0 playwright==1.62.0
       - run: python -m playwright install chromium --no-shell --with-deps
       - run: python .github/tests/test_launcher.py
@@ -35,9 +37,30 @@ jobs:
       - run: python .github/tests/test_catalog.py
       - run: python .github/tests/test_workflow_jobs.py
       - run: python .github/tests/test_persistence.py
+      - run: python .github/tests/test_vault.py
+      - run: python .github/tests/test_encrypted_backup.py
       - run: python .github/tests/test_assistant.py
       - run: python .github/tests/test_browser_host.py
       - run: python -m PyInstaller --onefile --name Master-IT-Toolkit --paths MASTER-IT-TOOLKIT .github/scripts/launcher-entry.py
+      - name: Azure OIDC login for opted-in signing
+        if: runner.os == 'Windows' && vars.ENABLE_SIGNING == 'true'
+        uses: azure/login@v3
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Sign toolkit launcher
+        if: runner.os == 'Windows' && vars.ENABLE_SIGNING == 'true'
+        uses: azure/artifact-signing-action@v2
+        with:
+          endpoint: ${{ vars.SIGNING_ENDPOINT }}
+          signing-account-name: ${{ vars.SIGNING_ACCOUNT }}
+          certificate-profile-name: ${{ vars.SIGNING_PROFILE }}
+          files-folder: ${{ github.workspace }}/dist
+          files-folder-filter: exe
+          file-digest: SHA256
+          timestamp-rfc3161: http://timestamp.acs.microsoft.com
+          timestamp-digest: SHA256
       - run: python .github/scripts/package_launcher.py "${{ matrix.binary }}" "${{ matrix.label }}"
       - uses: actions/upload-artifact@v4
         with:
@@ -59,5 +82,5 @@ jobs:
         run: |
           tag="$RELEASE_REF"
           if [ "$tag" = "main" ]; then tag="launcher-preview"; fi
-          gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" --title "Master IT Toolkit — standalone launcher" --notes "Extract the complete package and open the Master-IT-Toolkit executable. No Python installation required. Windows x64, Linux x64, and macOS Apple Silicon builds. Scripts retain their OS and administrator requirements. Builds are unsigned. Keep the launcher terminal open; use Ctrl+C to stop."
+          gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" --title "Master IT Toolkit — standalone launcher" --notes "Extract the complete package and open the Master-IT-Toolkit executable. No Python installation required. Windows x64, Linux x64, and macOS Apple Silicon builds. Scripts retain their OS and administrator requirements. Windows signing is only present when configured by the publisher; verify the executable signature before relying on it. Keep the launcher terminal open; use Ctrl+C to stop."
           gh release upload "$tag" standalone-*.zip --clobber

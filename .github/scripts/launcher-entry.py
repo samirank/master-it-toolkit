@@ -6,6 +6,8 @@ import datetime
 import fnmatch
 import tempfile
 import sys
+import cryptography.hazmat.primitives.ciphers.aead
+import cryptography.hazmat.primitives.kdf.scrypt
 import sqlite3
 import playwright.async_api  # Collect browser driver dependencies in the frozen runtime.
 from pathlib import Path
@@ -27,6 +29,10 @@ if '--browser-self-test' in sys.argv:
     asyncio.run(test_browser())
     print('Bundled browser runtime ready.')
 elif '--self-test' in sys.argv:
+    import os
+    from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    cipher=AESGCM(os.urandom(32));nonce=os.urandom(12)
+    assert cipher.decrypt(nonce,cipher.encrypt(nonce,b'vault runtime check',b'test'),b'test')==b'vault runtime check'
     print('Master IT Toolkit standalone runtime ready.')
 elif '--inventory' in sys.argv:
     script = root / '60_SCRIPTS/Inventory/update_toolkit_inventory.py'

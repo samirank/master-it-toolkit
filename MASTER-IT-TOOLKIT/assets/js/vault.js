@@ -1,0 +1,16 @@
+(() => {
+ 'use strict';if(!window.TOOLKIT_LAUNCHER)return;
+ const el=(tag,text)=>{const n=document.createElement(tag);if(text)n.textContent=text;return n;};
+ async function api(body){const r=await fetch(new URL('api/vault',location.href),body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{cache:'no-store'});const value=await r.json();if(!r.ok)throw Error(value.error||'Vault unavailable');return value;}
+ const b=el('button','Private vault');document.querySelector('.header-actions').append(b);
+ b.onclick=async()=>{const d=el('dialog');d.className='download-dialog';const close=el('button','Close');close.onclick=()=>d.close();d.append(close,el('h2','Private workspace vault'));document.body.append(d);d.onclose=()=>d.remove();d.showModal();
+ try{const state=await api();d.append(el('p',state.configured?(state.locked?'Locked. Unlock with your passphrase or recovery key.':'Unlocked in this launcher session. It locks on restart and after 15 minutes without activity.'):'Encrypt your workspace database. Existing exported files, diagnostic reports and older backups are separate and remain unencrypted until migrated.'));
+ const secret=el('input');secret.type='password';secret.autocomplete='off';secret.maxLength=1024;secret.setAttribute('aria-label','Vault passphrase or recovery key');d.append(secret);
+ const recovery=el('input');recovery.type='checkbox';const label=el('label','Use recovery key');label.prepend(recovery);if(state.configured)d.append(label);
+ const status=el('p');status.setAttribute('role','status');d.append(status);
+ const action=el('button',state.configured?'Unlock':'Encrypt workspace');action.onclick=async()=>{action.disabled=true;status.textContent='Working…';try{const result=await api({operation:state.configured?'unlock':'setup',secret:secret.value,recovery:recovery.checked});secret.value='';if(result.recoveryKey){for(const key of Object.keys(localStorage)){if(/^(master-it\.v1\.|neighbor-circuit\.v1\.|ventoy\.v1\.)/.test(key))localStorage.removeItem(key);}status.textContent='Save this recovery key somewhere secure, separate from the SSD. It is shown only once.';const key=el('textarea');key.readOnly=true;key.value=result.recoveryKey;key.setAttribute('aria-label','New vault recovery key');d.append(key);const done=el('button','I saved the recovery key · Reload');done.onclick=()=>location.reload();d.append(done);}else location.reload();}catch(e){status.textContent=e.message;action.disabled=false;}};
+ if(!state.configured||state.locked)d.append(action);else{const lock=el('button','Lock now');lock.onclick=async()=>{try{await api({operation:'lock'});location.reload();}catch(e){status.textContent=e.message;}};d.append(lock);}
+ }catch(e){d.append(el('p',e.message));}};
+ let last=0;for(const event of ['keydown','pointerdown'])document.addEventListener(event,()=>{if(Date.now()-last<60000)return;last=Date.now();api({operation:'touch'}).catch(()=>{});});
+ let wasLocked=null;setInterval(async()=>{try{const state=await api();b.textContent=state.configured?(state.locked?'Unlock vault':'Lock / manage vault'):'Set up private vault';if(state.locked&&wasLocked===false)location.reload();wasLocked=state.locked;}catch{}},5000);
+})();

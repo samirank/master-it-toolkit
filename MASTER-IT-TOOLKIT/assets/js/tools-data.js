@@ -26115,5 +26115,551 @@ window.TOOLKIT_DATA = [
       "notes": "Use official command documentation; prerequisites and project-specific setup remain manual.",
       "source": "https://getcomposer.org/doc/00-intro.md"
     }
+  },
+  {
+    "id": "freecad",
+    "name": "FreeCAD",
+    "developer": "FreeCAD contributors",
+    "description": "Parametric CAD for mechanical parts and 3D printing.",
+    "categories": [
+      "Media"
+    ],
+    "tags": [
+      "freecad",
+      "freecad",
+      "specialist build",
+      "design"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source application; review bundled component licenses.",
+    "technicianLicenseNotes": "Review component and service terms before redistribution or client use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 500,
+    "officialWebsite": "https://www.freecad.org/downloads",
+    "officialDownload": "https://www.freecad.org/downloads",
+    "documentation": "https://www.freecad.org/manual/",
+    "localFolder": "40_INSTALLERS/Developer/freecad",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "freecad*",
+      "FreeCAD*"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review project and device settings before producing toolpaths, flashing firmware or running downloaded models.",
+    "notes": "Prepare dependencies, board libraries, printer profiles, models or assets before offline use. Review the official hardware requirements.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Download and install the package matching your operating system.",
+      "Create a small test project and verify the selected device, profile or runtime settings.",
+      "Use the official documentation for advanced setup; save project files to approved permanent storage."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "prusaslicer",
+    "name": "PrusaSlicer",
+    "developer": "Prusa Research",
+    "description": "Prepare and preview 3D printer toolpaths from models.",
+    "categories": [
+      "Media"
+    ],
+    "tags": [
+      "prusaslicer",
+      "prusaslicer",
+      "specialist build",
+      "design"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source application; review bundled component licenses.",
+    "technicianLicenseNotes": "Review component and service terms before redistribution or client use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 500,
+    "officialWebsite": "https://www.prusa3d.com/page/prusaslicer_424/",
+    "officialDownload": "https://www.prusa3d.com/page/prusaslicer_424/",
+    "documentation": "https://help.prusa3d.com/category/prusaslicer_204",
+    "localFolder": "40_INSTALLERS/Developer/prusaslicer",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "prusaslicer*",
+      "PrusaSlicer*"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review project and device settings before producing toolpaths, flashing firmware or running downloaded models.",
+    "notes": "Prepare dependencies, board libraries, printer profiles, models or assets before offline use. Review the official hardware requirements.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Download and install the package matching your operating system.",
+      "Create a small test project and verify the selected device, profile or runtime settings.",
+      "Use the official documentation for advanced setup; save project files to approved permanent storage."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "kicad",
+    "name": "KiCad",
+    "developer": "KiCad contributors",
+    "description": "Schematic capture and PCB design for electronics projects.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "kicad",
+      "kicad",
+      "specialist build",
+      "development"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source application; review bundled component licenses.",
+    "technicianLicenseNotes": "Review component and service terms before redistribution or client use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 500,
+    "officialWebsite": "https://www.kicad.org/download/",
+    "officialDownload": "https://www.kicad.org/download/",
+    "documentation": "https://docs.kicad.org/",
+    "localFolder": "40_INSTALLERS/Developer/kicad",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "kicad*",
+      "KiCad*"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review project and device settings before producing toolpaths, flashing firmware or running downloaded models.",
+    "notes": "Prepare dependencies, board libraries, printer profiles, models or assets before offline use. Review the official hardware requirements.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Download and install the package matching your operating system.",
+      "Create a small test project and verify the selected device, profile or runtime settings.",
+      "Use the official documentation for advanced setup; save project files to approved permanent storage."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "arduino-ide",
+    "name": "Arduino IDE",
+    "developer": "Arduino",
+    "description": "Develop and upload firmware to supported development boards.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "arduino-ide",
+      "arduino ide",
+      "specialist build",
+      "development"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source application; review bundled component licenses.",
+    "technicianLicenseNotes": "Review component and service terms before redistribution or client use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 500,
+    "officialWebsite": "https://www.arduino.cc/en/software",
+    "officialDownload": "https://www.arduino.cc/en/software",
+    "documentation": "https://docs.arduino.cc/software/ide/",
+    "localFolder": "40_INSTALLERS/Developer/arduino-ide",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "arduino-ide*",
+      "ArduinoIDE*"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review project and device settings before producing toolpaths, flashing firmware or running downloaded models.",
+    "notes": "Prepare dependencies, board libraries, printer profiles, models or assets before offline use. Review the official hardware requirements.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Download and install the package matching your operating system.",
+      "Create a small test project and verify the selected device, profile or runtime settings.",
+      "Use the official documentation for advanced setup; save project files to approved permanent storage."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "blender",
+    "name": "Blender",
+    "developer": "Blender Foundation",
+    "description": "3D modeling, animation and rendering.",
+    "categories": [
+      "Media"
+    ],
+    "tags": [
+      "blender",
+      "blender",
+      "specialist build",
+      "design"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source application; review bundled component licenses.",
+    "technicianLicenseNotes": "Review component and service terms before redistribution or client use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 500,
+    "officialWebsite": "https://www.blender.org/download/",
+    "officialDownload": "https://www.blender.org/download/",
+    "documentation": "https://docs.blender.org/manual/en/latest/",
+    "localFolder": "40_INSTALLERS/Developer/blender",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "blender*",
+      "Blender*"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review project and device settings before producing toolpaths, flashing firmware or running downloaded models.",
+    "notes": "Prepare dependencies, board libraries, printer profiles, models or assets before offline use. Review the official hardware requirements.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Download and install the package matching your operating system.",
+      "Create a small test project and verify the selected device, profile or runtime settings.",
+      "Use the official documentation for advanced setup; save project files to approved permanent storage."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "inkscape",
+    "name": "Inkscape",
+    "developer": "Inkscape contributors",
+    "description": "Vector illustration and scalable graphics editing.",
+    "categories": [
+      "Media"
+    ],
+    "tags": [
+      "inkscape",
+      "inkscape",
+      "specialist build",
+      "design"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source application; review bundled component licenses.",
+    "technicianLicenseNotes": "Review component and service terms before redistribution or client use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 500,
+    "officialWebsite": "https://inkscape.org/release/",
+    "officialDownload": "https://inkscape.org/release/",
+    "documentation": "https://inkscape.org/learn/",
+    "localFolder": "40_INSTALLERS/Developer/inkscape",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "inkscape*",
+      "Inkscape*"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review project and device settings before producing toolpaths, flashing firmware or running downloaded models.",
+    "notes": "Prepare dependencies, board libraries, printer profiles, models or assets before offline use. Review the official hardware requirements.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Download and install the package matching your operating system.",
+      "Create a small test project and verify the selected device, profile or runtime settings.",
+      "Use the official documentation for advanced setup; save project files to approved permanent storage."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "ollama",
+    "name": "Ollama",
+    "developer": "Ollama",
+    "description": "Local model runtime for offline language-model inference after model preparation.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "ollama",
+      "ollama",
+      "specialist build",
+      "development"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source application; review bundled component licenses.",
+    "technicianLicenseNotes": "Review component and service terms before redistribution or client use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 500,
+    "officialWebsite": "https://ollama.com/download",
+    "officialDownload": "https://ollama.com/download",
+    "documentation": "https://docs.ollama.com/quickstart",
+    "localFolder": "40_INSTALLERS/Developer/ollama",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "ollama*",
+      "Ollama*"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review project and device settings before producing toolpaths, flashing firmware or running downloaded models.",
+    "notes": "Prepare dependencies, board libraries, printer profiles, models or assets before offline use. Review the official hardware requirements.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install the runtime or prepare its portable release; configure OLLAMA_NO_CLOUD=1.",
+      "Download the desired model while online, then verify it runs without network access.",
+      "Keep models on the SSD if moving between computers; run only the local loopback service."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   }
 ];

@@ -29,6 +29,8 @@ class Store:
         # Check SQLite sidecars too; never follow a substituted symlink on the SSD.
         for suffix in ('', '-journal', '-wal', '-shm'):
             self.safe_path(self.root, self.path.relative_to(self.root).as_posix() + suffix)
+        import secure_vault
+        if secure_vault.encrypted(self.path):return secure_vault.Connection(self.path)
         db = self.sqlite.connect(str(self.path), timeout=5)
         db.execute('PRAGMA synchronous=FULL')
         db.execute('PRAGMA fullfsync=ON')
@@ -38,10 +40,12 @@ class Store:
         if self.error: raise RuntimeError(self.error)
         if key is not None and key not in ('preferences', 'favorites', 'notes', 'checklists', 'capacity', 'customWorkflows', 'backupSettings'):
             raise ValueError('Unknown workspace setting')
-        if key=='backupSettings' and (not isinstance(value,dict) or set(value)-{'destination','scope','automatic','intervalHours'} or not isinstance(value.get('destination'),str) or len(value['destination'])>2048 or value.get('scope') not in ('workspace','full')):
+        if key=='backupSettings' and (not isinstance(value,dict) or set(value)-{'destination','scope','automatic','intervalHours','engine','keepLast'} or not isinstance(value.get('destination'),str) or len(value['destination'])>2048 or value.get('scope') not in ('workspace','full')):
             raise ValueError('Invalid backup settings')
         if key=='backupSettings' and (type(value.get('automatic',False)) is not bool or type(value.get('intervalHours',24)) is not int or not 1<=value.get('intervalHours',24)<=168):
             raise ValueError('Invalid automatic backup schedule')
+        if key=='backupSettings' and value.get('engine','zip') not in ('zip','restic'):raise ValueError('Unknown backup engine')
+        if key=='backupSettings' and (type(value.get('keepLast',0)) is not int or not 0<=value.get('keepLast',0)<=100):raise ValueError('Invalid retention count')
         if key == 'customWorkflows':
             import portable_tools
             portable_tools.validate_custom_workflows(self.root, value)

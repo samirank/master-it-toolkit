@@ -127,6 +127,15 @@ class Workflow:
         import activity_store,host_inventory,time
         self.store=activity_store.Store(root,safe_path)
         self.record={'id':self.id,'profile':workflow_id,'name':self.definition['name'],'machine':host_inventory.machine_identity(),'startedAt':time.time(),'status':'running','inputs':self.inputs,'steps':self.history,'stepNotes':{}}
+        import hashlib
+        self.record['definitionHash']=hashlib.sha256(json.dumps(self.definition,sort_keys=True).encode()).hexdigest()
+        self.start_step=0
+        if self.setup.get('resumeId'):
+            previous=next((j for j in self.store.workflow_job(machine=self.record['machine']['id']) if j['id']==self.setup['resumeId']),None)
+            if not previous or previous['profile']!=workflow_id or previous.get('definitionHash')!=self.record['definitionHash']:raise ValueError('Cannot resume: machine or workflow definition changed, or this is an older unsupported record.')
+            self.start_step=max([r['step']+1 for r in previous['steps'] if r.get('result') in ('verified by technician','skipped — not verified')]+[0])
+            if self.start_step>=len(self.definition['steps']):raise ValueError('This workflow already completed all checkpoints. Start a new run instead.')
+            self.history=list(previous['steps']);self.record.update(steps=self.history,stepNotes=dict(previous.get('stepNotes',{})),resumedFrom=previous['id'])
         self.store.workflow_job(self.record)
 
     def state(self, message):
@@ -169,6 +178,7 @@ class Workflow:
 
     def run(self):
         for index, step in enumerate(self.definition['steps']):
+            if index<self.start_step:continue
             self.step = index
             if self.stop: break
             self.waiting = False

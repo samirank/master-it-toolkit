@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT))
 # The frozen bootstrap imports these for dependency collection. Load updated SSD
 # source modules on restart instead of reusing the copies cached inside the EXE.
 if getattr(sys, 'frozen', False):
-    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant'):
+    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant','secure_vault'):
         sys.modules.pop(module,None)
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
@@ -54,7 +54,7 @@ def managed_name(name):
     if name.startswith('runtime-extensions/ubol/'): return True
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
-    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'offline_assistant.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
+    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'offline_assistant.py', 'secure_vault.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
         return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json', 'assets/download-catalog-cache.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
@@ -114,6 +114,7 @@ import portable_tools
 import activity_store
 import browser_host
 import offline_assistant
+import secure_vault
 
 def cleanup_update_archives(root):
     """Remove known installer ZIPs from an installed launcher root, never a repo."""
@@ -253,11 +254,20 @@ class Server(ThreadingHTTPServer):
         super().__init__(('127.0.0.1', port), Handler)
         self.origin = 'http://127.0.0.1:' + str(self.server_port)
         self.auto_backup_check = 0
+        self.vault_touch=time.time()
     def service_actions(self):
+        if time.time()-self.vault_touch>900 and not self.lock.locked():secure_vault.lock(self.history.path)
+
         if time.time()-self.auto_backup_check<60:return
         self.auto_backup_check=time.time()
         threading.Thread(target=self.auto_backup_tick,daemon=True).start()
     def auto_backup_tick(self):
+        # An inactive backup scheduler must not make a user action appear busy.
+        if secure_vault.status(self.history.path)['locked']:return
+        try:
+            preferences=self.history.workspace().get('backupSettings',{})
+            if not preferences.get('automatic') or not preferences.get('destination'):return
+        except Exception:return
         if not self.lock.acquire(False):return
         handed_off=False
         try:
@@ -330,7 +340,11 @@ class Server(ThreadingHTTPServer):
                 backup_module=importlib.util.module_from_spec(spec);spec.loader.exec_module(backup_module)
                 self.cancel_backup.clear()
                 progress=lambda state:setattr(self,'state',dict(context,busy=True,**state))
-                if action=='backup-toolkit':message=backup_module.backup(self.root,body,progress,self.cancel_backup.is_set)
+                if action=='backup-toolkit' and body.get('engine')=='restic':
+                    spec=importlib.util.spec_from_file_location('encrypted_backup',safe_path(self.root,'60_SCRIPTS/Backup/encrypted_backup.py'))
+                    encrypted_module=importlib.util.module_from_spec(spec);spec.loader.exec_module(encrypted_module)
+                    message=encrypted_module.run(self.root,body,progress,self.cancel_backup.is_set)
+                elif action=='backup-toolkit':message=backup_module.backup(self.root,body,progress,self.cancel_backup.is_set)
                 else:message=backup_module.verify(Path(body['archive']),progress,self.cancel_backup.is_set)
             elif action == 'catalog-refresh':
                 tool_downloads.refresh_catalog(self.root,safe_path)
@@ -402,9 +416,14 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         route = self.route()
         if route is None: return self.reply(403, {'error': 'Open the URL printed by your launcher.'})
+        if route == 'api/vault':return self.reply(200,secure_vault.status(self.server.history.path))
+        if route == 'api/workspace' and secure_vault.status(self.server.history.path)['locked']:
+            return self.reply(200,{'_vaultLocked':True,'preferences':{},'favorites':[],'notes':{},'checklists':{},'capacity':256,'customWorkflows':{},'backupSettings':{}})
         if route == 'api/workspace':
             try: return self.reply(200, self.server.history.workspace())
             except Exception as error: return self.reply(503, {'error': str(error)})
+        if route.startswith('api/') and route not in ('api/vault','api/workspace','api/catalog') and secure_vault.status(self.server.history.path)['locked']:
+            return self.reply(423,{'error':'Private workspace is locked.'})
         if route == 'api/events':
             self.send_response(200)
             self.send_header('Content-Type','text/event-stream')
@@ -497,6 +516,26 @@ class Handler(BaseHTTPRequestHandler):
             return self.reply(200, data, mimetypes.guess_type(route)[0] or 'text/plain')
         except (ValueError, OSError): return self.reply(404, {'error': 'Unavailable'})
     def do_POST(self):
+        if self.route()=='api/vault' and self.headers.get('Origin')==self.server.origin:
+            if not self.server.lock.acquire(False):return self.reply(409,{'error':'Wait for the current job before changing vault state.'})
+            try:
+                size=int(self.headers.get('Content-Length','0'))
+                if not 0<size<=5000:raise ValueError('Invalid vault request')
+                body=json.loads(self.rfile.read(size));operation=body.get('operation')
+                recovery=None
+                with self.server.history.lock:
+                    if operation=='setup':recovery=secure_vault.setup(self.server.history.path,body.get('secret'))
+                    elif operation=='unlock':secure_vault.unlock(self.server.history.path,body.get('secret'),body.get('recovery') is True)
+                    elif operation=='lock':secure_vault.lock(self.server.history.path)
+                    elif operation!='touch':raise ValueError('Unknown vault operation')
+                self.server.vault_touch=time.time()
+                if operation in ('setup','unlock'):self.server.history=activity_store.Store(self.server.root,safe_path,self.server.token)
+                return self.reply(200,dict(secure_vault.status(self.server.history.path),recoveryKey=recovery))
+            except Exception as error:return self.reply(400,{'error':str(error)})
+            finally:self.server.lock.release()
+        if self.route() and self.route().startswith('api/') and secure_vault.status(self.server.history.path)['locked']:
+            return self.reply(423,{'error':'Workspace locked. Unlock the vault to use recorded actions or save data.'})
+
         if self.route() == 'api/assistant' and self.headers.get('Origin') == self.server.origin:
             try:
                 size = int(self.headers.get('Content-Length', '0'))

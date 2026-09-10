@@ -440,5 +440,33 @@
   "ddev": {
     "provider": "github",
     "repo": "ddev/ddev"
+  },
+  "freecad": {
+    "provider": "winget",
+    "package": "FreeCAD.FreeCAD"
+  },
+  "prusaslicer": {
+    "provider": "github",
+    "repo": "prusa3d/PrusaSlicer"
+  },
+  "kicad": {
+    "provider": "winget",
+    "package": "KiCad.KiCad"
+  },
+  "arduino-ide": {
+    "provider": "github",
+    "repo": "arduino/arduino-ide"
+  },
+  "blender": {
+    "provider": "winget",
+    "package": "BlenderFoundation.Blender"
+  },
+  "inkscape": {
+    "provider": "winget",
+    "package": "Inkscape.Inkscape"
+  },
+  "ollama": {
+    "provider": "github",
+    "repo": "ollama/ollama"
   }
 }

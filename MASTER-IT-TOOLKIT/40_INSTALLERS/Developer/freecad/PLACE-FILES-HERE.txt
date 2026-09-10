@@ -1,0 +1,3 @@
+FreeCAD
+https://www.freecad.org/downloads
+https://www.freecad.org/manual/

@@ -1,0 +1,3 @@
+KiCad
+https://www.kicad.org/download/
+https://docs.kicad.org/

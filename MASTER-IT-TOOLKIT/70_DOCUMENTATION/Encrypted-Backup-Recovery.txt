@@ -1,0 +1,44 @@
+Encrypted toolkit backups and recovery
+
+Choose an existing NAS or mounted folder in Backups. Select the encrypted restic
+engine and full toolkit scope. Download/extract restic, then set up and unlock
+the Private vault. Save the recovery key in a separate password manager or other
+approved permanent storage. Never keep the only recovery key on this SSD.
+
+Keep automatic backup disabled until a manual backup and restore test succeed.
+Automatic backup runs while the launcher is open and the vault is unlocked.
+When the destination is unavailable it retries later; it does not fall back to
+a plaintext ZIP. Keep-all is the default retention policy. Choosing a retention
+limit deletes older snapshots after a successful backup and repository check.
+Retention is applied per restic host/path group, not across unrelated machines.
+
+The destination contains restic-repository and toolkit-backup-key.json. Keep BOTH.
+The JSON contains wrapped encryption keys, never the unwrapped backup password.
+Restic encrypts backup data and filenames. Repository checks validate metadata;
+the restore operation also verifies restored file contents. Test restoration
+periodically and retain another independent copy of important data.
+
+If the original SSD is lost:
+1. Download a fresh toolkit, install Python and cryptography, and obtain restic
+   from its official publisher. Put restic on PATH or in the toolkit's restic folder.
+2. Open a terminal in the MASTER-IT-TOOLKIT folder. Run:
+   python 60_SCRIPTS/Backup/encrypted_backup.py "ABSOLUTE_BACKUP_FOLDER" --recovery-key
+   Enter the saved recovery key at the hidden local prompt. Omit --recovery-key
+   to use the original vault passphrase instead. This lists snapshot IDs.
+3. Create an empty recovery folder outside the toolkit and backup destination:
+   python 60_SCRIPTS/Backup/encrypted_backup.py "ABSOLUTE_BACKUP_FOLDER" --recovery-key --snapshot SNAPSHOT_ID --restore-to "ABSOLUTE_EMPTY_FOLDER"
+4. The restored toolkit folder and launcher appear beneath the target.
+   Unlock its vault and check notes, tools and workflows
+   before using it. The original NAS backup remains untouched.
+
+Do not place passphrases or recovery keys in command arguments, source control,
+logs or chat. Restic receives the unwrapped key through its process environment
+for the duration of the operation; administrators on the current machine can
+still access running-process memory. Work only on machines you trust.
+
+Local vault encryption covers the SQLite workspace. Existing diagnostic exports,
+browser profiles and standalone report files are not automatically encrypted by
+that vault. Encrypted backups protect their backed-up copies, not the originals.
+Use toolkit notes temporarily; export important records to approved storage.
+
+Official reference: https://restic.readthedocs.io/en/stable/manual_rest.html

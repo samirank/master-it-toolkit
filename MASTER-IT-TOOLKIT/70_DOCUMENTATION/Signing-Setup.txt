@@ -1,0 +1,17 @@
+WINDOWS PUBLISHER SIGNING — SETUP REQUIRED
+
+No signing account has been configured and no paid service has been activated.
+1. Create Azure Artifact Signing with a public-trust certificate profile and complete identity validation.
+2. Create an Entra application and GitHub OIDC federated identity limited to this repository and protected release environment.
+3. Grant Artifact Signing Certificate Profile Signer on the intended profile only.
+4. Add GitHub secrets AZURE_CLIENT_ID, AZURE_TENANT_ID, AZURE_SUBSCRIPTION_ID.
+5. Add repository variables SIGNING_ENDPOINT, SIGNING_ACCOUNT, SIGNING_PROFILE, and set ENABLE_SIGNING=true only after review.
+6. Build a preview. Verify Authenticode publisher, certificate chain, timestamp and clean-Windows behavior before tagging a public release.
+
+Sign toolkit-owned EXEs and helpers; keep third-party publishers' signatures intact. Do not disable SmartScreen, Defender or Smart App Control. Signing does not guarantee immediate SmartScreen reputation. Use the exact publisher identity shown by your approved certificate. Never upload private keys to source control.
+
+Official setup and action:
+https://github.com/Azure/artifact-signing-action
+https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/smartscreen-reputation
+
+Publisher-authenticated source updates remain a separate requirement: an unsigned GitHub ZIP hash is not a signature. Do not claim Authenticode protects dynamically replaced Python sources.

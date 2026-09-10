@@ -1,0 +1,19 @@
+name: Build experimental bootable toolkit
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  iso:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build Debian live ISO in isolated container
+        run: |
+          mkdir -p iso-output
+          docker run --rm --privileged -v "$PWD:/workspace:ro" -v "$PWD/iso-output:/output" debian:bookworm bash /workspace/.github/scripts/build-live-iso.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: experimental-master-it-toolkit-iso
+          path: iso-output/*

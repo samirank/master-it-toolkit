@@ -27,7 +27,7 @@ with zipfile.ZipFile(root / 'MASTER-IT-TOOLKIT.zip') as source, zipfile.ZipFile(
         for name in files:
             file = Path(folder) / name
             target.write(file, 'MASTER-IT-TOOLKIT/runtime-browser/' + file.relative_to(browser_root).as_posix())
-    for package in ('playwright','pyee','greenlet'):
+    for package in ('playwright','pyee','greenlet','cryptography'):
         distribution = importlib.metadata.distribution(package)
         for file in distribution.files:
             if 'license' in str(file).lower() or str(file).endswith('NOTICE'):

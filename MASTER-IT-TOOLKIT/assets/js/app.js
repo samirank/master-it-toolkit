@@ -9,11 +9,12 @@
  const workspaceURL=new URL('api/workspace',location.href);
  if(window.TOOLKIT_LAUNCHER){try{const response=await fetch(workspaceURL,{cache:'no-store'});if(!response.ok)throw Error('Local database unavailable');workspace=await response.json();}catch(error){storageError=error.message;}}
  const browserRead=(key,fallback)=>{try{const raw=localStorage.getItem('master-it.v1.'+key) ?? localStorage.getItem('neighbor-circuit.v1.'+key) ?? localStorage.getItem('ventoy.v1.'+key);return raw===null?fallback:JSON.parse(raw)}catch{return fallback}};
- const read=(key,fallback)=>workspace&&Object.hasOwn(workspace,key)?workspace[key]:browserRead(key,fallback);
+ const read=(key,fallback)=>workspace&&Object.hasOwn(workspace,key)?workspace[key]:window.TOOLKIT_LAUNCHER?fallback:browserRead(key,fallback);
  const save=(key,value)=>{
   if(workspace){workspace[key]=value;const body=JSON.stringify({key,value});pendingSaves++;
    saveQueue=saveQueue.then(async()=>{const response=await fetch(workspaceURL,{method:'POST',headers:{'Content-Type':'application/json'},body,keepalive:body.length<60000});if(!response.ok)throw Error('Could not save to the SSD');persistence=true;if(key==='notes'&&$('#notes-state'))$('#notes-state').textContent='Saved to SSD · '+new Date().toLocaleTimeString();}).catch(error=>{persistence=false;toast(error.message+'. Export your work before closing.');if($('#notes-state'))$('#notes-state').textContent='Save failed — export before closing';}).finally(()=>pendingSaves--);return true;
   }
+  if(window.TOOLKIT_LAUNCHER){toast('Workspace unavailable or locked. Unlock the vault before saving.');return false;}
   try{localStorage.setItem('master-it.v1.'+key,JSON.stringify(value));return true}catch{persistence=false;toast('Browser storage unavailable. Export your work before closing.');return false}
  };
  window.addEventListener('beforeunload',event=>{if(pendingSaves){event.preventDefault();event.returnValue='';}});
@@ -144,6 +145,5 @@
  const initial=location.hash.slice(1);if(navs.some(n=>n[0]===initial)||initial==='settings')state.view=initial;
  if(!isLocal&&!window.TOOLKIT_LAUNCHER){$('.local-label').textContent='HOSTED DEMO';$('.sidebar-foot').innerHTML='◉ HOSTED DEMO <small>Download for local file access.</small>';}
  render();
- if(workspace){for(const key of ['preferences','favorites','notes','checklists','capacity']){if(!Object.hasOwn(workspace,key)){const legacy=browserRead(key,undefined);if(legacy!==undefined)save(key,legacy);}}}
  if(storageError)toast(storageError+'. Using browser storage; export your work before moving computers.');
 })();

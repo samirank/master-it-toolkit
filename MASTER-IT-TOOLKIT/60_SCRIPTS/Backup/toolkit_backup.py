@@ -55,7 +55,7 @@ def backup(root,body,progress,cancelled=lambda:False):
         with tempfile.TemporaryDirectory(prefix='master-it-snapshot-') as temporary:
             snapshot=Path(temporary)/'activity.sqlite'
             dbpath=root/DB
-            if any(name=='MASTER-IT-TOOLKIT/'+DB for _,name in selected):
+            if any(name=='MASTER-IT-TOOLKIT/'+DB for _,name in selected) and not dbpath.read_bytes().startswith(b'MITVAULT1\n'):
                 if linked(dbpath):raise ValueError('Linked database cannot be backed up')
                 source=sqlite3.connect(dbpath.as_uri()+'?mode=ro',uri=True,timeout=5)
                 dest=sqlite3.connect(snapshot)

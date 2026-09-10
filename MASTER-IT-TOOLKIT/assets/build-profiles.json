@@ -5,7 +5,7 @@
     "description": "Choose default apps and privacy preferences; verify browser, documents, media and backup restore.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -54,7 +54,7 @@
     "description": "Configure approved work accounts, printer/scanner and document templates; test printing and a sample attachment. Follow employer device policies.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -98,7 +98,7 @@
     "description": "Install the correct OEM GPU driver; check display refresh rate, controller input, game saves and a representative game. Do not apply automatic overclocks.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -142,7 +142,7 @@
     "description": "Select the exact printer, nozzle and filament profile; preview toolpaths and run a supervised calibration print. Firmware flashing is a separate task.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -159,11 +159,15 @@
       },
       {
         "text": "Install FreeCAD and verify a simple model export.",
-        "url": "https://www.freecad.org/downloads"
+        "url": "https://www.freecad.org/downloads",
+        "tool": "freecad",
+        "action": "install"
       },
       {
         "text": "Install PrusaSlicer for the selected platform.",
-        "url": "https://help.prusa3d.com/downloads/prusaslicer"
+        "url": "https://help.prusa3d.com/downloads/prusaslicer",
+        "tool": "prusaslicer",
+        "action": "install"
       },
       {
         "text": "Select the exact printer, nozzle and filament profile; preview toolpaths and run a supervised calibration print. Firmware flashing is a separate task."
@@ -179,7 +183,7 @@
     "description": "Install board-specific USB drivers; verify serial ports, board voltage and a simple test circuit before connecting equipment.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -206,11 +210,15 @@
       },
       {
         "text": "Install KiCad; create a project and check symbols, footprints and design rules.",
-        "url": "https://www.kicad.org/download/"
+        "url": "https://www.kicad.org/download/",
+        "tool": "kicad",
+        "action": "install"
       },
       {
         "text": "Install Arduino IDE; select the correct board and test compilation before uploading.",
-        "url": "https://www.arduino.cc/en/software"
+        "url": "https://www.arduino.cc/en/software",
+        "tool": "arduino-ide",
+        "action": "install"
       },
       {
         "text": "Install board-specific USB drivers; verify serial ports, board voltage and a simple test circuit before connecting equipment."
@@ -221,12 +229,12 @@
     ]
   },
   "build-developer": {
-    "name": "Developer PC \u00b7 no AI",
+    "name": "Developer PC · no AI",
     "platform": "Windows",
     "description": "Install the full language SDK required by the project (the catalog Python package is embeddable). Configure Git identity, SSH keys and a project environment; run a small build and tests.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -309,12 +317,12 @@
     ]
   },
   "build-developer-ai": {
-    "name": "Developer PC \u00b7 local AI",
+    "name": "Developer PC · local AI",
     "platform": "Windows",
     "description": "Check RAM, GPU compatibility and model disk budget. Choose model licenses and privacy settings; keep model services bound locally and verify a small inference before editor integration.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -386,7 +394,9 @@
       },
       {
         "text": "Install Ollama from its official instructions; choose models explicitly.",
-        "url": "https://docs.ollama.com/quickstart"
+        "url": "https://docs.ollama.com/quickstart",
+        "tool": "ollama",
+        "action": "install"
       },
       {
         "text": "Check RAM, GPU compatibility and model disk budget. Choose model licenses and privacy settings; keep model services bound locally and verify a small inference before editor integration."
@@ -401,12 +411,12 @@
     ]
   },
   "build-custom": {
-    "name": "Custom PC \u00b7 starter",
+    "name": "Custom PC · starter",
     "platform": "Windows",
-    "description": "Clone this profile, choose applications and add the owner\u2019s acceptance checks.",
+    "description": "Clone this profile, choose applications and add the owner’s acceptance checks.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -427,7 +437,7 @@
         "action": "install"
       },
       {
-        "text": "Clone this profile, choose applications and add the owner\u2019s acceptance checks."
+        "text": "Clone this profile, choose applications and add the owner’s acceptance checks."
       },
       {
         "text": "Restart if required. Verify apps and devices, test restoring a sample file, record installed versions and recovery steps, and export the completed workflow record."
@@ -440,7 +450,7 @@
     "description": "Set up remote access with owner consent, strong access controls and a tested removal path. Verify access on a test device; document handover.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -494,7 +504,7 @@
     "description": "Prepare offline drivers for the models you service. Test diagnostics without modifying customer data and verify backup destination capacity.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -543,7 +553,7 @@
     "description": "Choose a supported distribution. Verify Wi-Fi, audio, graphics and suspend; use its trusted package manager for native apps. Review encryption, firewall and backups.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -587,7 +597,7 @@
     "description": "Install required fonts from licensed sources, configure a color-managed display and test export to client formats.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -604,11 +614,15 @@
       },
       {
         "text": "Install Inkscape for vector design.",
-        "url": "https://inkscape.org/download/"
+        "url": "https://inkscape.org/download/",
+        "tool": "inkscape",
+        "action": "install"
       },
       {
         "text": "Install Blender if 3D modeling is needed; test a sample render.",
-        "url": "https://www.blender.org/download/"
+        "url": "https://www.blender.org/download/",
+        "tool": "blender",
+        "action": "install"
       },
       {
         "text": "Install required fonts from licensed sources, configure a color-managed display and test export to client formats."
@@ -624,7 +638,7 @@
     "description": "Choose one primary editor; configure scratch/cache paths, proxy settings and project backups. Test playback and export using representative footage.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -673,7 +687,7 @@
     "description": "Configure course folders, offline materials, accessibility and backup. Verify assignments export correctly before enabling optional sync.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -717,7 +731,7 @@
     "description": "Configure microphone, scene collection and recording paths. Test a local recording and private stream; check audio levels and dropped frames.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -751,7 +765,7 @@
     "description": "Separate lab and production networks; configure least-privilege credentials, SSH host verification and a restore-tested config backup.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -795,7 +809,7 @@
     "description": "Configure screen scaling, narration, captions, input devices and simple shortcuts with the user. Test real daily tasks and recovery contacts.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
@@ -829,7 +843,7 @@
     "description": "Install project-specific language tools in isolated environments; document dataset licenses and reproduce a small analysis from a clean environment.",
     "steps": [
       {
-        "text": "Confirm the owner\u2019s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
+        "text": "Confirm the owner’s requirements, hardware, operating system and available storage. Export the existing app list and verify a recoverable backup before changes."
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."

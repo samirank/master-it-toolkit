@@ -1,0 +1,3 @@
+PrusaSlicer
+https://www.prusa3d.com/page/prusaslicer_424/
+https://help.prusa3d.com/category/prusaslicer_204
