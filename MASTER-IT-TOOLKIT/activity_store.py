@@ -85,3 +85,16 @@ class Store:
                 runs=[dict(id=id,finished=finished,**json.loads(record)) for id,finished,record in db.execute('SELECT id,finished,record FROM workflow_runs ORDER BY id DESC LIMIT 100')]
                 return {'jobs': [dict(zip(('id','finished','action','tool','stage','message'), row)) for row in rows], 'workflows':runs}
             finally: db.close()
+
+
+    def workflow_job(self, record=None, machine=None):
+        with self.lock:
+            db=self.connect()
+            try:
+                with db:
+                    db.execute('CREATE TABLE IF NOT EXISTS workflow_jobs (id TEXT PRIMARY KEY, machine TEXT, updated REAL, record TEXT)')
+                    if record is not None:
+                        db.execute('INSERT OR REPLACE INTO workflow_jobs VALUES (?,?,?,?)',(record['id'],record['machine']['id'],time.time(),json.dumps(record)))
+                rows=db.execute('SELECT record FROM workflow_jobs WHERE machine=? ORDER BY updated DESC LIMIT 200',(machine,)) if machine else db.execute('SELECT record FROM workflow_jobs ORDER BY updated DESC LIMIT 200')
+                return [json.loads(row[0]) for row in rows]
+            finally:db.close()

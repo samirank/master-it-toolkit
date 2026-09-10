@@ -95,7 +95,7 @@ def validate_custom_workflows(root, definitions):
 
 
 class Workflow:
-    def __init__(self, root, workflow_id, mode, safe_path, publish):
+    def __init__(self, root, workflow_id, mode, safe_path, publish, setup=None, prepare=None):
         definitions = json.loads((root / 'assets/workflows.json').read_text('utf-8'))
         if workflow_id.startswith('build-'):
             definitions.update(json.loads((root/'assets/build-profiles.json').read_text('utf-8')))
@@ -118,16 +118,34 @@ class Workflow:
         self.step = 0
         self.waiting = False
         self.history = []
+        self.setup=setup or {}
+        self.prepare=prepare
+        self.inputs=self.setup.get('inputs',{})
+        if not isinstance(self.inputs,dict) or set(self.inputs)-{'ticket','technician','issue','source','destination','notes'} or any(not isinstance(v,str) or len(v)>4000 for v in self.inputs.values()):raise ValueError('Invalid workflow inputs')
+        for key in ('prepare','updates','install'):
+            if key in self.setup and type(self.setup[key]) is not bool:raise ValueError('Invalid workflow preparation choice')
+        import activity_store,host_inventory,time
+        self.store=activity_store.Store(root,safe_path)
+        self.record={'id':self.id,'profile':workflow_id,'name':self.definition['name'],'machine':host_inventory.machine_identity(),'startedAt':time.time(),'status':'running','inputs':self.inputs,'steps':self.history,'stepNotes':{}}
+        self.store.workflow_job(self.record)
 
     def state(self, message):
+        self.record.update(message=message,currentStep=self.step,steps=list(self.history))
+        self.store.workflow_job(self.record)
         self.publish(dict(workflow={'id': self.id, 'name': self.definition['name'], 'step': self.step,
             'count': len(self.definition['steps']), 'current': self.definition['steps'][self.step],
-            'waiting': self.waiting, 'mode': self.mode, 'history': list(self.history)}, message=message))
+            'waiting': self.waiting, 'mode': self.mode, 'history': list(self.history), 'inputs': self.inputs, 'notes': self.record['stepNotes'].get(str(self.step),''), 'machine': self.record['machine']}, message=message))
 
     def control(self, body):
         with self.condition:
             if body.get('run') != self.id: raise ValueError('This workflow session has changed')
             command = body.get('command')
+            if body.get('step')!=self.step and command!='stop':raise ValueError('This step has changed')
+            if 'notes' in body:
+                if not isinstance(body['notes'],str) or len(body['notes'])>8000:raise ValueError('Step notes are too long')
+                self.record['stepNotes'][str(self.step)]=body['notes']
+                self.store.workflow_job(self.record)
+            if command=='note':return
             if command == 'stop': self.stop = True
             elif command in ('next', 'skip', 'run', 'install') and self.waiting and body.get('step') == self.step and self.command is None:
                 if command=='install':
@@ -156,6 +174,12 @@ class Workflow:
             self.waiting = False
             message = step['text']
             self.state(message)
+            if self.mode=='automatic' and self.prepare and self.setup.get('prepare',True) and step.get('tool'):
+                try:message=self.prepare(self,step)
+                except Exception as error:message='Preparation needs attention: '+str(error)
+                self.history.append({'step':index,'text':step['text'],'result':message,'phase':'preparation'})
+                self.state(message)
+            if self.stop:break
             if self.mode == 'automatic' and step.get('tool') and step.get('action','run')=='run':
                 message = self.run_tool(step)
             while not self.stop:
@@ -178,4 +202,6 @@ class Workflow:
                 else:
                     self.history.append({'step': index, 'text': step['text'], 'result': 'verified by technician' if command == 'next' else 'skipped — not verified'})
                     break
+        self.record['status']='stopped' if self.stop else 'completed'
+        self.store.workflow_job(self.record)
         return 'Workflow stopped; open applications were left running.' if self.stop else 'Workflow finished. Review the record for skipped steps; no automatic repair or clean-system certification was made.'

@@ -147,3 +147,30 @@ def apply(catalog, inventory, host=None):
         versions=[p.get('version','') for p in found]
         record['hostVersion']=max(versions,key=lambda v:tuple(int(n) for n in re.findall(r'\d+',v)),default='')
     return inventory
+
+
+from functools import lru_cache
+@lru_cache(maxsize=1)
+def machine_identity():
+    """Machine matching prefers serial, then OS machine ID. MAC is supporting evidence."""
+    import uuid
+    serial='';stable=''
+    try:
+        if os.name=='nt':
+            import winreg
+            with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,r'SOFTWARE\Microsoft\Cryptography') as key:stable=str(winreg.QueryValueEx(key,'MachineGuid')[0])
+            result=subprocess.run(['powershell.exe','-NoProfile','-NonInteractive','-Command','(Get-CimInstance Win32_BIOS).SerialNumber'],capture_output=True,text=True,timeout=8)
+            if result.returncode==0:serial=result.stdout.strip()[:120]
+        elif sys.platform.startswith('linux'):
+            try:serial=Path('/sys/class/dmi/id/product_serial').read_text().strip()[:120]
+            except OSError:pass
+            stable=Path('/etc/machine-id').read_text().strip()
+        elif sys.platform=='darwin':
+            result=subprocess.run(['ioreg','-rd1','-c','IOPlatformExpertDevice'],capture_output=True,text=True,timeout=8)
+            match=re.search(r'"IOPlatformSerialNumber"\s*=\s*"([^"\n]+)"',result.stdout)
+            if match:serial=match.group(1)
+    except (OSError,subprocess.SubprocessError):pass
+    if serial.casefold() in ('unknown','default string','system serial number','to be filled by o.e.m.','0','none'):serial=''
+    mac=uuid.getnode();mac='' if mac&(1<<40) else ':'.join(f'{mac:012x}'[i:i+2] for i in range(0,12,2))
+    evidence=('serial:'+serial) if serial else ('system:'+stable) if stable else ('mac:'+mac) if mac else ('host:'+socket.gethostname())
+    return dict(id=hashlib.sha256(evidence.encode()).hexdigest()[:24],name=socket.gethostname(),serial=serial,mac=mac,platform=sys.platform,matchBasis=evidence.split(':',1)[0])

@@ -288,6 +288,39 @@ class Server(ThreadingHTTPServer):
         with self.events:
             self.revision += 1
             self.events.notify_all()
+    def prepare_workflow_step(self, flow, step):
+        import platform
+        tool=step['tool'];selection={'platform':{'Windows':'Windows','Darwin':'macOS','Linux':'Linux'}.get(platform.system(),'Linux'),'architecture':'arm64' if platform.machine().lower() in ('arm64','aarch64') else 'x86' if platform.machine().lower() in ('x86','i386','i686') else 'x64','mode':'latest' if flow.setup.get('updates') else 'missing','tools':[tool]}
+        flow.state('Preparing required tool: '+tool)
+        if flow.stop:return 'Preparation cancelled.'
+        try:tool_downloads.refresh_catalog(self.root,safe_path)
+        except Exception:pass  # Saved catalog supports offline use of already downloaded packages.
+        message=tool_downloads.bulk_download(self.root,selection,safe_path,lambda p:flow.state(p.get('message','Preparing tool...')),lambda:run_script('inventory'),self.publish_completion,lambda:flow.stop)
+        if flow.stop:return message
+        # Inventory also organizes recognized archives; deletion of original files remains excluded.
+        message+='\n'+run_script('inventory')
+        if step.get('action')=='install' and flow.setup.get('install'):
+            info=install_tools.options(self.root,tool,safe_path)
+            if info['installedOnHost']:
+                import re
+                text=(self.root/'assets/js/local-inventory.js').read_text('utf-8-sig')
+                inventory=json.loads(text.split('window.LOCAL_INVENTORY =',1)[1].strip().rstrip(';'))
+                version=inventory.get('tools',{}).get(tool,{}).get('version','')
+                def numeric(value):
+                    value=str(value or '').lstrip('v')
+                    if not re.fullmatch(r'\d+(\.\d+)*',value):return None
+                    return tuple(int(n) for n in value.split('.'))
+                latest=numeric(version);installed=[numeric(m.get('version')) for m in info.get('hostMatches',[])]
+                newer=bool(latest and installed and all(v and (latest+(0,)*10)[:10]>(v+(0,)*10)[:10] for v in installed))
+                if not flow.setup.get('updates') or not newer:return message+'\nAlready installed on this PC; no proven newer package version. Verify or review manually.'
+            signed=[f for f in info.get('files',[]) if f.get('signature',{}).get('status')=='Valid']
+            if len(signed)==1 and not info.get('reason'):
+                file=signed[0]
+                flow.state('Installing '+info['name']+' with recovery tracking; follow UAC and installer prompts.')
+                message+='\n'+install_tools.install(self.root,{'tool':tool,'package':file['path'],'sha256':file['sha256']},safe_path)
+                message+='\n'+run_script('inventory')
+            else:message+='\nInstallation needs review: '+(info.get('reason') or 'Choose a single trusted installer.')
+        return message
     def job(self, action, body=None):
         context = {'tool': (body or {}).get('tool'), 'startedAt': self.state.get('startedAt',time.time())}
         try:
@@ -315,8 +348,10 @@ class Server(ThreadingHTTPServer):
                     lambda message: setattr(self, 'state', dict(context, busy=True, message=message, stage='running')))
             elif action == 'workflow':
                 self.workflow = portable_tools.Workflow(self.root, body['workflow'], body['mode'], safe_path,
-                    lambda state: setattr(self, 'state', dict(context, busy=True, stage='workflow', **state)))
+                    lambda state: setattr(self, 'state', dict(context, busy=True, stage='workflow', **state)),setup=(body or {}).get('setup'),prepare=self.prepare_workflow_step)
                 message = self.workflow.run()
+                context['jobId'] = self.workflow.id
+                context['machine'] = self.workflow.record['machine']
                 context['workflowRecord'] = self.workflow.history
                 context['workflowName'] = self.workflow.definition['name']
                 context['workflowProfile'] = body['workflow']
@@ -385,6 +420,13 @@ class Handler(BaseHTTPRequestHandler):
                     self.wfile.write(('data: '+json.dumps({'revision':revision})+'\n\n').encode())
                     self.wfile.flush()
             except (BrokenPipeError,ConnectionResetError,OSError): return
+        if route == 'api/workflow-jobs':
+            try:
+                machine=host_inventory.machine_identity()
+                all_hosts=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('all')==['1']
+                jobs=self.server.history.workflow_job(machine=None if all_hosts else machine['id'])
+                return self.reply(200,{'machine':machine,'jobs':jobs,'activeJob':self.server.workflow.id if self.server.workflow else None})
+            except Exception as error:return self.reply(503,{'error':str(error)})
         if route == 'api/history':
             try: return self.reply(200, self.server.history.recent())
             except Exception as error: return self.reply(500, {'error':str(error)})
