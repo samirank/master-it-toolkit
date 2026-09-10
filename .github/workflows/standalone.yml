@@ -40,6 +40,7 @@ jobs:
       - run: python .github/tests/test_vault.py
       - run: python .github/tests/test_encrypted_backup.py
       - run: python .github/tests/test_assistant.py
+      - run: python .github/tests/test_portable_ai.py
       - run: python .github/tests/test_browser_host.py
       - run: python -m PyInstaller --onefile --name Master-IT-Toolkit --paths MASTER-IT-TOOLKIT .github/scripts/launcher-entry.py
       - name: Azure OIDC login for opted-in signing

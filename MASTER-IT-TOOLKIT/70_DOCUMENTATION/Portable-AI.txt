@@ -1,0 +1,42 @@
+Portable offline assistant
+
+Open Offline assistant in the desktop launcher. Under Portable AI on this SSD,
+select Windows-x64, Linux-x64, macOS-arm64, or All supported platforms, then click
+Prepare portable AI on SSD while connected to the internet.
+
+The shared Qwen3 0.6B Q8 model is approximately 640 MB. Each platform adds its own
+small llama.cpp runtime. Model/runtime versions and SHA-256 values are pinned in
+assets/portable-ai.json. Publisher license files are downloaded with the model.
+No account, host Ollama installation, GPU driver installation or API key is needed.
+Allow approximately 1 GB of SSD space and 2 GB of available RAM. Older CPUs and
+Linux distributions with incompatible native libraries may not run the runtime.
+
+Choose Portable AI chat (SSD). The model starts for each question using the local
+file, CPU inference, offline mode and an authenticated loopback server. It shuts
+down after its response or a handled timeout/failure. No model download occurs
+during chat. Prompts are not placed in command-line arguments or diagnostic logs.
+The default mode remains the deterministic offline catalog guide.
+
+Preparation shows progress in the assistant and global toolkit activity. Cancel
+retains already verified files and removes the current incomplete transfer during
+normal cancellation. Unexpected process/power loss can leave a .partial or
+.prepare-* file/folder; verify the toolkit is stopped before removing those
+specific incomplete items. Do not remove the completed model or runtime folders.
+
+Prepared files live in 20_PORTABLE_APPS/AI/ToolkitAssistant and travel with the
+SSD. Application updates preserve them. Full toolkit backups include them;
+workspace-only backups do not. Downloading all supported runtimes lets the same
+SSD provide AI on the listed platforms without repeating the model download.
+
+The small model can be wrong. It uses matching catalog/workflow references and
+recent chat, not a scan of your computer. It cannot execute generated shell text.
+Reviewed toolkit buttons remain the route for commands, installs and workflows.
+Do not enter secrets or sensitive customer data. Chat history is saved in the
+workspace SQLite database and encrypted when the Private vault is configured.
+
+The optional Host Ollama chat mode remains available for an existing local
+Ollama installation; its external model storage is managed separately.
+
+Sources and licenses:
+https://huggingface.co/Qwen/Qwen3-0.6B-GGUF (Apache 2.0)
+https://github.com/ggml-org/llama.cpp (MIT)

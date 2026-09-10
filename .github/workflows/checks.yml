@@ -34,4 +34,5 @@ jobs:
       - run: python .github/tests/test_workflow_jobs.py
       - run: python .github/tests/test_persistence.py
       - run: python .github/tests/test_assistant.py
+      - run: python .github/tests/test_portable_ai.py
       - run: python .github/tests/test_browser_host.py

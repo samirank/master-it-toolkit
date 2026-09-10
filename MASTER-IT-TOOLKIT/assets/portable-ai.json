@@ -1,0 +1,42 @@
+{
+  "model": {
+    "name": "Qwen3-0.6B-Q8_0.gguf",
+    "url": "https://huggingface.co/Qwen/Qwen3-0.6B-GGUF/resolve/23749fefcc72300e3a2ad315e1317431b06b590a/Qwen3-0.6B-Q8_0.gguf",
+    "size": 639446688,
+    "sha256": "9465e63a22add5354d9bb4b99e90117043c7124007664907259bd16d043bb031"
+  },
+  "runtimes": {
+    "Windows-x64": {
+      "name": "llama-b10896-bin-win-cpu-x64.zip",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b10896/llama-b10896-bin-win-cpu-x64.zip",
+      "size": 18423878,
+      "sha256": "76ea475e53aba41dd280f84f759706bf2d8822700220edc1d0c6ae145ecf0daf"
+    },
+    "Linux-x64": {
+      "name": "llama-b10896-bin-ubuntu-x64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b10896/llama-b10896-bin-ubuntu-x64.tar.gz",
+      "size": 16813547,
+      "sha256": "92a01f8a882de0d7f71dd8be415d2858810153d6a42a569db0e0f40a66d34a7a"
+    },
+    "macOS-arm64": {
+      "name": "llama-b10896-bin-macos-arm64.tar.gz",
+      "url": "https://github.com/ggml-org/llama.cpp/releases/download/b10896/llama-b10896-bin-macos-arm64.tar.gz",
+      "size": 11139941,
+      "sha256": "4f5e42de61e3006bf74ac9d3bbdf00d18952d705c218c35917383c4ffd877637"
+    }
+  },
+  "licenses": [
+    {
+      "name": "LICENSE-Qwen.txt",
+      "url": "https://huggingface.co/Qwen/Qwen3-0.6B-GGUF/raw/23749fefcc72300e3a2ad315e1317431b06b590a/LICENSE",
+      "size": 11544,
+      "sha256": "5de36594c10839788a8c589443a8ef9d8b8d17c65a1b5807206ae037fc36c6bd"
+    },
+    {
+      "name": "LICENSE-llama.cpp.txt",
+      "url": "https://raw.githubusercontent.com/ggml-org/llama.cpp/b10896/LICENSE",
+      "size": 1078,
+      "sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d"
+    }
+  ]
+}

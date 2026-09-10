@@ -1,0 +1,25 @@
+name: Verify portable offline AI
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-22.04, macos-14]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Prepare pinned model and runtime
+        working-directory: MASTER-IT-TOOLKIT
+        run: python -c "from pathlib import Path; import portable_ai as ai; ai.prepare(Path('.').resolve(),ai.host(),lambda p:None); print('Pinned portable assets verified.')"
+      - name: Exercise real CPU inference and cleanup
+        env:
+          PORTABLE_AI_TEST_ROOT: ${{ github.workspace }}/MASTER-IT-TOOLKIT
+        run: python .github/tests/test_portable_ai.py

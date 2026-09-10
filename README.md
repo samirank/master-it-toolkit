@@ -92,9 +92,11 @@ See [encrypted backup setup and SSD-loss recovery](MASTER-IT-TOOLKIT/70_DOCUMENT
 
 ## Offline assistant
 
-Catalog guidance works offline without a model. Optional chat uses a locally prepared Ollama `qwen3:0.6b` model. It connects only to loopback, rejects redirects and sends recent chat plus matching catalog/workflow references. It does not execute generated shell text; action buttons use existing toolkit reviews.
+Catalog guidance works offline without a model. For chat that travels with the SSD, open **Offline assistant > Portable AI on this SSD**, select the desired platforms and prepare it once while online. The pinned Qwen3 0.6B Q8 model is about 640 MB; small CPU runtimes support Windows x64, Linux x64 and macOS Apple Silicon. No host Ollama installation is needed. Select **Portable AI chat (SSD)** afterward.
 
-Ollama/model weights are not yet bundled as a portable SSD runtime. Prepare them on the host before going offline. Chat history is covered by the private vault when configured; model storage outside the toolkit is not part of its backup.
+Preparation verifies publisher hashes, shows progress and supports cancellation. Runtime/model files stay under `20_PORTABLE_APPS/AI/ToolkitAssistant`, survive updates and are included in full backups. Each answer starts an authenticated loopback server in offline mode and stops it afterward. Generated text cannot execute commands; actions still use reviewed toolkit buttons. Older CPUs/native-library versions may be unsupported.
+
+Allow about 2 GB free RAM. The small model can make mistakes; catalog references and recent chat provide context, not proof of a diagnosis. Chat history is encrypted when the private vault is configured. Existing host Ollama remains an optional mode. See [portable AI setup](MASTER-IT-TOOLKIT/70_DOCUMENTATION/Portable-AI.txt).
 
 ## Updates and recovery
 

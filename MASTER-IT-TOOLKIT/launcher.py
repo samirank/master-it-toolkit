@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT))
 # The frozen bootstrap imports these for dependency collection. Load updated SSD
 # source modules on restart instead of reusing the copies cached inside the EXE.
 if getattr(sys, 'frozen', False):
-    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant','secure_vault'):
+    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant','secure_vault','portable_ai'):
         sys.modules.pop(module,None)
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
@@ -54,7 +54,7 @@ def managed_name(name):
     if name.startswith('runtime-extensions/ubol/'): return True
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
-    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'offline_assistant.py', 'secure_vault.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
+    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'offline_assistant.py', 'secure_vault.py', 'portable_ai.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
         return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json', 'assets/download-catalog-cache.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
@@ -541,6 +541,19 @@ class Handler(BaseHTTPRequestHandler):
                 size = int(self.headers.get('Content-Length', '0'))
                 if not 0 < size <= 20000: raise ValueError('Assistant request too large')
                 body = json.loads(self.rfile.read(size))
+                if isinstance(body,dict) and body.get('operation')=='portable-prepare':
+                    if not self.server.lock.acquire(False):return self.reply(409,{'error':'Wait for the current toolkit job before preparing AI.'})
+                    self.server.state={'busy':True,'startedAt':time.time(),'message':'Preparing portable AI on the SSD…'}
+                    def progress(value):self.server.state.update(value)
+                    def done():
+                        self.server.state.update(busy=False,stage='error' if self.server.state.get('error') else 'complete')
+                        try:self.server.history.record('portable-ai',self.server.state)
+                        finally:self.server.lock.release();self.server.publish_completion()
+                    try:result=offline_assistant.portable_ai.start_prepare(self.server.root,body.get('platform',offline_assistant.portable_ai.host()),progress,done)
+                    except Exception as error:
+                        self.server.state.update(busy=False,stage='error',message=str(error))
+                        self.server.lock.release();raise
+                    return self.reply(202,result)
                 return self.reply(200, offline_assistant.handle(self.server.root, self.server.history, body))
             except (ValueError, TypeError, KeyError) as error: return self.reply(400, {'error': str(error)})
             except Exception as error: return self.reply(503, {'error': str(error)})
@@ -688,6 +701,11 @@ def open_app(url):
     webbrowser.open(url)
 
 if __name__ == '__main__':
+    if '--portable-ai-self-test' in sys.argv:
+        answer=offline_assistant.portable_ai.chat(ROOT,[{'role':'user','content':'Reply with just the word READY.'}])
+        if 'READY' not in answer.upper():raise RuntimeError('Portable model did not return the expected test response')
+        print('Portable AI runtime and local model ready. No chat history was stored.')
+        sys.exit(0)
     server = Server()
     url = server.origin + '/' + server.token + '/index.html'
     print('Master IT Toolkit launcher. Keep this terminal open; Ctrl+C stops it.\n' + url, flush=True)
