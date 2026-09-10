@@ -76,6 +76,7 @@
   d.append(el('p','Automatic mode opens the available portable tool for each supported step, then waits for your review. Manual mode waits for you to launch each tool. Missing tools, consent, scan findings, copy settings and destructive actions always need attention.'));
   const list=el('ol');for(const step of def.steps)list.append(el('li',step.text+(step.tool?' — '+tools.find(t=>t.id===step.tool)?.name:'')));d.append(list);
   if(!window.TOOLKIT_LAUNCHER){d.append(el('p','Use the local launcher to run workflows. This demo provides the full checklist preview.'));return;}
+  d.append(el('p','Temporary job records only. Do not enter passwords, recovery codes or confidential customer data. Export or copy required notes and results to approved permanent storage after the job and verify the copy; the toolkit is not a long-term records system.'));
   const inputs={};let defaults={issue:def.name};
   const machineLabel=el('p','Loading machine and previous run details…');d.append(machineLabel);
   try{const data=await api('workflow-jobs');defaults={...defaults,...data.jobs.find(j=>j.profile===id)?.inputs};machineLabel.textContent='Machine: '+data.machine.name+' · Serial: '+(data.machine.serial||'unavailable')+' · MAC: '+(data.machine.mac||'unavailable');}catch(e){machineLabel.textContent='Machine history unavailable: '+e.message;}

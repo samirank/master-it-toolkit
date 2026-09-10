@@ -37,7 +37,7 @@
   const setup=el('details');setup.append(el('summary','Set up tiny local AI (once per computer)'));
   const link=el('a','Install Ollama from the official website');link.href='https://ollama.com/download';link.target='_blank';link.rel='noopener noreferrer';setup.append(link,el('p','Start Ollama with cloud features disabled (OLLAMA_NO_CLOUD=1). Then download qwen3:0.6b below while online. Afterwards chat works offline. The model lives in Ollama’s model folder on this computer; it is not bundled in the toolkit ZIP.'));
   setup.append(button('Download local model (internet required)',async()=>{if(busy)return;busy=true;warning='';paint();try{await api({operation:'prepare'});warning='Local model ready. Select Local AI chat.';}catch(e){warning=e.message;}finally{busy=false;paint();}}));
-  panel.append(setup);
+  panel.append(setup,el('p','Temporary assistance only. Do not enter passwords, recovery codes or sensitive customer data. Copy any guidance or records you need to approved permanent storage; do not rely on chat as a long-term record.'));
   const actions=el('div');actions.className='actions';for(const [action,label] of [['inventory','Scan inventory'],['pc','PC diagnostics'],['network','Network diagnostics']])actions.append(button(label,()=>showReview(action,label)));
   actions.append(button('PC builds',()=>location.hash='builds'),button('Toolkit backup',()=>location.hash='backups'));panel.append(actions);
   const mode=el('select');mode.setAttribute('aria-label','Assistant mode');for(const [value,label] of [['catalog','Offline catalog guide'],['ai','Local AI chat']]){const o=el('option',label);o.value=value;mode.append(o);}panel.append(mode);

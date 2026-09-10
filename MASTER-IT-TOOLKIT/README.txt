@@ -454,3 +454,12 @@ The start form offers editable ticket, technician, issue, source/destination ref
 In automatic mode, **Download missing tools and organize recognized archives** runs the repository download queue for each required tool and refreshes inventory. **Fetch latest supported packages** requests latest packages instead. Offline failures retain existing tools. Recognized ZIP extraction and organization use the scanner; original packages and customer files are not deleted. Cleanup requiring a choice remains manual.
 
 Optionally enable tracked installation at the start. Only a single installer with a valid signature is eligible. Existing installations are skipped unless every detected host version can be compared numerically and the scanned package is proven newer, with updates enabled. Recovery-checkpoint creation, UAC and interactive installer prompts still apply. Ambiguous/unsigned packages, unsupported platforms, firmware/drivers and vendor-managed downloads stop for attention. Manual mode does not perform preparation automatically. Checkpoints still require technician verification; preparation is not a diagnosis or proof the requested repair worked.
+
+DATA HANDLING — TEMPORARY WORKSPACE ONLY
+Do not store sensitive or long-term notes/data in this toolkit. Never enter
+passwords, recovery codes, authentication secrets or confidential customer data.
+After each job, export or copy required notes, checklist results and reports to
+your approved permanent storage. Verify that copy before clearing temporary
+records. Backups may retain older copies; clearing live notes does not erase
+those backups. Encryption, when available, does not make the toolkit a suitable
+long-term records system. Current workspace storage is not encrypted.

@@ -36,3 +36,12 @@ Use Run portable for scanned portable Windows programs. Start workflow supports
 manual or automatic launches with review checkpoints. Use Stop workflow to stop
 future launches; it leaves open apps running. Export the record before closing
 the launcher. See README.txt for migration guidance and platform limitations.
+
+DATA HANDLING — TEMPORARY WORKSPACE ONLY
+Do not store sensitive or long-term notes/data in this toolkit. Never enter
+passwords, recovery codes, authentication secrets or confidential customer data.
+After each job, export or copy required notes, checklist results and reports to
+your approved permanent storage. Verify that copy before clearing temporary
+records. Backups may retain older copies; clearing live notes does not erase
+those backups. Encryption, when available, does not make the toolkit a suitable
+long-term records system. Current workspace storage is not encrypted.
