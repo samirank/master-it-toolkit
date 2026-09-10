@@ -82,7 +82,12 @@ def backup(root,body,progress,cancelled=lambda:False):
                 archive.writestr('toolkit-backup-manifest.json',json.dumps(manifest,indent=2))
             verify(partial,progress,cancelled)
             if cancelled():raise InterruptedError('Backup cancelled')
+            with partial.open('rb+') as completed:os.fsync(completed.fileno())
             partial.rename(final)
+            if os.name!='nt':
+                fd=os.open(str(target),os.O_RDONLY)
+                try:os.fsync(fd)
+                finally:os.close(fd)
         return 'Backup saved and verified: '+str(final)+'\n'+str(len(selected))+' files; '+str(len(skipped))+' linked paths skipped. Browser sessions, temporary files and old update backups excluded.\nCloud upload completion must be checked in your sync client. Archive is not encrypted.'
     finally:
         if owned and partial.exists():partial.unlink()

@@ -230,10 +230,16 @@ def save_selected(root, tool_id, selected, safe_path, progress, resolved=None):
             expected = asset.get('digest') or ''
             if expected.startswith('sha256:') and digest.hexdigest() != expected[7:]: raise ValueError('Publisher SHA256 mismatch')
             # Exclusive creation prevents overwriting files created during the transfer.
-            with destination.open('xb') as output, temporary.open('rb') as source:
-                try: shutil.copyfileobj(source, output)
-                except Exception:
-                    output.close(); destination.unlink(); raise
+            if os.name=='nt':
+                # Windows rename is atomic and refuses an existing destination.
+                with temporary.open('rb+') as completed:os.fsync(completed.fileno())
+                temporary.rename(destination)
+            else:
+                with destination.open('xb') as output, temporary.open('rb') as source:
+                    try:
+                        shutil.copyfileobj(source, output);output.flush();os.fsync(output.fileno())
+                    except Exception:
+                        output.close(); destination.unlink(); raise
             results.append('Saved: ' + str(destination) + (' (SHA256 verified)' if expected.startswith('sha256:') else ' (no publisher SHA256 supplied)'))
             # Commit each receipt immediately, so an interrupted multi-file job can resume safely.
             record_saved(root,tool_id,info,key,destination,digest.hexdigest(),safe_path)
@@ -252,7 +258,9 @@ def record_saved(root, tool_id, info, key, destination, checksum, safe_path):
     receipts[tool_id]=list(previous.values())
     if info.get('version'): receipts.setdefault('_latest',{})[tool_id]=info['version']
     temp=receipt_path.with_name('.download-receipts-'+secrets.token_hex(6)+'.tmp')
-    temp.write_text(json.dumps(receipts,indent=2),encoding='utf-8');os.replace(temp,receipt_path)
+    with temp.open('w',encoding='utf-8') as output:
+        json.dump(receipts,output,indent=2);output.flush();os.fsync(output.fileno())
+    os.replace(temp,receipt_path)
 
 def allowed_download(asset, url):
     parsed=urlsplit(url); host=parsed.hostname or ''

@@ -61,7 +61,7 @@ class UpdateTests(unittest.TestCase):
         with zipfile.ZipFile(data, 'a') as z: z.writestr('MASTER-IT-TOOLKIT/index.html', b'tampered')
         with self.assertRaises(ValueError): launcher.install_archive(data.getvalue(), self.root)
     def test_failed_write_rolls_back(self):
-        original = Path.write_bytes
+        original = launcher.durable_write
         fired = False
         def write(path, data):
             nonlocal fired
@@ -69,9 +69,21 @@ class UpdateTests(unittest.TestCase):
                 fired = True
                 raise OSError('simulated disk error')
             return original(path, data)
-        with patch.object(Path, 'write_bytes', write):
+        with patch.object(launcher, 'durable_write', write):
             with self.assertRaises(OSError): launcher.install_archive(archive({'index.html': b'new'}), self.root)
         self.assertEqual((self.root / 'index.html').read_bytes(), b'old')
+    def test_power_loss_recovers_without_touching_user_files(self):
+        (self.root/'customer.txt').write_bytes(b'keep me')
+        original=launcher.durable_write
+        def crash(path,data):
+            original(path,data)
+            if path==self.root/'index.html' and data==b'new':raise KeyboardInterrupt('power loss simulation')
+        with patch.object(launcher,'durable_write',crash):
+            with self.assertRaises(KeyboardInterrupt):launcher.install_archive(archive({'index.html':b'new'}),self.root)
+        self.assertTrue(launcher.recover_update(self.root))
+        self.assertEqual((self.root/'index.html').read_bytes(),b'old')
+        self.assertEqual((self.root/'customer.txt').read_bytes(),b'keep me')
+        self.assertFalse(launcher.recover_update(self.root))
     def test_symlink_rejected(self):
         target = self.root / 'real'; target.mkdir()
         try: (self.root / 'link').symlink_to(target, target_is_directory=True)

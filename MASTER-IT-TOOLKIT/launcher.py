@@ -24,13 +24,6 @@ sys.path.insert(0, str(ROOT))
 if getattr(sys, 'frozen', False):
     for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant'):
         sys.modules.pop(module,None)
-import tool_downloads
-import install_tools
-import host_inventory
-import portable_tools
-import activity_store
-import browser_host
-import offline_assistant
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
 SCRIPTS = {
@@ -72,6 +65,56 @@ def managed_name(name):
 def digest(data):
     return hashlib.sha256(data).hexdigest()
 
+
+def sync_directory(path):
+    if os.name=='nt': return  # File fsync is available; Windows has no portable directory fsync.
+    fd=os.open(str(path),os.O_RDONLY)
+    try: os.fsync(fd)
+    finally: os.close(fd)
+
+def durable_write(path,data):
+    path.parent.mkdir(parents=True,exist_ok=True)
+    temporary=path.with_name('.'+path.name+'.'+secrets.token_hex(8)+'.tmp')
+    try:
+        with temporary.open('xb') as output:
+            output.write(data);output.flush();os.fsync(output.fileno())
+        os.replace(temporary,path);sync_directory(path.parent)
+    finally:
+        if temporary.exists():temporary.unlink()
+
+def recover_update(root):
+    journal=safe_path(root,'.toolkit-backups/pending-update.json')
+    if not journal.exists():return False
+    plan=json.loads(journal.read_text('utf-8'));folder=plan['backup']
+    if not isinstance(folder,str) or not folder.startswith('.toolkit-backups/') or len(PurePosixPath(folder).parts)!=2:raise ValueError('Invalid update recovery folder')
+    restored={}
+    if not isinstance(plan['files'],dict) or len(plan['files'])>5001:raise ValueError('Invalid recovery plan')
+    for name,expected in plan['files'].items():
+        if name!=MANIFEST and not managed_name(name):raise ValueError('Invalid recovery path')
+        safe_path(root,name)
+        before=safe_path(root,folder+'/'+name).read_bytes() if expected is not None else None
+        if before is not None and digest(before)!=expected:raise ValueError('Recovery backup checksum mismatch')
+        restored[name]=before
+    for name,before in restored.items():
+        p=safe_path(root,name)
+        if before is None:
+            if p.exists():p.unlink();sync_directory(p.parent)
+        else:durable_write(p,before)
+    journal.unlink();sync_directory(journal.parent)
+    return True
+
+if __name__=='__main__' and recover_update(ROOT):
+    print('Interrupted update recovered. Restart the launcher to load the restored files.',flush=True)
+    sys.exit(0)
+
+import tool_downloads
+import install_tools
+import host_inventory
+import portable_tools
+import activity_store
+import browser_host
+import offline_assistant
+
 def cleanup_update_archives(root):
     """Remove known installer ZIPs from an installed launcher root, never a repo."""
     root = Path(root).absolute()
@@ -100,6 +143,7 @@ def cleanup_update_archives(root):
 
 
 def install_archive(blob, root=ROOT):
+    recover_update(root)
     """Validate first; preserve changes; back up originals; roll back failed writes."""
     with zipfile.ZipFile(io.BytesIO(blob)) as archive:
         prefix = 'MASTER-IT-TOOLKIT/'
@@ -134,29 +178,23 @@ def install_archive(blob, root=ROOT):
     changes[MANIFEST] = ((root / MANIFEST).read_bytes(), manifest_bytes)
     backup = safe_path(root, '.toolkit-backups/' + time.strftime('%Y%m%d-%H%M%S') + '-' + secrets.token_hex(3))
     backup.mkdir(parents=True)
+    recovery = {}
     for name, (before, after) in changes.items():
         if before is not None:
-            p = backup / name
-            p.parent.mkdir(parents=True, exist_ok=True)
-            p.write_bytes(before)
-    (backup / 'changes.json').write_text(json.dumps({n: b is not None for n, (b, a) in changes.items()}), encoding='utf-8')
-    applied = []
+            p = safe_path(root, backup.relative_to(root).as_posix()+'/'+name)
+            durable_write(p, before)
+        recovery[name] = digest(before) if before is not None else None
+    journal = safe_path(root, '.toolkit-backups/pending-update.json')
+    durable_write(journal,json.dumps({'backup':backup.relative_to(root).as_posix(),'files':recovery}).encode())
     try:
         for name, (before, after) in changes.items():
             p = safe_path(root, name)
-            applied.append(name)
             if after is None:
-                if p.exists(): p.unlink()
-            else:
-                p.parent.mkdir(parents=True, exist_ok=True)
-                p.write_bytes(after)
+                if p.exists(): p.unlink(); sync_directory(p.parent)
+            else: durable_write(p,after)
+        journal.unlink(); sync_directory(journal.parent)
     except Exception:
-        for name in reversed(applied):
-            p = safe_path(root, name)
-            before = changes[name][0]
-            if before is None:
-                if p.exists(): p.unlink()
-            else: p.write_bytes(before)
+        recover_update(root)
         raise
     return 'Updated toolkit files. Backup: ' + str(backup) + '. Close and restart the launcher to load the new version.' + cleanup_update_archives(root)
 
@@ -198,6 +236,8 @@ def run_script(key):
 class Server(ThreadingHTTPServer):
     daemon_threads = True
     def __init__(self, root=ROOT, port=8765):
+        if recover_update(root):
+            raise RuntimeError("Interrupted update recovered. Restart the launcher to load the restored files.")
         self.root = root
         self.token = secrets.token_urlsafe(32)
         self.lock = threading.Lock()
@@ -212,6 +252,38 @@ class Server(ThreadingHTTPServer):
         self.catalog_lock = threading.Lock()
         super().__init__(('127.0.0.1', port), Handler)
         self.origin = 'http://127.0.0.1:' + str(self.server_port)
+        self.auto_backup_check = 0
+    def service_actions(self):
+        if time.time()-self.auto_backup_check<60:return
+        self.auto_backup_check=time.time()
+        threading.Thread(target=self.auto_backup_tick,daemon=True).start()
+    def auto_backup_tick(self):
+        if not self.lock.acquire(False):return
+        handed_off=False
+        try:
+            settings=self.history.workspace().get('backupSettings',{})
+            if not settings.get('automatic') or not settings.get('destination'):return
+            key=digest(json.dumps([settings['destination'],settings.get('scope','full')]).encode())
+            with self.history.lock:
+                db=self.history.connect()
+                try:
+                    with db:
+                        db.execute('CREATE TABLE IF NOT EXISTS automatic_backups (destination TEXT PRIMARY KEY, success REAL, attempt REAL)')
+                        row=db.execute('SELECT success,attempt FROM automatic_backups WHERE destination=?',(key,)).fetchone() or (0,0)
+                        now=time.time()
+                        if now-row[0]<settings.get('intervalHours',24)*3600 or now-row[1]<300:return
+                        db.execute('INSERT OR REPLACE INTO automatic_backups VALUES (?,?,?)',(key,row[0],now))
+                finally:db.close()
+            # Probe the actual destination, not internet access: supports LAN-only NAS and mounted drives.
+            if not Path(settings['destination']).is_dir():return
+            self.state={'busy':True,'startedAt':time.time(),'message':'Automatic backup: destination available...'}
+            handed_off=True
+            self.job('backup-toolkit',dict(settings,automaticKey=key))
+        except Exception as error:
+            self.state={'busy':False,'stage':'error','message':'Automatic backup postponed: '+str(error)}
+            self.history.record('automatic-backup',self.state)
+        finally:
+            if not handed_off:self.lock.release()
     def publish_completion(self):
         with self.events:
             self.revision += 1
@@ -259,6 +331,12 @@ class Server(ThreadingHTTPServer):
                 self.state = dict(context, busy=True, message='Scanning and organizing saved packages…', stage='scan')
                 message += '\n' + run_script('inventory')
             else: message = update() if action == 'update' else run_script(action)
+            if action=='backup-toolkit' and (body or {}).get('automaticKey'):
+                with self.history.lock:
+                    db=self.history.connect()
+                    try:
+                        with db:db.execute('UPDATE automatic_backups SET success=? WHERE destination=?',(time.time(),body['automaticKey']))
+                    finally:db.close()
             self.state = dict(context, busy=False, message=message, stage='complete')
         except Exception as error:
             self.state = dict(context, busy=False, message='Stopped: ' + str(error), stage='error')
