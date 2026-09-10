@@ -1,0 +1,336 @@
+{
+  "7zip": {
+    "provider": "github",
+    "repo": "ip7z/7zip"
+  },
+  "rescuezilla": {
+    "provider": "github",
+    "repo": "rescuezilla/rescuezilla"
+  },
+  "rufus": {
+    "provider": "github",
+    "repo": "pbatard/rufus"
+  },
+  "rustdesk": {
+    "provider": "github",
+    "repo": "rustdesk/rustdesk"
+  },
+  "notepad": {
+    "provider": "github",
+    "repo": "notepad-plus-plus/notepad-plus-plus"
+  },
+  "winmerge": {
+    "provider": "github",
+    "repo": "WinMerge/winmerge"
+  },
+  "sumatra": {
+    "provider": "winget",
+    "package": "SumatraPDF.SumatraPDF"
+  },
+  "onlyoffice": {
+    "provider": "github",
+    "repo": "ONLYOFFICE/DesktopEditors"
+  },
+  "handbrake": {
+    "provider": "github",
+    "repo": "HandBrake/HandBrake"
+  },
+  "audacity": {
+    "provider": "github",
+    "repo": "audacity/audacity"
+  },
+  "git": {
+    "provider": "github",
+    "repo": "git-for-windows/git"
+  },
+  "jq": {
+    "provider": "github",
+    "repo": "jqlang/jq"
+  },
+  "ventoy": {
+    "provider": "github",
+    "repo": "ventoy/Ventoy"
+  },
+  "etcher": {
+    "provider": "github",
+    "repo": "balena-io/etcher"
+  },
+  "obs": {
+    "provider": "github",
+    "repo": "obsproject/obs-studio"
+  },
+  "obsidian": {
+    "provider": "winget",
+    "package": "Obsidian.Obsidian"
+  },
+  "shotcut": {
+    "provider": "github",
+    "repo": "mltframework/shotcut"
+  },
+  "openshot": {
+    "provider": "github",
+    "repo": "OpenShot/openshot-qt"
+  },
+  "joplin": {
+    "provider": "github",
+    "repo": "laurent22/joplin"
+  },
+  "syncthing": {
+    "provider": "github",
+    "repo": "syncthing/syncthing"
+  },
+  "keepassxc": {
+    "provider": "github",
+    "repo": "keepassxreboot/keepassxc"
+  },
+  "bleachbit": {
+    "provider": "github",
+    "repo": "bleachbit/bleachbit"
+  },
+  "angryip": {
+    "provider": "github",
+    "repo": "angryip/ipscan"
+  },
+  "winutil": {
+    "provider": "github",
+    "repo": "ChrisTitusTech/winutil"
+  },
+  "optimizernxt": {
+    "provider": "github",
+    "repo": "hellzerg/optimizerNXT"
+  },
+  "bcu": {
+    "provider": "github",
+    "repo": "Klocman/Bulk-Crap-Uninstaller"
+  },
+  "nanazip": {
+    "provider": "github",
+    "repo": "M2Team/NanaZip"
+  },
+  "pdfarranger": {
+    "provider": "github",
+    "repo": "pdfarranger/pdfarranger"
+  },
+  "powershell": {
+    "provider": "github",
+    "repo": "PowerShell/PowerShell"
+  },
+  "unigetui": {
+    "provider": "github",
+    "repo": "Devolutions/UniGetUI"
+  },
+  "clonezilla": {
+    "provider": "sourceforge",
+    "project": "clonezilla",
+    "folder": "clonezilla_live_stable"
+  },
+  "gparted": {
+    "provider": "sourceforge",
+    "project": "gparted",
+    "folder": "gparted-live-stable"
+  },
+  "sysinternals": {
+    "provider": "sysinternals",
+    "file": "SysinternalsSuite.zip"
+  },
+  "autoruns": {
+    "provider": "sysinternals",
+    "file": "Autoruns.zip"
+  },
+  "process-explorer": {
+    "provider": "sysinternals",
+    "file": "ProcessExplorer.zip"
+  },
+  "procmon": {
+    "provider": "sysinternals",
+    "file": "ProcessMonitor.zip"
+  },
+  "tcpview": {
+    "provider": "sysinternals",
+    "file": "TCPView.zip"
+  },
+  "rammap": {
+    "provider": "sysinternals",
+    "file": "RAMMap.zip"
+  },
+  "disk2vhd": {
+    "provider": "sysinternals",
+    "file": "Disk2vhd.zip"
+  },
+  "sigcheck": {
+    "provider": "sysinternals",
+    "file": "Sigcheck.zip"
+  },
+  "pstools": {
+    "provider": "sysinternals",
+    "file": "PSTools.zip"
+  },
+  "procdump": {
+    "provider": "sysinternals",
+    "file": "Procdump.zip"
+  },
+  "handle": {
+    "provider": "sysinternals",
+    "file": "Handle.zip"
+  },
+  "strings": {
+    "provider": "sysinternals",
+    "file": "Strings.zip"
+  },
+  "sdelete": {
+    "provider": "sysinternals",
+    "file": "SDelete.zip"
+  },
+  "zoomit": {
+    "provider": "sysinternals",
+    "file": "ZoomIt.zip"
+  },
+  "psping": {
+    "provider": "sysinternals",
+    "file": "PSTools.zip"
+  },
+  "anydesk": {
+    "provider": "winget",
+    "package": "AnyDesk.AnyDesk"
+  },
+  "tailscale": {
+    "provider": "winget",
+    "package": "Tailscale.Tailscale"
+  },
+  "wireshark": {
+    "provider": "winget",
+    "package": "WiresharkFoundation.Wireshark"
+  },
+  "nmap": {
+    "provider": "winget",
+    "package": "Insecure.Nmap"
+  },
+  "putty": {
+    "provider": "winget",
+    "package": "PuTTY.PuTTY"
+  },
+  "winscp": {
+    "provider": "winget",
+    "package": "WinSCP.WinSCP"
+  },
+  "everything": {
+    "provider": "winget",
+    "package": "voidtools.Everything"
+  },
+  "wiztree": {
+    "provider": "winget",
+    "package": "AntibodySoftware.WizTree"
+  },
+  "treesize": {
+    "provider": "winget",
+    "package": "JAMSoftware.TreeSize.Free"
+  },
+  "fastcopy": {
+    "provider": "winget",
+    "package": "FastCopy.FastCopy"
+  },
+  "mediainfo": {
+    "provider": "winget",
+    "package": "MediaArea.MediaInfo.GUI"
+  },
+  "irfanview": {
+    "provider": "winget",
+    "package": "IrfanSkiljan.IrfanView"
+  },
+  "gimp": {
+    "provider": "winget",
+    "package": "GIMP.GIMP.3"
+  },
+  "cpuz": {
+    "provider": "winget",
+    "package": "CPUID.CPU-Z"
+  },
+  "hwmonitor": {
+    "provider": "winget",
+    "package": "CPUID.HWMonitor"
+  },
+  "hwinfo": {
+    "provider": "winget",
+    "package": "REALiX.HWiNFO"
+  },
+  "cdi": {
+    "provider": "winget",
+    "package": "CrystalDewWorld.CrystalDiskInfo"
+  },
+  "cdm": {
+    "provider": "winget",
+    "package": "CrystalDewWorld.CrystalDiskMark"
+  },
+  "geek": {
+    "provider": "winget",
+    "package": "GeekUninstaller.GeekUninstaller"
+  },
+  "hibit": {
+    "provider": "winget",
+    "package": "HiBitSoftware.HiBitUninstaller"
+  },
+  "thunderbird": {
+    "provider": "winget",
+    "package": "Mozilla.Thunderbird"
+  },
+  "betterbird": {
+    "provider": "winget",
+    "package": "Betterbird.Betterbird"
+  },
+  "kdenlive": {
+    "provider": "winget",
+    "package": "KDE.Kdenlive"
+  },
+  "chrome": {
+    "provider": "winget",
+    "package": "Google.Chrome"
+  },
+  "edge": {
+    "provider": "winget",
+    "package": "Microsoft.Edge"
+  },
+  "shutup": {
+    "provider": "winget",
+    "package": "OO-Software.ShutUp10"
+  },
+  "appbuster": {
+    "provider": "winget",
+    "package": "OO-Software.AppBuster"
+  },
+  "winaero": {
+    "provider": "winget",
+    "package": "winaero.tweaker"
+  },
+  "ntlite": {
+    "provider": "winget",
+    "package": "Nlitesoft.NTLite"
+  },
+  "4kdownloader": {
+    "provider": "winget",
+    "package": "OpenMedia.4KVideoDownloaderPlus"
+  },
+  "steam": {
+    "provider": "winget",
+    "package": "Valve.Steam"
+  },
+  "epic": {
+    "provider": "winget",
+    "package": "EpicGames.EpicGamesLauncher"
+  },
+  "smartmontools": {
+    "provider": "winget",
+    "package": "smartmontools.smartmontools"
+  },
+  "gsmart": {
+    "provider": "github",
+    "repo": "ashaduri/gsmartcontrol"
+  },
+  "coretemp": {
+    "provider": "winget",
+    "package": "ALCPU.CoreTemp"
+  },
+  "latencymon": {
+    "provider": "winget",
+    "package": "Resplendence.LatencyMon"
+  }
+}

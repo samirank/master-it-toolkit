@@ -32,6 +32,7 @@ jobs:
       - run: python -m playwright install chromium --no-shell --with-deps
       - run: python .github/tests/test_launcher.py
       - run: python .github/tests/test_downloads.py
+      - run: python .github/tests/test_catalog.py
       - run: python .github/tests/test_browser_host.py
       - run: python -m PyInstaller --onefile --name Master-IT-Toolkit --paths MASTER-IT-TOOLKIT .github/scripts/launcher-entry.py
       - run: python .github/scripts/package_launcher.py "${{ matrix.binary }}" "${{ matrix.label }}"

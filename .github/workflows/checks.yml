@@ -21,6 +21,7 @@ jobs:
       - run: python .github/tests/test_organization.py
       - run: python .github/tests/test_launcher.py
       - run: python .github/tests/test_downloads.py
+      - run: python .github/tests/test_catalog.py
       - run: python .github/tests/test_transfer_manager.py
       - run: python .github/tests/test_installs.py
       - run: python .github/tests/test_host_inventory.py

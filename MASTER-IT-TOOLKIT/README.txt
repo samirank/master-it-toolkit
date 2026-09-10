@@ -340,3 +340,49 @@ Downloads dialog; the browser's own Show in folder may point to expired staging.
 Completion events refresh the dashboard immediately after the inventory is written;
 periodic polling remains a reconnect fallback. Missing-download entries disappear
 once recognized. Download reports preserve line breaks and show completion milestones.
+once recognized. Download reports preserve line breaks and show completion milestones.
+
+## Repository-managed downloads
+
+In **Missing downloads**, select a platform and architecture, then click **Download
+all supported missing tools**. This scans existing files, processes one suitable
+package per tool, retries transient network failures, and scans/refreshes after
+each tool. Free/open-source tools go first. Windows x64 may use x86 packages when
+the publisher has no x64 build. Boot ISOs are included. **All platforms** and **All
+architectures** opt into additional builds. Downloads never execute installers.
+**Stop queue after current file** retains completed packages. Repeating the queue
+skips recorded files; partial transfers restart. Logs and the private
+`70_DOCUMENTATION/Service-Notes/download-queue.json` report failures and exclusions.
+
+The desktop resolves package identities through our repository's `download-catalog`
+branch, not hardcoded publisher filenames. A bundled snapshot and local cache work
+when catalog refresh is unavailable; downloading still requires network access.
+**Updates → Download latest supported packages** fetches the current catalog's
+packages. Older packages are preserved when checksums or version markers change.
+Receipts let inventory recognize renamed packages. SHA256 is checked when the
+publisher or Microsoft package manifest provides it; packages without a published
+SHA256 are explicitly reported as unverified against a publisher checksum.
+
+The **Refresh download catalog** GitHub Actions workflow runs at 05:23 and 17:23
+UTC, and supports **Run workflow**. `assets/download-sources.json` maps stable tool
+IDs to GitHub repositories, SourceForge stable feeds, Sysinternals archives, or
+Microsoft's WinGet manifests. The workflow discovers versions/filenames, follows
+repository transfers, checks recommended endpoints with one-byte requests, and
+records HTTPS CDN redirects. It publishes metadata only—no third-party binaries.
+It opens a GitHub issue assigned to the repository owner when releases/links
+change or a source newly fails; unchanged checks do not send another notification.
+GitHub email delivery follows your GitHub notification settings. The dashboard
+also checks the small catalog at startup and shows a link to update notifications.
+
+Stable repository-owned download links use:
+`https://samirank.github.io/master-it-toolkit/MASTER-IT-TOOLKIT/70_DOCUMENTATION/download.html?tool=clonezilla&platform=Boot%20ISO&architecture=x64`
+The Pages redirect resolves the current link from the catalog and sends the browser
+to the publisher. Desktop downloads use the same catalog but save through the
+launcher into the SSD. GitHub Pages does not proxy installer bytes.
+
+Coverage is explicit in the catalog: `ready`, `manual`, `error`, or `not-applicable`.
+Licensed editions, sign-in/CAPTCHA flows, hardware-specific firmware/drivers,
+built-in commands and unsupported publishers cannot all be universal one-click
+downloads. Failed sources retain their last good metadata for diagnosis but are
+not advertised as current automatic downloads. A vendor changing its API entirely
+can require a resolver update; the monitor reports this instead of guessing a URL.

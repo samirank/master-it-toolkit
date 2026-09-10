@@ -22,13 +22,13 @@ class DownloadsTests(unittest.TestCase):
     def test_release_source_and_asset_filter(self):
         release={'assets':[{'id':1,'name':'tool.exe','browser_download_url':'https://github.com/ip7z/7zip/releases/download/v/tool.exe'}, {'id':2,'name':'bad.exe','browser_download_url':'https://untrusted.invalid/bad.exe'}]}
         with patch.object(downloads,'fetch_json',return_value=release) as fetch:
-            self.assertEqual(len(downloads.options(ROOT,'7zip')['assets']),1)
+            self.assertEqual(len(downloads.options(ROOT,'7zip',live=True)['assets']),1)
             self.assertEqual(fetch.call_args.args[0],'https://api.github.com/repos/ip7z/7zip/releases/latest')
     def test_winutil_release_script_is_offered(self):
         release={'assets':[{'id':1,'name':'winutil.ps1','browser_download_url':'https://github.com/ChrisTitusTech/winutil/releases/download/test/winutil.ps1'},
             {'id':2,'name':'unrelated.ps1','browser_download_url':'https://github.com/ChrisTitusTech/winutil/releases/download/test/unrelated.ps1'}]}
         with patch.object(downloads,'fetch_json',return_value=release):
-            self.assertEqual([a['name'] for a in downloads.options(ROOT,'winutil')['assets']],['winutil.ps1'])
+            self.assertEqual([a['name'] for a in downloads.options(ROOT,'winutil',live=True)['assets']],['winutil.ps1'])
     def test_download_checksum_existing_and_invalid_selection(self):
         payload=b'test package'; checksum=launcher.digest(payload)
         asset={'id':'1','name':'tool.zip','url':'https://github.com/ip7z/7zip/releases/download/v/tool.zip','size':len(payload),'digest':'sha256:'+checksum}
@@ -36,7 +36,7 @@ class DownloadsTests(unittest.TestCase):
         class Response(io.BytesIO): url=asset['url']
         with tempfile.TemporaryDirectory() as temp, patch.object(downloads,'options',return_value=info):
             root=Path(temp)
-            with patch.object(downloads.urllib.request,'urlopen',return_value=Response(payload)):
+            with patch.object(downloads,'open_package',return_value=Response(payload)):
                 result=downloads.save_selected(root,'7zip',['1'],launcher.safe_path,lambda _:None)
             self.assertIn('SHA256 verified',result)
             self.assertEqual((root/info['folder']/'tool.zip').read_bytes(),payload)
@@ -45,7 +45,7 @@ class DownloadsTests(unittest.TestCase):
     def test_mismatch_cleans_partial(self):
         asset={'id':'1','name':'tool.zip','url':'https://github.com/ip7z/7zip/releases/download/v/tool.zip','size':3,'digest':'sha256:'+'0'*64}
         class Response(io.BytesIO): url=asset['url']
-        with tempfile.TemporaryDirectory() as temp, patch.object(downloads,'options',return_value={'folder':'tools','assets':[asset]}),patch.object(downloads.urllib.request,'urlopen',return_value=Response(b'bad')):
+        with tempfile.TemporaryDirectory() as temp, patch.object(downloads,'options',return_value={'folder':'tools','assets':[asset]}),patch.object(downloads,'open_package',return_value=Response(b'bad')):
             with self.assertRaises(ValueError): downloads.save_selected(Path(temp),'7zip',['1'],launcher.safe_path,lambda _:None)
             self.assertEqual(list((Path(temp)/'tools').iterdir()),[])
     @unittest.skipUnless(os.name=='nt','Windows policy verification')

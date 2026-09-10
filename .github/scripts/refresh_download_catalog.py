@@ -1,0 +1,134 @@
+"""Resolve reviewed publisher identities into the repository's public download catalog.
+Downloads metadata only. Never runs or redistributes publisher installers.
+"""
+import argparse
+import concurrent.futures
+import datetime
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import subprocess
+import sys
+import urllib.request
+from urllib.parse import urlsplit, unquote
+
+ROOT=Path(__file__).resolve().parents[2]/'MASTER-IT-TOOLKIT'
+sys.path.insert(0,str(ROOT))
+import tool_downloads as downloads
+
+def winget(source):
+    import yaml  # CI-only, safe_load; no YAML dependency in the desktop app.
+    package=source['package']
+    path='manifests/'+package[0].lower()+'/'+package.replace('.','/')
+    entries=downloads.fetch_json('https://api.github.com/repos/microsoft/winget-pkgs/contents/'+path)
+    versions=[x['name'] for x in entries if x['type']=='dir' and re.fullmatch(r'[0-9][0-9.\-_]*',x['name'])]
+    if not versions: raise ValueError('No stable WinGet version')
+    version=max(versions,key=lambda x:tuple(int(p) for p in re.findall(r'\d+',x)))
+    url='https://raw.githubusercontent.com/microsoft/winget-pkgs/master/'+path+'/'+version+'/'+package+'.installer.yaml'
+    manifest=yaml.safe_load(downloads.fetch_bytes(url).decode('utf-8-sig'))
+    assets=[]
+    for installer in manifest.get('Installers',[]):
+        link=installer.get('InstallerUrl',''); digest=installer.get('InstallerSha256','')
+        if not re.fullmatch(r'[a-fA-F0-9]{64}',digest) or not link.startswith('https://'): continue
+        locale=installer.get('InstallerLocale',manifest.get('InstallerLocale','en-US'))
+        if locale and not locale.lower().startswith('en'): continue
+        name=unquote(urlsplit(link).path.rsplit('/',1)[-1])
+        kind=installer.get('InstallerType',manifest.get('InstallerType','exe'))
+        if not re.search(r'\.(exe|msi|msix|msixbundle|zip|7z)$',name,re.I):
+            name=package+'-'+version+'-'+installer['Architecture']+('.msi' if kind=='msi' else '.zip' if kind=='zip' else '.exe')
+        # Same filename may cover several architectures or scopes; identity includes URL + hash.
+        asset={'id':hashlib.sha256((link+digest).encode()).hexdigest()[:20], 'name':name,'url':link,'digest':'sha256:'+digest.lower(),'size':0,'platform':'Windows','architecture':installer.get('Architecture','neutral').replace('neutral','universal')}
+        downloads.validate_asset(asset)
+        if not any(a['id']==asset['id'] for a in assets): assets.append(asset)
+    if not assets: raise ValueError('No HTTPS packages with SHA256 in WinGet manifest')
+    return {'assets':assets,'version':str(manifest.get('PackageVersion',version)),'metadataSource':url}
+
+def fingerprint(entry):
+    return (entry.get('version',''),entry.get('sourceRevision',''),sorted((a['url'],a.get('digest') or '') for a in entry.get('assets',[])))
+
+def probe(entry):
+    """Check recommended endpoints and record publisher CDN redirects; read one byte only."""
+    chosen={a['id']:a for p,arch in [('Windows','x64'),('Linux','x64'),('macOS','arm64')] for a in downloads.recommended(entry,p,arch)}
+    hosts=set()
+    class Redirect(urllib.request.HTTPRedirectHandler):
+        def redirect_request(self,request,fp,code,message,headers,url):
+            downloads.validate_asset({'name':'probe.exe','url':url})
+            hosts.add(urlsplit(url).hostname)
+            return super().redirect_request(request,fp,code,message,headers,url)
+    for asset in chosen.values():
+        request=urllib.request.Request(asset['url'],headers={'User-Agent':'MasterITToolkit','Range':'bytes=0-0'})
+        with urllib.request.build_opener(Redirect()).open(request,timeout=30) as response:
+            if 'text/html' in response.headers.get('Content-Type','').lower():raise ValueError('Publisher returned HTML instead of '+asset['name'])
+            response.read(1)
+    for asset in entry['assets']:
+        asset['redirectHosts']=sorted(hosts)
+
+def generate(previous):
+    sources=downloads.sources(ROOT); now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+    tools=json.loads((ROOT/'assets/toolkit-manifest.json').read_text('utf-8'))
+    def resolve(tool):
+        id=tool['id']; source=sources.get(id); old=previous.get('tools',{}).get(id,{})
+        entry={'name':tool['name'],'source':tool.get('officialDownload',''),'checkedAt':now,'assets':[]}
+        if not tool.get('officialDownload') or tool['kind'] in ('Built-in','Documentation','Script','Online'):
+            entry.update(status='not-applicable',reason='Included with the OS/toolkit, package-manager command, or online service.');return id,entry
+        if not source or tool['license']=='Paid':
+            entry.update(status='manual',reason='Publisher selection required: no reviewed automatic resolver for this edition.');return id,entry
+        try:
+            result=winget(source) if source['provider']=='winget' else downloads.options(ROOT,id,live=True)
+            if source['provider']=='sysinternals':
+                request=urllib.request.Request(result['assets'][0]['url'],method='HEAD',headers={'User-Agent':'MasterITToolkit'})
+                with urllib.request.urlopen(request,timeout=30) as response:
+                    result['sourceRevision']=response.headers.get('ETag','') or response.headers.get('Last-Modified','')
+                    result['version']=response.headers.get('Last-Modified','')
+                    result['assets'][0]['size']=int(response.headers.get('Content-Length','0'))
+            if not result['assets']: raise ValueError('Publisher returned no supported release packages')
+            for asset in result['assets']:downloads.validate_asset(asset)
+            probe(result)
+            entry.update(result);entry.update(status='ready',provider=source['provider'],checkedAt=now)
+            entry['recommended']={p+'/'+a:[x['id'] for x in downloads.recommended(entry,p,a,tool.get('portable',False))] for p in ('Windows','Linux','macOS','Boot ISO','All') for a in ('x64','x86','arm64','universal','All')}
+        except Exception as error:
+            # Preserve the last good link set for diagnosis, but don't silently advertise it as current.
+            entry.update({k:old[k] for k in ('assets','version','lastSuccess') if k in old})
+            entry.update(status='error',provider=source['provider'],error=str(error),reason='Publisher lookup failed; use the publisher window until refreshed.')
+        if entry['status']=='ready':entry['lastSuccess']=now
+        return id,entry
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+        entries=dict(pool.map(resolve,tools))
+    changes=[]
+    for id,entry in entries.items():
+        old=previous.get('tools',{}).get(id,{})
+        if entry['status']=='ready' and (fingerprint(entry)!=fingerprint(old) or old.get('status')=='error'):
+            changes.append({'tool':id,'name':entry['name'],'kind':'available' if not old else 'updated','version':entry.get('version',''),'previous':old.get('version','')})
+        elif entry['status']=='error' and old.get('status')!='error':
+            changes.append({'tool':id,'name':entry['name'],'kind':'source-error','error':entry['error']})
+    # Carry the most recent change list across no-change runs so clients can see what changed.
+    revision=hashlib.sha256(json.dumps({k:[v['status'],fingerprint(v)] for k,v in entries.items()},sort_keys=True).encode()).hexdigest()[:20]
+    return {'schema':1,'generatedAt':now,'revision':revision,'tools':entries,'changes':changes or previous.get('changes',[])},changes
+
+def notify(changes,revision):
+    if not changes:return
+    repo=os.environ['GITHUB_REPOSITORY'];owner=repo.split('/')[0]
+    rows=['The download catalog was refreshed. Downloads still come from the original publishers.','', '| Tool | Change | Version / details |','| --- | --- | --- |']
+    for c in changes:
+        detail=(c.get('previous','')+' → '+c.get('version','')).strip(' →') if c['kind']!='source-error' else c['error']
+        rows.append('| '+c['name'].replace('|','/')+' | '+c['kind']+' | '+detail.replace('|','/').replace('\n',' ')[:250]+' |')
+    rows+=['','Use **Refresh download catalog** in the toolkit, then download missing packages or updates.','', 'Catalog revision: `'+revision+'`']
+    body=Path(os.environ.get('RUNNER_TEMP','.'))/'catalog-notification.md';body.write_text('\n'.join(rows),encoding='utf-8')
+    # One issue per changed catalog, assigned to the repository owner. No notification for unchanged runs.
+    existing=json.loads(subprocess.check_output(['gh','issue','list','--repo',repo,'--state','all','--search','in:title "Download catalog '+revision+'"','--json','number'],text=True))
+    if not existing:subprocess.run(['gh','issue','create','--repo',repo,'--title','Download catalog '+revision+': '+str(len(changes))+' changes','--body-file',str(body),'--assignee',owner],check=True)
+
+def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--notify',action='store_true');args=parser.parse_args()
+    try:previous=json.loads(args.output.read_text('utf-8'))
+    except (OSError,ValueError):previous={'tools':{}}
+    result,changes=generate(previous);args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+    from collections import Counter
+    print(dict(Counter(x['status'] for x in result['tools'].values())))
+    for id,x in result['tools'].items():
+        if x['status']=='error':print(id+': '+x['error'])
+    if args.notify:notify(changes,result['revision'])
+
+if __name__=='__main__':main()

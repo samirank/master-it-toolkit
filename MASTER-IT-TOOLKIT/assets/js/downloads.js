@@ -75,12 +75,12 @@
     const response=await fetch(new URL('api/download-options?tool='+encodeURIComponent(tool.id),location.href));
     info=await response.json();if(!response.ok)throw Error(info.error||'Publisher lookup failed');
    }else{
-    info={assets:[]};
-    if(tool.id==='7zip')info.assets=[['Windows','7z2603-x64.exe'],['Windows','7z2603.exe'],['Windows','7z2603-arm64.exe'],['Linux','7z2603-linux-x64.tar.xz'],['Linux','7z2603-linux-x86.tar.xz'],['Linux','7z2603-linux-arm64.tar.xz'],['Linux','7z2603-linux-arm.tar.xz'],['macOS','7z2603-mac.tar.xz']].map(([platform,name])=>({platform,name,url:'https://github.com/ip7z/7zip/releases/download/26.03/'+name}));
+    const catalog=window.TOOLKIT_DOWNLOAD_CATALOG||await window.ToolkitDownloadCatalog.load();
+    info=catalog.tools[tool.id]||{assets:[]};
    }
    status.classList.remove('is-loading');
    if(!dialog.isConnected)return;
-   if(!info.assets.length){status.textContent='This publisher uses its own download or license flow. Choose the platform on the official page, then save the file to '+tool.localFolder+'.';official();return;}
+   if(!info.assets.length){status.textContent=info.reason||'No automatic download is available in the repository catalog. Use the publisher window.';official();return;}
    status.textContent=window.TOOLKIT_LAUNCHER?'Select the packages to save on your SSD. The scan organizes ZIP downloads into Ready folders. Installers are not run.':'Open a package link to download through your browser. Start the local launcher for multi-select downloads straight to your SSD.';
    const inputs=[];
    if(window.TOOLKIT_LAUNCHER){
@@ -93,9 +93,9 @@
    const list=element('div');list.className='download-options';
    for(const asset of info.assets){
     const row=element('label');row.className='download-option';
-    if(window.TOOLKIT_LAUNCHER){const input=element('input');input.type='checkbox';inputs.push({input,asset});row.append(input);}
+    if(window.TOOLKIT_LAUNCHER){const input=element('input');input.type='checkbox';input.checked=(info.recommended?.['Windows/x64']||[]).includes(asset.id);inputs.push({input,asset});row.append(input);}
     const detail=element('span');detail.append(element('strong',asset.platform));detail.append(element('small',asset.name+(asset.size?' · '+(asset.size/1048576).toFixed(1)+' MB':'')));row.append(detail);
-    if(!window.TOOLKIT_LAUNCHER){const a=element('a','Download ↗');a.href=asset.url;a.target='_blank';a.rel='noopener noreferrer';row.append(a);}
+    if(!window.TOOLKIT_LAUNCHER){const a=element('a','Download ↗');a.href='download.html?tool='+encodeURIComponent(tool.id)+'&platform='+encodeURIComponent(asset.platform)+'&architecture='+encodeURIComponent(asset.architecture||'universal');a.target='_blank';a.rel='noopener noreferrer';row.append(a);}
     list.append(row);
    }
    dialog.append(list);

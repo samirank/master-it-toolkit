@@ -47,6 +47,7 @@ build/
 dist/
 *.spec
 MASTER-IT-TOOLKIT/assets/download-receipts.json
+MASTER-IT-TOOLKIT/assets/download-catalog-cache.json
 
 **/Ready/
 **/.extract-*/

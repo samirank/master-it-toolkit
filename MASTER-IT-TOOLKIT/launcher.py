@@ -19,6 +19,11 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 ROOT = Path(sys.executable if getattr(sys, 'frozen', False) else __file__).resolve().parent
 if (ROOT / 'MASTER-IT-TOOLKIT' / 'launcher.py').is_file(): ROOT = ROOT / 'MASTER-IT-TOOLKIT'
 sys.path.insert(0, str(ROOT))
+# The frozen bootstrap imports these for dependency collection. Load updated SSD
+# source modules on restart instead of reusing the copies cached inside the EXE.
+if getattr(sys, 'frozen', False):
+    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host'):
+        sys.modules.pop(module,None)
 import tool_downloads
 import install_tools
 import host_inventory
@@ -34,7 +39,6 @@ SCRIPTS = {
     'network': ('Network diagnostics', '60_SCRIPTS/Network/Get-NetworkDiagnostics.ps1', 'windows'),
     'repair': ('Repair Windows system files', '60_SCRIPTS/Windows-Repair/Repair-WindowsFiles.ps1', 'windows'),
     'metadata': ('Refresh publisher metadata', '60_SCRIPTS/Inventory/Update-ToolkitMetadata.ps1', 'windows'),
-    'downloads': ('Download reviewed missing tools', '60_SCRIPTS/Inventory/Download-MissingTools.ps1', 'windows'),
     'manifest': ('Export catalog manifest', '60_SCRIPTS/Inventory/Export-ToolkitManifest.ps1', 'windows'),
 }
 
@@ -59,7 +63,7 @@ def managed_name(name):
     if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
-        return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
+        return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json', 'assets/download-catalog-cache.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
     if name.startswith(('60_SCRIPTS/', '70_DOCUMENTATION/')):
         return '/Service-Notes/' not in name and Path(name).suffix in ('.ps1', '.py', '.html', '.txt')
     return name.endswith('/PLACE-FILES-HERE.txt') or name == '90_TEMP/README.txt'
@@ -175,6 +179,8 @@ class Server(ThreadingHTTPServer):
         self.workflow = None
         self.history = activity_store.Store(root, safe_path, self.token)
         self.browser = browser_host.Host(self, safe_path, lambda: run_script('inventory'))
+        self.cancel_downloads = threading.Event()
+        self.catalog_lock = threading.Lock()
         super().__init__(('127.0.0.1', port), Handler)
         self.origin = 'http://127.0.0.1:' + str(self.server_port)
     def publish_completion(self):
@@ -184,7 +190,18 @@ class Server(ThreadingHTTPServer):
     def job(self, action, body=None):
         context = {'tool': (body or {}).get('tool'), 'startedAt': self.state.get('startedAt',time.time())}
         try:
-            if action == 'run-portable':
+            if action == 'catalog-refresh':
+                tool_downloads.refresh_catalog(self.root,safe_path)
+                message='✓ Download catalog refreshed from the toolkit repository'
+            elif action == 'bulk-download':
+                self.cancel_downloads.clear()
+                try: tool_downloads.refresh_catalog(self.root,safe_path)
+                except Exception as error:
+                    self.state=dict(context,busy=True,message='Catalog refresh unavailable; using the last saved catalog: '+str(error),stage='resolve')
+                message=tool_downloads.bulk_download(self.root,body,safe_path,
+                    lambda progress:setattr(self,'state',dict(context,busy=True,**{k:v for k,v in progress.items() if k!='tool'},tool=progress.get('tool'))),
+                    lambda:run_script('inventory'),self.publish_completion,self.cancel_downloads.is_set)
+            elif action == 'run-portable':
                 message = portable_tools.launch(self.root, body['tool'], body['executable'], safe_path,
                     lambda message: setattr(self, 'state', dict(context, busy=True, message=message, stage='running')))
             elif action == 'workflow':
@@ -251,6 +268,15 @@ class Handler(BaseHTTPRequestHandler):
         if route == 'api/history':
             try: return self.reply(200, self.server.history.recent())
             except Exception as error: return self.reply(500, {'error':str(error)})
+        if route == 'api/catalog':
+            warning=''
+            if urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('refresh')==['1']:
+                if self.server.catalog_lock.acquire(False):
+                    try: tool_downloads.refresh_catalog(self.server.root,safe_path)
+                    except Exception as error: warning=str(error)
+                    finally: self.server.catalog_lock.release()
+            data=tool_downloads.cached_catalog(self.server.root)
+            return self.reply(200,dict(data,warning=warning))
         if route == 'api/run-options':
             try:
                 query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
@@ -316,7 +342,8 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < size <= 1024: raise ValueError()
             body = json.loads(self.rfile.read(size))
             action = body['action']
-            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'install', 'installed-apps', 'system-restore', 'run-portable', 'workflow', 'workflow-control', 'vendor-window', 'open-folder', 'adblock-site'): raise ValueError()
+            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'bulk-download', 'cancel-downloads', 'catalog-refresh', 'install', 'installed-apps', 'system-restore', 'run-portable', 'workflow', 'workflow-control', 'vendor-window', 'open-folder', 'adblock-site'): raise ValueError()
+            if action=='bulk-download' and (body.get('platform') not in ('Windows','Linux','macOS','All') or body.get('architecture') not in ('x64','x86','arm64','All') or body.get('mode') not in ('missing','latest')): raise ValueError()
             if action == 'run-portable' and not all(isinstance(body.get(k),str) for k in ('tool','executable')): raise ValueError()
             if action == 'workflow' and not all(isinstance(body.get(k),str) for k in ('workflow','mode')): raise ValueError()
             if action == 'install':
@@ -324,6 +351,9 @@ class Handler(BaseHTTPRequestHandler):
             if action == 'download':
                 if not isinstance(body.get('tool'), str) or not isinstance(body.get('assets'), list) or not 1 <= len(body['assets']) <= 50 or any(not isinstance(a, str) for a in body['assets']): raise ValueError()
         except (ValueError, KeyError, TypeError): return self.reply(400, {'error': 'Invalid action'})
+        if action=='cancel-downloads':
+            self.server.cancel_downloads.set()
+            return self.reply(200,{'message':'Queue will stop after the active transfer. Completed packages are kept.'})
         if action == 'adblock-site':
             try:
                 tool_folder(self.server.root,body.get('tool'))
@@ -354,7 +384,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.reply(200, {'message':'Workflow control accepted'})
             except ValueError as error: return self.reply(409, {'error':str(error)})
         if not self.server.lock.acquire(False): return self.reply(409, {'error': 'Another action is still running. Close its script terminal first.'})
-        label = SCRIPTS[action][0] if action in SCRIPTS else {'run-portable':'Opening portable application','workflow':'Starting reviewed workflow','update':'Updating toolkit from GitHub','download':'Downloading selected packages','install':'Preparing recovery checkpoint and installing application (check UAC and installer prompts)','installed-apps':'Opening installed programs','system-restore':'Opening System Restore'}[action]
+        label = SCRIPTS[action][0] if action in SCRIPTS else {'catalog-refresh':'Refreshing repository download catalog','bulk-download':'Downloading toolkit packages','run-portable':'Opening portable application','workflow':'Starting reviewed workflow','update':'Updating toolkit from GitHub','download':'Downloading selected packages','install':'Preparing recovery checkpoint and installing application (check UAC and installer prompts)','installed-apps':'Opening installed programs','system-restore':'Opening System Restore'}[action]
         self.server.state = {'busy': True, 'startedAt': time.time(), 'tool': body.get('tool'), 'message': label + '…' + (' Check the script terminal for prompts; close it when finished.' if action in SCRIPTS and SCRIPTS[action][2] == 'windows' else '')}
         threading.Thread(target=self.server.job, args=(action, body), daemon=True).start()
         self.reply(202, self.server.state)
