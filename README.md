@@ -348,3 +348,5 @@ built-in commands and unsupported publishers cannot all be universal one-click
 downloads. Failed sources retain their last good metadata for diagnosis but are
 not advertised as current automatic downloads. A vendor changing its API entirely
 can require a resolver update; the monitor reports this instead of guessing a URL.
+
+Select tools using the **Select** checkboxes in All tools, Missing downloads, or Updates. The bulk-action bar supports selecting all matching results, clearing selection, downloading selected missing/latest packages by platform, adding favorites, and exporting the selected catalog entries. Selection persists across filters for the current session. Download queues never install or execute the selected programs.

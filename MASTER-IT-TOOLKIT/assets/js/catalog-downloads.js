@@ -34,6 +34,12 @@
    if(!window.TOOLKIT_LAUNCHER)throw Error('Open the desktop launcher to download packages into your toolkit.');
    const body=button.hasAttribute('data-cancel-downloads')?{action:'cancel-downloads',confirmed:true}:{action:'bulk-download',confirmed:true,
      platform:document.getElementById('bulk-platform')?.value||'Windows',architecture:document.getElementById('bulk-architecture')?.value||'x64',mode:button.dataset.bulkDownload||'missing'};
+   if(button.hasAttribute('data-selected-download')){
+    body.tools=window.ToolkitSelection?.ids()||[];
+    if(!body.tools.length)throw Error('Select at least one tool.');
+    body.platform=document.getElementById('selection-platform').value;
+    body.architecture=document.getElementById('selection-architecture').value;
+   }
    window.dispatchEvent(new CustomEvent('toolkit-activity',{detail:{busy:true,message:body.action==='bulk-download'?'Starting download queue…':'Stopping after the current transfer…'}}));
    const response=await fetch(api('action'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
    const result=await response.json();if(!response.ok)throw Error(result.error);

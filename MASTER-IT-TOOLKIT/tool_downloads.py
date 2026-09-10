@@ -292,9 +292,15 @@ def recommended(info, platform='Windows', arch='x64', portable=False):
 def bulk_download(root, selection, safe_path, progress, scan, completed, cancelled=lambda:False):
     platform,arch=selection.get('platform','Windows'),selection.get('architecture','x64')
     mode=selection.get('mode','missing')
+    catalog=json.loads((root/'assets/toolkit-manifest.json').read_text('utf-8'))
+    selected=selection.get('tools')
+    if selected is not None:
+        known={t['id'] for t in catalog}
+        if not isinstance(selected,list) or not 1 <= len(selected) <= 500 or any(not isinstance(id,str) or id not in known for id in selected):
+            raise ValueError('Select valid tools before starting the queue')
+        catalog=[t for t in catalog if t['id'] in selected]
     progress({'message':'Scanning existing files before downloading…','stage':'scan'})
     scan();completed()
-    catalog=json.loads((root/'assets/toolkit-manifest.json').read_text('utf-8'))
     inventory=json.loads((root/'assets/js/local-inventory.js').read_text('utf-8-sig').split('window.LOCAL_INVENTORY =',1)[1].strip().rstrip(';')).get('tools',{})
     results=[]; counts={'downloaded':0,'present':0,'manual':0,'failed':0,'notApplicable':0}
     eligible=[t for t in catalog if t.get('officialDownload') and t.get('kind') not in ('Built-in','Documentation','Script','Online')]

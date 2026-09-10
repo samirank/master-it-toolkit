@@ -68,6 +68,20 @@ class CatalogTests(unittest.TestCase):
                 failed,changes=monitor.generate(second)
             self.assertEqual(failed['tools']['test']['assets'],first['tools']['test']['assets']);self.assertEqual(changes[0]['kind'],'source-error')
 
+    def test_bulk_selection_is_scoped_and_empty_selection_cannot_download_all(self):
+        tools=[{'id':id,'name':id,'officialDownload':'https://example.com','kind':'Installer','license':'Free','localFolder':'tools/'+id} for id in ('a','b')]
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);(root/'assets/js').mkdir(parents=True)
+            (root/'assets/toolkit-manifest.json').write_text(json.dumps(tools))
+            (root/'assets/js/local-inventory.js').write_text('window.LOCAL_INVENTORY = {"tools":{}};')
+            with patch.object(d,'options',return_value={'assets':[asset()]}),patch.object(d,'save_selected',return_value='Saved') as saved:
+                d.bulk_download(root,{'mode':'missing','tools':['b']},launcher.safe_path,lambda _:None,lambda:None,lambda:None)
+                self.assertEqual([call.args[1] for call in saved.call_args_list],['b'])
+                for selected in ([],['unknown'],'a'):
+                    with self.assertRaises(ValueError):
+                        d.bulk_download(root,{'tools':selected},launcher.safe_path,lambda _:None,lambda:None,lambda:None)
+                self.assertEqual(saved.call_count,1)
+
     def test_changed_same_filename_keeps_previous(self):
         old=b'old';new=b'new';sha=launcher.digest(new);a=dict(asset(),digest='sha256:'+sha)
         class Response(io.BytesIO):url=a['url']

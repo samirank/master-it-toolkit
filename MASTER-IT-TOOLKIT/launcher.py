@@ -379,7 +379,7 @@ class Handler(BaseHTTPRequestHandler):
             return self.reply(403, {'error': 'Invalid local session'})
         try:
             size = int(self.headers.get('Content-Length', '0'))
-            if not 0 < size <= 1024: raise ValueError()
+            if not 0 < size <= 32000: raise ValueError()
             body = json.loads(self.rfile.read(size))
             action = body['action']
             if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'bulk-download', 'cancel-downloads', 'catalog-refresh', 'install', 'installed-apps', 'system-restore', 'run-portable', 'workflow', 'workflow-control', 'vendor-window', 'open-folder', 'adblock-site'): raise ValueError()
