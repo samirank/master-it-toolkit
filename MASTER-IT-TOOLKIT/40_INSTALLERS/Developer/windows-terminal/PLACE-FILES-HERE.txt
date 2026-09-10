@@ -1,0 +1,1 @@
+Place Windows Terminal packages here. Select the platform in the toolkit download dialog and scan after downloading.

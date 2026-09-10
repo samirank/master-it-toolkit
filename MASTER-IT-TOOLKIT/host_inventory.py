@@ -10,6 +10,9 @@ import sys
 import time
 
 ALIASES={
+ 'github-desktop':['GitHub Desktop'], 'gh':['GitHub CLI','gh'], 'nodejs':['Node.js','Node.js LTS'],
+ 'docker-desktop':['Docker Desktop'], 'podman-desktop':['Podman Desktop'], 'uv':['uv'],
+ 'dbeaver':['DBeaver','DBeaver Community'], 'windows-terminal':['Windows Terminal'],
  '7zip':['7-Zip'], 'bcu':['Bulk Crap Uninstaller','BCUninstaller'], 'revo':['Revo Uninstaller Pro'],
  'firefox':['Mozilla Firefox','Firefox'], 'chrome':['Google Chrome'], 'edge':['Microsoft Edge'],
  'vscode':['Microsoft Visual Studio Code','Visual Studio Code','Code'], 'vlc':['VLC media player','VLC'],
@@ -19,7 +22,7 @@ ALIASES={
  'obs':['OBS Studio'], 'onlyoffice':['ONLYOFFICE Desktop Editors'], 'etcher':['balenaEtcher'],
  'easeus-videokit':['EaseUS VideFlow','EaseUS VideoKit']
 }
-PACKAGES={'7zip':['7zip','p7zip-full'],'vscode':['code'],'vlc':['vlc'],'firefox':['firefox','firefox-esr'],
+PACKAGES={'nodejs':['nodejs','node'],'gh':['gh'],'dbeaver':['dbeaver-ce','dbeaver-community'],'windows-terminal':['Microsoft.WindowsTerminal'], '7zip':['7zip','p7zip-full'],'vscode':['code'],'vlc':['vlc'],'firefox':['firefox','firefox-esr'],
  'chrome':['google-chrome-stable'],'edge':['microsoft-edge-stable'],'notepad':['notepad-plus-plus'],
  'obs':['obs-studio'],'onlyoffice':['onlyoffice-desktopeditors'],'python':['python3'],'powershell':['powershell'],
  'libreoffice':['libreoffice','libreoffice-core'],'thunderbird':['thunderbird'],'clawsmail':['claws-mail'],

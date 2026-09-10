@@ -1,0 +1,1 @@
+Place uv (Python environment manager) packages here. Select the platform in the toolkit download dialog and scan after downloading.

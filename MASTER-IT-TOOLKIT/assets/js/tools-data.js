@@ -24128,5 +24128,692 @@ window.TOOLKIT_DATA = [
       "*.tar.xz",
       "*.tar.gz"
     ]
+  },
+  {
+    "id": "github-desktop",
+    "name": "GitHub Desktop",
+    "developer": "GitHub",
+    "description": "Graphical Git client for repositories, branches, commits and pull requests.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "github-desktop",
+      "github desktop",
+      "development",
+      "programming",
+      "build tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 200,
+    "officialWebsite": "https://desktop.github.com/download/",
+    "officialDownload": "https://desktop.github.com/download/",
+    "documentation": "https://docs.github.com/en/desktop",
+    "localFolder": "40_INSTALLERS/Developer/github-desktop",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "GitHubDesktopSetup*.exe",
+      "GitHubDesktopSetup*.msi",
+      "GitHubDesktop*.zip",
+      "GitHubDesktop.exe"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Offline use requires pre-downloaded dependencies, images or database drivers. Packages do not include a full offline dependency cache.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install the correct OS package; sign in only to your own account.",
+      "Clone a test repository and review changes before committing.",
+      "Create a branch and test a pull request without publishing secrets."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "notes": "Use the official command-line documentation for scripted workflows; toolkit setup still requires reviewed steps.",
+      "source": "https://docs.github.com/en/desktop"
+    }
+  },
+  {
+    "id": "gh",
+    "name": "GitHub CLI (gh)",
+    "developer": "GitHub",
+    "description": "GitHub command-line tools for repositories, issues, pull requests and Actions.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "gh",
+      "github cli (gh)",
+      "development",
+      "programming",
+      "build tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 200,
+    "officialWebsite": "https://cli.github.com/",
+    "officialDownload": "https://cli.github.com/",
+    "documentation": "https://cli.github.com/manual/",
+    "localFolder": "20_PORTABLE_APPS/Developer/gh",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "gh.exe",
+      "gh_*",
+      "gh"
+    ],
+    "kind": "Command-line",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Offline use requires pre-downloaded dependencies, images or database drivers. Packages do not include a full offline dependency cache.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install or extract the platform package and check gh --version.",
+      "Use gh auth login, then gh auth status to check the selected account.",
+      "Try gh repo view from a repository; review commands before changing remote state."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "notes": "Use the official command-line documentation for scripted workflows; toolkit setup still requires reviewed steps.",
+      "source": "https://cli.github.com/manual/"
+    }
+  },
+  {
+    "id": "nodejs",
+    "name": "Node.js LTS (includes npm)",
+    "developer": "OpenJS Foundation",
+    "description": "LTS JavaScript runtime and npm package manager for development and build tooling.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "nodejs",
+      "node.js lts (includes npm)",
+      "development",
+      "programming",
+      "build tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 200,
+    "officialWebsite": "https://nodejs.org/en/download",
+    "officialDownload": "https://nodejs.org/en/download",
+    "documentation": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs",
+    "localFolder": "40_INSTALLERS/Developer/nodejs",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "node-v*.msi",
+      "node-v*.zip",
+      "node-v*.pkg",
+      "node-v*.tar.xz",
+      "node.exe"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Offline use requires pre-downloaded dependencies, images or database drivers. Packages do not include a full offline dependency cache.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Choose the LTS package compatible with the project and OS.",
+      "Open a new terminal; verify node --version and npm --version.",
+      "Use the project lockfile and npm ci for repeatable dependency installation."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "notes": "Use the official command-line documentation for scripted workflows; toolkit setup still requires reviewed steps.",
+      "source": "https://nodejs.org/en/learn/getting-started/introduction-to-nodejs"
+    }
+  },
+  {
+    "id": "docker-desktop",
+    "name": "Docker Desktop",
+    "developer": "Docker Inc.",
+    "description": "Container development environment with Docker Engine, CLI and Compose integration.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "docker-desktop",
+      "docker desktop",
+      "development",
+      "programming",
+      "containers"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Freemium",
+    "personalLicenseNotes": "Docker Desktop is free only for eligible uses; review the current subscription terms.",
+    "technicianLicenseNotes": "Check https://docs.docker.com/subscription-billing/desktop-license/ before deploying in an organization.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 800,
+    "officialWebsite": "https://www.docker.com/products/docker-desktop/",
+    "officialDownload": "https://www.docker.com/products/docker-desktop/",
+    "documentation": "https://docs.docker.com/desktop/",
+    "localFolder": "40_INSTALLERS/Developer/docker-desktop",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "Docker Desktop Installer.exe",
+      "Docker*.dmg",
+      "docker-desktop*.deb",
+      "docker-desktop*.rpm",
+      "Docker Desktop.exe"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Offline use requires pre-downloaded dependencies, images or database drivers. Packages do not include a full offline dependency cache.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Review Docker Desktop license eligibility and host virtualization requirements.",
+      "Follow the official OS setup instructions; Windows may require WSL 2 and a restart.",
+      "Verify docker version and docker compose version; run a trusted test container."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "notes": "Use the official command-line documentation for scripted workflows; toolkit setup still requires reviewed steps.",
+      "source": "https://docs.docker.com/desktop/"
+    }
+  },
+  {
+    "id": "podman-desktop",
+    "name": "Podman Desktop",
+    "developer": "Podman Desktop contributors",
+    "description": "Open-source graphical container management and a Docker Desktop alternative.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "podman-desktop",
+      "podman desktop",
+      "development",
+      "programming",
+      "containers"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 800,
+    "officialWebsite": "https://podman-desktop.io/downloads",
+    "officialDownload": "https://podman-desktop.io/downloads",
+    "documentation": "https://podman-desktop.io/docs/intro",
+    "localFolder": "40_INSTALLERS/Developer/podman-desktop",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "podman-desktop*.exe",
+      "podman-desktop*.dmg",
+      "podman-desktop*.tar.gz",
+      "podman-desktop*.flatpak"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Offline use requires pre-downloaded dependencies, images or database drivers. Packages do not include a full offline dependency cache.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install the native package and complete Podman engine setup.",
+      "Create a local machine when required by your platform.",
+      "Run a trusted test container; check project compatibility before replacing Docker."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "notes": "Use the official command-line documentation for scripted workflows; toolkit setup still requires reviewed steps.",
+      "source": "https://podman-desktop.io/docs/intro"
+    }
+  },
+  {
+    "id": "uv",
+    "name": "uv (Python environment manager)",
+    "developer": "Astral",
+    "description": "Python runtime, package and project environment management with lockfiles.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "uv",
+      "uv (python environment manager)",
+      "development",
+      "programming",
+      "build tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 200,
+    "officialWebsite": "https://docs.astral.sh/uv/getting-started/installation/",
+    "officialDownload": "https://docs.astral.sh/uv/getting-started/installation/",
+    "documentation": "https://docs.astral.sh/uv/",
+    "localFolder": "20_PORTABLE_APPS/Developer/uv",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "uv.exe",
+      "uv-*.zip",
+      "uv-*.tar.gz",
+      "uv"
+    ],
+    "kind": "Command-line",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Offline use requires pre-downloaded dependencies, images or database drivers. Packages do not include a full offline dependency cache.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install the documented native package or extract the release; verify uv --version.",
+      "Use uv init for a new project or uv sync in an existing uv project.",
+      "Pin the project Python version and commit the lockfile for reproducible environments."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "notes": "Use the official command-line documentation for scripted workflows; toolkit setup still requires reviewed steps.",
+      "source": "https://docs.astral.sh/uv/"
+    }
+  },
+  {
+    "id": "dbeaver",
+    "name": "DBeaver Community",
+    "developer": "DBeaver Community",
+    "description": "Database client for SQL development and administration across multiple engines.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "dbeaver",
+      "dbeaver community",
+      "development",
+      "programming",
+      "build tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 200,
+    "officialWebsite": "https://dbeaver.io/download/",
+    "officialDownload": "https://dbeaver.io/download/",
+    "documentation": "https://dbeaver.com/docs/dbeaver/",
+    "localFolder": "40_INSTALLERS/Developer/dbeaver",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "dbeaver-ce-*.exe",
+      "dbeaver-ce-*.zip",
+      "dbeaver-ce-*.dmg",
+      "dbeaver-ce-*.deb",
+      "dbeaver-ce-*.rpm",
+      "dbeaver.exe"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Offline use requires pre-downloaded dependencies, images or database drivers. Packages do not include a full offline dependency cache.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install Community Edition and select the database driver.",
+      "Test a connection using an appropriate least-privilege account.",
+      "Begin with read-only queries; review transactions before changing data."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "notes": "Use the official command-line documentation for scripted workflows; toolkit setup still requires reviewed steps.",
+      "source": "https://dbeaver.com/docs/dbeaver/"
+    }
+  },
+  {
+    "id": "windows-terminal",
+    "name": "Windows Terminal",
+    "developer": "Microsoft",
+    "description": "Tabbed terminal host for PowerShell, Command Prompt and WSL shells.",
+    "categories": [
+      "Developer Tools"
+    ],
+    "tags": [
+      "windows-terminal",
+      "windows terminal",
+      "development",
+      "programming",
+      "build tools"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 200,
+    "officialWebsite": "https://github.com/microsoft/terminal/releases",
+    "officialDownload": "https://github.com/microsoft/terminal/releases",
+    "documentation": "https://learn.microsoft.com/en-us/windows/terminal/install",
+    "localFolder": "40_INSTALLERS/Developer/windows-terminal",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "Microsoft.WindowsTerminal*.msixbundle",
+      "Microsoft.WindowsTerminal*.zip",
+      "WindowsTerminal.exe"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Offline use requires pre-downloaded dependencies, images or database drivers. Packages do not include a full offline dependency cache.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install the stable release using Microsoft Store or documented package instructions.",
+      "Choose the default terminal profile and review keyboard shortcuts.",
+      "Open PowerShell and any configured WSL distributions; terminal profiles do not install their shells."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ],
+    "automationSupport": {
+      "level": "manual",
+      "notes": "Use the official command-line documentation for scripted workflows; toolkit setup still requires reviewed steps.",
+      "source": "https://learn.microsoft.com/en-us/windows/terminal/install"
+    }
   }
 ];

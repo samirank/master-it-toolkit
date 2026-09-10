@@ -46,7 +46,7 @@ def candidates(root, tool_id, safe_path):
             for item in inventory.get('tools',{}).get(tool_id,{}).get('files',[]):
                 path=safe_path(root,item['path']);path.relative_to(folder)
                 # An arbitrary portable EXE is not an installer. MSI or recognizable setup names only.
-                setup=path.suffix.lower()=='.msi' or (path.suffix.lower()=='.exe' and (re.search(r'setup|(?:^|[-_.])install(?:er)?(?:[-_.]|$)',path.name,re.I) or (tool_id=='termius' and path.name.casefold()=='install termius.exe') or (tool_id=='7zip' and re.fullmatch(r'7z\d+(-x64|-arm64)?\.exe',path.name,re.I))))
+                setup=path.suffix.lower()=='.msi' or (path.suffix.lower()=='.exe' and (re.search(r'setup|(?:^|[-_.])install(?:er)?(?:[-_.]|$)',path.name,re.I) or (tool_id=='docker-desktop' and path.name.casefold()=='docker desktop installer.exe') or (tool_id=='termius' and path.name.casefold()=='install termius.exe') or (tool_id=='7zip' and re.fullmatch(r'7z\d+(-x64|-arm64)?\.exe',path.name,re.I))))
                 if setup and path.is_file() and path.stat().st_size:
                     records.append({'path':item['path'],'name':path.name,'size':path.stat().st_size})
         except (OSError,ValueError,KeyError,IndexError): pass

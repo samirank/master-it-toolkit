@@ -232,6 +232,41 @@
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
       },
       {
+        "text": "Set up GitHub Desktop. Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "github-desktop",
+        "action": "install"
+      },
+      {
+        "text": "Set up GitHub CLI (gh). Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "gh",
+        "action": "manual"
+      },
+      {
+        "text": "Set up Node.js LTS (includes npm). Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "nodejs",
+        "action": "install"
+      },
+      {
+        "text": "Set up uv (Python environment manager). Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "uv",
+        "action": "manual"
+      },
+      {
+        "text": "Set up Podman Desktop. Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "podman-desktop",
+        "action": "install"
+      },
+      {
+        "text": "Set up DBeaver Community. Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "dbeaver",
+        "action": "install"
+      },
+      {
+        "text": "Set up Windows Terminal. Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "windows-terminal",
+        "action": "manual"
+      },
+      {
         "text": "Set up Visual Studio Code (VS Code / portable). Check whether it is already installed and use its documented native package or portable edition.",
         "tool": "vscode",
         "action": "install"
@@ -265,6 +300,10 @@
         "text": "Install the full language SDK required by the project (the catalog Python package is embeddable). Configure Git identity, SSH keys and a project environment; run a small build and tests."
       },
       {
+        "text": "Choose Podman or Docker Desktop for the project, not both by default. If Docker Desktop is required, review its license and virtualization requirements before installing.",
+        "url": "https://docs.docker.com/desktop/"
+      },
+      {
         "text": "Restart if required. Verify apps and devices, test restoring a sample file, record installed versions and recovery steps, and export the completed workflow record."
       }
     ]
@@ -279,6 +318,41 @@
       },
       {
         "text": "Apply supported OS updates and restart. Review OEM drivers, disk encryption recovery access and a recovery checkpoint. Prefer a standard daily-use account."
+      },
+      {
+        "text": "Set up GitHub Desktop. Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "github-desktop",
+        "action": "install"
+      },
+      {
+        "text": "Set up GitHub CLI (gh). Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "gh",
+        "action": "manual"
+      },
+      {
+        "text": "Set up Node.js LTS (includes npm). Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "nodejs",
+        "action": "install"
+      },
+      {
+        "text": "Set up uv (Python environment manager). Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "uv",
+        "action": "manual"
+      },
+      {
+        "text": "Set up Podman Desktop. Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "podman-desktop",
+        "action": "install"
+      },
+      {
+        "text": "Set up DBeaver Community. Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "dbeaver",
+        "action": "install"
+      },
+      {
+        "text": "Set up Windows Terminal. Verify its version in a new terminal and follow the official project instructions.",
+        "tool": "windows-terminal",
+        "action": "manual"
       },
       {
         "text": "Set up Visual Studio Code (VS Code / portable). Check whether it is already installed and use its documented native package or portable edition.",
@@ -316,6 +390,10 @@
       },
       {
         "text": "Check RAM, GPU compatibility and model disk budget. Choose model licenses and privacy settings; keep model services bound locally and verify a small inference before editor integration."
+      },
+      {
+        "text": "Choose Podman or Docker Desktop for the project, not both by default. If Docker Desktop is required, review its license and virtualization requirements before installing.",
+        "url": "https://docs.docker.com/desktop/"
       },
       {
         "text": "Restart if required. Verify apps and devices, test restoring a sample file, record installed versions and recovery steps, and export the completed workflow record."

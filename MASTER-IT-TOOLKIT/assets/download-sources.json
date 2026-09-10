@@ -380,5 +380,37 @@
   "termius": {
     "provider": "winget",
     "package": "Termius.Termius"
+  },
+  "github-desktop": {
+    "provider": "winget",
+    "package": "GitHub.GitHubDesktop"
+  },
+  "gh": {
+    "provider": "github",
+    "repo": "cli/cli"
+  },
+  "nodejs": {
+    "provider": "winget",
+    "package": "OpenJS.NodeJS.LTS"
+  },
+  "docker-desktop": {
+    "provider": "winget",
+    "package": "Docker.DockerDesktop"
+  },
+  "podman-desktop": {
+    "provider": "github",
+    "repo": "podman-desktop/podman-desktop"
+  },
+  "uv": {
+    "provider": "github",
+    "repo": "astral-sh/uv"
+  },
+  "dbeaver": {
+    "provider": "github",
+    "repo": "dbeaver/dbeaver"
+  },
+  "windows-terminal": {
+    "provider": "github",
+    "repo": "microsoft/terminal"
   }
 }
