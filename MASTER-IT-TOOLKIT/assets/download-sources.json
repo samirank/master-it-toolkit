@@ -412,5 +412,21 @@
   "windows-terminal": {
     "provider": "github",
     "repo": "microsoft/terminal"
+  },
+  "restic": {
+    "provider": "github",
+    "repo": "restic/restic"
+  },
+  "kopia": {
+    "provider": "github",
+    "repo": "kopia/kopia"
+  },
+  "duplicati": {
+    "provider": "github",
+    "repo": "duplicati/duplicati"
+  },
+  "rclone": {
+    "provider": "github",
+    "repo": "rclone/rclone"
   }
 }

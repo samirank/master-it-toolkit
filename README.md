@@ -373,3 +373,26 @@ python 60_SCRIPTS/Setup/build_pc.py --profile build-linux --mode manual
 ```
 
 The helper reads the same built-in profiles and SQLite custom builds as the dashboard. Download mode only saves packages. Guided mode prompts for review at every checkpoint and logs completed runs locally. The desktop launcher does not require a separate Python installation; this optional CLI does.
+
+### Toolkit backup to NAS or cloud-synced storage
+
+Open **Toolkit backup** and enter an existing absolute destination outside the toolkit directory. Windows supports mapped drives and UNC shares such as `\\NAS\Backups`; Linux/macOS can use mounted paths. Cloud destinations use a folder managed by your existing cloud-sync client or mounted storage. The toolkit does not create cloud accounts or manage provider credentials.
+
+- **Workspace** includes dashboard files, metadata/receipts, scripts, documentation, service notes, settings, custom workflows and SQLite history. Restore onto a fresh toolkit package to recover the full application.
+- **Full** adds downloaded tools, ISOs, bundled browser/runtime and the adjacent standalone launcher when present. It is a file backup, not an SSD partition/boot-sector image.
+- Browser session profiles, temporary files, symlink/junction targets and old updater rollback archives are excluded. Skipped links are listed in the archive manifest.
+- Every run creates a new ZIP and verifies file SHA-256 checksums before renaming it complete. SQLite uses its online backup API, with a database integrity check. Other source files that change during copying cause a clear failure; close external tools and retry. There is no volume-wide filesystem snapshot.
+- **Cancel backup** removes the current incomplete archive, preserving previous backups. **Save destination** persists the path/scope in SQLite. Check the path when moving the SSD to another host.
+- Archives include private notes and are not encrypted. Use a private NAS/cloud location or use Restic, Kopia or Duplicati for native encrypted repositories. rclone can copy completed archives to a configured remote; syncing alone is not a versioned backup.
+- A successful result confirms the local or mounted file was verified. Confirm cloud upload completion separately in your sync client. Retention is manual: old backups are never automatically deleted.
+
+To restore, verify the archive, close the launcher and extract into a separate empty location (or onto a fresh toolkit package for workspace-only backups). Test notes, custom builds and a tool before replacing the original SSD. SQLite restoration must happen with the launcher closed.
+
+Optional command line:
+
+```text
+python 60_SCRIPTS/Backup/toolkit_backup.py --destination Z:\Backups --scope full
+python 60_SCRIPTS/Backup/toolkit_backup.py --verify Z:\Backups\master-it-full-EXAMPLE.zip
+```
+
+Backup & Sync includes Veeam Agent, Restic, Kopia, Duplicati, rclone and existing imaging/sync alternatives. Follow each publisher’s edition, encryption and recovery guidance.

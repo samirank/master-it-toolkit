@@ -205,6 +205,7 @@ class Server(ThreadingHTTPServer):
         self.revision = 0
         self.workflow = None
         self.history = activity_store.Store(root, safe_path, self.token)
+        self.cancel_backup = threading.Event()
         self.browser = browser_host.Host(self, safe_path, lambda: run_script('inventory'))
         self.cancel_downloads = threading.Event()
         self.catalog_lock = threading.Lock()
@@ -217,7 +218,15 @@ class Server(ThreadingHTTPServer):
     def job(self, action, body=None):
         context = {'tool': (body or {}).get('tool'), 'startedAt': self.state.get('startedAt',time.time())}
         try:
-            if action == 'catalog-refresh':
+            if action in ('backup-toolkit','verify-backup'):
+                import importlib.util
+                spec=importlib.util.spec_from_file_location('toolkit_backup',safe_path(self.root,'60_SCRIPTS/Backup/toolkit_backup.py'))
+                backup_module=importlib.util.module_from_spec(spec);spec.loader.exec_module(backup_module)
+                self.cancel_backup.clear()
+                progress=lambda state:setattr(self,'state',dict(context,busy=True,**state))
+                if action=='backup-toolkit':message=backup_module.backup(self.root,body,progress,self.cancel_backup.is_set)
+                else:message=backup_module.verify(Path(body['archive']),progress,self.cancel_backup.is_set)
+            elif action == 'catalog-refresh':
                 tool_downloads.refresh_catalog(self.root,safe_path)
                 message='✓ Download catalog refreshed from the toolkit repository'
             elif action == 'bulk-download':
@@ -384,7 +393,9 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < size <= 32000: raise ValueError()
             body = json.loads(self.rfile.read(size))
             action = body['action']
-            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'bulk-download', 'cancel-downloads', 'catalog-refresh', 'install', 'installed-apps', 'system-restore', 'run-portable', 'workflow', 'workflow-control', 'vendor-window', 'open-folder', 'adblock-site'): raise ValueError()
+            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'backup-toolkit','verify-backup','cancel-backup','update', 'download', 'bulk-download', 'cancel-downloads', 'catalog-refresh', 'install', 'installed-apps', 'system-restore', 'run-portable', 'workflow', 'workflow-control', 'vendor-window', 'open-folder', 'adblock-site'): raise ValueError()
+            if action=='backup-toolkit' and (not isinstance(body.get('destination'),str) or body.get('scope') not in ('workspace','full')):raise ValueError()
+            if action=='verify-backup' and (not isinstance(body.get('archive'),str) or not Path(body['archive']).is_absolute()):raise ValueError()
             if action=='bulk-download' and (body.get('platform') not in ('Windows','Linux','macOS','All') or body.get('architecture') not in ('x64','x86','arm64','All') or body.get('mode') not in ('missing','latest')): raise ValueError()
             if action == 'run-portable' and not all(isinstance(body.get(k),str) for k in ('tool','executable')): raise ValueError()
             if action == 'workflow' and not all(isinstance(body.get(k),str) for k in ('workflow','mode')): raise ValueError()
@@ -393,6 +404,9 @@ class Handler(BaseHTTPRequestHandler):
             if action == 'download':
                 if not isinstance(body.get('tool'), str) or not isinstance(body.get('assets'), list) or not 1 <= len(body['assets']) <= 50 or any(not isinstance(a, str) for a in body['assets']): raise ValueError()
         except (ValueError, KeyError, TypeError): return self.reply(400, {'error': 'Invalid action'})
+        if action=='cancel-backup':
+            self.cancel_backup.set()
+            return self.reply(200,{'message':'Stopping backup; incomplete archive will be removed.'})
         if action=='cancel-downloads':
             self.server.cancel_downloads.set()
             return self.reply(200,{'message':'Queue will stop after the active transfer. Completed packages are kept.'})
@@ -426,7 +440,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.reply(200, {'message':'Workflow control accepted'})
             except ValueError as error: return self.reply(409, {'error':str(error)})
         if not self.server.lock.acquire(False): return self.reply(409, {'error': 'Another action is still running. Close its script terminal first.'})
-        label = SCRIPTS[action][0] if action in SCRIPTS else {'catalog-refresh':'Refreshing repository download catalog','bulk-download':'Downloading toolkit packages','run-portable':'Opening portable application','workflow':'Starting reviewed workflow','update':'Updating toolkit from GitHub','download':'Downloading selected packages','install':'Preparing recovery checkpoint and installing application (check UAC and installer prompts)','installed-apps':'Opening installed programs','system-restore':'Opening System Restore'}[action]
+        label = SCRIPTS[action][0] if action in SCRIPTS else {'backup-toolkit':'Backing up toolkit','verify-backup':'Verifying toolkit backup','catalog-refresh':'Refreshing repository download catalog','bulk-download':'Downloading toolkit packages','run-portable':'Opening portable application','workflow':'Starting reviewed workflow','update':'Updating toolkit from GitHub','download':'Downloading selected packages','install':'Preparing recovery checkpoint and installing application (check UAC and installer prompts)','installed-apps':'Opening installed programs','system-restore':'Opening System Restore'}[action]
         self.server.state = {'busy': True, 'startedAt': time.time(), 'tool': body.get('tool'), 'message': label + '…' + (' Check the script terminal for prompts; close it when finished.' if action in SCRIPTS and SCRIPTS[action][2] == 'windows' else '')}
         threading.Thread(target=self.server.job, args=(action, body), daemon=True).start()
         self.reply(202, self.server.state)

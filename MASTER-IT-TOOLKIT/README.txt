@@ -400,3 +400,15 @@ from PC builds. Active runs do not automatically resume after a restart.
 Optional Python helper: python 60_SCRIPTS/Setup/build_pc.py --list
 Download example: python 60_SCRIPTS/Setup/build_pc.py --profile build-gaming --download
 Guided example: python 60_SCRIPTS/Setup/build_pc.py --profile build-gaming
+
+TOOLKIT BACKUP
+Open Toolkit backup to save a verified workspace or full-toolkit ZIP into an
+existing NAS, mounted drive or cloud-synced folder. Save destination stores
+preferences in SQLite. Full backups include downloaded tools and the launcher;
+workspace backups include SQLite notes, workflows, metadata and dashboard files.
+Browser profiles, temporary files and old updater backups are excluded.
+Archives are not encrypted. Use private storage, or Restic/Kopia/Duplicati for
+encrypted backups. Confirm cloud upload in your sync client separately.
+Verify the backup, close the launcher and extract to a separate location to
+restore. Restore workspace backups onto a fresh toolkit package. Test recovery
+before replacing the original SSD. This is not a boot-sector/partition image.

@@ -408,7 +408,8 @@
     "description": "Graphical image backup and restore for healthy drives.",
     "categories": [
       "Imaging & Cloning",
-      "Boot & Recovery"
+      "Boot & Recovery",
+      "Backup & Sync"
     ],
     "tags": [
       "clone a drive SSD"
@@ -482,7 +483,8 @@
     "description": "Partition and disk imaging for repeatable deployments; verify source and destination.",
     "categories": [
       "Imaging & Cloning",
-      "Boot & Recovery"
+      "Boot & Recovery",
+      "Backup & Sync"
     ],
     "tags": [
       "clone a drive SSD"
@@ -2285,7 +2287,8 @@
     "description": "Paid Windows image backup and restore; select a current authorized edition.",
     "categories": [
       "Imaging & Cloning",
-      "Licensed Tools"
+      "Licensed Tools",
+      "Backup & Sync"
     ],
     "tags": [
       "SSD clone backup"
@@ -2374,13 +2377,18 @@
     "developer": "Veeam",
     "description": "Windows endpoint backup and recovery; installation and recovery media preparation required.",
     "categories": [
-      "Imaging & Cloning"
+      "Imaging & Cloning",
+      "Backup & Sync"
     ],
     "tags": [
-      "backup image"
+      "backup image",
+      "veeam",
+      "veam",
+      "backup",
+      "nas"
     ],
     "useCases": [],
-    "priority": "P3",
+    "priority": "P2",
     "license": "Freemium",
     "personalLicenseNotes": "Review the selected edition's current terms.",
     "technicianLicenseNotes": "Commercial/technician use may require a separate paid license. A personal or trial edition does not establish service rights.",
@@ -2436,9 +2444,9 @@
       }
     },
     "quickStart": [
-      "Open Veeam Agent for Microsoft Windows using the package for your operating system.",
-      "Use it for: Windows endpoint backup and recovery; installation and recovery media preparation required.",
-      "Review the output and save your work or report; use the official documentation for advanced operations."
+      "Install the appropriate Veeam Agent edition from the publisher.",
+      "Create recovery media, then choose your system, volumes or folders and a separate backup destination.",
+      "Run a backup and test recovery media and a sample file restore; verify edition limits before business deployment."
     ],
     "packagePatterns": [
       "*.exe",
@@ -7368,7 +7376,8 @@
     "developer": "FreeFileSync project",
     "description": "Compare and synchronize folders; preview deletion directions before syncing.",
     "categories": [
-      "Portable Apps"
+      "Portable Apps",
+      "Backup & Sync"
     ],
     "tags": [
       "backup sync migration"
@@ -19125,7 +19134,8 @@
     "description": "Synchronize folders between approved devices.",
     "categories": [
       "Networking",
-      "Software Installers"
+      "Software Installers",
+      "Backup & Sync"
     ],
     "tags": [
       "Syncthing",
@@ -19573,7 +19583,8 @@
     "description": "EaseUS Todo Backup (Free / Home / Enterprise) product and edition reference.",
     "categories": [
       "Imaging & Cloning",
-      "Licensed Tools"
+      "Licensed Tools",
+      "Backup & Sync"
     ],
     "tags": [
       "EaseUS Todo Backup (Free / Home / Enterprise)",
@@ -24814,6 +24825,356 @@
       "level": "manual",
       "notes": "Use the official command-line documentation for scripted workflows; toolkit setup still requires reviewed steps.",
       "source": "https://learn.microsoft.com/en-us/windows/terminal/install"
+    }
+  },
+  {
+    "id": "restic",
+    "name": "Restic",
+    "developer": "Restic contributors",
+    "description": "Encrypted, versioned backups to local storage, NAS paths and supported cloud repositories.",
+    "categories": [
+      "Backup & Sync"
+    ],
+    "tags": [
+      "backup",
+      "nas",
+      "cloud",
+      "recovery",
+      "veam alternative"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 200,
+    "officialWebsite": "https://restic.net/",
+    "officialDownload": "https://github.com/restic/restic/releases",
+    "documentation": "https://restic.readthedocs.io/en/stable/",
+    "localFolder": "20_PORTABLE_APPS/Backup/restic",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "restic*.exe",
+      "restic*.bz2",
+      "restic"
+    ],
+    "kind": "Command-line",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Use a private repository and keep recovery credentials independently of the backed-up SSD.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Extract the binary and verify restic version.",
+      "Create a repository using the official backend instructions and keep the recovery password separately.",
+      "Back up a test directory, check the repository and restore a sample file before scheduling larger backups."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz",
+      "*.bz2"
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "notes": "Scheduling and command-line operation are documented by the project; configure destination and restore verification explicitly.",
+      "source": "https://restic.readthedocs.io/en/stable/"
+    }
+  },
+  {
+    "id": "kopia",
+    "name": "Kopia",
+    "developer": "Kopia contributors",
+    "description": "Encrypted snapshot backups with deduplication, retention and cloud or local repository support.",
+    "categories": [
+      "Backup & Sync"
+    ],
+    "tags": [
+      "backup",
+      "nas",
+      "cloud",
+      "recovery",
+      "veam alternative"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 200,
+    "officialWebsite": "https://kopia.io/",
+    "officialDownload": "https://github.com/kopia/kopia/releases",
+    "documentation": "https://kopia.io/docs/",
+    "localFolder": "40_INSTALLERS/Backup/kopia",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "KopiaUI*.exe",
+      "KopiaUI*.dmg",
+      "kopia*.zip",
+      "kopia*.tar.gz",
+      "kopia*.deb",
+      "kopia*.rpm"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Use a private repository and keep recovery credentials independently of the backed-up SSD.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Choose KopiaUI or the CLI for your platform.",
+      "Connect a private repository and record its recovery password outside the toolkit.",
+      "Create a snapshot and restore a test file; review retention and scheduling."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz",
+      "*.bz2"
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "notes": "Scheduling and command-line operation are documented by the project; configure destination and restore verification explicitly.",
+      "source": "https://kopia.io/docs/"
+    }
+  },
+  {
+    "id": "duplicati",
+    "name": "Duplicati",
+    "developer": "Duplicati contributors",
+    "description": "Scheduled encrypted file backups to network storage and supported cloud destinations.",
+    "categories": [
+      "Backup & Sync"
+    ],
+    "tags": [
+      "backup",
+      "nas",
+      "cloud",
+      "recovery",
+      "veam alternative"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 200,
+    "officialWebsite": "https://duplicati.com/",
+    "officialDownload": "https://github.com/duplicati/duplicati/releases",
+    "documentation": "https://docs.duplicati.com/",
+    "localFolder": "40_INSTALLERS/Backup/duplicati",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "duplicati*.msi",
+      "duplicati*.exe",
+      "duplicati*.zip",
+      "duplicati*.dmg",
+      "duplicati*.deb",
+      "duplicati*.rpm"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Use a private repository and keep recovery credentials independently of the backed-up SSD.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install the stable package and secure its local management interface.",
+      "Choose the source folders, destination and encryption password.",
+      "Run a test backup and restore; then set retention and a schedule."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz",
+      "*.bz2"
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "notes": "Scheduling and command-line operation are documented by the project; configure destination and restore verification explicitly.",
+      "source": "https://docs.duplicati.com/"
+    }
+  },
+  {
+    "id": "rclone",
+    "name": "rclone",
+    "developer": "rclone contributors",
+    "description": "Transfers between cloud storage and local or NAS paths; useful for copying completed toolkit backups.",
+    "categories": [
+      "Backup & Sync"
+    ],
+    "tags": [
+      "backup",
+      "nas",
+      "cloud",
+      "recovery",
+      "veam alternative"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Open-source project; review component licenses.",
+    "technicianLicenseNotes": "Review license and dependency terms for redistribution and organizational use.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 200,
+    "officialWebsite": "https://rclone.org/downloads/",
+    "officialDownload": "https://github.com/rclone/rclone/releases",
+    "documentation": "https://rclone.org/docs/",
+    "localFolder": "20_PORTABLE_APPS/Backup/rclone",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "rclone.exe",
+      "rclone-*.zip",
+      "rclone"
+    ],
+    "kind": "Command-line",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Review PATH, virtualization and service changes before installation. Keep project secrets out of shared toolkit storage.",
+    "notes": "Review credentials, retention and restore procedures before relying on the backup. rclone transfers are not versioned backups by themselves.",
+    "sourceStatus": "Official download and documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Extract the platform package and verify rclone version.",
+      "Configure a remote with the official provider instructions; keep tokens private.",
+      "Use copy and a dry run first. Sync can delete destination files; use versioned backup archives and verify transfers."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz",
+      "*.bz2"
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "notes": "Scheduling and command-line operation are documented by the project; configure destination and restore verification explicitly.",
+      "source": "https://rclone.org/docs/"
     }
   }
 ]
