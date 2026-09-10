@@ -10,6 +10,8 @@ import sys
 import time
 
 ALIASES={
+ 'airvpn':['AirVPN','Eddie','Eddie UI','Eddie - AirVPN Client'],
+ 'expressvpn':['ExpressVPN'], 'vpn-unlimited':['VPN Unlimited','KeepSolid VPN Unlimited'], 'fastestvpn':['FastestVPN'],
  'github-desktop':['GitHub Desktop'], 'gh':['GitHub CLI','gh'], 'nodejs':['Node.js','Node.js LTS'],
  'docker-desktop':['Docker Desktop'], 'podman-desktop':['Podman Desktop'], 'uv':['uv'],
  'dbeaver':['DBeaver','DBeaver Community'], 'windows-terminal':['Windows Terminal'],

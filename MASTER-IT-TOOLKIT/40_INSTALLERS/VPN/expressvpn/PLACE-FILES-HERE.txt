@@ -1,0 +1,1 @@
+Place ExpressVPN installer packages here. Download through the official publisher and scan afterward. Do not store account passwords or activation codes here.

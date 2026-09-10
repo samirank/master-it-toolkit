@@ -25176,5 +25176,336 @@ window.TOOLKIT_DATA = [
       "notes": "Scheduling and command-line operation are documented by the project; configure destination and restore verification explicitly.",
       "source": "https://rclone.org/docs/"
     }
+  },
+  {
+    "id": "airvpn",
+    "name": "AirVPN (Eddie client)",
+    "developer": "AirVPN",
+    "description": "VPN service client for connecting this computer to AirVPN using Eddie.",
+    "categories": [
+      "VPN",
+      "Networking"
+    ],
+    "tags": [
+      "airvpn",
+      "airvpn (eddie client)",
+      "vpn",
+      "privacy",
+      "network tunnel"
+    ],
+    "useCases": [],
+    "priority": "P3",
+    "license": "Paid",
+    "personalLicenseNotes": "The Eddie client is open source; using AirVPN service requires a valid service plan.",
+    "technicianLicenseNotes": "Use the device owner’s authorized account; review provider terms before organizational deployment. Toolkit inclusion does not include a subscription.",
+    "portable": false,
+    "bootable": false,
+    "offline": false,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other architectures depend on provider and platform"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://airvpn.org/",
+    "officialDownload": "https://airvpn.org/download/",
+    "documentation": "https://github.com/AirVPN/Eddie",
+    "localFolder": "40_INSTALLERS/VPN/airvpn",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "eddie-ui*.exe",
+      "eddie-ui*.msi",
+      "eddie-ui*.zip",
+      "eddie-ui*.deb",
+      "eddie-ui*.rpm",
+      "eddie-ui*.dmg",
+      "Eddie-UI.exe"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "VPN routes and kill switches can interrupt NAS access and remote support sessions. Review local-network access before connecting.",
+    "notes": "Eddie is an open-source client; the AirVPN service is paid. Official mobile packages and manual configurations are available from the provider.",
+    "sourceStatus": "Official download and support pages reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Download the native application for your platform from the official publisher.",
+      "Install and sign in with your own provider account or activation details.",
+      "Choose a server and review protocol, kill-switch and local-network access settings. Test internet access, DNS and NAS access before enabling automatic connection."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "expressvpn",
+    "name": "ExpressVPN",
+    "developer": "ExpressVPN",
+    "description": "VPN service client for connecting this computer to ExpressVPN servers.",
+    "categories": [
+      "VPN",
+      "Networking"
+    ],
+    "tags": [
+      "expressvpn",
+      "expressvpn",
+      "vpn",
+      "privacy",
+      "network tunnel"
+    ],
+    "useCases": [],
+    "priority": "P3",
+    "license": "Paid",
+    "personalLicenseNotes": "A valid provider account and service plan are required; review current trial and subscription terms.",
+    "technicianLicenseNotes": "Use the device owner’s authorized account; review provider terms before organizational deployment. Toolkit inclusion does not include a subscription.",
+    "portable": false,
+    "bootable": false,
+    "offline": false,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other architectures depend on provider and platform"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.expressvpn.com/",
+    "officialDownload": "https://www.expressvpn.com/vpn-download",
+    "documentation": "https://www.expressvpn.com/support/",
+    "localFolder": "40_INSTALLERS/VPN/expressvpn",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "expressvpn*.exe",
+      "expressvpn*.msi",
+      "expressvpn*.pkg",
+      "expressvpn*.dmg",
+      "expressvpn*.deb",
+      "expressvpn*.rpm"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "VPN routes and kill switches can interrupt NAS access and remote support sessions. Review local-network access before connecting.",
+    "notes": "Publisher-managed download. Mobile and other device support is described on the official site.",
+    "sourceStatus": "Official download and support pages reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Download the native application for your platform from the official publisher.",
+      "Install and sign in with your own provider account or activation details.",
+      "Choose a server and review protocol, kill-switch and local-network access settings. Test internet access, DNS and NAS access before enabling automatic connection."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "vpn-unlimited",
+    "name": "VPN Unlimited",
+    "developer": "KeepSolid",
+    "description": "VPN service client for connecting this computer to VPN Unlimited servers.",
+    "categories": [
+      "VPN",
+      "Networking"
+    ],
+    "tags": [
+      "vpn-unlimited",
+      "vpn unlimited",
+      "vpn",
+      "privacy",
+      "network tunnel"
+    ],
+    "useCases": [],
+    "priority": "P3",
+    "license": "Paid",
+    "personalLicenseNotes": "A valid provider account and service plan are required; review current trial and subscription terms.",
+    "technicianLicenseNotes": "Use the device owner’s authorized account; review provider terms before organizational deployment. Toolkit inclusion does not include a subscription.",
+    "portable": false,
+    "bootable": false,
+    "offline": false,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other architectures depend on provider and platform"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.vpnunlimited.com/",
+    "officialDownload": "https://www.vpnunlimited.com/downloads",
+    "documentation": "https://www.vpnunlimited.com/help",
+    "localFolder": "40_INSTALLERS/VPN/vpn-unlimited",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "VPN_Unlimited*.exe",
+      "VPNUnlimited*.exe",
+      "VPNUnlimited*.msi",
+      "VPNUnlimited*.dmg",
+      "VPNUnlimited*.pkg",
+      "vpn-unlimited*.deb",
+      "vpn_unlimited*.deb"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "VPN routes and kill switches can interrupt NAS access and remote support sessions. Review local-network access before connecting.",
+    "notes": "Publisher-managed download. Mobile and other device support is described on the official site.",
+    "sourceStatus": "Official download and support pages reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Download the native application for your platform from the official publisher.",
+      "Install and sign in with your own provider account or activation details.",
+      "Choose a server and review protocol, kill-switch and local-network access settings. Test internet access, DNS and NAS access before enabling automatic connection."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "fastestvpn",
+    "name": "FastestVPN",
+    "developer": "FastestVPN",
+    "description": "VPN service client for connecting this computer to FastestVPN servers.",
+    "categories": [
+      "VPN",
+      "Networking"
+    ],
+    "tags": [
+      "fastestvpn",
+      "fastestvpn",
+      "vpn",
+      "privacy",
+      "network tunnel"
+    ],
+    "useCases": [],
+    "priority": "P3",
+    "license": "Paid",
+    "personalLicenseNotes": "A valid provider account and service plan are required; review current trial and subscription terms.",
+    "technicianLicenseNotes": "Use the device owner’s authorized account; review provider terms before organizational deployment. Toolkit inclusion does not include a subscription.",
+    "portable": false,
+    "bootable": false,
+    "offline": false,
+    "os": [
+      "Windows",
+      "macOS"
+    ],
+    "architecture": [
+      "x64; other architectures depend on provider and platform"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://fastestvpn.com/",
+    "officialDownload": "https://fastestvpn.com/download",
+    "documentation": "https://support.fastestvpn.com/",
+    "localFolder": "40_INSTALLERS/VPN/fastestvpn",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "FastestVPN*.exe",
+      "FastestVPN*.msi",
+      "FastestVPN*.dmg",
+      "FastestVPN*.pkg"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "VPN routes and kill switches can interrupt NAS access and remote support sessions. Review local-network access before connecting.",
+    "notes": "Publisher-managed download. Mobile and other device support is described on the official site. Linux uses the provider’s manual setup guidance rather than a cataloged native desktop installer.",
+    "sourceStatus": "Official download and support pages reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Download the native application for your platform from the official publisher.",
+      "Install and sign in with your own provider account or activation details.",
+      "Choose a server and review protocol, kill-switch and local-network access settings. Test internet access, DNS and NAS access before enabling automatic connection."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   }
 ];
