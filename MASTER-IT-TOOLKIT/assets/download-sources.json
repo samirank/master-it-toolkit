@@ -376,5 +376,9 @@
   "wirelesswatcher": {
     "provider": "winget",
     "package": "NirSoft.WirelessNetworkWatcher"
+  },
+  "termius": {
+    "provider": "winget",
+    "package": "Termius.Termius"
   }
 }

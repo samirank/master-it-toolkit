@@ -23962,5 +23962,171 @@
       "notes": "Follow the publisher documentation; no automatic device changes are configured."
     },
     "licenseSource": "https://www.nirsoft.net/utils/network_latency_view.html"
+  },
+  {
+    "id": "filezilla",
+    "name": "FileZilla (Client)",
+    "developer": "Tim Kosse / FileZilla Project",
+    "description": "Graphical FTP, FTPS and SFTP client for transferring files between computers and servers.",
+    "categories": [
+      "Networking"
+    ],
+    "tags": [
+      "sftp",
+      "ssh",
+      "file transfer",
+      "ftp",
+      "remote administration"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Open source",
+    "personalLicenseNotes": "Free open-source FileZilla Client; FileZilla Pro is a separate commercial offering.",
+    "technicianLicenseNotes": "Review the client license before redistribution.",
+    "portable": true,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 50,
+    "officialWebsite": "https://filezilla-project.org/",
+    "officialDownload": "https://filezilla-project.org/download.php?show_all=1",
+    "documentation": "https://wiki.filezilla-project.org/Using",
+    "localFolder": "20_PORTABLE_APPS/Networking/FileZilla",
+    "localExecutable": "20_PORTABLE_APPS/Networking/FileZilla/filezilla.exe",
+    "inventoryPatterns": [
+      "filezilla.exe",
+      "FileZilla_*.exe",
+      "FileZilla_*.zip",
+      "FileZilla_*.tar.bz2",
+      "FileZilla*.app",
+      "filezilla"
+    ],
+    "kind": "Portable",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Verify remote host identity and destination paths before transfers or administrative commands.",
+    "notes": "Choose FileZilla Client and your platform; use the ZIP edition for portable use. Prefer SFTP or FTPS when available.",
+    "sourceStatus": "Official download page reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Open Site Manager and add an SFTP connection using the server address and your own credentials.",
+      "Verify the server host-key fingerprint, connect, and transfer a small test file.",
+      "Review overwrite settings and queued-transfer results before moving larger folders."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "termius",
+    "name": "Termius",
+    "developer": "Termius Corporation",
+    "description": "SSH client and connection manager with a free Starter tier and paid collaboration features.",
+    "categories": [
+      "Networking"
+    ],
+    "tags": [
+      "sftp",
+      "ssh",
+      "file transfer",
+      "terminal",
+      "remote administration"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Freemium",
+    "personalLicenseNotes": "Starter tier is free; premium features require a paid plan. Review current plan terms.",
+    "technicianLicenseNotes": "Review the selected plan for business use, team sharing and credential storage.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://termius.com/",
+    "officialDownload": "https://termius.com/download/windows",
+    "documentation": "https://support.termius.com/hc/en-us",
+    "localFolder": "40_INSTALLERS/Networking/Termius",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "Install Termius.exe",
+      "Termius*.exe",
+      "Termius*.dmg",
+      "termius*.deb",
+      "termius*.rpm",
+      "Termius*.AppImage"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Verify remote host identity and destination paths before transfers or administrative commands.",
+    "notes": "Windows managed download uses repository-maintained WinGet metadata. Other platforms are available from the publisher. Free Starter is not open source.",
+    "sourceStatus": "Official download page reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install the package for your platform and choose the plan appropriate to your needs.",
+      "Create a host with its address, SSH port and authentication method; verify the host-key fingerprint.",
+      "Open a test session. Review sync, vault and team-sharing settings before storing work credentials."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
   }
 ]
