@@ -11,9 +11,9 @@
   document.body.append(dialog);dialog.addEventListener('close',()=>dialog.remove());dialog.showModal();
   dialog.append(el('p','Review the installer and publisher before making changes. Portable tools can run from the SSD without installation.'));
   const guide=el('section');guide.className='install-guidance';guide.append(el('h3','Manage installations and removal'));
-  guide.append(el('p','Consider an uninstall manager first. Revo Uninstaller Pro can trace installations; Revo Free and BCUninstaller do not provide that same tracing workflow. These are optional, not prerequisites.'));
+  guide.append(el('p','Prefer BCUninstaller: free and open source, with batch removal support. Use a paid option only for a required feature: Revo Uninstaller Pro can trace installations; BCUninstaller does not provide that same tracing workflow. Neither is a prerequisite.'));
   const managerActions=el('div');managerActions.className='actions';
-  for(const [id,name] of [['revo','Revo Uninstaller'],['bcu','BCUninstaller (free / open source)']]){
+  for(const [id,name] of [['bcu','BCUninstaller (free / open source)'],['revo','Revo Pro (optional paid tracing)']]){
    if(tool.id===id)continue;
    const button=el('button','Get '+name);button.dataset.download=id;button.onclick=()=>dialog.close();managerActions.append(button);
   }

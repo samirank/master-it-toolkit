@@ -58,6 +58,7 @@
  }
  function start(id){
   const def=definitions[id];if(!def)return;const d=modal(def.name+' workflow');
+  d.append(el('p','Prefer suitable free/open-source tools; for automation prefer documented command-line or batch interfaces. Paid editions are optional when a required capability is missing.'));
   d.append(el('p','Automatic mode opens the available portable tool for each supported step, then waits for your review. Manual mode waits for you to launch each tool. Missing tools, consent, scan findings, copy settings and destructive actions always need attention.'));
   const list=el('ol');for(const step of def.steps)list.append(el('li',step.text+(step.tool?' — '+tools.find(t=>t.id===step.tool)?.name:'')));d.append(list);
   if(!window.TOOLKIT_LAUNCHER){d.append(el('p','Use the local launcher to run workflows. This demo provides the full checklist preview.'));return;}

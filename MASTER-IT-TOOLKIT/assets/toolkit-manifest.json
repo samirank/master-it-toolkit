@@ -489,7 +489,7 @@
     ],
     "useCases": [],
     "priority": "P1",
-    "license": "Free",
+    "license": "Open source",
     "personalLicenseNotes": "Free offering at the listed project/publisher; review bundled components and the selected edition.",
     "technicianLicenseNotes": "Review vendor terms for commercial service work and redistribution.",
     "portable": false,
@@ -544,7 +544,13 @@
       "Select the rescue ISO that matches your hardware and task.",
       "Place the ISO in its toolkit boot folder and boot it through your chosen multiboot setup.",
       "Confirm the running environment and target disk before any repair."
-    ]
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "source": "https://clonezilla.org/lecture-materials/019_OSC_Tokyo_Fall_2016/slides/OSC2016-Tokyo-Fall.pdf",
+      "notes": "Unattended deployment support; disk identity and overwrite approval remain mandatory."
+    },
+    "licenseSource": "https://clonezilla.org/lecture-materials/019_OSC_Tokyo_Fall_2016/slides/OSC2016-Tokyo-Fall.pdf"
   },
   {
     "id": "kaspersky",
@@ -1482,7 +1488,7 @@
     ],
     "useCases": [],
     "priority": "P1",
-    "license": "Free",
+    "license": "Open source",
     "personalLicenseNotes": "Free offering at the listed project/publisher; review bundled components and the selected edition.",
     "technicianLicenseNotes": "Review vendor terms for commercial service work and redistribution.",
     "portable": true,
@@ -1547,7 +1553,13 @@
       "Launch BCUninstaller and review the detected applications; select only approved removals.",
       "Review the uninstall plan and leftover list, then verify that required applications still work."
     ],
-    "packageVersionPattern": "BCUninstaller[_-](\\d+(?:\\.\\d+)+)"
+    "packageVersionPattern": "BCUninstaller[_-](\\d+(?:\\.\\d+)+)",
+    "automationSupport": {
+      "level": "documented",
+      "source": "https://www.bcuninstaller.com/",
+      "notes": "Batch uninstall automation; review application uninstallers and removal choices."
+    },
+    "licenseSource": "https://www.bcuninstaller.com/"
   },
   {
     "id": "geek",
@@ -6538,7 +6550,7 @@
     ],
     "useCases": [],
     "priority": "P1",
-    "license": "Free",
+    "license": "Open source",
     "personalLicenseNotes": "Free offering at the listed project/publisher; review bundled components and the selected edition.",
     "technicianLicenseNotes": "Review vendor terms for commercial service work and redistribution.",
     "portable": true,
@@ -6608,7 +6620,13 @@
       "Install the Windows GUI on the target PC or extract the appropriate standalone package.",
       "Open the archive and extract into a new folder; verify the extracted files before using them."
     ],
-    "packageVersionPattern": "^7z(\\d{2})(\\d{2})"
+    "packageVersionPattern": "^7z(\\d{2})(\\d{2})",
+    "automationSupport": {
+      "level": "documented",
+      "source": "https://www.7-zip.org/",
+      "notes": "Command-line archive operations; select explicit input and output paths."
+    },
+    "licenseSource": "https://www.7-zip.org/"
   },
   {
     "id": "nanazip",
@@ -7411,7 +7429,12 @@
       "*.AppImage",
       "*.tar.xz",
       "*.tar.gz"
-    ]
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "source": "https://freefilesync.org/manual.php?topic=command-line",
+      "notes": "Saved batch jobs; check edition and commercial-use licensing before choosing this over free alternatives."
+    }
   },
   {
     "id": "sumatra",
@@ -15522,7 +15545,12 @@
       "Read the command and substitute only the documented target values.",
       "Run it in the appropriate OS shell with the documented privileges: robocopy \"SOURCE\" \"DESTINATION\" /E /L /R:1 /W:1",
       "Review the output and follow the official documentation before taking additional action."
-    ]
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "source": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy",
+      "notes": "Native Windows copy jobs, logs and documented return codes; preview paths and interpret codes using the official table."
+    }
   },
   {
     "id": "cipher",
@@ -17484,7 +17512,7 @@
     ],
     "useCases": [],
     "priority": "P3",
-    "license": "Free",
+    "license": "Open source",
     "personalLicenseNotes": "Free offering at the listed project/publisher; review bundled components and the selected edition.",
     "technicianLicenseNotes": "Review vendor terms for commercial service work and redistribution.",
     "portable": false,
@@ -17541,7 +17569,13 @@
       "Read the command and substitute only the documented target values.",
       "Run it in the appropriate OS shell with the documented privileges: rsync -avhn /SOURCE/ /DESTINATION/",
       "Review the output and follow the official documentation before taking additional action."
-    ]
+    ],
+    "automationSupport": {
+      "level": "documented",
+      "source": "https://rsync.samba.org/",
+      "notes": "Scriptable incremental copying; preview changes and avoid deletion options unless explicitly approved."
+    },
+    "licenseSource": "https://rsync.samba.org/"
   },
   {
     "id": "fsck",

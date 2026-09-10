@@ -249,9 +249,29 @@ Export its record before restarting or starting another workflow. Skips remain
 unverified. This session record does not change saved manual checklist boxes.
 
 Migration: select owner-approved data folders, back up independently, download
-cloud placeholders, choose a healthy destination and use FastCopy Copy + Verify.
+cloud placeholders, choose a healthy destination and configure a reviewed Robocopy/rsync copy.
 Review its copy log, compare counts/sizes and open critical files. Keep originals
 until owner acceptance. Reinstall apps and use supported settings/profile imports;
 do not treat copying Windows or Program Files as bootable operating-system migration.
 Administrator tools need explicit native elevation. No silent elevation occurs.
 Bootable ISO support is planned for a future update, not provided here.
+
+
+SOFTWARE SELECTION POLICY
+Prefer suitable free and open-source software, then no-cost tools included with
+the operating system or available as freeware. Keep freemium, personal-only,
+trial and paid products as alternatives for a specific required capability.
+Commercial-use and redistribution terms still apply; free does not mean open source.
+
+The default catalog and task recommendations now use this order. The Automation-friendly
+sort favors documented batch/command-line support within each licensing tier.
+A BATCH / CLI AVAILABLE badge describes the vendor capability, not a promise
+that the toolkit can already operate every feature unattended. Prefer explicit
+inputs, logs, documented return codes, preview and recovery options over GUI clicking.
+BCUninstaller is the first uninstall-manager suggestion; Revo Pro tracing is optional.
+
+Migration preference: Robocopy on Windows and rsync on Linux/macOS, with reviewed
+paths, a preview, logs and independent verification. FastCopy remains an optional
+GUI alternative. The copy step is currently a manual checkpoint: this release
+does not introduce a configured, unattended Robocopy/rsync copy adapter. No files
+are copied until the technician explicitly configures and starts the chosen tool.

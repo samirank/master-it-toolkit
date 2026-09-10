@@ -215,6 +215,26 @@ Checklists and task guides now have **Start workflow** controls and launch butto
 
 The runner records verified and skipped steps separately. **Stop workflow** prevents further launches and leaves open applications running. Closing the panel does not stop the runner; reopen **Workflow status** to continue. Export the workflow record before restarting the launcher or starting another workflow. Records are session-only and do not silently check off the browser's saved checklist. Other toolkit jobs wait until the workflow is stopped or finished; stop it first if a missing package needs downloading.
 
-**Data Migration** and **New PC / profile migration** cover source health, independent backups, fully downloaded cloud files, approved folder selection, a visible FastCopy copy with Verify enabled, copy-log review, sample-file checks and owner acceptance. Select source and destination in FastCopy; use Copy, not Move or deletion/mirroring. Application installation and supported profile imports are separate from copying data; copying Windows or Program Files is not an OS migration. Originals remain until acceptance.
+**Data Migration** and **New PC / profile migration** cover source health, independent backups, fully downloaded cloud files, approved folder selection, a reviewed Robocopy/rsync copy and log, copy-log review, sample-file checks and owner acceptance. Preview source and destination paths; avoid Move or deletion/mirroring. Application installation and supported profile imports are separate from copying data; copying Windows or Program Files is not an OS migration. Originals remain until acceptance.
 
 Portable process launching currently supports Windows EXEs. Linux/macOS still provide the dashboard, inventory and guided checklist content; use native tools there. The hosted demo previews workflows but cannot run programs. A bootable toolkit ISO is a future roadmap item, not part of this release.
+
+
+SOFTWARE SELECTION POLICY
+Prefer suitable free and open-source software, then no-cost tools included with
+the operating system or available as freeware. Keep freemium, personal-only,
+trial and paid products as alternatives for a specific required capability.
+Commercial-use and redistribution terms still apply; free does not mean open source.
+
+The default catalog and task recommendations now use this order. The Automation-friendly
+sort favors documented batch/command-line support within each licensing tier.
+A BATCH / CLI AVAILABLE badge describes the vendor capability, not a promise
+that the toolkit can already operate every feature unattended. Prefer explicit
+inputs, logs, documented return codes, preview and recovery options over GUI clicking.
+BCUninstaller is the first uninstall-manager suggestion; Revo Pro tracing is optional.
+
+Migration preference: Robocopy on Windows and rsync on Linux/macOS, with reviewed
+paths, a preview, logs and independent verification. FastCopy remains an optional
+GUI alternative. The copy step is currently a manual checkpoint: this release
+does not introduce a configured, unattended Robocopy/rsync copy adapter. No files
+are copied until the technician explicitly configures and starts the chosen tool.
