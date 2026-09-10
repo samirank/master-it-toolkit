@@ -29,3 +29,4 @@
 #activity-message{white-space:pre-line;-webkit-line-clamp:3}
 .catalog-notice{display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin:12px 28px;padding:12px 16px;border:1px solid var(--border);border-radius:8px;font-size:13px}
 .bulk-download-panel .actions label{display:flex;align-items:center;gap:8px}
+#toolkit-activity:not([hidden]){padding-right:58px}#toolkit-activity>button[aria-label="Dismiss activity notification"]{position:absolute;top:12px;right:12px;width:32px;height:32px;padding:0;display:grid;place-items:center}#toolkit-activity>button[hidden]{display:none}.activity-copy>button{display:block;margin-top:10px}

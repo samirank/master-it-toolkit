@@ -25,10 +25,10 @@
   const activity=document.createElement('aside');activity.id='toolkit-activity';activity.hidden=true;activity.setAttribute('aria-label','Background activity');
   activity.innerHTML='<span class="activity-spinner" aria-hidden="true"></span><div class="activity-copy"><strong id="activity-title"></strong><p id="activity-message" role="status"></p><small id="activity-elapsed" aria-hidden="true"></small></div><button aria-label="Dismiss activity notification" hidden>×</button>';
   document.body.append(activity);
-  activity.querySelector('button').onclick=()=>activity.hidden=true;
+  activity.querySelector('[aria-label="Dismiss activity notification"]').onclick=()=>activity.hidden=true;
   function showActivity(state){
     activity.hidden=false;activity.classList.toggle('is-working',!!state.busy);activity.classList.toggle('is-error',state.stage==='error');activity.setAttribute('aria-busy',String(!!state.busy));
-    activity.querySelector('button').hidden=!!state.busy;
+    activity.querySelector('[aria-label="Dismiss activity notification"]').hidden=!!state.busy;
     document.getElementById('activity-title').textContent=state.busy?'Working…':state.stage==='error'?'Action stopped':'Finished';
     const milestones=String(state.message||'').split(/\r?\n/).filter(line=>line.startsWith('✓')).slice(0,3);
     document.getElementById('activity-message').textContent=state.stage==='complete'&&milestones.length?milestones.join('\n'):summary(state.message);
@@ -90,7 +90,7 @@
     }catch(error){const p=document.createElement('p');p.textContent=error.message;d.append(p);}
   }
   document.getElementById('activity-history').onclick=history;
-  const reportButton=document.createElement('button');reportButton.textContent='Logs';reportButton.onclick=history;activity.append(reportButton);
+  const reportButton=document.createElement('button');reportButton.textContent='Logs';reportButton.onclick=history;activity.querySelector('.activity-copy').append(reportButton);
   let eventRevision=-1;
   const events=new EventSource(new URL('events',endpoint));
   events.onmessage=async event=>{
