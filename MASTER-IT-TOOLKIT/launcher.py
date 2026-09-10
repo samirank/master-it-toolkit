@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT))
 # The frozen bootstrap imports these for dependency collection. Load updated SSD
 # source modules on restart instead of reusing the copies cached inside the EXE.
 if getattr(sys, 'frozen', False):
-    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host'):
+    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant'):
         sys.modules.pop(module,None)
 import tool_downloads
 import install_tools
@@ -30,6 +30,7 @@ import host_inventory
 import portable_tools
 import activity_store
 import browser_host
+import offline_assistant
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
 SCRIPTS = {
@@ -60,7 +61,7 @@ def managed_name(name):
     if name.startswith('runtime-extensions/ubol/'): return True
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
-    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
+    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'offline_assistant.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
         return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json', 'assets/download-catalog-cache.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
@@ -376,6 +377,14 @@ class Handler(BaseHTTPRequestHandler):
             return self.reply(200, data, mimetypes.guess_type(route)[0] or 'text/plain')
         except (ValueError, OSError): return self.reply(404, {'error': 'Unavailable'})
     def do_POST(self):
+        if self.route() == 'api/assistant' and self.headers.get('Origin') == self.server.origin:
+            try:
+                size = int(self.headers.get('Content-Length', '0'))
+                if not 0 < size <= 20000: raise ValueError('Assistant request too large')
+                body = json.loads(self.rfile.read(size))
+                return self.reply(200, offline_assistant.handle(self.server.root, self.server.history, body))
+            except (ValueError, TypeError, KeyError) as error: return self.reply(400, {'error': str(error)})
+            except Exception as error: return self.reply(503, {'error': str(error)})
         if self.route() == 'api/workspace' and self.headers.get('Origin') == self.server.origin:
             try:
                 size = int(self.headers.get('Content-Length', '0'))

@@ -28,4 +28,5 @@ jobs:
       - run: python .github/tests/test_portable_tools.py
       - run: python .github/tests/test_builds.py
       - run: python .github/tests/test_toolkit_backup.py
+      - run: python .github/tests/test_assistant.py
       - run: python .github/tests/test_browser_host.py
