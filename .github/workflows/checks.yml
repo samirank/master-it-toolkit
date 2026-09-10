@@ -25,3 +25,4 @@ jobs:
       - run: python .github/tests/test_installs.py
       - run: python .github/tests/test_host_inventory.py
       - run: python .github/tests/test_portable_tools.py
+      - run: python .github/tests/test_browser_host.py

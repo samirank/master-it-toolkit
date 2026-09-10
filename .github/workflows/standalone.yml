@@ -7,6 +7,8 @@ permissions:
   contents: write
 jobs:
   build:
+    env:
+      PLAYWRIGHT_BROWSERS_PATH: MASTER-IT-TOOLKIT/runtime-browser
     strategy:
       fail-fast: false
       matrix:
@@ -26,9 +28,11 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - run: python -m pip install pyinstaller==6.20.0
+      - run: python -m pip install pyinstaller==6.20.0 playwright==1.62.0
+      - run: python -m playwright install chromium --no-shell --with-deps
       - run: python .github/tests/test_launcher.py
       - run: python .github/tests/test_downloads.py
+      - run: python .github/tests/test_browser_host.py
       - run: python -m PyInstaller --onefile --name Master-IT-Toolkit --paths MASTER-IT-TOOLKIT .github/scripts/launcher-entry.py
       - run: python .github/scripts/package_launcher.py "${{ matrix.binary }}" "${{ matrix.label }}"
       - uses: actions/upload-artifact@v4

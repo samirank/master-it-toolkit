@@ -50,3 +50,7 @@ MASTER-IT-TOOLKIT/assets/download-receipts.json
 
 **/Ready/
 **/.extract-*/
+
+.codex-remote-attachments/
+MASTER-IT-TOOLKIT/runtime-browser/
+MASTER-IT-TOOLKIT/runtime-licenses/

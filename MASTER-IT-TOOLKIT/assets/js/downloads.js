@@ -34,6 +34,7 @@
     const [sr,fr]=await Promise.all([fetch(api('status')),fetch(api('tool-files?tool='+encodeURIComponent(tool.id)))]);
     if(!sr.ok||!fr.ok)throw Error('Launcher connection unavailable');
     const state=await sr.json(),folder=await fr.json();pathField.value=folder.folder;
+    if(state.browserNotice?.tool===tool.id)transfer.textContent=state.browserNotice.message;
     fileList.replaceChildren(element('h3','Files in destination'));
     if(!folder.files.length)fileList.append(element('p','No downloaded files in this folder yet.'));
     for(const f of folder.files){const row=element('div');row.className='download-file';row.append(element('strong',f.name+(f.partial?' · In progress':'')),element('small',f.kind==='folder'?'Folder':(f.size/1048576).toFixed(2)+' MB'),element('code',f.path));fileList.append(row);}
@@ -61,7 +62,12 @@
    controls.append(scan,upload,picker);dialog.append(controls);poll();const timer=setInterval(poll,1500);dialog.addEventListener('close',()=>clearInterval(timer));
   }
   const official=()=>{const a=element('a','Open publisher downloads ↗');a.href=tool.officialDownload;a.target='_blank';a.rel='noopener noreferrer';
-   a.onclick=event=>{event.preventDefault();watching=true;window.open(tool.officialDownload,'_blank','popup,width=1100,height=800,noopener,noreferrer');transfer.textContent=window.TOOLKIT_LAUNCHER?'Publisher window opened. Save to the destination above, or import the file here. Completed files trigger a local scan; publisher transfer progress remains in its browser download panel.':'Publisher window opened. Local file management requires the launcher.';};dialog.append(a);};
+   a.onclick=async event=>{event.preventDefault();
+    if(window.TOOLKIT_LAUNCHER){
+     try{const r=await fetch(api('action'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'vendor-window',tool:tool.id,confirmed:true})});const data=await r.json();if(!r.ok)throw Error(data.error);tracking=true;transfer.textContent=data.message;}
+     catch(error){transfer.textContent=error.message;}
+    }else{window.open(tool.officialDownload,'_blank','popup,width=1100,height=800,noopener,noreferrer');transfer.textContent='Demo downloads use your browser settings. Use the bundled desktop app to save directly into the toolkit.';}
+   };dialog.append(a);};
   let info;
   try{
    if(window.TOOLKIT_LAUNCHER){
@@ -102,7 +108,7 @@
       const response=await fetch(new URL('api/action',location.href),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'download',tool:tool.id,assets,confirmed:true})});
       const body=await response.json();if(!response.ok)throw Error(body.error);
       tracking=true;status.textContent='Download started. Progress and saved files appear below.';poll();
-      document.querySelector('.launcher-panel').open=true;
+
      }catch(error){transfer.classList.remove('is-loading');activity(error.message,false);status.textContent=error.message;submit.disabled=false;}
     };dialog.append(submit);
    }

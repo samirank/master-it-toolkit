@@ -7,7 +7,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   const url=await new Promise((resolve,reject)=>{process.stdout.once('data',d=>resolve(d.toString().trim()));process.once('error',reject);process.stderr.on('data',d=>console.error(d.toString()));});
   browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
   const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(url);await page.getByRole('button',{name:'Scan local inventory',exact:true}).waitFor();
+  await page.goto(url);assert.equal(await page.locator('.launcher-panel').getAttribute('open'),null);await page.locator('.launcher-panel > summary').click();await page.getByRole('button',{name:'Scan local inventory',exact:true}).waitFor();
   assert.equal(await page.locator('.local-label').innerText(),'LAUNCHER MODE');
   assert(!(await page.locator('main').innerText()).includes('HOSTED DEMO'));
   page.once('dialog',d=>d.accept());await page.getByRole('button',{name:'Scan local inventory',exact:true}).click();
@@ -59,13 +59,13 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   assert((await page.getByRole('textbox',{name:'Download destination'}).inputValue()).includes('Remote'));
   assert(await page.getByRole('button',{name:'Copy destination path'}).isVisible());
   await page.getByText('No downloaded files in this folder yet.',{exact:true}).waitFor();
-  await page.evaluate(()=>{window.open=(...args)=>{window.popupArgs=args;return null;};});
+  let publisherRequest;await page.route('**/api/action',route=>{const body=route.request().postDataJSON();if(body.action==='vendor-window'){publisherRequest=body;return route.fulfill({status:202,json:{message:'Managed publisher window opened'}});}return route.fallback();});
   await page.getByRole('link',{name:'Open publisher downloads ↗'}).click();
-  assert((await page.evaluate(()=>window.popupArgs[2])).includes('popup'));
+  await page.getByText('Managed publisher window opened',{exact:true}).waitFor();assert.equal(publisherRequest.tool,'anydesk');
   await page.route('**/api/action',route=>{if(route.request().postDataJSON().action==='inventory')callbacks++;return route.fulfill({status:202,json:{message:'Scanning'}});});
   vendorFiles=[{name:'AnyDesk.exe',path:'D:/MASTER-IT-TOOLKIT/Remote/AnyDesk.exe',size:123,modified:1,partial:false}];
   await page.waitForFunction(()=>document.querySelector('.download-files').textContent.includes('AnyDesk.exe'));
-  await new Promise(resolve=>setTimeout(resolve,5000));assert.equal(callbacks,1);
+  await new Promise(resolve=>setTimeout(resolve,1000));assert.equal(callbacks,0); // Managed browser owns the completion scan; no duplicate watcher scan.
   await page.screenshot({path:path.resolve(__dirname,'../../.development/download-manager.png')});
   await page.locator('.download-dialog').getByRole('button',{name:'Close',exact:true}).click();
   await page.setViewportSize({width:390,height:844});

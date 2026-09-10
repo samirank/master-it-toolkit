@@ -3,7 +3,8 @@
   'use strict';
   const endpoint = new URL('api/', location.href);
   const panel = document.getElementById('launcher-panel');
-  panel.closest('details').open = true;
+  panel.closest('details').open = false;
+  const summary=message=>String(message||'Ready.').split(/\r?\n/)[0].slice(0,180);
   let busy = false;
   let initialized = false;
   let lastMessage = '';
@@ -16,13 +17,13 @@
     activity.hidden=false;activity.classList.toggle('is-working',!!state.busy);activity.classList.toggle('is-error',state.stage==='error');activity.setAttribute('aria-busy',String(!!state.busy));
     activity.querySelector('button').hidden=!!state.busy;
     document.getElementById('activity-title').textContent=state.busy?'Working…':state.stage==='error'?'Action stopped':'Finished';
-    document.getElementById('activity-message').textContent=state.message;
+    document.getElementById('activity-message').textContent=summary(state.message);
     if(state.busy){if(state.startedAt)startedAt=state.startedAt*1000;else if(!startedAt)startedAt=Date.now();}
     else{startedAt=0;document.getElementById('activity-elapsed').textContent='';}
   }
   setInterval(()=>{if(startedAt){const seconds=Math.floor((Date.now()-startedAt)/1000);document.getElementById('activity-elapsed').textContent='Running · '+Math.floor(seconds/60)+'m '+seconds%60+'s';}},1000);
   window.addEventListener('toolkit-activity',event=>{showActivity({busy:true,...event.detail});});
-  panel.innerHTML = '<h2>Local launcher connected</h2><p>Run a bundled script in its own terminal, or update the toolkit from GitHub. Windows scripts require Windows; repair may require an administrator launcher.</p><div id="launcher-actions" class="actions"></div><progress id="launcher-progress" aria-label="Current transfer progress" max="100" hidden></progress><p id="launcher-status" role="status">Connecting…</p>';
+  panel.innerHTML = '<h2>Local launcher connected</h2><p>Run a bundled script in its own terminal, or update the toolkit from GitHub. Windows scripts require Windows; repair may require an administrator launcher.</p><div id="launcher-actions" class="actions"></div><progress id="launcher-progress" aria-label="Current transfer progress" max="100" hidden></progress><p id="launcher-status" role="status">Connecting…</p><details class="job-log"><summary>Full report</summary><pre id="launcher-log"></pre></details><button id="activity-history">Job history</button>';
   document.querySelector('.local-label').textContent = 'LAUNCHER MODE';
   async function refresh() {
     if(refreshing)return;refreshing=true;
@@ -38,7 +39,8 @@
       if(state.busy||completed||state.message!==lastMessage&&initialized&&state.stage)showActivity(state);
       lastMessage=state.message;
       panel.setAttribute('aria-busy',String(busy));
-      document.getElementById('launcher-status').textContent = state.message+(state.received!==undefined?' · '+(state.received/1048576).toFixed(1)+' MB'+(state.total?' / '+(state.total/1048576).toFixed(1)+' MB':''):'');
+      document.getElementById('launcher-log').textContent=state.message;
+      document.getElementById('launcher-status').textContent = summary(state.message)+(state.received!==undefined?' · '+(state.received/1048576).toFixed(1)+' MB'+(state.total?' / '+(state.total/1048576).toFixed(1)+' MB':''):'');
       const meter=document.getElementById('launcher-progress');meter.hidden=!state.busy;if(state.total)meter.value=state.received/state.total*100;else meter.removeAttribute('value');
       const actions = document.getElementById('launcher-actions'); actions.replaceChildren();
       for (const item of [...state.scripts, {id:'update', name:'Update toolkit from GitHub', enabled:true}]) {
@@ -60,5 +62,16 @@
       }
     } catch (error) {document.getElementById('launcher-status').textContent = 'Launcher disconnected. Restart it to continue.';document.getElementById('launcher-progress').hidden=true;panel.setAttribute('aria-busy','false');showActivity({busy:false,stage:'error',message:'Launcher disconnected. Reconnect to check the task status.'});} finally {refreshing=false;}
   }
+  async function history(){
+    const d=document.createElement('dialog');d.className='download-dialog';d.setAttribute('aria-label','Job history');
+    const close=document.createElement('button');close.textContent='Close';close.onclick=()=>d.close();d.append(close);document.body.append(d);d.onclose=()=>d.remove();d.showModal();
+    const h=document.createElement('h2');h.textContent='Job history';d.append(h);
+    try{const response=await fetch(new URL('history',endpoint));const data=await response.json();if(data.error)throw Error(data.error);
+     if(!data.jobs.length){const p=document.createElement('p');p.textContent='No completed jobs recorded yet.';d.append(p);}
+     for(const job of data.jobs){const entry=document.createElement('details'),title=document.createElement('summary'),log=document.createElement('pre');title.textContent=new Date(job.finished*1000).toLocaleString()+' · '+job.action+' · '+job.stage;log.textContent=job.message;entry.className='job-log';entry.append(title,log);d.append(entry);}
+    }catch(error){const p=document.createElement('p');p.textContent=error.message;d.append(p);}
+  }
+  document.getElementById('activity-history').onclick=history;
+  const reportButton=document.createElement('button');reportButton.textContent='Logs';reportButton.onclick=history;activity.append(reportButton);
   refresh(); setInterval(refresh, 2500);
 })();

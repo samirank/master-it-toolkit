@@ -23,6 +23,8 @@ import tool_downloads
 import install_tools
 import host_inventory
 import portable_tools
+import activity_store
+import browser_host
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
 SCRIPTS = {
@@ -53,7 +55,7 @@ def safe_path(root, name):
 def managed_name(name):
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
-    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
+    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
         return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
@@ -168,6 +170,8 @@ class Server(ThreadingHTTPServer):
         self.lock = threading.Lock()
         self.state = {'busy': False, 'message': 'Ready.'}
         self.workflow = None
+        self.history = activity_store.Store(root, safe_path, self.token)
+        self.browser = browser_host.Host(self, safe_path, lambda: run_script('inventory'))
         super().__init__(('127.0.0.1', port), Handler)
         self.origin = 'http://127.0.0.1:' + str(self.server_port)
     def job(self, action, body=None):
@@ -196,6 +200,7 @@ class Server(ThreadingHTTPServer):
         except Exception as error:
             self.state = dict(context, busy=False, message='Stopped: ' + str(error), stage='error')
         finally:
+            self.history.record(action, self.state)
             self.workflow = None
             self.lock.release()
 
@@ -220,6 +225,9 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         route = self.route()
         if route is None: return self.reply(403, {'error': 'Open the URL printed by your launcher.'})
+        if route == 'api/history':
+            try: return self.reply(200, self.server.history.recent())
+            except Exception as error: return self.reply(500, {'error':str(error)})
         if route == 'api/run-options':
             try:
                 query = urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query)
@@ -253,7 +261,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self.reply(200, tool_downloads.options(self.server.root, query.get('tool', [''])[0]))
             except Exception as error: return self.reply(400, {'error': str(error)})
         if route == 'api/status':
-            return self.reply(200, dict(self.server.state, scripts=[{'id': key, 'name': label, 'enabled': platform == 'all' or os.name == 'nt', 'path': path} for key, (label, path, platform) in SCRIPTS.items()]))
+            return self.reply(200, dict(self.server.state, browserNotice=self.server.browser.notice, managedBrowser=self.server.browser.available(), historyError=self.server.history.error, scripts=[{'id': key, 'name': label, 'enabled': platform == 'all' or os.name == 'nt', 'path': path} for key, (label, path, platform) in SCRIPTS.items()]))
         if route == 'api/inventory':
             try:
                 text=(self.server.root/'assets/js/local-inventory.js').read_text('utf-8-sig')
@@ -283,7 +291,7 @@ class Handler(BaseHTTPRequestHandler):
             if not 0 < size <= 1024: raise ValueError()
             body = json.loads(self.rfile.read(size))
             action = body['action']
-            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'install', 'installed-apps', 'system-restore', 'run-portable', 'workflow', 'workflow-control'): raise ValueError()
+            if body.get('confirmed') is not True or action not in (*SCRIPTS, 'update', 'download', 'install', 'installed-apps', 'system-restore', 'run-portable', 'workflow', 'workflow-control', 'vendor-window'): raise ValueError()
             if action == 'run-portable' and not all(isinstance(body.get(k),str) for k in ('tool','executable')): raise ValueError()
             if action == 'workflow' and not all(isinstance(body.get(k),str) for k in ('workflow','mode')): raise ValueError()
             if action == 'install':
@@ -291,6 +299,14 @@ class Handler(BaseHTTPRequestHandler):
             if action == 'download':
                 if not isinstance(body.get('tool'), str) or not isinstance(body.get('assets'), list) or not 1 <= len(body['assets']) <= 50 or any(not isinstance(a, str) for a in body['assets']): raise ValueError()
         except (ValueError, KeyError, TypeError): return self.reply(400, {'error': 'Invalid action'})
+        if action == 'vendor-window':
+            try:
+                catalog = json.loads((self.server.root/'assets/toolkit-manifest.json').read_text('utf-8'))
+                tool = next((t for t in catalog if t['id'] == body.get('tool')), None)
+                if not tool or not tool.get('officialDownload','').startswith('https://'): raise ValueError('Unknown publisher')
+                self.server.browser.open(tool['officialDownload'], tool['id'])
+                return self.reply(202, {'message':'Publisher window opening. Downloads will be saved in this tool’s folder and scanned automatically.'})
+            except Exception as error: return self.reply(400, {'error':str(error)})
         if action == 'workflow-control':
             try:
                 if not self.server.workflow: raise ValueError('No workflow is running')
@@ -383,7 +399,10 @@ if __name__ == '__main__':
         server.lock.acquire()
         server.state = {'busy':True,'startedAt':time.time(),'message':'Scanning this PC and organizing SSD packages…'}
         threading.Thread(target=server.job,args=('inventory',),daemon=True).start()
-    open_app(url)
+    if server.browser.available(): server.browser.open(url)
+    else: open_app(url)
     try: server.serve_forever()
     except KeyboardInterrupt: pass
-    finally: server.server_close()
+    finally:
+        server.browser.stop.set()
+        server.server_close()

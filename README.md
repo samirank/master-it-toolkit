@@ -238,3 +238,40 @@ paths, a preview, logs and independent verification. FastCopy remains an optiona
 GUI alternative. The copy step is currently a manual checkpoint: this release
 does not introduce a configured, unattended Robocopy/rsync copy adapter. No files
 are copied until the technician explicitly configures and starts the chosen tool.
+
+
+COMPACT REPORTS AND BUNDLED BROWSER
+The launcher controls start collapsed. Status and popup notifications show a short
+summary; expand Full report or open Logs / Job history to read complete output.
+Local SQLite history retains the latest 500 jobs (the dialog shows 100), under
+70_DOCUMENTATION/Service-Notes/Activity/activity.sqlite. It is excluded from
+releases, static serving and toolkit updates. Back up private service notes separately.
+Existing installation records remain available through installation history.
+
+New standalone packages include their own browser engine and driver. Publisher
+windows use isolated temporary profiles and route downloaded software into the
+selected catalog folder, followed by a scan/organization callback. Existing filenames
+are preserved; unsupported files and transfers attempted during another active job
+are rejected and logged. Downloads are staged in 90_TEMP/browser-sessions, never
+in the user's normal Downloads folder, and are never automatically executed.
+Closing a publisher window can cancel its transfers. Some vendors may refuse
+embedded/automated browsers; use a direct publisher package or explicit file import.
+
+Dashboard browser data persists in the private Service-Notes/BrowserProfile folder.
+When moving from your old browser, export its workspace backup and import it into
+the bundled app if you need its notes/favorites. Publisher cookies are temporary.
+Dashboard report exports go to Service-Notes/Exports. Browser software has its own
+third-party notices in runtime-licenses, including the bundled browser credits.
+
+Upgrade the COMPLETE standalone package to obtain new browser/runtime versions;
+the source-only GitHub updater does not replace the browser or launcher EXE.
+Keep the executable beside MASTER-IT-TOOLKIT. Existing source-only installations
+can still use direct downloads/import, but managed publisher windows require the
+new runtime. Source developers: install playwright==1.62.0 in a virtual environment,
+set PLAYWRIGHT_BROWSERS_PATH to the toolkit runtime-browser folder, then run
+python -m playwright install chromium --no-shell (Linux also needs system browser dependencies).
+
+SQLite is a history database, not an authentication or encryption boundary.
+The existing random local session URL and same-origin request protection remain;
+this version adds no technician accounts or password vault. It does not encrypt
+files on the SSD. The bundled desktop window is not a browser-installed PWA.
