@@ -428,5 +428,9 @@
   "rclone": {
     "provider": "github",
     "repo": "rclone/rclone"
+  },
+  "bitwarden": {
+    "provider": "winget",
+    "package": "Bitwarden.Bitwarden"
   }
 }

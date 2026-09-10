@@ -19211,7 +19211,8 @@
     "description": "Maintain a local encrypted password database.",
     "categories": [
       "Malware & Security",
-      "Software Installers"
+      "Software Installers",
+      "Security & Authentication"
     ],
     "tags": [
       "KeePassXC",
@@ -25490,6 +25491,178 @@
       "Download the native application for your platform from the official publisher.",
       "Install and sign in with your own provider account or activation details.",
       "Choose a server and review protocol, kill-switch and local-network access settings. Test internet access, DNS and NAS access before enabling automatic connection."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "bitwarden",
+    "name": "Bitwarden",
+    "developer": "Bitwarden Inc.",
+    "description": "Password manager for vault storage, password generation and browser autofill.",
+    "categories": [
+      "Security & Authentication"
+    ],
+    "tags": [
+      "bitwarden",
+      "bitwarden",
+      "password manager",
+      "authentication",
+      "auth",
+      "mfa",
+      "vault",
+      "passwords"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Freemium",
+    "personalLicenseNotes": "Free and paid plans are available; review current feature and device limits.",
+    "technicianLicenseNotes": "Use the owner’s account or approved organizational vault. Review business plan and sharing requirements.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://bitwarden.com/",
+    "officialDownload": "https://bitwarden.com/download/",
+    "documentation": "https://bitwarden.com/help/getting-started-desktop/",
+    "localFolder": "40_INSTALLERS/Security/bitwarden",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "Bitwarden*.exe",
+      "Bitwarden*.msi",
+      "Bitwarden*.zip",
+      "Bitwarden*.dmg",
+      "Bitwarden*.AppImage",
+      "Bitwarden*.deb",
+      "Bitwarden*.rpm"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Do not place master passwords, recovery codes, decrypted vault exports or client secrets in toolkit notes or shared download folders.",
+    "notes": "Bitwarden has open-source clients and free/paid service tiers. Managed Windows downloads use repository-maintained WinGet metadata; other platforms and browser extensions use the publisher page.",
+    "sourceStatus": "Official download and setup documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install the official desktop app or browser extension for the device owner.",
+      "Create or sign in to the owner’s vault, choose a strong master passphrase and enable supported multifactor authentication.",
+      "Test saving, autofill and locking with a sample entry; configure vault timeout and keep recovery information separately."
+    ],
+    "packagePatterns": [
+      "*.exe",
+      "*.msi",
+      "*.msix",
+      "*.msixbundle",
+      "*.zip",
+      "*.7z",
+      "*.iso",
+      "*.dmg",
+      "*.pkg",
+      "*.deb",
+      "*.rpm",
+      "*.AppImage",
+      "*.tar.xz",
+      "*.tar.gz"
+    ]
+  },
+  {
+    "id": "lastpass",
+    "name": "LastPass",
+    "developer": "LastPass",
+    "description": "Password manager for vault storage, password generation and browser autofill.",
+    "categories": [
+      "Security & Authentication"
+    ],
+    "tags": [
+      "lastpass",
+      "lastpass",
+      "password manager",
+      "authentication",
+      "auth",
+      "mfa",
+      "vault",
+      "passwords"
+    ],
+    "useCases": [],
+    "priority": "P2",
+    "license": "Freemium",
+    "personalLicenseNotes": "Free and paid plans are available; review current feature and device limits.",
+    "technicianLicenseNotes": "Use the owner’s account or approved organizational vault. Review business plan and sharing requirements.",
+    "portable": false,
+    "bootable": false,
+    "offline": true,
+    "os": [
+      "Windows",
+      "Linux",
+      "macOS"
+    ],
+    "architecture": [
+      "x64",
+      "arm64; package availability varies"
+    ],
+    "estimatedSizeMB": 300,
+    "officialWebsite": "https://www.lastpass.com/password-manager",
+    "officialDownload": "https://lastpass.com/misc_download2.php?lang=en_US",
+    "documentation": "https://community.lastpass.com/kb",
+    "localFolder": "40_INSTALLERS/Security/lastpass",
+    "localExecutable": "",
+    "inventoryPatterns": [
+      "LastPass*.exe",
+      "LastPass*.msi",
+      "LastPass*.dmg",
+      "LastPass*.pkg",
+      "lastpass*.deb"
+    ],
+    "kind": "Installer",
+    "localVersion": "",
+    "latestVersion": "",
+    "currentVersion": "",
+    "lastChecked": "2026-09-10",
+    "updateStatus": "unknown",
+    "manualVersionCheck": true,
+    "freshDownloadRequired": false,
+    "risk": "CAUTION",
+    "caution": "Do not place master passwords, recovery codes, decrypted vault exports or client secrets in toolkit notes or shared download folders.",
+    "notes": "Publisher-managed downloads include browser extensions and supported desktop apps. On Linux use a supported browser extension. Review the selected plan’s current limits.",
+    "sourceStatus": "Official download and setup documentation reviewed",
+    "command": "",
+    "defaultFavorite": false,
+    "sourceCheckedAt": "2026-09-10",
+    "quickStart": [
+      "Install the official desktop app or browser extension for the device owner.",
+      "Create or sign in to the owner’s vault, choose a strong master passphrase and enable supported multifactor authentication.",
+      "Test saving, autofill and locking with a sample entry; configure vault timeout and keep recovery information separately."
     ],
     "packagePatterns": [
       "*.exe",

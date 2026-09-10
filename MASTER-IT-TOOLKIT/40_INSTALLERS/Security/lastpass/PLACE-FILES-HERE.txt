@@ -1,0 +1,1 @@
+Store LastPass installer packages here, not vault data or recovery secrets. Use the official publisher for browser extensions.
