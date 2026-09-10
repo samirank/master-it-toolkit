@@ -75,11 +75,41 @@ def launch(root, tool_id, executable, safe_path, progress, stopped=lambda: False
     return 'Application exited. Verify its results; a helper process may still be open. Exit does not certify success.'
 
 
+def validate_custom_workflows(root, definitions):
+    catalog={t['id'] for t in json.loads((root/'assets/toolkit-manifest.json').read_text('utf-8'))}
+    if not isinstance(definitions,dict) or len(definitions)>100: raise ValueError('Up to 100 custom workflows supported')
+    for id,definition in definitions.items():
+        if not re.fullmatch(r'custom-[a-zA-Z0-9-]{1,80}',id) or not isinstance(definition,dict): raise ValueError('Invalid custom workflow')
+        if not isinstance(definition.get('name'),str) or not 1<=len(definition['name'].strip())<=120: raise ValueError('Name must be 1–120 characters')
+        if definition.get('platform') not in ('Windows','Linux','macOS'): raise ValueError('Choose a supported platform')
+        steps=definition.get('steps')
+        if not isinstance(steps,list) or not 1<=len(steps)<=200: raise ValueError('Use 1–200 steps')
+        for step in steps:
+            if not isinstance(step,dict) or set(step)-{'text','tool','action','url'}: raise ValueError('Invalid step fields')
+            if not isinstance(step.get('text'),str) or not 1<=len(step['text'].strip())<=4000: raise ValueError('Each step needs instructions')
+            if step.get('tool') and step['tool'] not in catalog: raise ValueError('Unknown step tool')
+            if step.get('action','manual') not in ('manual','install','run'): raise ValueError('Unsupported step action')
+            if step.get('action') in ('install','run') and not step.get('tool'): raise ValueError('Choose a tool for this action')
+            if step.get('url') and (not isinstance(step['url'],str) or not step['url'].startswith('https://') or len(step['url'])>2000): raise ValueError('Documentation links must use HTTPS')
+    return definitions
+
+
 class Workflow:
     def __init__(self, root, workflow_id, mode, safe_path, publish):
         definitions = json.loads((root / 'assets/workflows.json').read_text('utf-8'))
+        if workflow_id.startswith('build-'):
+            definitions.update(json.loads((root/'assets/build-profiles.json').read_text('utf-8')))
+        elif workflow_id.startswith('custom-'):
+            import activity_store
+            custom=activity_store.Store(root,safe_path).workspace().get('customWorkflows',{})
+            definitions.update(validate_custom_workflows(root,custom))
         if workflow_id not in definitions or mode not in ('manual', 'automatic'): raise ValueError('Unknown workflow or mode')
         self.definition = definitions[workflow_id]
+        # A profile for another OS remains useful as a preview, but must not run here.
+        import platform
+        host={'Windows':'Windows','Linux':'Linux','Darwin':'macOS'}.get(platform.system())
+        if self.definition.get('platform') and self.definition['platform']!=host:
+            raise ValueError('This build targets '+self.definition['platform']+'. Run it on that operating system, or clone it for this PC.')
         self.root, self.safe_path, self.publish = root, safe_path, publish
         self.mode, self.id = mode, secrets.token_hex(12)
         self.condition = threading.Condition()
@@ -99,13 +129,17 @@ class Workflow:
             if body.get('run') != self.id: raise ValueError('This workflow session has changed')
             command = body.get('command')
             if command == 'stop': self.stop = True
-            elif command in ('next', 'skip', 'run') and self.waiting and body.get('step') == self.step and self.command is None:
+            elif command in ('next', 'skip', 'run', 'install') and self.waiting and body.get('step') == self.step and self.command is None:
+                if command=='install':
+                    if self.definition['steps'][self.step].get('action')!='install': raise ValueError('This is not an install step')
+                    self.install_body={'tool':self.definition['steps'][self.step]['tool'],'package':body.get('package'),'sha256':body.get('sha256')}
                 self.command = command
                 self.waiting = False
             else: raise ValueError('This step is busy or has changed; refresh its status')
             self.condition.notify_all()
 
     def run_tool(self, step):
+        if step.get('action')=='install': return 'Review the installer for this step. Installation needs your explicit review and may request UAC.'
         if not step.get('tool'): return 'Manual checkpoint. Complete the instructions before confirming.'
         available = options(self.root, step['tool'], self.safe_path)
         if available.get('confirmationRequired'):return 'Open this tool using its Run button and review its PowerShell/UAC confirmation before continuing the workflow.'
@@ -122,7 +156,7 @@ class Workflow:
             self.waiting = False
             message = step['text']
             self.state(message)
-            if self.mode == 'automatic' and step.get('tool'):
+            if self.mode == 'automatic' and step.get('tool') and step.get('action','run')=='run':
                 message = self.run_tool(step)
             while not self.stop:
                 with self.condition:
@@ -132,7 +166,13 @@ class Workflow:
                     command, self.command = self.command, None
                     self.waiting = False
                 if self.stop: break
-                if command == 'run':
+                if command == 'install':
+                    import install_tools
+                    self.state('Installing application. Follow UAC and installer prompts…')
+                    try: message=install_tools.install(self.root,self.install_body,self.safe_path)
+                    except Exception as error: message='Installation needs attention: '+str(error)
+                    self.history.append({'step':index,'text':step['text'],'result':message})
+                elif command == 'run':
                     self.state('Opening step tool…')
                     message = self.run_tool(step)
                 else:

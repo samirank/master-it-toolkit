@@ -236,6 +236,8 @@ class Server(ThreadingHTTPServer):
                     lambda state: setattr(self, 'state', dict(context, busy=True, stage='workflow', **state)))
                 message = self.workflow.run()
                 context['workflowRecord'] = self.workflow.history
+                context['workflowName'] = self.workflow.definition['name']
+                context['workflowProfile'] = body['workflow']
             elif action == 'install':
                 message = install_tools.install(self.root, body, safe_path)
                 message += '\n' + run_script('inventory')

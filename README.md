@@ -352,3 +352,24 @@ can require a resolver update; the monitor reports this instead of guessing a UR
 Select tools using the **Select** checkboxes in All tools, Missing downloads, or Updates. The bulk-action bar supports selecting all matching results, clearing selection, downloading selected missing/latest packages by platform, adding favorites, and exporting the selected catalog entries. Selection persists across filters for the current session. Download queues never install or execute the selected programs.
 
 The whole-catalog download panel has independent priority, category, package-type and license filters alongside platform and architecture. All chosen filters apply together to the queue; Reset queue filters restores the defaults. The selected-tools action bar uses its explicit tool selection instead.
+
+### PC builds and reusable setup workflows
+
+Open **PC builds** for 18 software setup profiles: personal, office, gaming, 3D printing, electronics, developer without AI, developer with local AI, custom starter, tech support, field technician, Linux, design, video editing, study, streaming/podcast, home lab, accessible family, and research/data.
+
+Review a profile, choose the package architecture and **Download build packages**, then **Start guided build**. Download queues use the repository catalog. Specialist applications not yet in that catalog have explicit official setup links in the relevant steps (FreeCAD, PrusaSlicer, KiCad, Arduino IDE, Ollama, Inkscape and Blender). Those are manual setup steps, not automatic downloads. Some catalog apps offer portable packages rather than installers.
+
+Install steps show existing host detection, available packages and publisher signatures. They require an explicit install choice and use the existing Windows tracked installer/recovery checkpoint. Automatic workflow mode only launches eligible portable tools; it does not silently install apps, choose firmware or erase disks. Verify each step before continuing. Linux/macOS application installation remains a manual native-package-manager step. A profile for a different OS cannot execute on the current host. Builds configure an existing OS; they do not assemble hardware or create an unattended OS image.
+
+**Clone and customize** or **Create custom build** lets you name the build, choose its target OS, select catalog apps, add manual instructions and HTTPS documentation links, and reorder/remove steps. Up to 100 custom builds (200 steps each) persist in SQLite on the SSD. No authentication is required. **Export build definition** saves a portable JSON copy. **Saved run reports** exports the latest 100 completed/stopped workflow records from SQLite. An interrupted live process is not automatically resumed after restart.
+
+Optional Python command-line helper, run from the toolkit folder:
+
+```text
+python 60_SCRIPTS/Setup/build_pc.py --list
+python 60_SCRIPTS/Setup/build_pc.py --profile build-gaming --download --architecture x64
+python 60_SCRIPTS/Setup/build_pc.py --profile build-gaming
+python 60_SCRIPTS/Setup/build_pc.py --profile build-linux --mode manual
+```
+
+The helper reads the same built-in profiles and SQLite custom builds as the dashboard. Download mode only saves packages. Guided mode prompts for review at every checkpoint and logs completed runs locally. The desktop launcher does not require a separate Python installation; this optional CLI does.

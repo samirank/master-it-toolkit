@@ -387,3 +387,16 @@ built-in commands and unsupported publishers cannot all be universal one-click
 downloads. Failed sources retain their last good metadata for diagnosis but are
 not advertised as current automatic downloads. A vendor changing its API entirely
 can require a resolver update; the monitor reports this instead of guessing a URL.
+
+PC BUILDS
+Open PC builds to review 18 software setup profiles, download their packages,
+and start a guided workflow. Clone any profile or create your own; names,
+platform, apps, ordered instructions and links are stored in local SQLite.
+Installer steps need explicit review and use tracked Windows recovery checks.
+Linux/macOS native installations and specialist vendor setup links are manual.
+Automatic mode opens eligible portable tools; it never silently installs,
+erases disks or changes firmware. Export definitions and saved run reports
+from PC builds. Active runs do not automatically resume after a restart.
+Optional Python helper: python 60_SCRIPTS/Setup/build_pc.py --list
+Download example: python 60_SCRIPTS/Setup/build_pc.py --profile build-gaming --download
+Guided example: python 60_SCRIPTS/Setup/build_pc.py --profile build-gaming

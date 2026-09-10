@@ -37,9 +37,19 @@
    body.append(el('h3',w.name+' · Step '+(w.step+1)+' / '+w.count),el('p',w.current.text));
    const progress=el('progress');progress.max=w.count;progress.value=w.step;progress.setAttribute('aria-label','Workflow progress');body.append(progress);
    const controls=el('div');controls.className='actions';body.append(controls);
-   const control=async command=>{try{await api('action',{action:'workflow-control',run:w.id,step:w.step,command});await poll();}catch(e){body.append(el('p',e.message));}};
+   const control=async(command,extra={})=>{try{await api('action',{action:'workflow-control',run:w.id,step:w.step,command,...extra});await poll();}catch(e){body.append(el('p',e.message));}};
    if(w.waiting){
-    if(w.current.tool)controls.append(button('Launch step tool',()=>control('run')));
+    if(w.current.url){const a=el('a','Official instructions ↗');a.href=w.current.url;a.target='_blank';a.rel='noopener noreferrer';controls.append(a);}
+    if(w.current.action==='install')controls.append(button('Review step installer',async()=>{
+     const d=modal('Review installation'),status=el('p','Checking downloaded installers and installed apps…');d.append(status);
+     try{const info=await api('install-options?tool='+encodeURIComponent(w.current.tool));
+      status.textContent=info.reason||'Review the package and publisher. Windows installation uses the toolkit recovery checkpoint and may request UAC. Verify the result before continuing.';
+      if(info.installedOnHost)d.append(el('p','Already detected on this PC. Review its version; you can verify this step without reinstalling.'));
+      for(const file of info.files||[]){d.append(el('p',file.name+' · Publisher: '+(file.signature?.publisher||'Unknown')+' · Signature: '+file.signature?.status));const b=button('Install '+file.name,async()=>{await control('install',{package:file.path,sha256:file.sha256});d.close();});if(file.signature?.status!=='Valid'){b.disabled=true;d.append(el('p','This workflow requires a valid publisher signature. Use the individual installation review for other packages.'));}d.append(b);}
+      if(!(info.files||[]).length)d.append(el('p','Stop the workflow to download a suitable installer, or set up the portable/native edition manually and verify the step.'));
+     }catch(e){status.textContent=e.message;}
+    }));
+    else if(w.current.tool&&w.current.action!=='manual')controls.append(button('Launch step tool',()=>control('run')));
     controls.append(button('I verified this step · Continue',()=>control('next')),button('Skip · Record as unverified',()=>control('skip')));
    }else body.append(el('p','Application running… Follow its prompts and close it when finished.'));
    controls.append(button('Stop workflow',()=>control('stop')));
@@ -57,7 +67,7 @@
   finally{polling=false;}
  }
  function start(id){
-  const def=definitions[id];if(!def)return;const d=modal(def.name+' workflow');
+  const def=definitions[id]||window.ToolkitBuilds?.get(id);if(!def)return;const d=modal(def.name+' workflow');
   d.append(el('p','Prefer suitable free/open-source tools; for automation prefer documented command-line or batch interfaces. Paid editions are optional when a required capability is missing.'));
   d.append(el('p','Automatic mode opens the available portable tool for each supported step, then waits for your review. Manual mode waits for you to launch each tool. Missing tools, consent, scan findings, copy settings and destructive actions always need attention.'));
   const list=el('ol');for(const step of def.steps)list.append(el('li',step.text+(step.tool?' — '+tools.find(t=>t.id===step.tool)?.name:'')));d.append(list);
