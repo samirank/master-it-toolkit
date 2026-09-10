@@ -10,6 +10,7 @@ import sys
 import time
 
 ALIASES={
+ 'localwp':['Local','Local by Flywheel'], 'wordpress-studio':['WordPress Studio','Studio'], 'composer':['Composer'], 'wp-cli':['WP-CLI'], 'ddev':['DDEV'],
  'airvpn':['AirVPN','Eddie','Eddie UI','Eddie - AirVPN Client'],
  'expressvpn':['ExpressVPN'], 'vpn-unlimited':['VPN Unlimited','KeepSolid VPN Unlimited'], 'fastestvpn':['FastestVPN'],
  'github-desktop':['GitHub Desktop'], 'gh':['GitHub CLI','gh'], 'nodejs':['Node.js','Node.js LTS'],

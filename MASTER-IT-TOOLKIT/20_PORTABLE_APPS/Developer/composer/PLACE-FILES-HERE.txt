@@ -1,0 +1,7 @@
+Composer
+Official download: https://getcomposer.org/download/
+Documentation: https://getcomposer.org/doc/00-intro.md
+
+Install a compatible PHP runtime, or use Composer inside a managed DDEV environment.
+Follow the official installer verification instructions; confirm composer --version.
+Run composer install in a trusted project containing composer.json; commit composer.lock. Dependencies and scripts can execute project code.

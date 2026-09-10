@@ -1,0 +1,7 @@
+Local (LocalWP)
+Official download: https://localwp.com/
+Documentation: https://localwp.com/help-docs/getting-started/installing-local/
+
+Install Local for your operating system and create a new local WordPress site.
+Choose the PHP and web-server environment needed by your project; start the site and open WP Admin.
+Use the site shell for bundled WP-CLI commands. Export a backup before importing or syncing an existing site.

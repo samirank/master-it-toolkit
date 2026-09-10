@@ -432,5 +432,13 @@
   "bitwarden": {
     "provider": "winget",
     "package": "Bitwarden.Bitwarden"
+  },
+  "localwp": {
+    "provider": "winget",
+    "package": "Flywheel.Local"
+  },
+  "ddev": {
+    "provider": "github",
+    "repo": "ddev/ddev"
   }
 }

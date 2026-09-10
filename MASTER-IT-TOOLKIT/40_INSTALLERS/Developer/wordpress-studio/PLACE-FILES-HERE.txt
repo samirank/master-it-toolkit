@@ -1,0 +1,7 @@
+WordPress Studio
+Official download: https://developer.wordpress.com/studio/
+Documentation: https://developer.wordpress.com/docs/developer-tools/studio/
+
+Install Studio and create a local WordPress site.
+Open WP Admin and the site files in your editor; test your theme or plugin locally.
+Export your site before synchronizing or publishing changes; review what files and database content will be transferred.

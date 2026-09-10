@@ -396,3 +396,9 @@ python 60_SCRIPTS/Backup/toolkit_backup.py --verify Z:\Backups\master-it-full-EX
 ```
 
 Backup & Sync includes Veeam Agent, Restic, Kopia, Duplicati, rclone and existing imaging/sync alternatives. Follow each publisher’s edition, encryption and recovery guidance.
+
+## WordPress development
+
+The WordPress Development category includes Local (LocalWP), WordPress Studio, DDEV, WP-CLI and Composer. Each entry includes official documentation, setup steps and a dedicated download folder. These tools are also available in the custom PC-build editor.
+
+Choose Local or Studio for desktop site management, or DDEV for a container-based environment. DDEV requires a supported Docker provider; Composer and standalone WP-CLI require PHP. Local and DDEV already provide a site-specific WP-CLI environment. Prepare runtimes, container images and project dependencies before going offline. Back up both site files and the database before imports or synchronization; projects stored outside the toolkit are not automatically included in toolkit backups.

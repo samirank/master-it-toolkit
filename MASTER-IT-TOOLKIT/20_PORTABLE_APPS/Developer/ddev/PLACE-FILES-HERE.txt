@@ -1,0 +1,7 @@
+DDEV
+Official download: https://docs.ddev.com/en/stable/users/install/ddev-installation/
+Documentation: https://docs.ddev.com/
+
+Install a supported Docker provider and DDEV using the platform-specific official guide; Windows setup may require WSL2.
+In a project directory, run ddev config and choose WordPress, then ddev start. Initial container images require internet access.
+Use ddev wp for WordPress commands and ddev composer for PHP dependencies. Export the database and back up files before migration.

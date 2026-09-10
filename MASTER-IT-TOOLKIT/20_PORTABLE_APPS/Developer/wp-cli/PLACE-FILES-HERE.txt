@@ -1,0 +1,7 @@
+WP-CLI
+Official download: https://make.wordpress.org/cli/handbook/guides/installing/
+Documentation: https://developer.wordpress.org/cli/commands/
+
+Prefer the WP-CLI bundled with Local or DDEV; otherwise follow the official PHP and shell prerequisites and installation guide.
+Verify wp --info, then run wp plugin list inside a local WordPress installation.
+Export the database before updates or search-replace. Review command documentation and use a dry run where supported; do not target production unintentionally.
