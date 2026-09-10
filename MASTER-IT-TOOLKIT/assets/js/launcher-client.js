@@ -8,7 +8,20 @@
   let busy = false;
   let initialized = false;
   let lastMessage = '';
-  let refreshing=false, startedAt=0;
+  let refreshing=false, startedAt=0, pending=false;
+  function confirmAction(item,message){
+    return new Promise(resolve=>{
+      const dialog=document.createElement('dialog');dialog.className='download-dialog';dialog.setAttribute('aria-label',item.name);
+      const title=document.createElement('h2');title.textContent=item.name;
+      const description=document.createElement('p');description.textContent=message;description.style.whiteSpace='pre-line';
+      const controls=document.createElement('div');controls.className='actions';
+      const cancel=document.createElement('button');cancel.textContent='Cancel';cancel.onclick=()=>dialog.close('cancel');
+      const run=document.createElement('button');run.textContent='Run now';run.className='primary';run.onclick=()=>dialog.close('run');
+      controls.append(cancel,run);dialog.append(title,description,controls);document.body.append(dialog);
+      dialog.addEventListener('close',()=>{const accepted=dialog.returnValue==='run';dialog.remove();resolve(accepted);},{once:true});
+      dialog.showModal();cancel.focus();
+    });
+  }
   const activity=document.createElement('aside');activity.id='toolkit-activity';activity.hidden=true;activity.setAttribute('aria-label','Background activity');
   activity.innerHTML='<span class="activity-spinner" aria-hidden="true"></span><div class="activity-copy"><strong id="activity-title"></strong><p id="activity-message" role="status"></p><small id="activity-elapsed" aria-hidden="true"></small></div><button aria-label="Dismiss activity notification" hidden>×</button>';
   document.body.append(activity);
@@ -27,7 +40,7 @@
   panel.innerHTML = '<h2>Local launcher connected</h2><p>Run a bundled script in its own terminal, or update the toolkit from GitHub. Windows scripts require Windows; repair may require an administrator launcher.</p><div id="launcher-actions" class="actions"></div><progress id="launcher-progress" aria-label="Current transfer progress" max="100" hidden></progress><p id="launcher-status" role="status">Connecting…</p><details class="job-log"><summary>Full report</summary><pre id="launcher-log"></pre></details><button id="activity-history">Job history</button>';
   document.querySelector('.local-label').textContent = 'LAUNCHER MODE';
   async function refresh() {
-    if(refreshing)return;refreshing=true;
+    if(refreshing||pending)return;refreshing=true;
     try {
       const response = await fetch(new URL('status', endpoint));
       if (!response.ok) throw new Error('Session unavailable');
@@ -49,15 +62,19 @@
         button.disabled = busy || !item.enabled;
         button.title = item.path || 'Update application, scripts and documentation; preserve downloaded tools and local data.';
         button.onclick = async () => {
+          if(pending)return;
+          pending=true;
           const message = item.id === 'update' ? 'Download and apply the latest toolkit from samirank/master-it-toolkit? Existing files are backed up; locally modified managed files stop the update. Restart the launcher afterward.' : 'Run ' + item.name + '?\n' + item.path + '\nReview the script terminal for prompts and results. PowerShell uses a process-only execution policy; organization policy still applies.';
-          if (!confirm(message)) return;
+          if (!['inventory','check-updates','metadata','manifest'].includes(item.id) && !await confirmAction(item,message)) {pending=false;document.getElementById('launcher-status').textContent=item.name+' cancelled.';return;}
           button.disabled = true;showActivity({busy:true,message:'Starting '+item.name+'…'});
+          document.getElementById('launcher-status').textContent='Starting '+item.name+'…';
           try {
             const result = await fetch(new URL('action', endpoint), {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({action:item.id, confirmed:true})});
             const data = await result.json();
             if (!result.ok) throw new Error(data.error);
-            await refresh();
-          } catch (error) {document.getElementById('launcher-status').textContent = error.message;showActivity({busy:false,stage:'error',message:error.message});await refresh();}
+            pending=false;showActivity(data);await refresh();
+          } catch (error) {document.getElementById('launcher-status').textContent = error.message;showActivity({busy:false,stage:'error',message:error.message});}
+          finally{pending=false;button.disabled=false;}
         };
         actions.append(button);
       }

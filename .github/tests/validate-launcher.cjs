@@ -10,7 +10,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.goto(url);assert.equal(await page.locator('.launcher-panel').getAttribute('open'),null);await page.locator('.launcher-panel > summary').click();await page.getByRole('button',{name:'Scan local inventory',exact:true}).waitFor();
   assert.equal(await page.locator('.local-label').innerText(),'LAUNCHER MODE');
   assert(!(await page.locator('main').innerText()).includes('HOSTED DEMO'));
-  page.once('dialog',d=>d.accept());await page.getByRole('button',{name:'Scan local inventory',exact:true}).click();
+  await page.getByRole('button',{name:'Scan local inventory',exact:true}).click();
   await page.locator('#launcher-status').filter({hasText:'Test action completed'}).waitFor();
   assert(await page.getByRole('button',{name:'Update toolkit from GitHub',exact:true}).isEnabled());
   assert(!(await page.locator('.page-heading').innerText()).includes('Hosted demo'));
