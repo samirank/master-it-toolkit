@@ -15,6 +15,23 @@ import portable_tools as portable
 
 
 class PortableTests(unittest.TestCase):
+    def test_shutup_versioned_download_scans_and_offers_run_without_extraction(self):
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('shutup_scanner',ROOT/'60_SCRIPTS/Inventory/update_toolkit_inventory.py')
+        scanner=importlib.util.module_from_spec(spec);spec.loader.exec_module(scanner);scanner.ROOT=self.root
+        tool=next(t for t in json.loads((ROOT/'assets/toolkit-manifest.json').read_text('utf-8')) if t['id']=='shutup')
+        tool['localFolder']='apps'
+        (self.root/'assets/toolkit-manifest.json').write_text(json.dumps([tool]))
+        (self.root/'assets/js/tools-data.js').write_text('window.TOOLKIT_DATA = '+json.dumps([tool])+';')
+        names=['OOSU10.exe','ooshutup10_3.5.1130_x64.exe','ooshutup10_4.0.100_x86.exe','ooshutup10_4.0.100_arm64.exe']
+        for name in names:(self.root/'apps'/name).write_bytes(b'Harmless fixture; never executed')
+        inventory=scanner.scan();record=inventory['tools']['shutup']
+        self.assertTrue(record['downloaded']);self.assertTrue(record['ready']);self.assertFalse(record['needsExtraction'])
+        (self.root/'assets/js/local-inventory.js').write_text('window.LOCAL_INVENTORY = '+json.dumps(inventory)+';')
+        with patch.object(portable,'os',SimpleNamespace(name='nt')):
+            choices=portable.options(self.root,'shutup',launcher.safe_path)
+        self.assertEqual({f['name'] for f in choices['files']},set(names));self.assertFalse(choices['reason'])
+
     def test_winutil_script_launch_is_explicit_and_has_fixed_arguments(self):
         self.tool.update(id='winutil',inventoryPatterns=['winutil*.ps1'])
         (self.root/'assets/toolkit-manifest.json').write_text(json.dumps([self.tool]))

@@ -955,7 +955,10 @@
     "localFolder": "10_WINDOWS_TOOLBOX/02_Privacy-Telemetry/ShutUp10",
     "localExecutable": "10_WINDOWS_TOOLBOX/02_Privacy-Telemetry/ShutUp10/OOSU10.exe",
     "inventoryPatterns": [
-      "OOSU10.exe"
+      "OOSU10.exe",
+      "ooshutup10_[0-9]*_x64.exe",
+      "ooshutup10_[0-9]*_x86.exe",
+      "ooshutup10_[0-9]*_arm64.exe"
     ],
     "kind": "Portable",
     "localVersion": "",
