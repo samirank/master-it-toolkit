@@ -16,6 +16,16 @@ import launcher
 import tool_downloads as downloads
 
 class DownloadsTests(unittest.TestCase):
+    def test_hwinfo_discovers_only_stable_official_portable_packages(self):
+        page=b'<a href="https://www.hwinfo.com/files/hwi_852.zip">Stable</a><a href="https://www.hwinfo.com/files/hwi_853-6070.zip">Beta</a><a href="https://evil.invalid/files/hwi_999.zip">Bad</a>'
+        with patch.object(downloads,'fetch_bytes',return_value=page):
+            entry=downloads.hwinfo_portable()
+        self.assertEqual(entry['version'],'8.52')
+        self.assertEqual(entry['assets'][0]['url'],'https://www.hwinfo.com/files/hwi_852.zip')
+        self.assertEqual(entry['assets'][0]['architecture'],'universal')
+        with patch.object(downloads,'fetch_bytes',return_value=b'No matching download'):
+            with self.assertRaises(ValueError):downloads.hwinfo_portable()
+
     def test_platforms(self):
         for name,expected in [('7z2603-x64.exe','Windows'),('7z2603-linux-arm64.tar.xz','Linux'),('7z2603-mac.tar.xz','macOS')]:
             self.assertEqual(downloads.platform_for(name,['Windows']),expected)

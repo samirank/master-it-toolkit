@@ -316,7 +316,7 @@
   "assets/css/app.css": "58407ab42102347dbf11a78f7d6a459b33c20611d704d8e4b9f3392ef7eeb8c6",
   "assets/download-catalog.json": "a6efeaa3a546e8174d62b5d0eb37fac8fbb555a58efaa753176f7eabfe5c84df",
   "assets/download-manifest.json": "91ffeafaf88440010348fbd097a386b85f58426f9120f519c4315e76fa23a9d9",
-  "assets/download-sources.json": "0460dfa5aeea1fa1a01f5a1241aba9c85994d880563ce084f9f7ef15faa3f637",
+  "assets/download-sources.json": "f9206dc4add63953cbbb2251c9f557a0c5ec7089e93dce7e8e38c736443e2712",
   "assets/images/dashboard.png": "c33bfc4b94d4316b3d56f827315835193727b27851527ee94ed2b4f4fac353fe",
   "assets/js/app.js": "5d00bf712994255cf162c3c5f60a76257a3b11b21f68df833e5cb6aa31c729ae",
   "assets/js/assistant.js": "16a7db28715a2acc8d79b02504110a8c5de8a86d29cd891e45d7a454a622c8f3",
@@ -1280,5 +1280,5 @@
   "runtime-extensions/ubol/zapper-ui.html": "2afbdfcad9405c07e035299f8a27b0b5fdb399813f813275a5236e1d8d8099d6",
   "secure_vault.py": "c8491cde743b9e507c08a7f37335f744e152180e05ae185b2582dd4183140d1e",
   "setup_wizard.py": "2354921dc8c910f9c7465ca3250beb74d19cfeee6812fd62fbe4d7a742b9e427",
-  "tool_downloads.py": "7dc2190972c28b30298e7016a9aba671b42f147b80d8d4a5c0ec790a8884b1ca"
+  "tool_downloads.py": "9b6055db371f3bf361cee0beae3a77ec92348c50453d956d1f56d70fe0cefe33"
 }

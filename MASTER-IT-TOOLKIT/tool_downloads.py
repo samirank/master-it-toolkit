@@ -108,6 +108,18 @@ def sourceforge(source):
         break
     return {'version':version, 'assets':assets}
 
+def hwinfo_portable():
+    # Follow stable packages actually linked by the publisher, not a stale mirror.
+    page = fetch_bytes('https://www.hwinfo.com/download/', 2_000_000).decode('utf-8')
+    links = set(re.findall(r'https://www\.hwinfo\.com/files/hwi_([0-9]{3,4})\.zip', page))
+    if not links: raise ValueError('No stable HWiNFO portable package on the publisher page')
+    version = max(links, key=int)
+    name = 'hwi_' + version + '.zip'
+    asset = {'id': name, 'name': name, 'url': 'https://www.hwinfo.com/files/' + name, 'size': 0, 'digest': None, 'platform': 'Windows', 'architecture': 'universal'}
+    validate_asset(asset)
+    return {'version': version[:-2] + '.' + version[-2:], 'assets': [asset], 'metadataSource': 'https://www.hwinfo.com/download/'}
+
+
 def platform_for(name, supported):
     n = name.lower()
     if any(s in n for s in ('macos', 'darwin', '-mac', 'osx')) or n.endswith(('.dmg', '.pkg')): return 'macOS'
@@ -131,6 +143,8 @@ def options(root, tool_id, live=False):
         result['reason']=cached.get('reason') or cached.get('error') or 'No automatic package is currently published in the toolkit repository. Refresh the catalog or use the publisher window.'
         result['status']=cached.get('status','manual')
         return result
+    if source.get('provider')=='hwinfo':
+        result.update(hwinfo_portable()); return result
     if source.get('provider')=='sourceforge':
         result.update(sourceforge(source)); return result
     if source.get('provider')=='winget':

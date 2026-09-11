@@ -250,8 +250,7 @@
     "package": "CPUID.HWMonitor"
   },
   "hwinfo": {
-    "provider": "winget",
-    "package": "REALiX.HWiNFO"
+    "provider": "hwinfo"
   },
   "cdi": {
     "provider": "sourceforge",
