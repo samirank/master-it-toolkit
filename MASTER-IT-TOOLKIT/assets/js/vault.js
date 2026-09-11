@@ -17,14 +17,17 @@
    if(!state.configured)d.append(el('p','Use at least 6 characters. A six-digit PIN is accepted; a longer passphrase offers stronger protection.'));
    const secret=el('input');secret.type='password';secret.autocomplete='off';secret.maxLength=1024;secret.setAttribute('aria-label','Vault passphrase or recovery key');const secretField=el('label','Vault passphrase or recovery key');secretField.className='vault-field';secretField.append(secret);d.append(secretField);
    const recovery=el('input');recovery.type='checkbox';const label=el('label','Use recovery key');label.prepend(recovery);if(state.configured)d.append(label);
-   const status=el('p');status.setAttribute('role','status');d.append(status);
+   const status=el('p');status.className='vault-feedback';status.id='vault-feedback';status.setAttribute('role','status');secret.setAttribute('aria-describedby','vault-feedback');d.append(status);
+   secret.oninput=()=>{secret.removeAttribute('aria-invalid');status.textContent='';status.setAttribute('role','status');};
+   function requireSecret(message){if(secret.value.trim())return true;status.setAttribute('role','alert');status.textContent=message;secret.setAttribute('aria-invalid','true');secret.focus();return false;}
    const actions=el('div');actions.className='actions';d.append(actions);
    let recoveryPending=false;
-   function action(text,fn,parent=actions){
+   function action(text,fn,parent=actions,validate){
     const button=el('button',text);parent.append(button);
     button.onclick=async()=>{
+     if(validate&&!validate())return;
      const controls=[...d.querySelectorAll('button')];controls.forEach(n=>n.disabled=true);d.oncancel=e=>e.preventDefault();status.textContent='Working…';
-     try{await fn();}catch(e){status.textContent=e.message;}
+     try{await fn();}catch(e){status.setAttribute('role','alert');status.textContent=e.message;status.scrollIntoView({block:'nearest'});}
      finally{controls.forEach(n=>n.disabled=false);if(recoveryPending){close.disabled=true;d.oncancel=e=>e.preventDefault();}else d.oncancel=null;}
     };return button;
    }
@@ -41,11 +44,15 @@
     });
     if(state.master)action('Unlock on this master computer',async()=>{await api({operation:'master-unlock'});location.reload();});
    }else{
+    const session=el('section');session.className='vault-session';session.append(el('h3','Current session'),el('p','Locking hides your private workspace. No passphrase is needed to lock it.'),actions);d.append(session);
     action('Lock now',async()=>{await api({operation:'lock'});location.reload();});
     const section=el('section');section.className='setup-content';d.append(section,el('p','Do not use the toolkit for long-term sensitive storage. Export service records to their permanent home.'));
-    section.append(el('h3','Master computers'),el('p','Register only an OS account you trust. Enter your vault passphrase or recovery key above to authorize registration. The unlock key stays in that account’s native credential store, not on this SSD. The OS may ask you to approve keychain access.'));
-    const name=el('input');name.placeholder='Example: Home workstation';name.maxLength=80;name.setAttribute('aria-label','Master computer name');const nameField=el('label','Master computer name');nameField.className='vault-field';nameField.append(name);section.append(nameField);
-    action(state.master?'Update this master computer':'Make this a master computer',async()=>{await api({operation:'trust',secret:secret.value,recovery:recovery.checked,name:name.value});secret.value='';d.close();d.remove();dialog=null;b.click();},section);
+    section.classList.add('vault-registration');
+    section.append(el('h3',state.master?'Manage automatic unlock':'Set up automatic unlock on this computer'),el('p','Enter your vault passphrase again to authorize this change, even though the vault is already unlocked. Use your saved recovery key instead only if you select the option below.'));
+    secretField.firstChild.textContent='Confirm vault passphrase or recovery key (required)';secret.setAttribute('aria-label','Confirm vault passphrase or recovery key (required)');secret.autocomplete='current-password';
+    const name=el('input');name.placeholder='Example: Home workstation';name.maxLength=80;name.setAttribute('aria-label','Master computer name');const nameField=el('label','Master computer name');nameField.className='vault-field';nameField.append(name);section.append(nameField,secretField,label,status);
+    action(state.master?'Update this master computer':'Make this a master computer',async()=>{await api({operation:'trust',secret:secret.value,recovery:recovery.checked,name:name.value});secret.value='';d.close();d.remove();dialog=null;b.click();},section,()=>requireSecret('Enter your vault passphrase or recovery key above to register this computer.'));
+    if(state.masters?.length)section.append(el('h3','Registered master computers'));
     for(const master of state.masters||[]){
      const row=el('div');row.className='master-computer-row';row.append(el('span',master.name+' · '+({win32:'Windows',darwin:'macOS',linux:'Linux'}[master.platform]||master.platform)+(master.current?' · This account':'')));
      action('Remove '+master.name,async()=>{await api({operation:'revoke',id:master.id});d.close();d.remove();dialog=null;b.click();},row);section.append(row);

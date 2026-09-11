@@ -70,6 +70,8 @@ def status(path):
 
 def enroll(path, secret, recovery=False, name=''):
     # Fresh proof is required even in an automatically unlocked session.
+    if not isinstance(secret,str) or not secret.strip():
+        raise ValueError('Enter your vault passphrase or recovery key to register this computer.')
     if vault.status(path)['locked']:
         raise ValueError('Unlock the vault before registering a master computer.')
     vault.unlock(path, secret, recovery)

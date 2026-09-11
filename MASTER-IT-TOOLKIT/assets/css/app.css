@@ -87,3 +87,10 @@ label > input[type=checkbox], label > input[type=radio] { order:-1; }
 input:disabled, select:disabled, textarea:disabled { opacity:.55; cursor:not-allowed; }
 input[aria-invalid=true], select[aria-invalid=true], textarea[aria-invalid=true] { border-color:var(--amber); }
 .search-wrap input { min-height:0; padding:0; border:0; background:transparent; }
+
+.vault-session,.vault-registration { border:1px solid var(--line); border-radius:8px; padding:20px; margin:20px 0; }
+.vault-session .actions { margin:0; }
+.vault-feedback:empty { display:none; }
+.vault-feedback[role=alert] { color:var(--red); border-left:3px solid var(--red); background:var(--panel2); padding:12px; margin:12px 0; }
+.vault-registration > button { margin-bottom:20px; }
+.vault-registration > h3:not(:first-child) { margin-top:16px; }
