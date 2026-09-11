@@ -107,18 +107,55 @@ def generate(previous):
     revision=hashlib.sha256(json.dumps({k:[v['status'],fingerprint(v)] for k,v in entries.items()},sort_keys=True).encode()).hexdigest()[:20]
     return {'schema':1,'generatedAt':now,'revision':revision,'tools':entries,'changes':changes or previous.get('changes',[])},changes
 
-def notify(changes,revision):
-    if not changes:return
+ISSUE_TITLE='Download catalog: sources needing attention'
+ISSUE_MARKER='<!-- master-it-toolkit:catalog-health:v1 -->'
+
+def managed_issue(issue):
+    author=issue.get('author',{})
+    bot=author.get('is_bot') and author.get('login') in ('app/github-actions','github-actions[bot]')
+    body=issue.get('body') or ''
+    return bool(bot and (ISSUE_MARKER in body or
+        re.fullmatch(r'Download catalog [a-f0-9]{20}: [0-9]+ changes',issue.get('title','')) and
+        body.startswith('The download catalog was refreshed. Downloads still come from the original publishers.')))
+
+def notify(catalog):
+    # Reconcile the complete health snapshot even when the revision did not change.
+    # Routine releases stay in the catalog/Actions summary, not open GitHub issues.
     repo=os.environ['GITHUB_REPOSITORY'];owner=repo.split('/')[0]
-    rows=['The download catalog was refreshed. Downloads still come from the original publishers.','', '| Tool | Change | Version / details |','| --- | --- | --- |']
-    for c in changes:
-        detail=(c.get('previous','')+' → '+c.get('version','')).strip(' →') if c['kind']!='source-error' else c['error']
-        rows.append('| '+c['name'].replace('|','/')+' | '+c['kind']+' | '+detail.replace('|','/').replace('\n',' ')[:250]+' |')
-    rows+=['','Use **Refresh download catalog** in the toolkit, then download missing packages or updates.','', 'Catalog revision: `'+revision+'`']
-    body=Path(os.environ.get('RUNNER_TEMP','.'))/'catalog-notification.md';body.write_text('\n'.join(rows),encoding='utf-8')
-    # One issue per changed catalog, assigned to the repository owner. No notification for unchanged runs.
-    existing=json.loads(subprocess.check_output(['gh','issue','list','--repo',repo,'--state','all','--search','in:title "Download catalog '+revision+'"','--json','number'],text=True))
-    if not existing:subprocess.run(['gh','issue','create','--repo',repo,'--title','Download catalog '+revision+': '+str(len(changes))+' changes','--body-file',str(body),'--assignee',owner],check=True)
+    existing=json.loads(subprocess.check_output(['gh','issue','list','--repo',repo,'--state','all','--limit','1000','--json','number,title,body,state,author'],text=True))
+    owned=sorted([i for i in existing if managed_issue(i)],key=lambda i:i['number'])
+    trackers=[i for i in owned if ISSUE_MARKER in (i.get('body') or '')]
+    errors=sorted([(id,t) for id,t in catalog['tools'].items() if t.get('status')=='error'])
+    tracker=trackers[0] if trackers else (owned[-1] if errors and owned else None)
+    clean=lambda value:str(value).replace('|','/').replace('\n',' ').replace('\r',' ')[:500]
+    rows=[ISSUE_MARKER,'This automatically maintained issue lists current download-source failures. It closes when all sources recover and reopens if a later check finds a problem.','',
+          'Normal version updates are recorded in the toolkit catalog and GitHub Actions summaries.','']
+    if errors:
+        rows+=['| Tool | Current problem |','| --- | --- |']
+        rows+=['| '+clean(t.get('name',id))+' | '+clean(t.get('error') or t.get('reason') or 'Publisher lookup failed')+' |' for id,t in errors]
+        rows+=['','Use the official publisher page while an automatic source is unavailable.']
+    else:rows+=['All monitored download sources have recovered. No action is needed.']
+    content='\n'.join(rows)+'\n'
+    body=Path(os.environ.get('RUNNER_TEMP','.'))/'catalog-health.md';body.write_text(content,encoding='utf-8')
+    def run(*args):subprocess.run(['gh','issue',*args,'--repo',repo],check=True)
+    if tracker:
+        if tracker.get('body')!=content or tracker.get('title')!=ISSUE_TITLE:
+            run('edit',str(tracker['number']),'--title',ISSUE_TITLE,'--body-file',str(body))
+        if errors and tracker['state']=='CLOSED':run('reopen',str(tracker['number']))
+        elif not errors and tracker['state']=='OPEN':run('close',str(tracker['number']),'--reason','completed')
+    elif errors:
+        # Create the replacement before closing old notifications so failures are never lost.
+        run('create','--title',ISSUE_TITLE,'--body-file',str(body),'--assignee',owner)
+    for issue in owned:
+        if issue is not tracker and issue['state']=='OPEN':run('close',str(issue['number']),'--reason','completed')
+
+def summary(catalog,changes):
+    destination=os.environ.get('GITHUB_STEP_SUMMARY')
+    if not destination:return
+    lines=['## Download catalog refresh','',str(len(changes))+' catalog changes; '+str(sum(t.get('status')=='error' for t in catalog['tools'].values()))+' sources need attention.','']
+    for change in changes:
+        lines.append('- '+str(change.get('name',change['tool'])).replace('\n',' ')+' — '+str(change['kind'])+' '+str(change.get('version','')))
+    with Path(destination).open('a',encoding='utf-8') as out:out.write('\n'.join(lines)+'\n')
 
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--notify',action='store_true');args=parser.parse_args()
@@ -129,6 +166,7 @@ def main():
     print(dict(Counter(x['status'] for x in result['tools'].values())))
     for id,x in result['tools'].items():
         if x['status']=='error':print(id+': '+x['error'])
-    if args.notify:notify(changes,result['revision'])
+    summary(result,changes)
+    if args.notify:notify(result)
 
 if __name__=='__main__':main()

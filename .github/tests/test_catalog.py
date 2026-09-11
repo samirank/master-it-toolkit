@@ -17,6 +17,37 @@ def asset(name='tool-x64.exe',id='a',platform='Windows',arch='x64'):
     return {'id':id,'name':name,'url':'https://github.com/org/tool/releases/download/v1/'+name,'platform':platform,'architecture':arch,'size':3,'digest':None}
 
 class CatalogTests(unittest.TestCase):
+    def notify_fixture(self,issues,tools):
+        with tempfile.TemporaryDirectory() as tmp,patch.dict(monitor.os.environ,{'GITHUB_REPOSITORY':'owner/toolkit','RUNNER_TEMP':tmp}),patch.object(monitor.subprocess,'check_output',return_value=json.dumps(issues)),patch.object(monitor.subprocess,'run') as run:
+            monitor.notify({'tools':tools})
+            body=(Path(tmp)/'catalog-health.md').read_text(encoding='utf-8')
+            return [call.args[0] for call in run.call_args_list],body
+
+    def issue_fixture(self,number,tracker=False,state='OPEN'):
+        return dict(number=number,title=monitor.ISSUE_TITLE if tracker else 'Download catalog '+'a'*20+': 1 changes',body=monitor.ISSUE_MARKER if tracker else 'The download catalog was refreshed. Downloads still come from the original publishers.',state=state,author={'is_bot':True,'login':'app/github-actions'})
+
+    def test_notifications_consolidate_without_closing_human_issues(self):
+        old=self.issue_fixture(1);new=self.issue_fixture(2);human=self.issue_fixture(3);human['author']={'is_bot':False,'login':'owner'}
+        calls,body=self.notify_fixture([old,new,human],{'broken':{'name':'Tool','status':'error','error':'404'}})
+        self.assertIn('404',body);self.assertEqual(calls[0][2:4],['edit','2'])
+        self.assertEqual([c[3] for c in calls if c[2]=='close'],['1']);self.assertFalse(any(c[2]=='create' for c in calls))
+
+    def test_notifications_close_recovered_tracker_even_without_changes(self):
+        calls,body=self.notify_fixture([self.issue_fixture(1,True)],{'healthy':{'status':'ready'}})
+        self.assertIn('No action is needed',body);self.assertTrue(any(c[2:4]==['close','1'] for c in calls))
+        calls,_=self.notify_fixture([],{'healthy':{'status':'ready'}});self.assertEqual(calls,[])
+
+    def test_notifications_reopen_and_ignore_unchanged_failure(self):
+        problem={'tool':{'status':'error','name':'Tool','error':'offline'}}
+        issue=self.issue_fixture(1,True,'CLOSED');calls,body=self.notify_fixture([issue],problem)
+        self.assertTrue(any(c[2:4]==['reopen','1'] for c in calls))
+        issue.update(state='OPEN',body=body);calls,_=self.notify_fixture([issue],problem);self.assertEqual(calls,[])
+
+    def test_notifications_failed_replacement_keeps_originals(self):
+        with tempfile.TemporaryDirectory() as tmp,patch.dict(monitor.os.environ,{'GITHUB_REPOSITORY':'owner/toolkit','RUNNER_TEMP':tmp}),patch.object(monitor.subprocess,'check_output',return_value=json.dumps([self.issue_fixture(1),self.issue_fixture(2)])),patch.object(monitor.subprocess,'run',side_effect=RuntimeError('GitHub unavailable')) as run:
+            with self.assertRaises(RuntimeError):monitor.notify({'tools':{'broken':{'status':'error'}}})
+            self.assertEqual(run.call_count,1);self.assertEqual(run.call_args.args[0][2],'edit')
+
     def test_repository_is_runtime_authority(self):
         with patch.object(d,'fetch_json',side_effect=AssertionError('Publisher queried directly')):
             info=d.options(ROOT/'MASTER-IT-TOOLKIT','clonezilla')
