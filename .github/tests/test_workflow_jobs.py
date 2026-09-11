@@ -5,6 +5,40 @@ from unittest.mock import patch
 ROOT=Path(__file__).resolve().parents[2]/'MASTER-IT-TOOLKIT';sys.path.insert(0,str(ROOT))
 import launcher,portable_tools,activity_store
 class JobTests(unittest.TestCase):
+ def test_fresh_process_resumes_after_abrupt_exit_without_replaying_verified_step(self):
+  import subprocess,textwrap
+  with tempfile.TemporaryDirectory() as tmp:
+   root=Path(tmp);(root/'assets').mkdir()
+   (root/'assets/workflows.json').write_text(json.dumps({'test':{'name':'Crash recovery','steps':[{'text':'First','action':'manual'},{'text':'Second','action':'manual'}]}}))
+   child=textwrap.dedent('''
+    import sys,os
+    from pathlib import Path
+    from unittest.mock import patch
+    sys.path.insert(0,sys.argv[1])
+    import launcher,portable_tools
+    def publish(state):
+     if flow.waiting:
+      if flow.step==0:flow.control({'run':flow.id,'step':0,'command':'next','notes':'Verified before interruption'})
+      else:os._exit(23)
+    with patch('host_inventory.machine_identity',return_value={'id':'machine-a'}):
+     flow=portable_tools.Workflow(Path(sys.argv[2]),'test','manual',launcher.safe_path,publish,setup={'inputs':{'ticket':'RECOVERY-TEST'}})
+     flow.run()
+   ''')
+   result=subprocess.run([sys.executable,'-c',child,str(ROOT),str(root)],capture_output=True,text=True,timeout=15)
+   self.assertEqual(result.returncode,23,result.stderr)
+   prior=activity_store.Store(root,launcher.safe_path).workflow_job(machine='machine-a')[0]
+   self.assertEqual(prior['status'],'running');self.assertEqual(prior['currentStep'],1)
+   visited=[]
+   def publish(state):
+    if resumed.waiting:
+     visited.append(resumed.step);resumed.control({'run':resumed.id,'step':resumed.step,'command':'next'})
+   with patch('host_inventory.machine_identity',return_value={'id':'machine-a'}):
+    resumed=portable_tools.Workflow(root,'test','manual',launcher.safe_path,publish,setup={'resumeId':prior['id'],'inputs':prior['inputs']})
+   resumed.run()
+   self.assertEqual(visited,[1]);self.assertEqual(resumed.record['status'],'completed')
+   self.assertEqual(resumed.record['stepNotes']['0'],'Verified before interruption')
+   self.assertEqual(resumed.record['inputs']['ticket'],'RECOVERY-TEST')
+
  def test_resume_keeps_checkpoints_and_rejects_changed_machine_or_definition(self):
   with tempfile.TemporaryDirectory() as tmp:
    root=Path(tmp);(root/'assets').mkdir();definition={'test':{'name':'Test','steps':[{'text':'First','action':'manual'},{'text':'Second','action':'manual'}]}}

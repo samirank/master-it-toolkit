@@ -32,6 +32,10 @@ def winget(source):
     for installer in manifest.get('Installers',[]):
         link=installer.get('InstallerUrl',''); digest=installer.get('InstallerSha256','')
         if not re.fullmatch(r'[a-fA-F0-9]{64}',digest) or not link.startswith('https://'): continue
+        # Blender's download pages now use this official mirror. Keep the
+        # manifest's exact release path and SHA256; never rewrite other hosts.
+        if package=='BlenderFoundation.Blender' and re.fullmatch(r'https://download\.blender\.org/release/Blender[0-9.]+/blender-[0-9.]+-windows-(?:x64|arm64)\.(?:msi|zip)',link):
+            link=link.replace('https://download.blender.org/','https://mirror.blender.org/',1)
         locale=installer.get('InstallerLocale',manifest.get('InstallerLocale','en-US'))
         if locale and not locale.lower().startswith('en'): continue
         name=unquote(urlsplit(link).path.rsplit('/',1)[-1])
@@ -58,10 +62,17 @@ def probe(entry):
             hosts.add(urlsplit(url).hostname)
             return super().redirect_request(request,fp,code,message,headers,url)
     for asset in chosen.values():
-        request=urllib.request.Request(asset['url'],headers={'User-Agent':'MasterITToolkit','Range':'bytes=0-0'})
+        # Match the desktop request: some publishers route Range requests
+        # differently, hiding redirects that a real download will follow.
+        request=urllib.request.Request(asset['url'],headers={'User-Agent':'MasterITToolkit'})
         with urllib.request.build_opener(Redirect()).open(request,timeout=30) as response:
             if 'text/html' in response.headers.get('Content-Type','').lower():raise ValueError('Publisher returned HTML instead of '+asset['name'])
             response.read(1)
+            if urlsplit(asset['url']).hostname=='mirror.blender.org' and re.fullmatch(r'sha256:[a-f0-9]{64}',asset.get('digest') or ''):
+                # Pin the official redirector's selected mirror for this catalog
+                # revision; a later request could otherwise choose a new host.
+                downloads.validate_asset(dict(asset,url=response.url))
+                asset['url']=response.url
     for asset in entry['assets']:
         asset['redirectHosts']=sorted(hosts)
 

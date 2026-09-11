@@ -17,6 +17,30 @@ def asset(name='tool-x64.exe',id='a',platform='Windows',arch='x64'):
     return {'id':id,'name':name,'url':'https://github.com/org/tool/releases/download/v1/'+name,'platform':platform,'architecture':arch,'size':3,'digest':None}
 
 class CatalogTests(unittest.TestCase):
+    def test_probe_matches_download_and_pins_blender_selected_mirror(self):
+        from unittest.mock import Mock
+        item=asset();item.update(url='https://mirror.blender.org/release/Blender5.2/blender-5.2.1-windows-x64.msi',digest='sha256:'+'a'*64)
+        response=io.BytesIO(b'package');response.headers={'Content-Type':'application/octet-stream'}
+        response.url='https://mirror.fcix.net/blender/release/Blender5.2/blender-5.2.1-windows-x64.msi'
+        opener=Mock();opener.open.return_value=response
+        with patch.object(monitor.urllib.request,'build_opener',return_value=opener):monitor.probe({'assets':[item]})
+        self.assertFalse(opener.open.call_args.args[0].has_header('Range'))
+        self.assertEqual(item['url'],response.url)
+        self.assertEqual(item['digest'],'sha256:'+'a'*64)
+
+    def test_blender_official_mirror_retains_release_and_checksum(self):
+        from types import SimpleNamespace
+        original='https://download.blender.org/release/Blender5.2/blender-5.2.1-windows-x64.msi'
+        def resolve(package,url):
+            manifest={'PackageVersion':'5.2.1','Installers':[{'InstallerUrl':url,'InstallerSha256':'A'*64,'Architecture':'x64'}]}
+            with patch.dict(sys.modules,{'yaml':SimpleNamespace(safe_load=json.loads)}),patch.object(d,'fetch_json',return_value=[{'name':'5.2.1','type':'dir'}]),patch.object(d,'fetch_bytes',return_value=json.dumps(manifest).encode()):
+                return monitor.winget({'package':package})['assets'][0]
+        result=resolve('BlenderFoundation.Blender',original)
+        self.assertEqual(result['url'],original.replace('download.blender.org','mirror.blender.org'))
+        self.assertEqual(result['digest'],'sha256:'+'a'*64)
+        for package,url in [('Other.Package',original),('BlenderFoundation.Blender',original.replace('download.blender.org','download.blender.org.example.com')),('BlenderFoundation.Blender',original+'?redirect=other')]:
+            self.assertEqual(resolve(package,url)['url'],url)
+
     def notify_fixture(self,issues,tools):
         with tempfile.TemporaryDirectory() as tmp,patch.dict(monitor.os.environ,{'GITHUB_REPOSITORY':'owner/toolkit','RUNNER_TEMP':tmp}),patch.object(monitor.subprocess,'check_output',return_value=json.dumps(issues)),patch.object(monitor.subprocess,'run') as run:
             monitor.notify({'tools':tools})
