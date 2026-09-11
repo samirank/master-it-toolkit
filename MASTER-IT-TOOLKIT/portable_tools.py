@@ -88,7 +88,7 @@ def validate_custom_workflows(root, definitions):
             if not isinstance(step,dict) or set(step)-{'text','tool','action','url'}: raise ValueError('Invalid step fields')
             if not isinstance(step.get('text'),str) or not 1<=len(step['text'].strip())<=4000: raise ValueError('Each step needs instructions')
             if step.get('tool') and step['tool'] not in catalog: raise ValueError('Unknown step tool')
-            if step.get('action','manual') not in ('manual','install','run'): raise ValueError('Unsupported step action')
+            if step.get('action','manual') not in ('manual','install','run','copy'): raise ValueError('Unsupported step action')
             if step.get('action') in ('install','run') and not step.get('tool'): raise ValueError('Choose a tool for this action')
             if step.get('url') and (not isinstance(step['url'],str) or not step['url'].startswith('https://') or len(step['url'])>2000): raise ValueError('Documentation links must use HTTPS')
     return definitions
@@ -122,6 +122,8 @@ class Workflow:
         self.prepare=prepare
         self.inputs=self.setup.get('inputs',{})
         if not isinstance(self.inputs,dict) or set(self.inputs)-{'ticket','technician','issue','source','destination','notes'} or any(not isinstance(v,str) or len(v)>4000 for v in self.inputs.values()):raise ValueError('Invalid workflow inputs')
+        self.copy_plan=None;self.copy_progress={}
+        if any(s.get('action')=='copy' for s in self.definition['steps']) and not all(self.inputs.get(k,'').strip() for k in ('source','destination')):raise ValueError('This workflow requires a source folder and destination parent folder')
         for key in ('prepare','updates','install'):
             if key in self.setup and type(self.setup[key]) is not bool:raise ValueError('Invalid workflow preparation choice')
         import activity_store,host_inventory,time
@@ -136,6 +138,8 @@ class Workflow:
             self.start_step=max([r['step']+1 for r in previous['steps'] if r.get('result') in ('verified by technician','skipped — not verified')]+[0])
             if self.start_step>=len(self.definition['steps']):raise ValueError('This workflow already completed all checkpoints. Start a new run instead.')
             self.history=list(previous['steps']);self.record.update(steps=self.history,stepNotes=dict(previous.get('stepNotes',{})),resumedFrom=previous['id'])
+            self.record['migrationId']=previous.get('migrationId',previous['id'])
+            if previous.get('migrationResult'):self.record['migrationResult']=previous['migrationResult']
         self.store.workflow_job(self.record)
 
     def state(self, message):
@@ -143,7 +147,19 @@ class Workflow:
         self.store.workflow_job(self.record)
         self.publish(dict(workflow={'id': self.id, 'name': self.definition['name'], 'step': self.step,
             'count': len(self.definition['steps']), 'current': self.definition['steps'][self.step],
-            'waiting': self.waiting, 'mode': self.mode, 'history': list(self.history), 'inputs': self.inputs, 'notes': self.record['stepNotes'].get(str(self.step),''), 'machine': self.record['machine']}, message=message))
+            'waiting': self.waiting, 'mode': self.mode, 'history': list(self.history), 'inputs': self.inputs, 'notes': self.record['stepNotes'].get(str(self.step),''), 'machine': self.record['machine']}, message=message,**self.copy_progress))
+
+    def preview_copy(self,run,step):
+        import migration_tools
+        with self.condition:
+            if run!=self.id or step!=self.step or not self.waiting or self.definition['steps'][self.step].get('action')!='copy':raise ValueError('Copy checkpoint has changed or is busy')
+            source=Path(self.inputs['source']).resolve()
+            if source==self.root.resolve() or self.root.resolve() in source.parents or source in self.root.resolve().parents:raise ValueError('Use Toolkit backup to copy the toolkit itself')
+        plan=migration_tools.plan(self.inputs['source'],self.inputs['destination'],self.record.get('migrationId',self.id))
+        with self.condition:
+            if self.stop or run!=self.id or step!=self.step or not self.waiting:raise ValueError('Copy checkpoint changed during preview')
+            self.copy_plan=plan
+            return migration_tools.summary(plan)
 
     def control(self, body):
         with self.condition:
@@ -156,7 +172,8 @@ class Workflow:
                 self.store.workflow_job(self.record)
             if command=='note':return
             if command == 'stop': self.stop = True
-            elif command in ('next', 'skip', 'run', 'install') and self.waiting and body.get('step') == self.step and self.command is None:
+            elif command in ('next', 'skip', 'run', 'install','copy') and self.waiting and body.get('step') == self.step and self.command is None:
+                if command=='copy' and (self.definition['steps'][self.step].get('action')!='copy' or not self.copy_plan or body.get('planToken')!=self.copy_plan['token']):raise ValueError('Review a current migration copy plan first')
                 if command=='install':
                     if self.definition['steps'][self.step].get('action')!='install': raise ValueError('This is not an install step')
                     self.install_body={'tool':self.definition['steps'][self.step]['tool'],'package':body.get('package'),'sha256':body.get('sha256')}
@@ -206,6 +223,18 @@ class Workflow:
                     try: message=install_tools.install(self.root,self.install_body,self.safe_path)
                     except Exception as error: message='Installation needs attention: '+str(error)
                     self.history.append({'step':index,'text':step['text'],'result':message})
+                elif command=='copy':
+                    import migration_tools
+                    def update(progress):
+                        self.copy_progress={k:progress[k] for k in ('received','total')}
+                        self.state(progress['message'])
+                    try:
+                        result=migration_tools.copy(self.copy_plan,update,lambda:self.stop)
+                        self.record['migrationResult']=result
+                        message='Verified migration copy: '+str(result['copied']+result['reused'])+' regular files. Skipped links/placeholders: '+str(result['skipped'])+'. Review copied data at '+result['output']
+                    except Exception as error:message='Migration needs attention: '+str(error)
+                    finally:self.copy_progress={};self.copy_plan=None
+                    self.history.append({'step':index,'text':step['text'],'result':message,'phase':'copy'})
                 elif command == 'run':
                     self.state('Opening step tool…')
                     message = self.run_tool(step)

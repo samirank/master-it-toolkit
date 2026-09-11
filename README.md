@@ -41,7 +41,7 @@ Finished downloads refresh inventory. Existing packages show management/status c
 
 The scanner indexes relevant toolkit folders and reuses file metadata. It distinguishes downloaded installers/archives from runnable portable files and detects supported host installations. Files in unrelated host folders are not assumed to belong to the toolkit.
 
-Recognized ZIP packages are safely extracted into `Ready/<archive>-<fingerprint>/`. Unchanged archives are skipped, extraction limits and paths are checked, and temporary extraction files are cleaned. Original archives are retained. Other archive formats and ambiguous packages currently require manual attention. Installers are not executed by scanning.
+Recognized ZIP, TAR, TAR.GZ/TGZ, TAR.BZ2, TAR.XZ, GZIP, BZIP2 and XZ packages are safely extracted into `Ready/<archive>-<fingerprint>/`. Unchanged archives are skipped, extraction limits and paths are checked, and temporary extraction files are cleaned. Original archives are retained. 7z, RAR, Zstandard and ambiguous packages currently require manual attention. Archive-local file links are materialized as regular files; escaping links and special entries are rejected. Installers are not executed by scanning.
 
 From inside `MASTER-IT-TOOLKIT`:
 
@@ -59,9 +59,9 @@ python 60_SCRIPTS/Inventory/update_toolkit_inventory.py --full-storage
 
 PC build profiles cover personal, office, gaming, developer, design, video, study, electronics, 3D printing and support use cases. Custom profiles are saved in SQLite. Specialist entries include FreeCAD, PrusaSlicer, KiCad, Arduino IDE, Blender and Inkscape.
 
-Each workflow run receives a job ID, starting form, per-step notes and history. Forms are prefilled from the same profile's last run on the current machine. Machine matching uses available hardware/OS identifiers with fallbacks; it is not an authentication mechanism. Source/destination form values currently describe manual migration steps and are not executed as copy commands.
+Each workflow run receives a job ID, starting form, per-step notes and history. Forms are prefilled from the same profile's last run on the current machine. Machine matching uses available hardware/OS identifiers with fallbacks; it is not an authentication mechanism. Migration workflows require source and destination folders. Their copy checkpoint previews the file count, size and skipped entries before an explicit Copy action. Files go into a new job-specific folder, with SHA-256 verification and reuse of verified files when resuming. Originals and existing destination files are preserved. Close applications first: this is regular-file migration, not an operating-system snapshot, installed-app transfer or account/permission migration. Cloud placeholders and filesystem links are skipped.
 
-Automatic preparation can download required packages, organize ZIPs and optionally invoke tracked installation. Existing installations are skipped unless a newer package can be established. Unsupported sources, ambiguous installers and platform restrictions stop for attention. Checkpoint verification remains a technician decision.
+Automatic preparation can download required packages, organize supported archives and optionally invoke tracked installation. Existing installations are skipped unless a newer package can be established. Unsupported sources, ambiguous installers and platform restrictions stop for attention. Checkpoint verification remains a technician decision.
 
 Interrupted runs can be reviewed and resumed from saved checkpoints when their machine and workflow definition still match. A resumed run receives a new job ID linked to its predecessor. Completed work is not automatically replayed or declared successful.
 
@@ -110,7 +110,7 @@ These protections improve interruption recovery but cannot guarantee survival of
 
 The toolkit works on an ordinary SSD. Ventoy is optional and independent; this project is not affiliated with it. Back up the drive before installing a boot manager. Put the toolkit on its data partition and rescue ISOs under `00_BOOT/`; verify boot images on representative hardware before service work.
 
-A manually triggered experimental Debian live-ISO workflow is provided in `.github/workflows/live-iso.yml`. It is not a validated bootable release, and it does not flash drives automatically. Migration automation and boot/hardware testing remain unfinished.
+A manually triggered experimental Debian live-ISO workflow is provided in `.github/workflows/live-iso.yml`. It is not a validated bootable release, and it does not flash drives automatically. Full operating-system migration and ISO boot/hardware testing remain unfinished.
 
 ## Development and publishing
 

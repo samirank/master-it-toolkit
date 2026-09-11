@@ -32,6 +32,7 @@ jobs:
       - run: python .github/tests/test_vault.py
       - run: python .github/tests/test_encrypted_backup.py
       - run: python .github/tests/test_workflow_jobs.py
+      - run: python .github/tests/test_migration.py
       - run: python .github/tests/test_persistence.py
       - run: python .github/tests/test_assistant.py
       - run: python .github/tests/test_portable_ai.py

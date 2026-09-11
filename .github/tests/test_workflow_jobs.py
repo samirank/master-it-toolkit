@@ -37,6 +37,29 @@ class JobTests(unittest.TestCase):
    flow.control({'run':flow.id,'step':0,'command':'next','notes':'Working'})
    thread.join(3);self.assertFalse(thread.is_alive())
    store=activity_store.Store(root,launcher.safe_path);self.assertEqual(store.workflow_job(machine='machine-a')[0]['status'],'completed');self.assertEqual(store.workflow_job(machine='machine-b'),[])
+ def test_copy_requires_review_and_records_verified_output(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   base=Path(tmp);root=base/'toolkit';root.mkdir();source=base/'source';source.mkdir();dest=base/'destination';dest.mkdir();(source/'sample.txt').write_bytes(b'migration fixture')
+   (root/'assets').mkdir();(root/'assets/workflows.json').write_text(json.dumps({'test':{'name':'Copy test','steps':[{'text':'Copy reviewed files','action':'copy'}]}}))
+   with patch('host_inventory.machine_identity',return_value={'id':'machine-a'}):
+    flow=portable_tools.Workflow(root,'test','manual',launcher.safe_path,lambda _:None,setup={'inputs':{'source':str(source),'destination':str(dest)}})
+   thread=threading.Thread(target=flow.run);thread.start()
+   try:
+    for _ in range(200):
+     if flow.waiting:break
+     time.sleep(.01)
+    with self.assertRaisesRegex(ValueError,'Review a current'):flow.control({'run':flow.id,'step':0,'command':'copy'})
+    plan=flow.preview_copy(flow.id,0);self.assertEqual(plan['fileCount'],1);self.assertEqual(list(dest.iterdir()),[])
+    flow.control({'run':flow.id,'step':0,'command':'copy','planToken':plan['token']})
+    for _ in range(300):
+     if flow.waiting and flow.record.get('migrationResult'):break
+     time.sleep(.01)
+    result=flow.record['migrationResult'];self.assertTrue(result['verified']);self.assertEqual((Path(result['output'])/'sample.txt').read_bytes(),b'migration fixture')
+    self.assertTrue(thread.is_alive(),'Copy must still wait for technician verification')
+    flow.control({'run':flow.id,'step':0,'command':'next'});thread.join(3)
+    saved=flow.store.workflow_job(machine='machine-a')[0];self.assertEqual(saved['status'],'completed');self.assertTrue(saved['migrationResult']['verified'])
+   finally:
+    if thread.is_alive():flow.control({'run':flow.id,'command':'stop'});thread.join(3)
  def test_preparation_only_installs_single_signed_candidate(self):
   with tempfile.TemporaryDirectory() as tmp:
    server=launcher.Server(Path(tmp),port=0)

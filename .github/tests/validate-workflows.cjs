@@ -24,6 +24,8 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.getByRole('button',{name:'Run winutil.ps1',exact:true}).click();
   await page.waitForFunction(()=>!document.querySelector('dialog.download-dialog'));assert.equal(run.executable,'fixture/winutil.ps1');
   await page.locator('[data-nav="checklists"]').first().click();await page.locator('[data-checklist="migration"]').click();await page.locator('[data-workflow="migration"]').click();
+  await page.getByLabel('Source folder to copy',{exact:true}).fill(root);
+  await page.getByLabel('Destination parent folder',{exact:true}).fill(root);
   await page.getByRole('button',{name:'Start · Manual launches',exact:true}).click();
   await page.getByRole('button',{name:'I verified this step · Continue',exact:true}).waitFor();
   assert((await page.locator('.workflow-body').innerText()).includes('owner-approved'));
@@ -33,6 +35,17 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.getByRole('button',{name:'Export workflow record',exact:true}).waitFor();
   assert((await page.locator('.workflow-body').innerText()).includes('stopped'));
   assert.equal(await page.locator('[data-check="0"]').isChecked(),false,'Runner must not silently mark saved manual checklists');
+  let copied=false;
+  await page.route('**/api/status',r=>r.fulfill({json:{busy:true,message:'Review copy checkpoint',workflow:{id:'a'.repeat(24),name:'Migration fixture',step:0,count:1,current:{action:'copy',text:'Copy fixture'},waiting:true,history:[],inputs:{}}}}));
+  await page.route('**/api/migration-plan',r=>r.fulfill({json:{fileCount:1,total:1024,source:'C:/fixture/source',output:'D:/fixture/job',skippedCount:1,skipped:['cloud-placeholder'],token:'reviewed-fixture'}}));
+  await page.route('**/api/action',r=>{const b=r.request().postDataJSON();if(b.command==='copy'){assert.equal(b.planToken,'reviewed-fixture');copied=true;}return r.fulfill({status:202,json:{message:'Fixture action'}});});
+  await page.getByRole('button',{name:'Preview migration copy',exact:true}).click();
+  const review=page.getByRole('dialog',{name:'Review migration copy',exact:true});
+  await review.getByRole('button',{name:'Copy reviewed files and verify',exact:true}).waitFor();
+  assert((await review.innerText()).includes('cloud-placeholder'));assert.equal(copied,false,'Preview must not copy');
+  await review.getByRole('button',{name:'Copy reviewed files and verify',exact:true}).click();
+  await review.waitFor({state:'detached'});assert.equal(copied,true);
+
   assert.deepEqual(errors,[]);console.log('Workflow definitions, one-click portable request, real manual checkpoint controls, stop and export UI passed. No executable ran.');
  }finally{if(browser)await browser.close();proc.kill();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

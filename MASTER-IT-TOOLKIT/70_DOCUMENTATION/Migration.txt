@@ -1,0 +1,26 @@
+REVIEWED FILE MIGRATION
+
+Choose Data Migration or User Profile Migration, or add a Reviewed file migration
+step to a custom build. Enter existing absolute source and destination folders.
+Close applications using the source files and make cloud files available offline.
+
+At the copy checkpoint, choose Preview migration copy. Review the file count,
+size, skipped entries and new destination job folder. Copy reviewed files and
+verify begins the copy. Progress is shown while copying; Stop retains originals
+and completed copies. Inspect critical files before verifying the checkpoint.
+
+Copies go under Master-IT-Migration-<job ID>/data. File contents are SHA-256
+verified before publication. Original files and unrelated destination files are
+never deleted or replaced. Source changes require a fresh preview. History on
+the same machine offers Review and resume; matching, verified files are reused.
+Keep the entire job folder, including its migration.json ownership record, until
+you finish. The destination copy and ownership record are ordinary unencrypted
+files: use an encrypted destination when copying sensitive data.
+
+This does not transfer installed applications, user accounts, permissions, NTFS
+alternate streams or an operating-system snapshot. Links, reparse points and
+cloud placeholders are skipped and listed in the preview. Whole source drive
+roots and overlapping source/destination folders are rejected. Large migrations
+are limited to 100,000 entries per job; split larger scopes into smaller jobs.
+Use dedicated imaging software for full-disk migration and Toolkit backup for
+the toolkit itself. Keep an independent backup until the owner accepts the copy.

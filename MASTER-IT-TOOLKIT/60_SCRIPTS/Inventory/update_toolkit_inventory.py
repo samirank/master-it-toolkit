@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Optional inventory for Windows/Linux/macOS, Python 3.9+. Dashboard needs no Python.
-Recognized ZIP downloads are organized during CLI scans. Never executes a tool. --what-if does not write.
+Recognized archive downloads are organized during CLI scans. Never executes a tool. --what-if does not write.
 """
 import argparse
 import datetime
@@ -15,6 +15,10 @@ import zipfile
 import hashlib
 import stat
 import sys
+import tarfile
+import lzma
+sys.path.insert(0,str(Path(__file__).resolve().parent))
+from archive_support import Archive, SUPPORTED, ARCHIVES, MAX_BYTES, member_name
 
 def installer_file(path, tool):
     name=path.name.casefold()
@@ -31,16 +35,21 @@ def archive_target(archive):
 def extracted(archive, known_files=None):
     try:
         target,signature=archive_target(archive);marker=target/'.toolkit-extracted.json'
-        if not (marker.is_file() and not reparse(marker) and json.loads(marker.read_text())==signature): return False
-        with zipfile.ZipFile(archive) as source:
-            for member in source.infolist():
-                if member.is_dir(): continue
-                path=target.joinpath(*member.filename.replace('\\','/').split('/'))
-                if known_files is not None:
-                    if known_files.get(path)!=member.file_size:return False
-                elif reparse(path) or not path.is_file() or path.stat().st_size!=member.file_size:return False
+        if not marker.is_file() or reparse(marker):return False
+        receipt=json.loads(marker.read_text(encoding='utf-8'))
+        if receipt.get('archive',receipt)!=signature:return False
+        if 'files' in receipt:
+            members=receipt['files'].items()
+        else:
+            with Archive(archive) as source:members=[(m.name,m.size) for m in source.entries if not m.directory]
+        for name,size in members:
+            path=safe_path((target/member_name(name)).relative_to(ROOT).as_posix())
+            if type(size) is not int or size<0:return False
+            if known_files is not None:
+                if known_files.get(path)!=size:return False
+            elif not path.is_file() or path.stat().st_size!=size:return False
         return True
-    except (OSError,ValueError,zipfile.BadZipFile):return False
+    except (OSError,ValueError,TypeError,AttributeError,zipfile.BadZipFile,tarfile.TarError,lzma.LZMAError):return False
 
 ROOT = Path(__file__).resolve().parents[2]
 FOLDERS = ['00_BOOT','10_WINDOWS_TOOLBOX','20_PORTABLE_APPS','30_DRIVERS',
@@ -121,7 +130,7 @@ def scan(full_storage=False):
                 if folder not in candidates: candidates[folder]=[(f,st) for f,st in indexed[root] if base in f.parents and st.st_size>0]
                 pool=candidates[folder]
                 matches=[(f,st) for f,st in pool if any(fnmatch.fnmatchcase(f.name.casefold(),p.casefold()) for p in patterns)]
-                runnable=[(f,st) for f,st in matches if not installer_file(f,tool) and not f.name.lower().endswith(('.zip','.7z','.tar.gz','.tar.xz','.tar.bz2','.tgz'))]
+                runnable=[(f,st) for f,st in matches if not installer_file(f,tool) and not f.name.lower().endswith(ARCHIVES)]
                 complete=bool(runnable)
                 if tool.get('inventoryMatch')=='all': complete=complete and all(any(fnmatch.fnmatchcase(f.name.casefold(),p.casefold()) for f,st in runnable) for p in patterns)
                 packages=[(f,st) for f,st in pool if any(fnmatch.fnmatchcase(f.name.casefold(),p.casefold()) for p in tool.get('packagePatterns',[]))]
@@ -147,10 +156,10 @@ def scan(full_storage=False):
                 record['cleanupReview']=[]
                 for path,st in ((p,s) for p,s in indexed[root] if base in p.parents):
                     name=path.name.lower()
-                    if 'Ready' not in path.parts and str(path) in combined and name.endswith(('.zip','.7z','.tar.gz','.tar.xz','.tar.bz2','.tgz')):
-                        if path not in archive_checks:archive_checks[path]=name.endswith('.zip') and extracted(path,known_files)
+                    if 'Ready' not in path.parts and str(path) in combined and name.endswith(ARCHIVES):
+                        if path not in archive_checks:archive_checks[path]=name.endswith(SUPPORTED) and extracted(path,known_files)
                         if not archive_checks[path]:
-                            record['needsExtraction'].append({'path':path.relative_to(ROOT).as_posix(),'automatic':name.endswith('.zip')})
+                            record['needsExtraction'].append({'path':path.relative_to(ROOT).as_posix(),'automatic':name.endswith(SUPPORTED)})
                     if name.endswith(('.partial','.part','.crdownload','.tmp')) and datetime.datetime.now().timestamp()-st.st_mtime>86400:
                         record['cleanupReview'].append(path.relative_to(ROOT).as_posix())
                 record['cleanupReview'] += [p.relative_to(ROOT).as_posix() for p in abandoned if base in p.parents]
@@ -167,10 +176,10 @@ def scan(full_storage=False):
     return inventory
 
 def organize(inventory):
-    """Extract recognized ZIP packages transactionally; retain source downloads."""
+    """Extract recognized archive packages transactionally; retain source downloads."""
     result = {'extracted': [], 'skipped': [], 'errors': []}
     candidates = {f['path'] for t in inventory['tools'].values() for f in t['files']
-                  if f['path'].lower().endswith('.zip') and 'Ready' not in Path(f['path']).parts}
+                  if f['path'].lower().endswith(SUPPORTED) and 'Ready' not in Path(f['path']).parts}
     pending={item['path'] for record in inventory['tools'].values() for item in record.get('needsExtraction',[]) if item['automatic']}
     for relative in sorted(candidates):
         if relative not in pending:
@@ -185,45 +194,35 @@ def organize(inventory):
             marker = target / '.toolkit-extracted.json'
             if target.exists():
                 raise ValueError('Extraction folder exists but is incomplete or changed; preserving its contents. Review the Ready folder before extracting again.')
-            with zipfile.ZipFile(archive) as source:
-                members = source.infolist()
-                total = sum(m.file_size for m in members)
-                if len(members) > 50000 or total > 8 * 1024**3:
-                    raise ValueError('Archive exceeds automatic extraction limits')
-                if total + 256 * 1024**2 > shutil.disk_usage(ROOT).free:
-                    raise ValueError('Insufficient free space to retain and extract archive')
-                names = set()
-                for member in members:
-                    name = member.filename.replace('\\', '/')
-                    parts = name.rstrip('/').split('/')
-                    mode = member.external_attr >> 16
-                    if (not name or name.startswith('/') or any(p in ('', '.', '..') or ':' in p or p.endswith((' ', '.')) or
-                        re.match(r'^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])(?:\.|$)', p, re.I) for p in parts)
-                        or any(c in name for c in '<>"|?*') or any(ord(c) < 32 for c in name)
-                        or (stat.S_IFMT(mode) and not (stat.S_ISREG(mode) or stat.S_ISDIR(mode)))
-                        or member.flag_bits & 1 or name.casefold().rstrip('/') in names
-                        or name.casefold().rstrip('/') == '.toolkit-extracted.json'):
-                        raise ValueError('Unsafe, encrypted, or duplicate archive member: ' + name)
-                    names.add(name.casefold().rstrip('/'))
-                target.parent.mkdir(parents=True, exist_ok=True)
-                stage = Path(tempfile.mkdtemp(prefix='.extract-', dir=target.parent))
-                for member in members:
-                    output = stage.joinpath(*member.filename.replace('\\', '/').rstrip('/').split('/'))
-                    if member.is_dir():
-                        output.mkdir(parents=True, exist_ok=True)
-                    else:
-                        output.parent.mkdir(parents=True, exist_ok=True)
-                        with source.open(member) as src, output.open('xb') as dst:
-                            shutil.copyfileobj(src, dst, 1024 * 1024)  # ZipFile verifies CRC while reading.
-                        if os.name != 'nt' and (member.external_attr >> 16) & 0o111:
-                            output.chmod(0o755)
+            with Archive(archive) as source:
+                free=shutil.disk_usage(ROOT).free-256*1024**2
+                if source.total>free or free<0:raise ValueError('Insufficient free space to retain and extract archive')
+                target.parent.mkdir(parents=True,exist_ok=True)
+                stage=Path(tempfile.mkdtemp(prefix='.extract-',dir=target.parent))
+                total=0;extracted_files={}
+                for member in source.entries:
+                    output=stage.joinpath(*member.name.split('/'))
+                    if member.directory:output.mkdir(parents=True,exist_ok=True);continue
+                    output.parent.mkdir(parents=True,exist_ok=True);written=0
+                    with source.open(member) as src,output.open('xb') as dst:
+                        while True:
+                            block=src.read(1024*1024)
+                            if not block:break
+                            written+=len(block);total+=len(block)
+                            if total>min(MAX_BYTES,free):raise ValueError('Expanded archive exceeds extraction/free-space limit')
+                            if member.size is not None and written>member.size:raise ValueError('Archive member exceeded declared size')
+                            dst.write(block)
+                        dst.flush();os.fsync(dst.fileno())
+                    if member.size is not None and written!=member.size:raise ValueError('Incomplete archive member')
+                    if os.name!='nt' and member.mode&0o111:output.chmod(0o755)
+                    extracted_files[member.name]=written
                 if archive.stat().st_mtime_ns != info.st_mtime_ns or archive.stat().st_size != info.st_size:
                     raise ValueError('Archive changed during extraction; retry scan')
-                (stage / '.toolkit-extracted.json').write_text(json.dumps(signature), encoding='utf-8')
+                (stage / '.toolkit-extracted.json').write_text(json.dumps({'archive':signature,'files':extracted_files}), encoding='utf-8')
                 stage.rename(target)
                 stage = None
                 result['extracted'].append(relative)
-        except (OSError, ValueError, RuntimeError, zipfile.BadZipFile, NotImplementedError) as error:
+        except (OSError, ValueError, RuntimeError, zipfile.BadZipFile, tarfile.TarError, lzma.LZMAError, EOFError, NotImplementedError) as error:
             result['errors'].append(relative + ': ' + str(error))
         finally:
             if stage is not None:
@@ -237,7 +236,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--what-if', action='store_true', help='Scan without writing')
     parser.add_argument('--full-storage', action='store_true', help='Also measure every storage folder; slower on large SSDs')
-    parser.add_argument('--no-organize', action='store_true', help='Inventory only; leave ZIP packages untouched')
+    parser.add_argument('--no-organize', action='store_true', help='Inventory only; leave archive packages untouched')
     args = parser.parse_args()
     inventory = scan(args.full_storage)
     if not args.what_if and not args.no_organize:
@@ -247,7 +246,7 @@ def main():
         inventory['organization'] = organization
         for record in inventory['tools'].values():
             record['organizationErrors']=[error for error in organization['errors'] if any(error.startswith(f['path']+': ') for f in record['files'])]
-        print('ZIP organization:', len(organization['extracted']), 'extracted;', len(organization['skipped']), 'already organized;', len(organization['errors']), 'issues.')
+        print('Archive organization:', len(organization['extracted']), 'extracted;', len(organization['skipped']), 'already organized;', len(organization['errors']), 'issues.')
         for error in organization['errors']: print(error)
     sys.path.insert(0,str(ROOT))
     import host_inventory

@@ -286,7 +286,8 @@ window.TOOLKIT_WORKFLOWS = {
         "text": "Preview copy paths; avoid mirror/delete modes"
       },
       {
-        "text": "Prefer Robocopy on Windows or rsync on Linux/macOS for scriptable copying. Review the official instructions, preview source/destination paths, keep originals, avoid move/delete/mirror options, and retain the copy log. This is a manual checkpoint until a reviewed copy job is configured; FastCopy is an optional GUI alternative."
+        "text": "Preview and copy the selected regular files into a new job folder; verify contents and retain originals.",
+        "action": "copy"
       },
       {
         "text": "Compare counts, sizes and open critical sample files"
@@ -394,7 +395,8 @@ window.TOOLKIT_WORKFLOWS = {
         "tool": "cdi"
       },
       {
-        "text": "Prefer Robocopy on Windows or rsync on Linux/macOS for scriptable copying. Review the official instructions, preview source/destination paths, keep originals, avoid move/delete/mirror options, and retain the copy log. This is a manual checkpoint until a reviewed copy job is configured; FastCopy is an optional GUI alternative."
+        "text": "Preview and copy the selected regular files into a new job folder; verify contents and retain originals.",
+        "action": "copy"
       },
       {
         "text": "Review the copy log and verification failures. Compare file counts and sizes; open critical files on the destination."
@@ -408,4 +410,3 @@ window.TOOLKIT_WORKFLOWS = {
     ]
   }
 };
-for (const id of ["migration","profile-migration"]) window.TOOLKIT_CHECKLISTS[id] = {name:window.TOOLKIT_WORKFLOWS[id].name,items:window.TOOLKIT_WORKFLOWS[id].steps.map(s=>s.text)};

@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT))
 # The frozen bootstrap imports these for dependency collection. Load updated SSD
 # source modules on restart instead of reusing the copies cached inside the EXE.
 if getattr(sys, 'frozen', False):
-    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant','secure_vault','portable_ai'):
+    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant','secure_vault','portable_ai','migration_tools'):
         sys.modules.pop(module,None)
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
@@ -54,7 +54,7 @@ def managed_name(name):
     if name.startswith('runtime-extensions/ubol/'): return True
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
-    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'offline_assistant.py', 'secure_vault.py', 'portable_ai.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
+    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'offline_assistant.py', 'secure_vault.py', 'portable_ai.py', 'migration_tools.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
         return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json', 'assets/download-catalog-cache.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
@@ -367,6 +367,7 @@ class Server(ThreadingHTTPServer):
                 context['jobId'] = self.workflow.id
                 context['machine'] = self.workflow.record['machine']
                 context['workflowRecord'] = self.workflow.history
+                context['migrationResult'] = self.workflow.record.get('migrationResult')
                 context['workflowName'] = self.workflow.definition['name']
                 context['workflowProfile'] = body['workflow']
             elif action == 'install':
@@ -536,6 +537,14 @@ class Handler(BaseHTTPRequestHandler):
         if self.route() and self.route().startswith('api/') and secure_vault.status(self.server.history.path)['locked']:
             return self.reply(423,{'error':'Workspace locked. Unlock the vault to use recorded actions or save data.'})
 
+        if self.route()=='api/migration-plan' and self.headers.get('Origin')==self.server.origin:
+            try:
+                size=int(self.headers.get('Content-Length','0'))
+                if not 0<size<=2000:raise ValueError('Invalid copy preview request')
+                body=json.loads(self.rfile.read(size))
+                if not self.server.workflow:raise ValueError('Start a migration workflow first')
+                return self.reply(200,self.server.workflow.preview_copy(body.get('run'),body.get('step')))
+            except Exception as error:return self.reply(400,{'error':str(error)})
         if self.route() == 'api/assistant' and self.headers.get('Origin') == self.server.origin:
             try:
                 size = int(self.headers.get('Content-Length', '0'))

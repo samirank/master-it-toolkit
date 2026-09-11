@@ -22,8 +22,8 @@
   const rows=node('div');d.append(rows);const steps=definition.steps;
   function paint(){rows.replaceChildren();steps.forEach((step,index)=>{
    const row=node('section');row.className='panel';const text=node('textarea');text.value=step.text;text.maxLength=4000;text.oninput=()=>step.text=text.value;
-   const tool=select([['','No tool · manual checkpoint'],...tools.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(t=>[t.id,t.name])],step.tool||'');tool.onchange=()=>{if(tool.value)step.tool=tool.value;else{delete step.tool;step.action='manual';paint();}};
-   const action=select([['manual','Manual checkpoint'],['install','Review and install'],['run','Run portable tool']],step.action||'manual');action.onchange=()=>step.action=action.value;
+   const tool=select([['','No tool · manual checkpoint'],...tools.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(t=>[t.id,t.name])],step.tool||'');tool.onchange=()=>{if(tool.value)step.tool=tool.value;else{delete step.tool;if(step.action!=='copy')step.action='manual';paint();}};
+   const action=select([['manual','Manual checkpoint'],['install','Review and install'],['run','Run portable tool'],['copy','Reviewed file migration']],step.action||'manual');action.onchange=()=>step.action=action.value;
    const link=node('input');link.value=step.url||'';link.placeholder='https://official-documentation';link.oninput=()=>{if(link.value)step.url=link.value;else delete step.url;};
    row.append(node('h3','Step '+(index+1)),field('Instructions',text),field('Application',tool),field('Action',action),field('Optional official instructions',link));
    const controls=node('div');controls.className='actions';controls.append(button('Move up',()=>{if(index){[steps[index-1],steps[index]]=[steps[index],steps[index-1]];paint();}}),button('Move down',()=>{if(index<steps.length-1){[steps[index+1],steps[index]]=[steps[index],steps[index+1]];paint();}}),button('Remove step',()=>{steps.splice(index,1);paint();}));row.append(controls);rows.append(row);

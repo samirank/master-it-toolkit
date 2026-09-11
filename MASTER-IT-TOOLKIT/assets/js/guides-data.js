@@ -18,16 +18,175 @@ window.TOOLKIT_TASKS = [
  {id:'uninstall',name:'Remove stubborn software',icon:'⊖',summary:'Uninstall, then review leftovers',tags:['uninstall','stubborn app','remove software'],tools:['revo','bcu','geek','hibit','appwiz'],reference:'privacy-presets',checklist:'return',warning:'A leftover scan can include shared files and registry entries. Do not accept every result automatically.',steps:['Try the application’s normal uninstaller and restart if requested.','Prefer free, open-source BCUninstaller for batch review. Choose licensed Revo Pro only when installation tracing is specifically required.','Review leftovers, preserve user data and test related applications. Avoid registry-cleaner functions.']}
 ];
 window.TOOLKIT_CHECKLISTS = {
- newpc:{name:'New Windows PC Setup',items:['Confirm ownership, scope and backup preferences','Record model, serial and Windows edition','Create a restore point or recoverable baseline backup','Run Windows Update and restart; recheck','Review BIOS/firmware model, release notes and stable power','Install OEM chipset, network and GPU drivers','Remove unwanted OEM trialware with owner approval','Review supported privacy, advertising and telemetry settings','Review Copilot, Recall, Click to Do and app AI preferences','Confirm OneDrive known-folder backup and account preferences','Check BitLocker status and owner-held recovery-key access','Install browser, office suite, PDF reader, 7-Zip and media player','Install required Visual C++ / .NET runtimes','Test audio, webcam, networking, sleep and peripheral devices','Record versions, changes and owner handover']},
- malware:{name:'Malware Cleanup',items:['Confirm authorization and incident-response requirements','Isolate active compromise when appropriate','Preserve evidence and necessary data before modifying','Prepare a trusted environment and fresh scanner definitions','Scan and review findings; avoid restoring infected executables','Review startup persistence, services, tasks and browser extensions','Update Windows, browsers and software','Rotate compromised credentials from a clean device','Reinstall trusted media if cleanup confidence is insufficient','Document findings and verify protection is enabled']},
- boot:{name:"PC Won't Boot",items:['Record error, recent changes and firmware boot mode','Check power, cables and firmware disk detection','Confirm BitLocker key availability with owner','Check drive health before filesystem or boot repair','Back up / image important data','Use Windows RE Startup Repair','Identify Windows and EFI partitions before manual repair','Review BCD and WinRE configuration without blanket changes','Test repeated cold boots','Record cause and successful recovery steps']},
- failing:{name:'Failing Disk',items:['Stop unnecessary use and writes','Discuss professional recovery for physical damage or irreplaceable files','Record drive serial, capacity and minimal health observations','Prepare a healthy destination large enough for image and recovery output','Image first with a resumable mapfile, if appropriate','Preserve source and original image','Recover from a working image copy','Save recovered files to separate healthy storage','Verify critical files with owner','Replace failed media and document outcome']},
- gaming:{name:'Gaming PC Troubleshooting',items:['Record game, symptom and reproducible workload','Review Reliability Monitor and crash timestamps','Return CPU/GPU/RAM tuning to defaults for baseline','Check temperatures, cooling and power connectors','Check RAM and storage health','Stage and install model-matched GPU drivers','Verify required runtimes and game files','Test one subsystem at a time while monitoring temperatures','Preserve Xbox/anti-cheat dependencies required by games','Repeat original workload and record result']},
- network:{name:'Network Troubleshooting',items:['Check cable, link LEDs, airplane mode and adapter state','Confirm driver hardware ID and link speed','Record IP, mask, gateway, DNS and DHCP status','Test the gateway and another LAN device','Compare known external IP and DNS lookup results','Check duplicate IP against DHCP leases / neighbor table','Test required TCP port and proxy/VPN configuration','Compare known-good Ethernet cable and Wi-Fi location','Run authorized throughput or packet capture tests if needed','Document changes and restore temporary test settings']},
- return:{name:'Before Returning Customer PC',items:['Verify the original issue is resolved using the original workload','Check updates, Defender, firewall and restore configuration','Verify user data, applications, printing and peripherals','Confirm BitLocker recovery key is held by the owner','Remove temporary remote access and technician accounts if created','Remove customer copies from toolkit according to agreed retention','Remove test files and close customer sessions','Export service notes without credentials','Document changes, licenses and remaining issues','Obtain owner acceptance and disconnect toolkit safely']},
- migration:{name:'Data Migration',items:['Identify source, destination and owner-approved data scope','Check source health, encryption and cloud-only placeholders','Create an independent backup before migration','Download necessary synced files and verify availability','Preview copy paths; avoid mirror/delete modes','Copy to healthy destination with verification','Compare counts, sizes and open critical sample files','Confirm Desktop, Documents, Pictures and application data','Do not transfer unknown persistence or compromised executables','Keep original until the owner approves the migration']},
- ssd:{name:'SSD Upgrade',items:['Confirm interface, form factor and capacity compatibility','Check source health and encryption','Create verified backup and confirm recovery-key access','Record both disk serials before cloning','Use guided clone/image tool for healthy media','Do not interrupt copy; maintain stable power','Disconnect original before first boot of clone','Verify partitions, files, applications and boot behavior','Check SSD health and available space','Retain original until verification and handover are complete']},
- reinstall:{name:'Windows Reinstallation',items:['Confirm owner authorization, Windows license and edition','Back up data and application/license records without passwords','Verify recovery keys and cloud sync completeness','Stage correct offline network, chipset and storage drivers','Create trusted Windows media and verify source','Review partition selection carefully; installation can erase data','Use supported account/OOBE choices agreed with owner','Install drivers, Windows updates and required runtimes','Restore verified data and install approved applications','Review privacy, AI, OneDrive and BitLocker preferences','Test hardware, apps, activation and recovery options','Document build and return the PC with owner acceptance']}
+  "newpc": {
+    "name": "New Windows PC Setup",
+    "items": [
+      "Confirm ownership, scope and backup preferences",
+      "Record model, serial and Windows edition",
+      "Create a restore point or recoverable baseline backup",
+      "Run Windows Update and restart; recheck",
+      "Review BIOS/firmware model, release notes and stable power",
+      "Install OEM chipset, network and GPU drivers",
+      "Remove unwanted OEM trialware with owner approval",
+      "Review supported privacy, advertising and telemetry settings",
+      "Review Copilot, Recall, Click to Do and app AI preferences",
+      "Confirm OneDrive known-folder backup and account preferences",
+      "Check BitLocker status and owner-held recovery-key access",
+      "Install browser, office suite, PDF reader, 7-Zip and media player",
+      "Install required Visual C++ / .NET runtimes",
+      "Test audio, webcam, networking, sleep and peripheral devices",
+      "Record versions, changes and owner handover"
+    ]
+  },
+  "malware": {
+    "name": "Malware Cleanup",
+    "items": [
+      "Confirm authorization and incident-response requirements",
+      "Isolate active compromise when appropriate",
+      "Preserve evidence and necessary data before modifying",
+      "Prepare a trusted environment and fresh scanner definitions",
+      "Scan and review findings; avoid restoring infected executables",
+      "Review startup persistence, services, tasks and browser extensions",
+      "Update Windows, browsers and software",
+      "Rotate compromised credentials from a clean device",
+      "Reinstall trusted media if cleanup confidence is insufficient",
+      "Document findings and verify protection is enabled"
+    ]
+  },
+  "boot": {
+    "name": "PC Won't Boot",
+    "items": [
+      "Record error, recent changes and firmware boot mode",
+      "Check power, cables and firmware disk detection",
+      "Confirm BitLocker key availability with owner",
+      "Check drive health before filesystem or boot repair",
+      "Back up / image important data",
+      "Use Windows RE Startup Repair",
+      "Identify Windows and EFI partitions before manual repair",
+      "Review BCD and WinRE configuration without blanket changes",
+      "Test repeated cold boots",
+      "Record cause and successful recovery steps"
+    ]
+  },
+  "failing": {
+    "name": "Failing Disk",
+    "items": [
+      "Stop unnecessary use and writes",
+      "Discuss professional recovery for physical damage or irreplaceable files",
+      "Record drive serial, capacity and minimal health observations",
+      "Prepare a healthy destination large enough for image and recovery output",
+      "Image first with a resumable mapfile, if appropriate",
+      "Preserve source and original image",
+      "Recover from a working image copy",
+      "Save recovered files to separate healthy storage",
+      "Verify critical files with owner",
+      "Replace failed media and document outcome"
+    ]
+  },
+  "gaming": {
+    "name": "Gaming PC Troubleshooting",
+    "items": [
+      "Record game, symptom and reproducible workload",
+      "Review Reliability Monitor and crash timestamps",
+      "Return CPU/GPU/RAM tuning to defaults for baseline",
+      "Check temperatures, cooling and power connectors",
+      "Check RAM and storage health",
+      "Stage and install model-matched GPU drivers",
+      "Verify required runtimes and game files",
+      "Test one subsystem at a time while monitoring temperatures",
+      "Preserve Xbox/anti-cheat dependencies required by games",
+      "Repeat original workload and record result"
+    ]
+  },
+  "network": {
+    "name": "Network Troubleshooting",
+    "items": [
+      "Check cable, link LEDs, airplane mode and adapter state",
+      "Confirm driver hardware ID and link speed",
+      "Record IP, mask, gateway, DNS and DHCP status",
+      "Test the gateway and another LAN device",
+      "Compare known external IP and DNS lookup results",
+      "Check duplicate IP against DHCP leases / neighbor table",
+      "Test required TCP port and proxy/VPN configuration",
+      "Compare known-good Ethernet cable and Wi-Fi location",
+      "Run authorized throughput or packet capture tests if needed",
+      "Document changes and restore temporary test settings"
+    ]
+  },
+  "return": {
+    "name": "Before Returning Customer PC",
+    "items": [
+      "Verify the original issue is resolved using the original workload",
+      "Check updates, Defender, firewall and restore configuration",
+      "Verify user data, applications, printing and peripherals",
+      "Confirm BitLocker recovery key is held by the owner",
+      "Remove temporary remote access and technician accounts if created",
+      "Remove customer copies from toolkit according to agreed retention",
+      "Remove test files and close customer sessions",
+      "Export service notes without credentials",
+      "Document changes, licenses and remaining issues",
+      "Obtain owner acceptance and disconnect toolkit safely"
+    ]
+  },
+  "migration": {
+    "name": "Data Migration",
+    "items": [
+      "Identify source, destination and owner-approved data scope",
+      "Check source health, encryption and cloud-only placeholders",
+      "Create an independent backup before migration",
+      "Download necessary synced files and verify availability",
+      "Preview copy paths; avoid mirror/delete modes",
+      "Preview and copy the selected regular files into a new job folder; verify contents and retain originals.",
+      "Compare counts, sizes and open critical sample files",
+      "Confirm Desktop, Documents, Pictures and application data",
+      "Do not transfer unknown persistence or compromised executables",
+      "Keep original until the owner approves the migration"
+    ]
+  },
+  "ssd": {
+    "name": "SSD Upgrade",
+    "items": [
+      "Confirm interface, form factor and capacity compatibility",
+      "Check source health and encryption",
+      "Create verified backup and confirm recovery-key access",
+      "Record both disk serials before cloning",
+      "Use guided clone/image tool for healthy media",
+      "Do not interrupt copy; maintain stable power",
+      "Disconnect original before first boot of clone",
+      "Verify partitions, files, applications and boot behavior",
+      "Check SSD health and available space",
+      "Retain original until verification and handover are complete"
+    ]
+  },
+  "reinstall": {
+    "name": "Windows Reinstallation",
+    "items": [
+      "Confirm owner authorization, Windows license and edition",
+      "Back up data and application/license records without passwords",
+      "Verify recovery keys and cloud sync completeness",
+      "Stage correct offline network, chipset and storage drivers",
+      "Create trusted Windows media and verify source",
+      "Review partition selection carefully; installation can erase data",
+      "Use supported account/OOBE choices agreed with owner",
+      "Install drivers, Windows updates and required runtimes",
+      "Restore verified data and install approved applications",
+      "Review privacy, AI, OneDrive and BitLocker preferences",
+      "Test hardware, apps, activation and recovery options",
+      "Document build and return the PC with owner acceptance"
+    ]
+  },
+  "profile-migration": {
+    "name": "New PC / profile migration",
+    "items": [
+      "Agree which user folders, browser bookmarks, mail archives and application settings to migrate. Record application licenses without credentials.",
+      "Back up the source independently, unlock encrypted data with the owner and fully download cloud-only files.",
+      "Check the source drive health before copying. Stop and use a recovery workflow if it is failing.",
+      "Preview and copy the selected regular files into a new job folder; verify contents and retain originals.",
+      "Review the copy log and verification failures. Compare file counts and sizes; open critical files on the destination.",
+      "Install applications from trusted installers on the new PC. Import supported bookmarks, mail and settings; do not copy Windows or Program Files as an OS migration.",
+      "Have the owner confirm access to files and applications. Keep the original and backup until acceptance."
+    ]
+  }
 };
 window.TOOLKIT_REFERENCES = [
  ['windows-recovery','Windows Recovery Commands','Start with the symptom and preserve data.'],['dism','DISM Commands','Repair the component store with a matched source.'],['sfc','SFC','Check protected Windows system files.'],['chkdsk','CHKDSK','Inspect before attempting filesystem repair.'],['diskpart','DiskPart','Read disk layout before changing anything.'],['bcd','Bootrec / BCD / EFI','Identify boot mode and partitions first.'],['networking','Networking Commands','Link, DHCP, DNS, routes and ports.'],['powershell','PowerShell Troubleshooting','Logs, service state and command discovery.'],['linux-rescue','Linux Rescue Commands','Inspect storage, RAID, LVM and ZFS.'],['smart','SMART','Health indicators and their limits.'],['ddrescue','GNU ddrescue','Resumable failing-media imaging.'],['mounting','Filesystem Mounting','Read-only and journal replay considerations.'],['bios','BIOS Boot Keys','Common keys; always verify the exact model.'],['safe-mode','Safe Mode','Use temporary Windows recovery startup settings.'],['winre','Windows Recovery Environment','Check and enter the recovery environment.'],['bitlocker','BitLocker Recovery','AUTHORIZED SYSTEMS ONLY.'],['drivers','Driver Troubleshooting','Hardware IDs, offline packages and rollback.'],['malware','Malware Workflow','Isolate, preserve, scan and verify.'],['account-oobe','Account, OOBE & OneDrive','Supported setup and owner-controlled recovery.'],['privacy-presets','Windows Privacy Presets','Reviewable concepts, never auto-applied.'],['data-recovery','Data Recovery','Recover from an image to separate storage.'],['cloning','Imaging & Cloning','Healthy-drive migration versus failing media.'],['hardware','Hardware & Firmware','Temperatures, power and model verification.'],['updates','Windows Update / Profile Repair','Conservative troubleshooting and escalation.']
