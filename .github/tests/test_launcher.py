@@ -158,6 +158,19 @@ class ServerTests(unittest.TestCase):
                 duplicate.server_close()
         finally: other.server_close()
 
+    def test_backup_cancel_reaches_running_job_without_releasing_its_lock(self):
+        self.server.lock.acquire()
+        try:
+            body={'action':'cancel-backup','confirmed':True}
+            with self.assertRaises(urllib.error.HTTPError):self.request('api/action',body,origin='https://untrusted.invalid')
+            self.assertFalse(self.server.cancel_backup.is_set())
+            with self.request('api/action',body,origin=self.server.origin) as response:
+                self.assertEqual(response.status,200)
+                self.assertIn('partial restore',json.load(response)['message'])
+            self.assertTrue(self.server.cancel_backup.is_set())
+            self.assertTrue(self.server.lock.locked())
+        finally:self.server.lock.release()
+
     def test_stale_dashboard_navigation_recovers_but_api_and_cross_site_do_not(self):
         stale=self.server.origin+'/'+'old-session-'*3+'/index.html'
         headers={'Sec-Fetch-Mode':'navigate','Sec-Fetch-Dest':'document','Sec-Fetch-Site':'none'}

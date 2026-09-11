@@ -664,8 +664,8 @@ class Handler(BaseHTTPRequestHandler):
                 if not isinstance(body.get('tool'), str) or not isinstance(body.get('assets'), list) or not 1 <= len(body['assets']) <= 50 or any(not isinstance(a, str) for a in body['assets']): raise ValueError()
         except (ValueError, KeyError, TypeError): return self.reply(400, {'error': 'Invalid action'})
         if action=='cancel-backup':
-            self.cancel_backup.set()
-            return self.reply(200,{'message':'Stopping backup; incomplete archive will be removed.'})
+            self.server.cancel_backup.set()
+            return self.reply(200,{'message':'Stopping the backup or restore. Completed backups are kept; a partial restore may need review.'})
         if action=='cancel-downloads':
             self.server.cancel_downloads.set()
             return self.reply(200,{'message':'Queue will stop after the active transfer. Completed packages are kept.'})
