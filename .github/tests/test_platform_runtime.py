@@ -37,8 +37,8 @@ class PlatformTests(unittest.TestCase):
             nested = root / 'runtimes/linux-x64/Master-IT-Toolkit'
             nested.parent.mkdir(parents=True)
             (nested.parent / 'browser').mkdir()
-            self.assertEqual(p.toolkit_root(nested), root)
-            self.assertEqual(p.toolkit_root(Path(tmp) / 'Start-Windows.exe'), root)
+            self.assertEqual(p.toolkit_root(nested), root.resolve())
+            self.assertEqual(p.toolkit_root(Path(tmp) / 'Start-Windows.exe'), root.resolve())
             with patch.object(p, 'label', return_value='linux-x64'):
                 self.assertEqual(p.browser_path(root), nested.parent / 'browser')
                 self.assertEqual(p.available(root)['installed'], ['linux-x64'])
