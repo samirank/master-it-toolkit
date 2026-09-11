@@ -10,7 +10,7 @@ function pass(name){results.push({name,passed:true});console.log('PASS '+name)}
  const context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true});
  await context.setOffline(true);
  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url()))network.push(r.url())});
- await page.goto(url);await page.waitForSelector('h1');
+ await page.route('**/api/setup',r=>r.fulfill({json:{required:false}}));await page.goto(url);await page.waitForSelector('h1');
  assert.equal(await page.title(),'Master IT Toolkit');assert((await page.locator('h1').innerText()).includes('Ready'));pass('Direct file:// startup with network offline');
  const dependencyCheck=await page.evaluate(()=>[...document.querySelectorAll('script[src],link[rel=stylesheet],img')].map(e=>({url:e.src||e.href,ok:e.tagName!=='IMG'||e.complete&&e.naturalWidth>0})));
  assert(dependencyCheck.every(x=>x.url.startsWith('file:')&&x.ok));for(const x of dependencyCheck)assert(fs.existsSync(require('url').fileURLToPath(x.url)));pass('All dashboard dependencies are local and present');

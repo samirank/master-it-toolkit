@@ -130,3 +130,9 @@ GitHub Actions runs cross-platform checks, Pages publishing, source resolution a
 ## License
 
 Copyright © 2026 Samiran Kakoty. See the [Master IT Toolkit Source-Available License](MASTER-IT-TOOLKIT/LICENSE.txt). Use, modification and redistribution are subject to its attribution, naming and other terms. This is source-available software, not an OSI-approved open-source release. Third-party tools retain their own licenses.
+
+### First-run setup
+
+The local launcher opens a four-step setup wizard for a fresh toolkit workspace: review the drive and free space, configure optional vault encryption, save an optional backup destination, then finish or start an inventory scan. Encryption requires saving the recovery key separately. No software installation, download or new automatic backup schedule is started by the wizard. Existing settings are preserved when skipped.
+
+Choose **Set up later** to resume next time, or reopen **Setup wizard** in the header. Progress and completion are saved in the toolkit SQLite database and survive source updates. On Windows and Linux, a changed volume identifier prompts another review when available; drive-letter changes do not reset Windows setup. On macOS or filesystems without a readable stable identifier, completion follows the toolkit copy. Cloned volumes with identical identifiers cannot be distinguished. The hosted demo does not run local setup.

@@ -8,7 +8,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   const catalog=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../../MASTER-IT-TOOLKIT/assets/download-catalog.json'),'utf8'));let action;
   await page.route('**/api/catalog*',r=>r.fulfill({json:catalog}));
   await page.route('**/api/action',r=>{action=r.request().postDataJSON();return r.fulfill({status:202,json:{busy:true,message:'Fixture queue started'}})});
-  await page.goto(url+'#downloads');await page.locator('#catalog-notice').waitFor();
+  await page.route('**/api/setup',r=>r.fulfill({json:{required:false}}));await page.goto(url+'#downloads');await page.locator('#catalog-notice').waitFor();
   await page.locator('#bulk-platform').selectOption('Linux');await page.locator('#bulk-architecture').selectOption('arm64');
   await page.locator('.bulk-download-panel [data-bulk-download="missing"]').click();
   await page.waitForFunction(()=>document.querySelector('#activity-message').textContent.includes('Starting download queue'));

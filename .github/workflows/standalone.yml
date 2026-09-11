@@ -37,6 +37,7 @@ jobs:
       - run: python .github/tests/test_catalog.py
       - run: python .github/tests/test_workflow_jobs.py
       - run: python .github/tests/test_migration.py
+      - run: python .github/tests/test_setup_wizard.py
       - run: python .github/tests/test_persistence.py
       - run: python .github/tests/test_vault.py
       - run: python .github/tests/test_encrypted_backup.py

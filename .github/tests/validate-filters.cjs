@@ -4,7 +4,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
 try{const url=await new Promise(resolve=>proc.stdout.once('data',d=>resolve(d.toString().trim())));browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
 const catalog={tools:{'7zip':{status:'ready',assets:[{platform:'Windows',architecture:'x64'}]},bcu:{status:'manual'},obs:{status:'error'}}};
 await page.route('**/api/catalog*',r=>r.fulfill({json:catalog}));await page.route('**/api/workspace',r=>r.fulfill({json:{}}));
-await page.goto(url+'#tools');await page.getByLabel('Download method',{exact:true}).waitFor();
+await page.route('**/api/setup',r=>r.fulfill({json:{required:false}}));await page.goto(url+'#tools');await page.getByLabel('Download method',{exact:true}).waitFor();
 await page.evaluate(c=>{window.TOOLKIT_DOWNLOAD_CATALOG=c;window.dispatchEvent(new CustomEvent('toolkit-catalog',{detail:c}));window.dispatchEvent(new CustomEvent('toolkit-inventory',{detail:{tools:{'7zip':{downloaded:true}},host:null}}));},catalog);
 const ids=()=>page.locator('[data-select-tool]').evaluateAll(nodes=>nodes.map(n=>n.dataset.selectTool));
 await page.getByLabel('Availability',{exact:true}).selectOption('downloaded');assert.deepEqual(await ids(),['7zip']);

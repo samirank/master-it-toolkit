@@ -7,7 +7,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   const url=await new Promise((resolve,reject)=>{process.stdout.once('data',d=>resolve(d.toString().trim()));process.once('error',reject);process.stderr.on('data',d=>console.error(d.toString()));});
   browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
   const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(url);assert.equal(await page.locator('.launcher-panel').getAttribute('open'),null);await page.locator('.launcher-panel > summary').click();await page.getByRole('button',{name:'Scan local inventory',exact:true}).waitFor();
+  await page.route('**/api/setup',r=>r.fulfill({json:{required:false}}));await page.goto(url);assert.equal(await page.locator('.launcher-panel').getAttribute('open'),null);await page.locator('.launcher-panel > summary').click();await page.getByRole('button',{name:'Scan local inventory',exact:true}).waitFor();
   assert.equal(await page.locator('.local-label').innerText(),'LAUNCHER MODE');
   assert(!(await page.locator('main').innerText()).includes('HOSTED DEMO'));
   await page.getByRole('button',{name:'Scan local inventory',exact:true}).click();

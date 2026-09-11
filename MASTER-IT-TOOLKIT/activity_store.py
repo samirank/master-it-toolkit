@@ -38,7 +38,7 @@ class Store:
 
     def workspace(self, key=None, value=None):
         if self.error: raise RuntimeError(self.error)
-        if key is not None and key not in ('preferences', 'favorites', 'notes', 'checklists', 'capacity', 'customWorkflows', 'backupSettings'):
+        if key is not None and key not in ('preferences', 'favorites', 'notes', 'checklists', 'capacity', 'customWorkflows', 'backupSettings', 'setupState'):
             raise ValueError('Unknown workspace setting')
         if key=='backupSettings' and (not isinstance(value,dict) or set(value)-{'destination','scope','automatic','intervalHours','engine','keepLast'} or not isinstance(value.get('destination'),str) or len(value['destination'])>2048 or value.get('scope') not in ('workspace','full')):
             raise ValueError('Invalid backup settings')

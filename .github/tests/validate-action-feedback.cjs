@@ -8,7 +8,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.route('**/api/catalog*',r=>r.fulfill({json:{schema:1,tools:{}}}));
   // No native-dialog listener: reproduce the embedded browser's automatic dismissal.
   await page.route('**/api/action',async r=>{calls.push(r.request().postDataJSON());await new Promise(resolve=>setTimeout(resolve,150));return r.fulfill({status:fail?409:202,json:fail?{error:'Fixture: another action is running'}:{busy:true,message:'Fixture action accepted'}});});
-  await page.goto(url);await page.locator('.launcher-panel > summary').click();
+  await page.route('**/api/setup',r=>r.fulfill({json:{required:false}}));await page.goto(url);await page.locator('.launcher-panel > summary').click();
   await page.getByRole('button',{name:'Scan local inventory',exact:true}).click();
   await page.waitForFunction(()=>document.querySelector('#activity-message').textContent.includes('Fixture action accepted'));
   assert.equal(calls[0].action,'inventory');

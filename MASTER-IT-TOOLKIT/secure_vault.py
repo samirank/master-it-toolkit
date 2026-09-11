@@ -36,7 +36,10 @@ def encrypted(path):
     with path.open('rb') as source:return source.read(len(MAGIC))==MAGIC
 
 def mutex(path):return LOCKS.setdefault(str(path.resolve()),threading.RLock())
-def status(path):return dict(configured=encrypted(path),locked=encrypted(path) and str(path.resolve()) not in KEYS)
+def status(path):
+    with mutex(path):
+        configured=encrypted(path)
+        return dict(configured=configured,locked=configured and str(path.resolve()) not in KEYS)
 def lock(path):
     with mutex(path):KEYS.pop(str(path.resolve()),None)
 def header(path):

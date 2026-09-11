@@ -7,7 +7,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   const url=await new Promise((resolve,reject)=>{proc.stdout.once('data',d=>resolve(d.toString().trim()));proc.once('error',reject);});
   browser=await chromium.launch({executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});const page=await browser.newPage();
   const errors=[];page.on('pageerror',e=>errors.push(e.message));
-  await page.goto(url+'#notes');await page.locator('[data-note="issue"]').fill('Private test issue');
+  await page.route('**/api/setup',r=>r.fulfill({json:{required:false}}));await page.goto(url+'#notes');await page.locator('[data-note="issue"]').fill('Private test issue');
   await page.waitForFunction(()=>document.querySelector('#notes-state').textContent.includes('Saved to SSD'));
   await page.getByRole('button',{name:/Private vault|Set up private vault/}).click();
   await page.getByLabel('Vault passphrase or recovery key').fill('test-only long vault passphrase');

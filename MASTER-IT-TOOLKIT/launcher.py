@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT))
 # The frozen bootstrap imports these for dependency collection. Load updated SSD
 # source modules on restart instead of reusing the copies cached inside the EXE.
 if getattr(sys, 'frozen', False):
-    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant','secure_vault','portable_ai','migration_tools'):
+    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant','secure_vault','portable_ai','migration_tools','setup_wizard'):
         sys.modules.pop(module,None)
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
@@ -54,7 +54,7 @@ def managed_name(name):
     if name.startswith('runtime-extensions/ubol/'): return True
     if name == '70_DOCUMENTATION/Service-Notes/README.txt': return True
     if name == '10_WINDOWS_TOOLBOX/06_Account-OOBE/Unattended/autounattend.xml': return True
-    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'offline_assistant.py', 'secure_vault.py', 'portable_ai.py', 'migration_tools.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
+    if name in ('index.html', 'README.txt', 'START-HERE.txt', 'LICENSE.txt', 'launcher.py', 'tool_downloads.py', 'install_tools.py', 'host_inventory.py', 'portable_tools.py', 'activity_store.py', 'browser_host.py', 'offline_assistant.py', 'secure_vault.py', 'portable_ai.py', 'migration_tools.py', 'setup_wizard.py', 'Start-Toolkit.cmd', 'Start-Toolkit.command'):
         return True
     if name.startswith('assets/'):
         return name not in (MANIFEST, 'assets/js/local-inventory.js', 'assets/download-receipts.json', 'assets/download-catalog-cache.json') and Path(name).suffix in ('.js', '.css', '.json', '.png', '.svg')
@@ -418,6 +418,12 @@ class Handler(BaseHTTPRequestHandler):
         route = self.route()
         if route is None: return self.reply(403, {'error': 'Open the URL printed by your launcher.'})
         if route == 'api/vault':return self.reply(200,secure_vault.status(self.server.history.path))
+        if route == 'api/setup':
+            if secure_vault.status(self.server.history.path)['locked']:return self.reply(200,{'locked':True})
+            try:
+                import setup_wizard
+                return self.reply(200,setup_wizard.status(self.server.root,self.server.history))
+            except Exception as error:return self.reply(503,{'error':str(error)})
         if route == 'api/workspace' and secure_vault.status(self.server.history.path)['locked']:
             return self.reply(200,{'_vaultLocked':True,'preferences':{},'favorites':[],'notes':{},'checklists':{},'capacity':256,'customWorkflows':{},'backupSettings':{}})
         if route == 'api/workspace':
@@ -518,17 +524,22 @@ class Handler(BaseHTTPRequestHandler):
         except (ValueError, OSError): return self.reply(404, {'error': 'Unavailable'})
     def do_POST(self):
         if self.route()=='api/vault' and self.headers.get('Origin')==self.server.origin:
-            if not self.server.lock.acquire(False):return self.reply(409,{'error':'Wait for the current job before changing vault state.'})
             try:
                 size=int(self.headers.get('Content-Length','0'))
                 if not 0<size<=5000:raise ValueError('Invalid vault request')
                 body=json.loads(self.rfile.read(size));operation=body.get('operation')
+                if operation=='touch':
+                    self.server.vault_touch=time.time()
+                    return self.reply(200,secure_vault.status(self.server.history.path))
+            except Exception as error:return self.reply(400,{'error':str(error)})
+            if not self.server.lock.acquire(False):return self.reply(409,{'error':'Wait for the current job before changing vault state.'})
+            try:
                 recovery=None
                 with self.server.history.lock:
                     if operation=='setup':recovery=secure_vault.setup(self.server.history.path,body.get('secret'))
                     elif operation=='unlock':secure_vault.unlock(self.server.history.path,body.get('secret'),body.get('recovery') is True)
                     elif operation=='lock':secure_vault.lock(self.server.history.path)
-                    elif operation!='touch':raise ValueError('Unknown vault operation')
+                    else:raise ValueError('Unknown vault operation')
                 self.server.vault_touch=time.time()
                 if operation in ('setup','unlock'):self.server.history=activity_store.Store(self.server.root,safe_path,self.server.token)
                 return self.reply(200,dict(secure_vault.status(self.server.history.path),recoveryKey=recovery))
@@ -537,6 +548,13 @@ class Handler(BaseHTTPRequestHandler):
         if self.route() and self.route().startswith('api/') and secure_vault.status(self.server.history.path)['locked']:
             return self.reply(423,{'error':'Workspace locked. Unlock the vault to use recorded actions or save data.'})
 
+        if self.route()=='api/setup' and self.headers.get('Origin')==self.server.origin:
+            try:
+                import setup_wizard
+                size=int(self.headers.get('Content-Length','0'))
+                if not 0<size<=1000:raise ValueError('Invalid setup request')
+                return self.reply(200,setup_wizard.save(self.server.root,self.server.history,json.loads(self.rfile.read(size))))
+            except Exception as error:return self.reply(400,{'error':str(error)})
         if self.route()=='api/migration-plan' and self.headers.get('Origin')==self.server.origin:
             try:
                 size=int(self.headers.get('Content-Length','0'))
@@ -571,6 +589,7 @@ class Handler(BaseHTTPRequestHandler):
                 size = int(self.headers.get('Content-Length', '0'))
                 if not 0 < size <= 2_100_000: raise ValueError('Workspace request is too large')
                 body = json.loads(self.rfile.read(size))
+                if body.get('key')=='setupState':raise ValueError('Use the setup wizard to save its progress')
                 if not isinstance(body.get('key'), str): raise ValueError('Invalid workspace key')
                 self.server.history.workspace(body['key'], body['value'])
                 return self.reply(200, {'saved': True})

@@ -6,7 +6,7 @@ const root=path.resolve(__dirname,'../..'),out=path.join(root,'.development/publ
  const browser=await chromium.launch({executablePath:process.env.BROWSER_EXECUTABLE||'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',headless:true});
  const context=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true});
  const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto(process.env.DEMO_URL||'https://samirank.github.io/master-it-toolkit/',{waitUntil:'networkidle'});
+ await page.route('**/api/setup',r=>r.fulfill({json:{required:false}}));await page.goto(process.env.DEMO_URL||'https://samirank.github.io/master-it-toolkit/',{waitUntil:'networkidle'});
  assert.equal(await page.title(),'Master IT Toolkit');assert((await page.locator('main').innerText()).includes('HOSTED DEMO'));
  assert.equal(await page.locator('.brand img, link[rel="icon"]').count(),0);
  assert.equal(await page.getByRole('link',{name:'GitHub repository'}).getAttribute('href'),'https://github.com/samirank/master-it-toolkit');

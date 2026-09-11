@@ -8,7 +8,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.route('**/api/catalog*',r=>r.fulfill({json:{tools:{}}}));
   await page.route('**/api/workspace',r=>{if(r.request().method()==='POST'){const b=r.request().postDataJSON();storage[b.key]=b.value;return r.fulfill({json:{saved:true}});}return r.fulfill({json:storage});});
   await page.route('**/api/action',r=>{action=r.request().postDataJSON();return r.fulfill({status:202,json:{busy:true,message:'Fixture accepted'}});});
-  await page.goto(url+'#builds');await page.getByRole('heading',{name:'Gaming PC',exact:true}).waitFor();
+  await page.route('**/api/setup',r=>r.fulfill({json:{required:false}}));await page.goto(url+'#builds');await page.getByRole('heading',{name:'Gaming PC',exact:true}).waitFor();
   assert.equal(await page.locator('#build-library .tool-card').count(),18);
   const gaming=page.locator('#build-library .tool-card').filter({has:page.getByRole('heading',{name:'Gaming PC',exact:true})});
   await gaming.getByRole('button',{name:'Review build',exact:true}).click();await page.getByRole('button',{name:'Download build packages',exact:true}).click();

@@ -10,7 +10,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.route('**/api/catalog*',r=>r.fulfill({json:{tools:{}}}));
   await page.route('**/api/workspace',r=>{if(r.request().method()==='POST'){if(fail)return r.fulfill({status:503,json:{error:'locked'}});const {key,value}=r.request().postDataJSON();stored[key]=value;return r.fulfill({json:{saved:true}});}return r.fulfill({json:stored});});
   await page.addInitScript(()=>localStorage.setItem('master-it.v1.notes',JSON.stringify({issue:'Legacy note'})));
-  await page.goto(url+'#notes');await page.locator('[data-note="issue"]').waitFor();
+  await page.route('**/api/setup',r=>r.fulfill({json:{required:false}}));await page.goto(url+'#notes');await page.locator('[data-note="issue"]').waitFor();
   assert.equal(await page.locator('[data-note="issue"]').inputValue(),'');
   assert.equal(stored.notes,undefined); // Stale browser copies must never unlock/repopulate a private workspace.
   await page.locator('[data-note="issue"]').fill('New SSD note');

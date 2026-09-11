@@ -2,7 +2,7 @@
  'use strict';if(!window.TOOLKIT_LAUNCHER)return;
  const el=(tag,text)=>{const n=document.createElement(tag);if(text)n.textContent=text;return n;};
  async function api(body){const r=await fetch(new URL('api/vault',location.href),body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{cache:'no-store'});const value=await r.json();if(!r.ok)throw Error(value.error||'Vault unavailable');return value;}
- const b=el('button','Private vault');document.querySelector('.header-actions').append(b);
+ const b=el('button','Private vault');b.id='manage-private-vault';document.querySelector('.header-actions').append(b);
  b.onclick=async()=>{const d=el('dialog');d.className='download-dialog';const close=el('button','Close');close.onclick=()=>d.close();d.append(close,el('h2','Private workspace vault'));document.body.append(d);d.onclose=()=>d.remove();d.showModal();
  try{const state=await api();d.append(el('p',state.configured?(state.locked?'Locked. Unlock with your passphrase or recovery key.':'Unlocked in this launcher session. It locks on restart and after 15 minutes without activity.'):'Encrypt your workspace database. Existing exported files, diagnostic reports and older backups are separate and remain unencrypted until migrated.'));
  const secret=el('input');secret.type='password';secret.autocomplete='off';secret.maxLength=1024;secret.setAttribute('aria-label','Vault passphrase or recovery key');d.append(secret);

@@ -16,7 +16,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   let run;
   await page.route('**/api/run-options?tool=bcu',r=>r.fulfill({json:{files:[{name:'BCUninstaller.exe',path:'fixture/BCUninstaller.exe',fullPath:'D:\\fixture\\BCUninstaller.exe'}]}}));
   await page.route('**/api/action',r=>{const b=r.request().postDataJSON();if(b.action==='run-portable'){run=b;return r.fulfill({status:202,json:{message:'Fixture launch'}});}return r.continue();});
-  await page.goto(url+'#tools');await page.locator('#search').fill('Bulk Crap Uninstaller');await page.locator('[data-run-tool="bcu"]').first().click();
+  await page.route('**/api/setup',r=>r.fulfill({json:{required:false}}));await page.goto(url+'#tools');await page.locator('#search').fill('Bulk Crap Uninstaller');await page.locator('[data-run-tool="bcu"]').first().click();
   await page.waitForFunction(()=>!document.querySelector('dialog.download-dialog'));assert.equal(run.tool,'bcu');assert.equal(run.executable,'fixture/BCUninstaller.exe');
   await page.route('**/api/run-options?tool=winutil',r=>r.fulfill({json:{confirmationRequired:true,launchNote:'WinUtil requests administrator access through Windows UAC.',files:[{name:'winutil.ps1',path:'fixture/winutil.ps1',fullPath:'D:\\fixture\\winutil.ps1'}]}}));
   await page.locator('#search').fill('WinUtil');await page.locator('[data-run-tool="winutil"]').first().click();
