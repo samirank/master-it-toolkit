@@ -40,7 +40,7 @@
     else{
      const secret=el('input');secret.type='password';secret.autocomplete='new-password';secret.maxLength=1024;
      const confirm=el('input');confirm.type='password';confirm.autocomplete='new-password';confirm.maxLength=1024;
-     content.append(el('p','Use a passphrase of at least 14 characters.'),field('New vault passphrase',secret),field('Confirm passphrase',confirm));
+     content.append(el('p','Use at least 6 characters. A six-digit PIN is accepted; a longer passphrase offers stronger protection.'),field('New vault passphrase',secret),field('Confirm passphrase',confirm));
      act('Encrypt workspace',async()=>{
       if(secret.value!==confirm.value)throw Error('Passphrases do not match.');
       const result=await api('vault',{operation:'setup',secret:secret.value});secret.value='';confirm.value='';vault=result;recoveryPending=true;

@@ -562,6 +562,13 @@ class Handler(BaseHTTPRequestHandler):
             return self.reply(200, data, mimetypes.guess_type(route)[0] or 'text/plain')
         except (ValueError, OSError): return self.reply(404, {'error': 'Unavailable'})
     def do_POST(self):
+        if self.route() == 'api/focus':
+            if self.headers.get('Origin') != self.server.origin:
+                return self.reply(403, {'error': 'Invalid local session'})
+            url = self.server.origin + '/' + self.server.token + '/index.html'
+            if self.server.browser.available(): self.server.browser.focus_dashboard(url)
+            else: open_app(url)
+            return self.reply(200, {'focused': True})
         if self.route()=='api/vault' and self.headers.get('Origin')==self.server.origin:
             try:
                 size=int(self.headers.get('Content-Length','0'))
@@ -777,7 +784,17 @@ if __name__ == '__main__':
         if 'READY' not in answer.upper():raise RuntimeError('Portable model did not return the expected test response')
         print('Portable AI runtime and local model ready. No chat history was stored.')
         sys.exit(0)
+    from launcher_instance import Instance
+    import atexit
+    instance = Instance(ROOT)
+    if not instance.acquire():
+        if instance.focus():
+            print('Returned to the existing toolkit window.', flush=True)
+            sys.exit(0)
+        raise RuntimeError('The toolkit is already running but is not responding. Close its launcher before retrying.')
+    atexit.register(instance.close)
     server = Server()
+    instance.publish(server.origin, server.token)
     url = server.origin + '/' + server.token + '/index.html'
     print('Master IT Toolkit launcher. Keep this terminal open; Ctrl+C stops it.\n' + url, flush=True)
     if '--no-startup-scan' not in sys.argv:

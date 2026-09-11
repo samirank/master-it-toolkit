@@ -14,7 +14,7 @@ A portable IT service dashboard for finding tools, preparing PCs, running review
 4. Select tools and download their supported platform packages. Vendor-managed sources open in the toolkit's download window.
 5. Scan the SSD, review each tool's quick start, and prepare required software before going offline.
 
-The standalone browser is Chromium with bundled uBlock Origin Lite. Individual vendor sites can require temporarily disabling filtering. Downloads handled by the toolkit go to the displayed tool folder instead of the host's default Downloads folder. The launcher must remain running for local operations.
+The standalone browser is Chromium with bundled uBlock Origin Lite. Individual vendor sites can require temporarily disabling filtering. Downloads handled by the toolkit go to the displayed tool folder instead of the host's default Downloads folder. The launcher must remain running for local operations. Reopening the launcher for the same toolkit folder brings its existing window forward instead of starting a second session. Vault setup accepts at least six characters, including a six-digit PIN; longer passphrases provide stronger protection.
 
 The **source ZIP** is a separate option: open its HTML for static browsing, or use Python 3.11+ with `cryptography` and `keyring` and run `python launcher.py` inside the toolkit folder. A current standalone runtime is required for vault encryption; a source update does not add missing Python dependencies to an older executable. Playwright and its Chromium runtime enable the managed browser when running from source.
 

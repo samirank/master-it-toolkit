@@ -66,3 +66,24 @@
 .vault-field { display:grid; gap:6px; margin:14px 0; color:var(--muted); }
 .vault-field input { width:100%; padding:10px 12px; background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:6px; }
 .vault-dialog label:has(input[type=checkbox]) { display:flex; align-items:center; gap:8px; margin-bottom:14px; }
+
+/* Shared form controls: text fields and binary choices have distinct layouts. */
+input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=color]):not([type=hidden]), select, textarea {
+  min-height:38px; max-width:100%; padding:9px 12px; border:1px solid var(--line);
+  border-radius:6px; background:var(--bg); color:var(--text); font:inherit;
+}
+select { color-scheme:dark; }
+:root[data-theme=light] select { color-scheme:light; }
+textarea { resize:vertical; }
+input[type=checkbox], input[type=radio] {
+  appearance:auto; display:inline-block; flex:0 0 18px; width:18px; height:18px;
+  min-height:18px; max-width:18px; padding:0; margin:2px 0 0; accent-color:var(--green);
+  cursor:pointer; vertical-align:middle;
+}
+label:has(> input[type=checkbox]), label:has(> input[type=radio]) {
+  display:flex; align-items:flex-start; gap:10px; cursor:pointer; line-height:1.5;
+}
+label > input[type=checkbox], label > input[type=radio] { order:-1; }
+input:disabled, select:disabled, textarea:disabled { opacity:.55; cursor:not-allowed; }
+input[aria-invalid=true], select[aria-invalid=true], textarea[aria-invalid=true] { border-color:var(--amber); }
+.search-wrap input { min-height:0; padding:0; border:0; background:transparent; }

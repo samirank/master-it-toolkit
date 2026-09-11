@@ -15,6 +15,13 @@ class VaultTests(unittest.TestCase):
    v.unlock(store.path,recovery,recovery=True);self.assertEqual(store.workspace()['notes']['text'],'updated secret')
    self.assertNotIn(b'updated secret',store.path.read_bytes())
    v.lock(store.path)
+ def test_six_digit_pin_and_minimum_length(self):
+  with tempfile.TemporaryDirectory() as tmp:
+   store=activity_store.Store(Path(tmp),launcher.safe_path)
+   with self.assertRaisesRegex(ValueError,'6 characters'):v.setup(store.path,'12345')
+   v.setup(store.path,'123456');v.lock(store.path)
+   with self.assertRaises(ValueError):v.unlock(store.path,'654321')
+   v.unlock(store.path,'123456');self.assertFalse(v.status(store.path)['locked']);v.lock(store.path)
  def test_tampering_fails_closed(self):
   with tempfile.TemporaryDirectory() as tmp:
    store=activity_store.Store(Path(tmp),launcher.safe_path);v.setup(store.path,'another long passphrase');v.lock(store.path)

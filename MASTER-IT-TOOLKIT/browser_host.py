@@ -43,6 +43,7 @@ class Host:
     def __init__(self, server, safe_path, scan):
         self.server, self.root, self.safe_path, self.scan = server, server.root, safe_path, scan
         self.stop = threading.Event()
+        self.focus_requested = threading.Event()
         self.windows = set()
         self.lock = threading.Lock()
         self.notice = None
@@ -62,6 +63,13 @@ class Host:
             if len(self.windows) >= 5: raise ValueError('Close a publisher window before opening another')
             self.windows.add(key)
         threading.Thread(target=self.worker, args=(url, tool_id, key), daemon=True).start()
+
+    def focus_dashboard(self, url):
+        with self.lock:
+            if '_dashboard' in self.windows:
+                self.focus_requested.set()
+                return
+        self.open(url)
 
     def worker(self, url, tool_id, key):
         try: asyncio.run(self.window(url, tool_id))
@@ -119,6 +127,18 @@ class Host:
                     if not tasks: raise
                 try:
                     while context.pages and not self.stop.is_set():
+                        if tool_id is None and self.focus_requested.is_set():
+                            self.focus_requested.clear()
+                            target = next((p for p in context.pages if not p.is_closed()), None)
+                            if target:
+                                await target.bring_to_front()
+                                # Restore minimized Chromium windows as well as selecting the tab.
+                                session = await context.new_cdp_session(target)
+                                try:
+                                    window = await session.send('Browser.getWindowForTarget')
+                                    await session.send('Browser.setWindowBounds', {'windowId': window['windowId'], 'bounds': {'windowState': 'normal'}})
+                                finally: await session.detach()
+
                         if extension_url and not page.is_closed():
                             host=urlsplit(page.url).hostname
                             desired=(host,self.filtering.get(tool_id,True))

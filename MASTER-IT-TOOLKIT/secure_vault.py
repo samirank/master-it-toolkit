@@ -47,7 +47,7 @@ def header(path):
     if not raw.startswith(MAGIC):raise ValueError('Vault is not configured')
     return json.loads(raw[len(MAGIC):])
 def setup(path,password):
-    if not isinstance(password,str) or not 14<=len(password)<=1024:raise ValueError('Use a passphrase of at least 14 characters')
+    if not isinstance(password,str) or not 6<=len(password)<=1024:raise ValueError('Use a passphrase of at least 6 characters')
     with mutex(path):
         if encrypted(path):raise ValueError('Vault already configured')
         path.parent.mkdir(parents=True,exist_ok=True)

@@ -13,6 +13,11 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await wizard.getByRole('button',{name:'Continue',exact:true}).click();
   await wizard.getByRole('heading',{name:'Protect your private workspace'}).waitFor();
   assert(await wizard.getByRole('button',{name:'Set up encryption later',exact:true}).isDisabled());
+  const box=wizard.getByRole('checkbox');const bounds=await box.boundingBox();assert(bounds.width>=16&&bounds.width<=22,'Checkbox must not stretch');
+  const label=box.locator('..');await label.click();assert(await box.isChecked(),'Label should toggle checkbox');await box.uncheck();
+  await page.setViewportSize({width:390,height:844});assert(await wizard.evaluate(d=>d.scrollWidth<=d.clientWidth),'Wizard should fit mobile width');
+  if(process.env.FORM_SCREENSHOT)await page.screenshot({path:process.env.FORM_SCREENSHOT});await page.setViewportSize({width:1280,height:900});
+
   await wizard.getByRole('button',{name:'Set up later',exact:true}).click();await page.reload();
   await wizard.getByRole('heading',{name:'Protect your private workspace'}).waitFor();
   await wizard.getByRole('checkbox').check();await wizard.getByRole('button',{name:'Set up encryption later',exact:true}).click();
@@ -23,9 +28,9 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.getByRole('button',{name:'Setup wizard',exact:true}).waitFor();await page.waitForTimeout(500);
   assert.equal(await wizard.count(),0,'Completed setup must not reopen after reload');assert.equal(actions,0,'Setup must not automatically run jobs');
   await page.getByRole('button',{name:'Setup wizard',exact:true}).click();await wizard.getByRole('button',{name:'Continue',exact:true}).click();
-  await wizard.getByLabel('New vault passphrase',{exact:true}).fill('wizard fixture password');await wizard.getByLabel('Confirm passphrase',{exact:true}).fill('different password');
+  await wizard.getByLabel('New vault passphrase',{exact:true}).fill('123456');await wizard.getByLabel('Confirm passphrase',{exact:true}).fill('different password');
   await wizard.getByRole('button',{name:'Encrypt workspace',exact:true}).click();await wizard.getByText('Passphrases do not match.',{exact:true}).waitFor();
-  await wizard.getByLabel('Confirm passphrase',{exact:true}).fill('wizard fixture password');await wizard.getByRole('button',{name:'Encrypt workspace',exact:true}).click();
+  await wizard.getByLabel('Confirm passphrase',{exact:true}).fill('123456');await wizard.getByRole('button',{name:'Encrypt workspace',exact:true}).click();
   await wizard.getByLabel('New vault recovery key',{exact:true}).waitFor().catch(async e=>{console.error(await wizard.innerText());throw e;});assert((await wizard.getByLabel('New vault recovery key',{exact:true}).inputValue()).length>20);
   assert(await wizard.getByRole('button',{name:'Set up later',exact:true}).isDisabled());
   await wizard.getByRole('button',{name:'I saved the recovery key · Continue',exact:true}).click();await wizard.getByRole('heading',{name:'Choose a backup destination'}).waitFor();assert.equal(await wizard.getByLabel('New vault recovery key',{exact:true}).count(),0);

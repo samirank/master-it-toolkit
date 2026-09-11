@@ -9,6 +9,7 @@ import sys
 import cryptography.hazmat.primitives.ciphers.aead
 import cryptography.hazmat.primitives.kdf.scrypt
 import sqlite3
+import launcher_instance
 import platform_runtime
 import trusted_computers
 if sys.platform == 'win32':

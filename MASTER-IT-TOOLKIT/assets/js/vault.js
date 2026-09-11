@@ -14,6 +14,7 @@
    const state=await api();
    d.append(el('p',state.configured?(state.locked?'Unlock to access your shared notes, favorites, settings and workflow history.':state.master?'This OS account is a master computer. The vault unlocks automatically when you start the toolkit here.':'Unlocked for this session. Other computers need your passphrase or recovery key.'):'Encrypt your workspace database. Exported files, diagnostic reports and browser sessions are separate and are not encrypted by this vault.'));
    d.append(el('p','The vault locks after 15 minutes of inactivity. A master computer can unlock again using its OS credential store. Lock now stays locked until you unlock or restart.'));
+   if(!state.configured)d.append(el('p','Use at least 6 characters. A six-digit PIN is accepted; a longer passphrase offers stronger protection.'));
    const secret=el('input');secret.type='password';secret.autocomplete='off';secret.maxLength=1024;secret.setAttribute('aria-label','Vault passphrase or recovery key');const secretField=el('label','Vault passphrase or recovery key');secretField.className='vault-field';secretField.append(secret);d.append(secretField);
    const recovery=el('input');recovery.type='checkbox';const label=el('label','Use recovery key');label.prepend(recovery);if(state.configured)d.append(label);
    const status=el('p');status.setAttribute('role','status');d.append(status);
