@@ -15,12 +15,14 @@ SUPPORTED = ('windows-x64', 'linux-x64', 'macos-arm64')
 LOCKS = {}
 
 
-def prepare_browser(runtime):
+def prepare_browser(runtime, browser=None):
     """Only expand this OS's browser; foreign macOS paths stay zipped on Windows."""
     archive = runtime / 'browser.zip'
-    browser = runtime / 'browser'
+    browser = Path(browser) if browser is not None else runtime / 'browser'
+    destination = browser.parent
     if not archive.is_file(): return
-    with LOCKS.setdefault(str(runtime.resolve()), threading.Lock()):
+    destination.mkdir(parents=True, exist_ok=True)
+    with LOCKS.setdefault(str(browser.resolve()), threading.Lock()):
         expected = json.loads((runtime / 'platform.json').read_text('utf-8')).get('browserArchiveSha256', '')
         if len(expected) != 64 or any(c not in '0123456789abcdef' for c in expected):
             raise ValueError('Invalid bundled browser checksum')
@@ -35,8 +37,8 @@ def prepare_browser(runtime):
             members = package.infolist()
             if len(members) > 50000 or len({i.filename for i in members}) != len(members): raise ValueError('Invalid browser archive')
             total = sum(i.file_size for i in members)
-            if total > 8 * 1024**3 or shutil.disk_usage(runtime).free < total + 128 * 1024**2: raise ValueError('Not enough free space to prepare the bundled browser')
-            with tempfile.TemporaryDirectory(prefix='.browser-', dir=runtime) as temporary:
+            if total > 8 * 1024**3 or shutil.disk_usage(destination).free < total + 128 * 1024**2: raise ValueError('Not enough free space to prepare the bundled browser')
+            with tempfile.TemporaryDirectory(prefix='.browser-', dir=destination) as temporary:
                 stage = Path(temporary)
                 for index, info in enumerate(members):
                     name = info.filename
@@ -51,7 +53,7 @@ def prepare_browser(runtime):
                     if sys.platform != 'win32': target.chmod(0o644 | ((info.external_attr >> 16) & 0o111))
                     if index % 100 == 0: print('Preparing browser: ' + str(index * 100 // max(1, len(members))) + '%', flush=True)
                 (stage / '.toolkit-runtime-ready').write_text(expected, encoding='utf-8')
-                previous = runtime / ('.previous-browser-' + secrets.token_hex(8))
+                previous = destination / ('.previous-browser-' + secrets.token_hex(8))
                 if browser.exists(): browser.rename(previous)
                 try: stage.rename(browser)
                 except Exception:
@@ -79,8 +81,16 @@ def toolkit_root(executable):
 
 def browser_path(root):
     modern = root / 'runtimes' / label() / 'browser'
-    prepare_browser(modern.parent)
-    manifest = modern.parent / 'platform.json'
+    runtime = modern.parent
+    manifest = runtime / 'platform.json'
+    if sys.platform == 'darwin' and (runtime / 'browser.zip').is_file():
+        # Never expand macOS app bundles onto the shared SSD. A versioned host
+        # cache is reusable across drives and can be rebuilt entirely offline.
+        checksum = json.loads(manifest.read_text('utf-8')).get('browserArchiveSha256', '')
+        if len(checksum) != 64 or any(c not in '0123456789abcdef' for c in checksum):
+            raise ValueError('Invalid bundled browser checksum')
+        modern = Path.home() / 'Library/Caches/Master-IT-Toolkit/browsers' / checksum / 'browser'
+    prepare_browser(runtime, modern)
     # Windows ZIP extraction can lose Unix executable bits. Restore only the
     # package's explicitly listed browser files when first opened on Unix.
     if modern.is_dir() and manifest.is_file() and sys.platform != 'win32':
@@ -90,7 +100,7 @@ def browser_path(root):
         for name in entries:
             if not isinstance(name, str) or not name.startswith('browser/') or '\\' in name or ':' in name or '..' in Path(name).parts:
                 raise ValueError('Invalid runtime executable path')
-            path = modern.parent / name
+            path = modern / name[len('browser/'):]
             path.resolve().relative_to(modern.resolve())
             if path.is_file() and not os.access(path, os.X_OK):
                 path.chmod(path.stat().st_mode | 0o100)

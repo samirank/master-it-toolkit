@@ -31,6 +31,31 @@ class PlatformTests(unittest.TestCase):
             with patch.object(p.zipfile,'ZipFile',side_effect=AssertionError('Cache should be reused')):self.assertEqual(p.browser_path(root),browser)
             self.assertFalse(list(runtime.glob('.browser-*')))
 
+    def test_mac_browser_stays_off_ssd_and_rebuilds_offline(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(p, 'label', return_value='macos-arm64'), patch.object(p.sys, 'platform', 'darwin'):
+            root = Path(tmp) / 'ssd'; home = Path(tmp) / 'account'
+            runtime = root / 'runtimes/macos-arm64'; runtime.mkdir(parents=True)
+            archive = runtime / 'browser.zip'
+            with zipfile.ZipFile(archive, 'w') as z:
+                z.writestr('chromium/Chrome.app/Contents/MacOS/Chrome', b'browser')
+            checksum = hashlib.sha256(archive.read_bytes()).hexdigest()
+            (runtime / 'platform.json').write_text(json.dumps({'browserArchiveSha256': checksum, 'executables': ['browser/chromium/Chrome.app/Contents/MacOS/Chrome']}))
+            before = sorted(str(f.relative_to(root)) for f in root.rglob('*'))
+            with patch.object(p.Path, 'home', return_value=home):
+                browser = p.browser_path(root)
+                self.assertTrue(browser.is_relative_to(home))
+                self.assertEqual((browser / 'chromium/Chrome.app/Contents/MacOS/Chrome').read_bytes(), b'browser')
+                self.assertEqual(before, sorted(str(f.relative_to(root)) for f in root.rglob('*')))
+                with patch.object(p.zipfile, 'ZipFile', side_effect=AssertionError('Cache should be reused')):
+                    self.assertEqual(p.browser_path(root), browser)
+                import shutil
+                shutil.rmtree(browser)
+                self.assertEqual(p.browser_path(root), browser)
+                self.assertFalse((runtime / 'browser').exists())
+                (runtime / 'platform.json').write_text(json.dumps({'browserArchiveSha256': '../unsafe'}))
+                with self.assertRaisesRegex(ValueError, 'checksum'):
+                    p.browser_path(root)
+
     def test_damaged_or_unsafe_browser_archive_preserves_previous_browser(self):
         with tempfile.TemporaryDirectory() as tmp:
             runtime=Path(tmp);browser=runtime/'browser';browser.mkdir();(browser/'old').write_bytes(b'preserve')
