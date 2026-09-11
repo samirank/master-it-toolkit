@@ -100,6 +100,11 @@ class BrowserTests(unittest.TestCase):
         asyncio.run(check())
 
     @unittest.skipUnless(importlib.util.find_spec('playwright'),'Requires bundled browser test environment')
+    def test_real_direct_attachment_navigation_keeps_download_alive(self):
+        self.direct_attachment=True
+        self.test_real_chromium_download_routes_to_tool_and_calls_scan()
+
+    @unittest.skipUnless(importlib.util.find_spec('playwright'),'Requires bundled browser test environment')
     def test_real_chromium_download_routes_to_tool_and_calls_scan(self):
         class Fixture(BaseHTTPRequestHandler):
             def log_message(self,*args): pass
@@ -120,7 +125,7 @@ class BrowserTests(unittest.TestCase):
         os.environ['TOOLKIT_BROWSER_TEST_HEADLESS']='1'
         os.environ['PLAYWRIGHT_BROWSERS_PATH']=str(ROOT/'runtime-browser')
         try:
-            self.host.open('http://127.0.0.1:'+str(fixture.server_port),'test')
+            self.host.open('http://127.0.0.1:'+str(fixture.server_port)+('/payload' if getattr(self,'direct_attachment',False) else '/'),'test')
             deadline=time.monotonic()+40
             while time.monotonic()<deadline:
                 if self.server.state.get('stage') in ('complete','error'): break

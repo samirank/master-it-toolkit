@@ -107,7 +107,9 @@ class Host:
                     headless=os.environ.get('TOOLKIT_BROWSER_TEST_HEADLESS') == '1', accept_downloads=True,
                     downloads_path=str(stage), no_viewport=True, ignore_default_args=['--disable-extensions'] if tool_id else None, args=arguments)
                 tasks = set()
+                download_started = asyncio.Event()
                 def downloaded(download):
+                    download_started.set()
                     task = asyncio.create_task(self.save(download, tool_id, stage)); tasks.add(task); task.add_done_callback(tasks.discard)
                 def attach(page): page.on('download', downloaded)
                 context.on('page', attach)
@@ -123,8 +125,14 @@ class Host:
                     last_filter=(urlsplit(url).hostname,self.filtering.get(tool_id,True))
                 try:
                     await page.goto(url, wait_until='domcontentloaded', timeout=60000)
-                except Exception:
-                    if not tasks: raise
+                except Exception as navigation_error:
+                    # Direct attachment navigation can reject before Playwright
+                    # delivers its download event. Keep the context alive long
+                    # enough to receive that event; genuine navigation failures
+                    # still surface if no download starts.
+                    if not download_started.is_set():
+                        try: await asyncio.wait_for(download_started.wait(), timeout=2)
+                        except asyncio.TimeoutError: raise navigation_error
                 try:
                     while context.pages and not self.stop.is_set():
                         if tool_id is None and self.focus_requested.is_set():

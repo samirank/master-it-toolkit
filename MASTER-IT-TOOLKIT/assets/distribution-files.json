@@ -345,7 +345,7 @@
   "assets/source-audit.json": "aabb5c691e40581491fddcc1dd04f4a47da6685278603e74552899c0fcf50e83",
   "assets/toolkit-manifest.json": "71557c080c5b526b8ef3f556d882aa736e6ace3a5787b03c3d02bbbe78b97c2c",
   "assets/workflows.json": "69325d109823de98de32ff5a8bec8dcdbf115cc7cc5d51c88f9c9ebb4fb3f29e",
-  "browser_host.py": "f6627fada1a48aa57a7fd6781de1c8a0967d976e8cde7f60205fb1faa24f230d",
+  "browser_host.py": "3a3a2c91628f8d45d854de42ee21424376aaae6605082d548125db43cee1e4d6",
   "host_inventory.py": "7dd904a32e8d447ff15532366eec1782a1334bc4c604cbf63104888ff817ee66",
   "index.html": "27024cf7e6e34baab0cff9fc5772a774f27ba0e137008543d033255c18475501",
   "install_tools.py": "b5b9f654c82e0f5e21cae43d90ef3c85f577866411e644837f842e919146f238",
