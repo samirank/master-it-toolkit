@@ -19,9 +19,9 @@ def asset(name='tool-x64.exe',id='a',platform='Windows',arch='x64'):
 class CatalogTests(unittest.TestCase):
     def test_probe_matches_download_and_pins_blender_selected_mirror(self):
         from unittest.mock import Mock
-        item=asset();item.update(url='https://mirror.blender.org/release/Blender5.2/blender-5.2.1-windows-x64.msi',digest='sha256:'+'a'*64)
+        item=asset(arch='arm64');item.update(url='https://mirror.blender.org/release/Blender5.2/blender-5.2.1-windows-arm64.msi',digest='sha256:'+'a'*64)
         response=io.BytesIO(b'package');response.headers={'Content-Type':'application/octet-stream'}
-        response.url='https://mirror.fcix.net/blender/release/Blender5.2/blender-5.2.1-windows-x64.msi'
+        response.url='https://mirror.fcix.net/blender/release/Blender5.2/blender-5.2.1-windows-arm64.msi'
         opener=Mock();opener.open.return_value=response
         with patch.object(monitor.urllib.request,'build_opener',return_value=opener):monitor.probe({'assets':[item]})
         self.assertFalse(opener.open.call_args.args[0].has_header('Range'))

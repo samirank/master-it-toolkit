@@ -55,6 +55,8 @@ def fingerprint(entry):
 def probe(entry):
     """Check recommended endpoints and record publisher CDN redirects; read one byte only."""
     chosen={a['id']:a for p,arch in [('Windows','x64'),('Linux','x64'),('macOS','arm64')] for a in downloads.recommended(entry,p,arch)}
+    # Resolve Blender's rotating redirector for every offered architecture.
+    chosen.update({a['id']:a for a in entry['assets'] if urlsplit(a['url']).hostname=='mirror.blender.org'})
     hosts=set()
     class Redirect(urllib.request.HTTPRedirectHandler):
         def redirect_request(self,request,fp,code,message,headers,url):
