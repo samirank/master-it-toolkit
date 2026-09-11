@@ -7,9 +7,8 @@ def volume_id(root):
     try:
         if os.name=='nt':
             import ctypes
-            from ctypes import wintypes
             kernel=ctypes.WinDLL('kernel32',use_last_error=True)
-            mount=ctypes.create_unicode_buffer(32768);serial=wintypes.DWORD()
+            mount=ctypes.create_unicode_buffer(32768);serial=ctypes.c_uint32()
             if not kernel.GetVolumePathNameW(str(root),mount,len(mount)):return ''
             if not kernel.GetVolumeInformationW(mount.value,None,0,ctypes.byref(serial),None,None,None,0):return ''
             value='windows:'+str(serial.value)
@@ -19,7 +18,7 @@ def volume_id(root):
             value='linux:'+value
         else:return ''
         return hashlib.sha256(value.encode()).hexdigest()
-    except (OSError,subprocess.SubprocessError):return ''
+    except (ImportError,OSError,subprocess.SubprocessError):return ''
 
 def status(root,store,identity=None):
     workspace=store.workspace();saved=workspace.get('setupState',{})

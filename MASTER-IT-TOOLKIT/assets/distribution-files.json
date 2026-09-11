@@ -1276,6 +1276,6 @@
   "runtime-extensions/ubol/web_accessible_resources/sensors-analytics.js": "976b60cda987b64505d8faa361a371720dbb5a78daffb280cc2f18d7e5a40278",
   "runtime-extensions/ubol/zapper-ui.html": "2afbdfcad9405c07e035299f8a27b0b5fdb399813f813275a5236e1d8d8099d6",
   "secure_vault.py": "a37c31e3e31d89faa904b8a1553a121427ea22d55c6154b9edd08f27f5fc179d",
-  "setup_wizard.py": "bc27e01d445ee26914faab74a7aa2950d8c984fdfec0d1ed034c7295cd57994f",
+  "setup_wizard.py": "2354921dc8c910f9c7465ca3250beb74d19cfeee6812fd62fbe4d7a742b9e427",
   "tool_downloads.py": "cf2af8691df582daee73cff3594de30f50d929b943488e315aa0863b1cd68b89"
 }
