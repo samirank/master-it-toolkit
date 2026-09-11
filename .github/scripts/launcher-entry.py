@@ -9,16 +9,34 @@ import sys
 import cryptography.hazmat.primitives.ciphers.aead
 import cryptography.hazmat.primitives.kdf.scrypt
 import sqlite3
+import platform_runtime
+import trusted_computers
+if sys.platform == 'win32':
+    import keyring.backends.Windows
+elif sys.platform == 'darwin':
+    import keyring.backends.macOS
+else:
+    import keyring.backends.SecretService
 import playwright.async_api  # Collect browser driver dependencies in the frozen runtime.
 from pathlib import Path
 
-root = Path(sys.executable).resolve().parent
-if (root / 'MASTER-IT-TOOLKIT' / 'launcher.py').is_file(): root = root / 'MASTER-IT-TOOLKIT'
+root = platform_runtime.toolkit_root(sys.executable) if not any(arg in sys.argv for arg in ('--self-test','--credential-self-test')) else Path(sys.executable).resolve().parent
 sys.path.insert(0, str(root))
-if '--browser-self-test' in sys.argv:
+if '--credential-self-test' in sys.argv:
+    import secrets
+    store = trusted_computers.backend()
+    account = 'build-test-' + secrets.token_hex(16)
+    secret = secrets.token_urlsafe(32)
+    try:
+        store.set_password(trusted_computers.SERVICE, account, secret)
+        assert store.get_password(trusted_computers.SERVICE, account) == secret
+    finally:
+        store.delete_password(trusted_computers.SERVICE, account)
+    print('Native credential store ready; temporary test credential removed.')
+elif '--browser-self-test' in sys.argv:
     import asyncio
     import os
-    os.environ['PLAYWRIGHT_BROWSERS_PATH'] = str(root / 'runtime-browser')
+    os.environ['PLAYWRIGHT_BROWSERS_PATH'] = str(platform_runtime.browser_path(root))
     async def test_browser():
         async with playwright.async_api.async_playwright() as p:
             browser = await p.chromium.launch(headless=True, channel='chromium')

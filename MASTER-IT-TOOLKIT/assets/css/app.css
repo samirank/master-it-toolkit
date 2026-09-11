@@ -20,7 +20,7 @@
 .install-guidance{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:16px;margin:16px 0}.install-dialog code,.install-dialog small{display:block;overflow-wrap:anywhere;font-size:11px}.install-dialog .download-option{align-items:flex-start;flex-wrap:wrap}.install-dialog .download-option>div{min-width:0;flex:1 1 260px}.install-dialog details{padding:12px 0;border-bottom:1px solid var(--line)}
 
 /* Portable launch and workflow controls */
-.workflow-check{display:flex;align-items:center;gap:1rem;border-bottom:1px solid var(--border);padding:.4rem 0}.workflow-check .check-item{flex:1;border:0}.workflow-file{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;padding:1rem 0}.workflow-file code{overflow-wrap:anywhere;flex:1}.workflow-body progress{width:100%;margin:1rem 0}.workflow-body small{display:block;margin-top:1rem}#workflow-status-button{margin:1rem 2rem}.download-dialog li{margin:.65rem 0}@media(max-width:600px){.workflow-check{align-items:flex-start;flex-direction:column}.workflow-check>button{margin:0 0 .75rem 2rem}}
+.workflow-check{display:flex;align-items:center;gap:1rem;border-bottom:1px solid var(--line);padding:.4rem 0}.workflow-check .check-item{flex:1;border:0}.workflow-file{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;padding:1rem 0}.workflow-file code{overflow-wrap:anywhere;flex:1}.workflow-body progress{width:100%;margin:1rem 0}.workflow-body small{display:block;margin-top:1rem}#workflow-status-button{margin:1rem 2rem}.download-dialog li{margin:.65rem 0}@media(max-width:600px){.workflow-check{align-items:flex-start;flex-direction:column}.workflow-check>button{margin:0 0 .75rem 2rem}}
 
 .job-log{margin:.5rem 0}.job-log pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:18rem;overflow:auto;font-size:.8rem;padding:1rem}.launcher-panel #launcher-status{white-space:normal;overflow:hidden;text-overflow:ellipsis}.activity-copy p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
@@ -58,3 +58,11 @@
 .catalog-notice-copy{display:grid;gap:6px;min-width:0}.catalog-notice-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px;flex-shrink:0}.catalog-notice-close{position:absolute;top:10px;right:10px;width:32px;height:32px;padding:0;font-size:20px}
 .workflow-history{padding:28px;width:min(760px,calc(100vw - 32px))}.workflow-history>h2{padding-right:70px;margin-bottom:22px}.workflow-history>label{display:flex;align-items:center;gap:10px;margin-bottom:18px}.workflow-history .panel{padding:20px;margin:14px 0}.workflow-history .panel p{overflow-wrap:anywhere}.workflow-history pre{padding:16px;white-space:pre-wrap;overflow-wrap:anywhere;max-height:320px;overflow:auto}.workflow-history details{margin:16px 0}.workflow-history summary{cursor:pointer;padding:8px 0}
 @media(max-width:768px){.workspace-toolbar,.catalog-notice{margin-left:16px;margin-right:16px}.catalog-notice{align-items:flex-start;flex-direction:column}.catalog-notice-actions{flex-shrink:1}.workflow-history{padding:20px}}
+.master-computer-row { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px solid var(--line); }
+.master-computer-row span { overflow-wrap:anywhere; min-width:0; }
+.master-computer-row button { flex-shrink:0; }
+@media(max-width:600px) { .master-computer-row { align-items:flex-start; flex-direction:column; } }
+
+.vault-field { display:grid; gap:6px; margin:14px 0; color:var(--muted); }
+.vault-field input { width:100%; padding:10px 12px; background:var(--panel); color:var(--text); border:1px solid var(--line); border-radius:6px; }
+.vault-dialog label:has(input[type=checkbox]) { display:flex; align-items:center; gap:8px; margin-bottom:14px; }

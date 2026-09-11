@@ -19,9 +19,10 @@ class BackupTests(unittest.TestCase):
   with closing(sqlite3.connect(restored)) as db:self.assertEqual(db.execute('SELECT name FROM workspace').fetchone()[0],'my custom build');self.assertEqual(db.execute('PRAGMA integrity_check').fetchone()[0],'ok')
  def test_full_and_existing_versions_preserved(self):
   (self.base/'Master-IT-Toolkit.exe').write_bytes(b'launcher')
+  for name in ('Start-Windows.exe','Start-Linux.sh','Start-macOS.command'):(self.base/name).write_bytes(b'launcher')
   for _ in range(2):b.backup(self.root,{'destination':str(self.dest),'scope':'full'},lambda _:None)
   archives=list(self.dest.glob('*.zip'));self.assertEqual(len(archives),2)
-  with zipfile.ZipFile(archives[0]) as z:self.assertIn('MASTER-IT-TOOLKIT/20_PORTABLE_APPS/tool.exe',z.namelist());self.assertIn('Master-IT-Toolkit.exe',z.namelist())
+  with zipfile.ZipFile(archives[0]) as z:self.assertIn('MASTER-IT-TOOLKIT/20_PORTABLE_APPS/tool.exe',z.namelist());self.assertIn('Master-IT-Toolkit.exe',z.namelist());self.assertTrue({'Start-Windows.exe','Start-Linux.sh','Start-macOS.command'}.issubset(z.namelist()))
  def test_recursive_destination_and_cancellation(self):
   with self.assertRaises(ValueError):b.backup(self.root,{'destination':str(self.root),'scope':'full'},lambda _:None)
   cancelled=[False]

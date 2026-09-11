@@ -19,11 +19,18 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = Path(sys.executable if getattr(sys, 'frozen', False) else __file__).resolve().parent
 if (ROOT / 'MASTER-IT-TOOLKIT' / 'launcher.py').is_file(): ROOT = ROOT / 'MASTER-IT-TOOLKIT'
+# New bundles place Linux/macOS executables inside platform runtime folders.
+if getattr(sys, 'frozen', False) and not (ROOT / 'launcher.py').is_file():
+    for candidate in list(ROOT.parents)[:3]:
+        if (candidate / 'launcher.py').is_file() and (candidate / 'assets/toolkit-manifest.json').is_file():
+            ROOT = candidate
+            break
 sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "60_SCRIPTS/Runtime"))
 # The frozen bootstrap imports these for dependency collection. Load updated SSD
 # source modules on restart instead of reusing the copies cached inside the EXE.
 if getattr(sys, 'frozen', False):
-    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant','secure_vault','portable_ai','migration_tools','setup_wizard'):
+    for module in ('tool_downloads','install_tools','host_inventory','portable_tools','activity_store','browser_host','offline_assistant','secure_vault','portable_ai','migration_tools','setup_wizard','trusted_computers','platform_runtime'):
         sys.modules.pop(module,None)
 REPO = 'samirank/master-it-toolkit'
 MANIFEST = 'assets/distribution-files.json'
@@ -116,6 +123,7 @@ import activity_store
 import browser_host
 import offline_assistant
 import secure_vault
+import trusted_computers
 
 def cleanup_update_archives(root):
     """Remove known installer ZIPs from an installed launcher root, never a repo."""
@@ -123,11 +131,11 @@ def cleanup_update_archives(root):
     parent = root.parent
     if root.name != 'MASTER-IT-TOOLKIT' or (parent / '.git').exists():
         return ''
-    if not any((parent / name).is_file() for name in ('Master-IT-Toolkit.exe', 'Master-IT-Toolkit')):
+    if not any((parent / name).is_file() for name in ('Start-Windows.exe','Start-Linux.sh','Start-macOS.command','Master-IT-Toolkit.exe', 'Master-IT-Toolkit')):
         return ''
     messages = []
     for name in ('MASTER-IT-TOOLKIT.zip', 'standalone-windows-x64.zip',
-                 'standalone-linux-x64.zip', 'standalone-macos-arm64.zip'):
+                 'standalone-linux-x64.zip', 'standalone-macos-arm64.zip', 'standalone-all-platforms.zip'):
         try:
             path = safe_path(parent, name)
             if not path.is_file():
@@ -247,6 +255,8 @@ class Server(ThreadingHTTPServer):
         self.events = threading.Condition()
         self.revision = 0
         self.workflow = None
+        vault_path = safe_path(root, '70_DOCUMENTATION/Service-Notes/Activity/activity.sqlite')
+        trusted_computers.auto_unlock(vault_path)
         self.history = activity_store.Store(root, safe_path, self.token)
         self.cancel_backup = threading.Event()
         self.browser = browser_host.Host(self, safe_path, lambda: run_script('inventory'))
@@ -433,7 +443,10 @@ class Handler(BaseHTTPRequestHandler):
                 self.send_header('Content-Length','0')
                 self.end_headers();return
             return self.reply(403, {'error': 'This launcher address has expired. Reopen Master-IT-Toolkit to connect to the current session.'})
-        if route == 'api/vault':return self.reply(200,secure_vault.status(self.server.history.path))
+        if route == 'api/vault':return self.reply(200,trusted_computers.status(self.server.history.path))
+        if route == 'api/platforms':
+            import platform_runtime
+            return self.reply(200,platform_runtime.available(self.server.root))
         if route == 'api/setup':
             if secure_vault.status(self.server.history.path)['locked']:return self.reply(200,{'locked':True})
             try:
@@ -555,10 +568,14 @@ class Handler(BaseHTTPRequestHandler):
                     if operation=='setup':recovery=secure_vault.setup(self.server.history.path,body.get('secret'))
                     elif operation=='unlock':secure_vault.unlock(self.server.history.path,body.get('secret'),body.get('recovery') is True)
                     elif operation=='lock':secure_vault.lock(self.server.history.path)
+                    elif operation=='trust':trusted_computers.enroll(self.server.history.path,body.get('secret'),body.get('recovery') is True,body.get('name',''))
+                    elif operation=='revoke':trusted_computers.revoke(self.server.history.path,body.get('id'))
+                    elif operation=='master-unlock':
+                        if not trusted_computers.auto_unlock(self.server.history.path):raise ValueError('This OS account could not unlock the vault. Use your passphrase or recovery key.')
                     else:raise ValueError('Unknown vault operation')
                 self.server.vault_touch=time.time()
-                if operation in ('setup','unlock'):self.server.history=activity_store.Store(self.server.root,safe_path,self.server.token)
-                return self.reply(200,dict(secure_vault.status(self.server.history.path),recoveryKey=recovery))
+                if operation in ('setup','unlock','trust','master-unlock'):self.server.history=activity_store.Store(self.server.root,safe_path,self.server.token)
+                return self.reply(200,dict(trusted_computers.status(self.server.history.path),recoveryKey=recovery))
             except Exception as error:return self.reply(400,{'error':str(error)})
             finally:self.server.lock.release()
         if self.route() and self.route().startswith('api/') and secure_vault.status(self.server.history.path)['locked']:

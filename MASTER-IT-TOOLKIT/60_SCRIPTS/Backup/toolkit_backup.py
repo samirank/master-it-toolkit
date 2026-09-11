@@ -34,7 +34,7 @@ def files(root,scope):
             if not path.is_file():continue
             result.append((path,'MASTER-IT-TOOLKIT/'+relative))
     if scope=='full' and not (root.parent/'.git').exists():
-        for name in ('Master-IT-Toolkit.exe','Master-IT-Toolkit'):
+        for name in ('Start-Windows.exe','Start-Linux.sh','Start-macOS.command','Master-IT-Toolkit.exe','Start-Master-IT-Toolkit','Master-IT-Toolkit'):
             p=root.parent/name
             if p.is_file() and not linked(p):result.append((p,name))
     return result,skipped
@@ -69,7 +69,8 @@ def backup(root,body,progress,cancelled=lambda:False):
                     if cancelled():raise InterruptedError('Backup cancelled')
                     path=snapshot if arcname=='MASTER-IT-TOOLKIT/'+DB and snapshot.exists() else original
                     before=path.stat();sha=hashlib.sha256();size=0
-                    with path.open('rb') as source,archive.open(arcname,'w',force_zip64=True) as output:
+                    info=zipfile.ZipInfo(arcname);info.external_attr=(before.st_mode & 0xFFFF)<<16;info.compress_type=archive.compression
+                    with path.open('rb') as source,archive.open(info,'w',force_zip64=True) as output:
                         while True:
                             if cancelled():raise InterruptedError('Backup cancelled')
                             block=source.read(4*1024*1024)

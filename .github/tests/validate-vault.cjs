@@ -19,7 +19,7 @@ const {chromium}=require(process.env.PLAYWRIGHT_PATH||'C:/Users/sam/.cache/codex
   await page.locator('[data-note="issue"]').waitFor();
   await page.waitForFunction(()=>document.querySelector('[data-note="issue"]')?.value==='');
   const status=await page.evaluate(async()=>{const r=await fetch(new URL('api/history',location.href));return r.status;});assert.equal(status,423);
-  await page.getByRole('button',{name:/Private vault|Unlock vault/}).click();
+  await page.getByRole('dialog',{name:'Private workspace vault',exact:true}).waitFor();
   await page.getByLabel('Vault passphrase or recovery key').fill(recovery);await page.getByLabel('Use recovery key').check();
   await page.getByRole('button',{name:'Unlock',exact:true}).click();
   await page.waitForFunction(()=>document.querySelector('[data-note="issue"]')?.value==='Private test issue');

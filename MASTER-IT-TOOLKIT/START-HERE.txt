@@ -1,47 +1,37 @@
-MASTER IT TOOLKIT
-Offline PC Rescue & Field Service Toolkit
+MASTER IT TOOLKIT — START HERE
 
-1. Open index.html in Edge, Chrome or Firefox. No server or internet is needed
-   for the dashboard. Software downloads and certain tools need internet.
-2. This package contains the dashboard, catalog, scripts and references.
-   It DOES NOT include tool binaries, ISOs, drivers or commercial licenses.
-3. To prepare the SSD, back up existing data, then install Ventoy using its
-   official installer. INITIAL VENTOY INSTALLATION ERASES THE SELECTED DRIVE.
-   Verify the correct Gigastone SSD by model and capacity before proceeding.
-4. Copy this project's contents to the Ventoy DATA partition root, so that
-   index.html is at X:\index.html. Do not copy to the small EFI partition.
-5. Open Missing Downloads. Start with P1 boot tools, offline network drivers
-   and portable diagnostics. Download from the official links; extract
-   portable archives into the destinations shown. Do not rename an installer
-   to masquerade as a portable executable.
-6. Open PowerShell in the toolkit root and review/run:
-   .\60_SCRIPTS\Inventory\Update-ToolkitInventory.ps1
-   Then reload index.html. PowerShell is for maintenance only, not browsing.
-7. Keep at least 20-30 GB free. Store customer recovery output on separate
-   healthy media, never on the damaged source.
-8. Read README.txt for licensing, inventory limitations, updates and backups.
+Standalone package: extract once beside the MASTER-IT-TOOLKIT folder.
+Open Start-Windows.exe on Windows x64, Start-Linux.sh on Linux x64,
+or Start-macOS.command on an Apple Silicon Mac. Keep the launcher running.
+The all-platforms ZIP includes all three supported runtimes on one SSD.
+Use runtime-only ZIPs to add a platform to an existing, updated toolkit;
+do not overwrite your workspace with a complete fresh package.
 
-Favorites, checklists and notes are saved in this browser on this PC, not
-automatically on the SSD. Use Settings > Export workspace backup to move them.
+The setup wizard checks the drive, helps encrypt your workspace and records
+an optional backup plan. It never formats the drive or enables backups for you.
+Download tools while online, then scan before taking the SSD offline.
+Windows programs cannot run natively on Linux or macOS.
+
+PRIVATE DATA
+Set up Private vault with a passphrase and save the recovery key separately.
+To trust your own computer, enter the passphrase in the vault dialog and choose
+Make this a master computer. You can register multiple OS accounts. The local
+credential stays in the OS credential store; the SSD contains an encrypted grant.
+Other computers require your passphrase or recovery key. Your shared notes are
+available after unlocking, and are not deleted when moving between computers.
+Master accounts unlock at startup; Lock now stays locked until you unlock or
+restart. Inactivity locks the vault after 15 minutes. Missing/locked credential
+stores fall back to passphrase unlock. Use the vault dialog to remove masters.
+Separate older copies and backups retain their previous access settings.
+
+SQLite notes, favorites, settings and history are encrypted when you configure
+the vault. Exported reports, downloaded tools and browser profiles are separate.
+Do not keep sensitive or long-term records here; export them to a permanent home.
 Never record customer passwords, recovery codes or authentication secrets.
 
-AUTHORIZED SYSTEMS ONLY. No authentication or BitLocker bypass is included.
-No unattended remote access is automatically configured.
-
-LOCAL LAUNCHER
-For executable buttons, downloads and reviewed workflows, open the standalone
-Master-IT-Toolkit.exe next to the MASTER-IT-TOOLKIT folder. Source ZIP users can
-run Start-Toolkit.cmd with Python installed. Restart the launcher after updates.
-Use Run portable for scanned portable Windows programs. Start workflow supports
-manual or automatic launches with review checkpoints. Use Stop workflow to stop
-future launches; it leaves open apps running. Export the record before closing
-the launcher. See README.txt for migration guidance and platform limitations.
-
-DATA HANDLING — TEMPORARY WORKSPACE ONLY
-Do not store sensitive or long-term notes/data in this toolkit. Never enter
-passwords, recovery codes, authentication secrets or confidential customer data.
-After each job, export or copy required notes, checklist results and reports to
-your approved permanent storage. Verify that copy before clearing temporary
-records. Backups may retain older copies; clearing live notes does not erase
-those backups. Encryption, when available, does not make the toolkit a suitable
-long-term records system. Current workspace storage is not encrypted.
+Source ZIP users: Python 3.11+, cryptography and keyring are required for the
+launcher/vault; Playwright and Chromium enable the managed browser. Direct HTML
+is static browsing only. See README.md in the repository for current instructions.
+Authorized systems only. No authentication bypass or unattended remote access
+is configured automatically. Bootable ISO support is a separate future workflow;
+normal toolkit use does not require installing Ventoy or formatting your drive.

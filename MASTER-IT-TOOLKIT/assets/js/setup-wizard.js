@@ -31,11 +31,12 @@
     content.append(el('h3',state.changedDrive?'Review setup on this drive':'Welcome to Master IT Toolkit'),el('p','Keep the launcher and toolkit folder together. Downloads and portable tools stay inside this toolkit folder.'),el('code',state.root),el('p',(state.free/1024**3).toFixed(1)+' GB free of '+(state.total/1024**3).toFixed(1)+' GB'));
     if(state.changedDrive)content.append(el('p','The volume identifier has changed. Your existing tools and records are preserved; review the settings before continuing.'));
     if(!state.driveDetection)content.append(el('p','A stable drive identifier is unavailable here. Setup completion will follow this toolkit copy; reopen this wizard if you move it to another drive.'));
-    content.append(el('p','This setup does not format the drive or install software on this computer.'));
+    const platforms=await api('platforms');content.append(el('p','This computer: '+platforms.current+'. Bundled platforms: '+(platforms.installed.join(', ')||'legacy or source runtime')+'.')) ;
+    content.append(el('p','For one SSD on Windows x64, Linux x64 and Apple Silicon Macs, use the all-platforms standalone package. Runtime-only release ZIPs can add a platform without replacing your shared toolkit data.'),el('p','This setup does not format the drive or install software on this computer.'));
     act('Continue',async()=>{await persist(1);await paint();});
    }else if(step===1){
     content.append(el('h3','Protect your private workspace'),el('p','Do not keep sensitive or long-term notes in the toolkit. Export or copy service records to their permanent home, then remove temporary copies.'),el('p','The private vault encrypts the SQLite workspace: notes, favorites, settings and workflow history. Downloaded tools, exported reports and browser sessions are separate and are not encrypted by the vault.'));
-    if(vault.configured){content.append(el('p','Your private vault is configured. Keep its recovery key separate from this drive.'));act('Continue',async()=>{await persist(2);await paint();});}
+    if(vault.configured){content.append(el('p','Your private vault is configured. Keep its recovery key separate from this drive. You can register multiple master computers in Private vault for automatic unlock on their OS accounts. Other computers need your passphrase.'),button('Manage master computers',()=>document.querySelector('#manage-private-vault').click()));act('Continue',async()=>{await persist(2);await paint();});}
     else{
      const secret=el('input');secret.type='password';secret.autocomplete='new-password';secret.maxLength=1024;
      const confirm=el('input');confirm.type='password';confirm.autocomplete='new-password';confirm.maxLength=1024;

@@ -29,7 +29,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - run: python -m pip install cryptography==48.0.1
+      - run: python -m pip install cryptography==48.0.1 keyring==25.7.0
       - run: python -m pip install pyinstaller==6.20.0 playwright==1.62.0
       - run: python -m playwright install chromium --no-shell --with-deps
       - run: python .github/tests/test_launcher.py
@@ -40,11 +40,13 @@ jobs:
       - run: python .github/tests/test_setup_wizard.py
       - run: python .github/tests/test_persistence.py
       - run: python .github/tests/test_vault.py
+      - run: python .github/tests/test_trusted_computers.py
+      - run: python .github/tests/test_platform_runtime.py
       - run: python .github/tests/test_encrypted_backup.py
       - run: python .github/tests/test_assistant.py
       - run: python .github/tests/test_portable_ai.py
       - run: python .github/tests/test_browser_host.py
-      - run: python -m PyInstaller --onefile --name Master-IT-Toolkit --paths MASTER-IT-TOOLKIT .github/scripts/launcher-entry.py
+      - run: python -m PyInstaller --onefile --name Master-IT-Toolkit --paths MASTER-IT-TOOLKIT --paths MASTER-IT-TOOLKIT/60_SCRIPTS/Runtime .github/scripts/launcher-entry.py
       - name: Azure OIDC login for opted-in signing
         if: runner.os == 'Windows' && vars.ENABLE_SIGNING == 'true'
         uses: azure/login@v3
@@ -64,19 +66,25 @@ jobs:
           file-digest: SHA256
           timestamp-rfc3161: http://timestamp.acs.microsoft.com
           timestamp-digest: SHA256
+      - run: python .github/scripts/build_distribution.py
       - run: python .github/scripts/package_launcher.py "${{ matrix.binary }}" "${{ matrix.label }}"
       - uses: actions/upload-artifact@v4
         with:
           name: standalone-${{ matrix.label }}
-          path: standalone-*.zip
+          path: |
+            standalone-*.zip
+            runtime-*.zip
   release:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v6
       - uses: actions/download-artifact@v4
         with:
           pattern: standalone-*
           merge-multiple: true
+          path: release-packages
+      - run: python .github/scripts/assemble_universal.py release-packages
       - name: Publish standalone packages
         env:
           GH_TOKEN: ${{ github.token }}
@@ -85,5 +93,5 @@ jobs:
         run: |
           tag="$RELEASE_REF"
           if [ "$tag" = "main" ]; then tag="launcher-preview"; fi
-          gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" --title "Master IT Toolkit — standalone launcher" --notes "Extract the complete package and open the Master-IT-Toolkit executable. No Python installation required. Windows x64, Linux x64, and macOS Apple Silicon builds. Scripts retain their OS and administrator requirements. Windows signing is only present when configured by the publisher; verify the executable signature before relying on it. Keep the launcher terminal open; use Ctrl+C to stop."
-          gh release upload "$tag" standalone-*.zip --clobber
+          gh release view "$tag" >/dev/null 2>&1 || gh release create "$tag" --title "Master IT Toolkit — standalone launcher" --notes "Use standalone-all-platforms.zip for one SSD shared between Windows x64, Linux x64, and macOS Apple Silicon. Extract once, then use Start-Windows.exe, Start-Linux.sh, or Start-macOS.command. No Python installation required. Runtime-only ZIPs add a platform to an existing toolkit without overwriting shared data. Master computer unlock requires explicit vault registration and the native OS credential store. Scripts retain their OS and administrator requirements. Windows signing is only present when configured by the publisher; verify the executable signature before relying on it. Keep the launcher terminal open; use Ctrl+C to stop."
+          gh release upload "$tag" release-packages/*.zip release-packages/SHA256SUMS.txt --clobber

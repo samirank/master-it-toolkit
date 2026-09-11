@@ -90,7 +90,7 @@ def run(root,settings,progress,cancelled=lambda:False,repository_key=None):
     doc=secure_vault.header(db);secure_vault.atomic(target/'toolkit-backup-key.json',json.dumps({k:doc[k] for k in ('salt','password','recovery')}).encode())
     paths=[str(root)] if settings.get('scope')=='full' else [str(root/p) for p in ('assets','60_SCRIPTS','70_DOCUMENTATION') if (root/p).exists()]
     if settings.get('scope')=='full':
-        for name in ('Master-IT-Toolkit.exe','Start-Master-IT-Toolkit','Master-IT-Toolkit'):
+        for name in ('Start-Windows.exe','Start-Linux.sh','Start-macOS.command','Master-IT-Toolkit.exe','Start-Master-IT-Toolkit','Master-IT-Toolkit'):
             launcher=root.parent/name
             if launcher.is_file() and not launcher.is_symlink():paths.append(str(launcher))
     # Relative sources avoid archiving unrelated drive/user parent ACLs and make

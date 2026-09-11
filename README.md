@@ -8,17 +8,35 @@ A portable IT service dashboard for finding tools, preparing PCs, running review
 
 ## Start here
 
-1. Download the standalone package for Windows x64, Linux x64 or macOS Apple Silicon from Releases. Use its release notes to check the included features.
+1. Download `standalone-all-platforms.zip` from Releases for one SSD shared between Windows x64, Linux x64 and macOS Apple Silicon. Smaller single-platform packages are also available.
 2. Extract the complete package onto your SSD. Keep the root launcher beside `MASTER-IT-TOOLKIT/`.
-3. Open `Master-IT-Toolkit.exe` on Windows or `Start-Master-IT-Toolkit` on Linux/macOS. The launcher supplies Python and a dedicated browser window.
+3. Open `Start-Windows.exe`, `Start-Linux.sh` or `Start-macOS.command` for the connected computer. The launcher supplies Python and a dedicated browser window.
 4. Select tools and download their supported platform packages. Vendor-managed sources open in the toolkit's download window.
 5. Scan the SSD, review each tool's quick start, and prepare required software before going offline.
 
 The standalone browser is Chromium with bundled uBlock Origin Lite. Individual vendor sites can require temporarily disabling filtering. Downloads handled by the toolkit go to the displayed tool folder instead of the host's default Downloads folder. The launcher must remain running for local operations.
 
-The **source ZIP** is a separate option: open its HTML for static browsing, or use Python 3.11+ with `cryptography` and run `python launcher.py` inside the toolkit folder. A current standalone runtime is required for vault encryption; a source update does not add missing Python dependencies to an older executable. Playwright and its Chromium runtime enable the managed browser when running from source.
+The **source ZIP** is a separate option: open its HTML for static browsing, or use Python 3.11+ with `cryptography` and `keyring` and run `python launcher.py` inside the toolkit folder. A current standalone runtime is required for vault encryption; a source update does not add missing Python dependencies to an older executable. Playwright and its Chromium runtime enable the managed browser when running from source.
 
 The hosted demo and direct HTML mode cannot install software, execute scripts, scan drives or manage local downloads. The interface is plain HTML, CSS and JavaScript; it does not use a design framework. Browser storage is used only in static/demo mode.
+
+## One SSD, multiple platforms
+
+The all-platforms bundle contains three root launchers and one shared `MASTER-IT-TOOLKIT/` folder. Platform-specific browsers and native Linux/macOS executables live under `runtimes/windows-x64/`, `runtimes/linux-x64/` and `runtimes/macos-arm64/`. Root detection follows the executable location; changing drive letters or mount points does not require reinstallation. The source updater preserves these runtime folders and your local data.
+
+To add a platform to an existing toolkit, first update its shared source, then extract only the matching `runtime-<platform>.zip` beside the toolkit folder. Runtime-only archives contain the launcher and that platform's runtime, never notes, inventory, shared source or other platforms. Do not overlay a complete fresh toolkit ZIP onto an existing workspace. `SHA256SUMS.txt` accompanies release assets. The all-platforms package is assembled only after native package inventory/browser tests pass, and conflicting shared files stop the build.
+
+Use a filesystem that each target OS can read and write. Linux must allow execution on the SSD mount; extraction must preserve executable permissions. The Linux build needs a compatible desktop system and Chromium's system libraries; bundled runtimes do not replace OS dependencies. macOS security approval and Windows signing/reputation checks still apply. No drive formatting or security bypass is performed. Intel Macs, Linux ARM and native Windows ARM packages are not currently included. Windows tools/scripts remain Windows-specific; the shared dashboard does not make third-party executables cross-platform.
+
+## Master computers and shared encrypted notes
+
+Set up **Private vault** with a passphrase, save the recovery key outside the SSD, then open the vault again. Enter that passphrase (or select recovery key), give the computer a name, and choose **Make this a master computer**. Up to 20 OS accounts can be registered. You must authorize each registration locally; no computer is trusted merely because its serial number matches.
+
+The SSD stores an encrypted grant. Its random unlock credential is stored separately in the current account's Windows Credential Manager (local-machine persistence), macOS Keychain, or Linux Secret Service. No plaintext file fallback is used. A Linux desktop needs an available Secret Service keyring. If the keyring is missing, locked or denies access, the vault stays locked and accepts its normal passphrase/recovery key. OS keychain permission prompts may still appear. This feature uses a vault passphrase and protected local credentials, not a WebAuthn/passkey account or cloud authentication.
+
+On a master account the vault unlocks at launcher startup. On other computers it stays locked until you enter the passphrase or recovery key. Notes, favorites, settings, custom workflows and history remain shared and accessible after unlocking; they are not deleted on a computer change. Workflow history still distinguishes machines. The same physical computer booted into another OS or account needs separate registration. The vault locks after 15 minutes of inactivity; **Unlock on this master computer** uses the local credential without asking for the vault passphrase. **Lock now** does not immediately auto-unlock.
+
+Remove masters from the vault dialog. Revocation applies to the current vault copy; disconnected copies and older backups retain their previous grants and cannot be remotely revoked. Anyone able to use your signed-in master OS account may unlock the toolkit. The vault encrypts the SQLite workspace, not downloaded programs, exported reports or browser profiles. Do not store sensitive long-term records here; move them to their permanent home.
 
 ## Find and prepare tools
 
