@@ -37,6 +37,20 @@ class CatalogTests(unittest.TestCase):
         with patch.object(d,'fetch_bytes',return_value=xml):info=d.sourceforge({'project':'clonezilla','folder':'stable'})
         self.assertEqual(info['version'],'9.0');self.assertEqual([a['name'] for a in info['assets']],['new-amd64.iso'])
 
+    def test_sourceforge_rotating_mirrors_remain_scoped(self):
+        for origin in ('sourceforge.net/projects/crystaldiskinfo/files/file.exe','downloads.sourceforge.net/project/crystaldiskinfo/file.zip'):
+            a=dict(asset(),url='https://'+origin)
+            self.assertTrue(d.allowed_download(a,'https://new-mirror.dl.sourceforge.net/project/crystaldiskinfo/file.zip'))
+            for url in ('http://new-mirror.dl.sourceforge.net/a','https://new-mirror.dl.sourceforge.net.evil.example/a','https://evilsourceforge.net/a','https://sourceforge.net@evil.example/a','https://mirror.dl.sourceforge.net:444/a'):
+                self.assertFalse(d.allowed_download(a,url))
+        self.assertFalse(d.allowed_download(asset(),'https://new-mirror.dl.sourceforge.net/a'))
+
+    def test_crystaldiskinfo_feed_selects_standard_portable_zip(self):
+        names=['9.9.3/CrystalDiskInfo9_9_3Ads.exe','9.9.3/CrystalDiskInfo9_9_3Shizuku.zip','9.9.3/CrystalDiskInfo9_9_3.zip','9.9.2/CrystalDiskInfo9_9_2.zip','10.0rc1/CrystalDiskInfo10_0.zip']
+        xml=('<rss><channel>'+''.join('<item><link>https://sourceforge.net/projects/crystaldiskinfo/files/'+n+'/download</link></item>' for n in names)+'</channel></rss>').encode()
+        with patch.object(d,'fetch_bytes',return_value=xml):info=d.sourceforge(d.sources(ROOT/'MASTER-IT-TOOLKIT')['cdi'])
+        self.assertEqual(info['version'],'9.9.3');self.assertEqual([a['name'] for a in info['assets']],['CrystalDiskInfo9_9_3.zip']);self.assertEqual(info['assets'][0]['platform'],'Windows')
+
     def test_unsafe_catalog_paths_and_redirects(self):
         for name in ('../bad.exe','bad\\tool.exe','x:stream','bad.exe.'):
             with self.assertRaises(ValueError):d.validate_asset(dict(asset(),name=name))

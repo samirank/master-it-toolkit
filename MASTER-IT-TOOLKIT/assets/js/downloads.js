@@ -40,7 +40,7 @@
     for(const f of folder.files){const row=element('div');row.className='download-file';row.append(element('strong',f.name+(f.partial?' · In progress':'')),element('small',f.kind==='folder'?'Folder':(f.size/1048576).toFixed(2)+' MB'),element('code',f.path));fileList.append(row);}
     if(state.tool===tool.id){
      if(state.busy){transfer.classList.add('is-loading');tracking=true;transfer.textContent=state.message+(state.received!==undefined?' · '+(state.received/1048576).toFixed(1)+' MB'+(state.total?' / '+(state.total/1048576).toFixed(1)+' MB':''):'')+(state.count?' · File '+state.index+' of '+state.count:'');meter.hidden=false;if(state.total)meter.value=state.received/state.total*100;else meter.removeAttribute('value');}
-     else if(tracking||(['complete','error'].includes(state.stage)&&lastResult!==state.startedAt+'|'+state.message)){lastResult=state.startedAt+'|'+state.message;transfer.classList.remove('is-loading');tracking=false;meter.hidden=true;transfer.textContent=state.message;await refreshInventory();}
+     else if(tracking||(['complete','error'].includes(state.stage)&&lastResult!==state.startedAt+'|'+state.message)){lastResult=state.startedAt+'|'+state.message;const retry=dialog.querySelector('[data-download-submit]');if(retry){retry.disabled=false;retry.textContent=state.stage==='error'?'Retry selected download':'Download selected to SSD';}status.textContent=state.stage==='error'?'Download did not finish. You can retry below or open the publisher downloads.':'Download finished. Files and scan results appear below.';transfer.classList.remove('is-loading');tracking=false;meter.hidden=true;transfer.textContent=state.message;await refreshInventory();}
     }
     const signature=JSON.stringify(folder.files.filter(f=>!f.partial&&f.kind!=='folder').map(f=>[f.name,f.size,f.modified]));
     if(baseline===null)baseline=signature;
@@ -81,7 +81,7 @@
    status.classList.remove('is-loading');
    if(!dialog.isConnected)return;
    if(!info.assets.length){status.textContent=info.reason||'No automatic download is available in the repository catalog. Use the publisher window.';official();return;}
-   status.textContent=window.TOOLKIT_LAUNCHER?'Select the packages to save on your SSD. The scan organizes ZIP downloads into Ready folders. Installers are not run.':'Open a package link to download through your browser. Start the local launcher for multi-select downloads straight to your SSD.';
+   status.textContent=window.TOOLKIT_LAUNCHER?'Select the packages to save on your SSD. The scan organizes supported archive downloads into Ready folders. Installers are not run.':'Open a package link to download through your browser. Start the local launcher for multi-select downloads straight to your SSD.';
    const inputs=[];
    if(window.TOOLKIT_LAUNCHER){
     const controls=element('div');controls.className='actions';
@@ -100,7 +100,7 @@
    }
    dialog.append(list);
    if(window.TOOLKIT_LAUNCHER){
-    const submit=element('button','Download selected to SSD');submit.className='primary';
+    const submit=element('button','Download selected to SSD');submit.className='primary';submit.dataset.downloadSubmit='';
     submit.onclick=async()=>{
      const assets=inputs.filter(i=>i.input.checked).map(i=>i.asset.id);
      if(!assets.length){status.textContent='Select at least one package.';return;}

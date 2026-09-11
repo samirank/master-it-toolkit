@@ -78,20 +78,23 @@ def validate_asset(asset):
 
 def sourceforge(source):
     import xml.etree.ElementTree as ET
-    project, folder = source['project'], source['folder']
+    project, folder = source['project'], source.get('folder','').strip('/')
     tree = ET.fromstring(fetch_bytes('https://sourceforge.net/projects/'+project+'/rss?path=/'+quote(folder)))
     assets=[]; version=None
     for item in tree.findall('./channel/item'):
-        url=item.findtext('link',''); prefix='https://sourceforge.net/projects/'+project+'/files/'+folder+'/'
+        url=item.findtext('link',''); prefix='https://sourceforge.net/projects/'+project+'/files/'+(folder+'/' if folder else '')
         if not url.startswith(prefix): continue
         parts=unquote(url[len(prefix):]).split('/')
-        if len(parts)!=3 or parts[-1]!='download' or not parts[1].endswith('.iso'): continue
+        if len(parts)!=3 or parts[-1]!='download':continue
+        if source.get('filePattern'):
+            if not re.fullmatch(r'[0-9]+(?:\.[0-9]+)*',parts[0]) or not re.fullmatch(source['filePattern'],parts[1]):continue
+        elif not parts[1].endswith('.iso'):continue
         if version is None: version=parts[0]
         if parts[0]!=version: continue
         media=item.find('{http://video.search.yahoo.com/mrss/}content')
-        asset={'id':parts[1], 'name':parts[1], 'url':'https://downloads.sourceforge.net/project/'+project+'/'+folder+'/'+quote(parts[0])+'/'+quote(parts[1]), 'size':int(media.get('filesize','0')) if media is not None else 0, 'platform':'Boot ISO', 'architecture':architecture(parts[1]), 'digest':None}
+        asset={'id':parts[1], 'name':parts[1], 'url':'https://downloads.sourceforge.net/project/'+project+'/'+(folder+'/' if folder else '')+quote(parts[0])+'/'+quote(parts[1]), 'size':int(media.get('filesize','0')) if media is not None else 0, 'platform':source.get('platform','Boot ISO'), 'architecture':architecture(parts[1]), 'digest':None}
         validate_asset(asset); assets.append(asset)
-    if not assets: raise ValueError('No stable ISO in publisher feed')
+    if not assets: raise ValueError('No stable matching package in publisher feed')
     # The checksum filename is discovered from the release feed, not tied to a release number.
     for item in tree.findall('./channel/item'):
         url=item.findtext('link','')
@@ -245,7 +248,7 @@ def save_selected(root, tool_id, selected, safe_path, progress, resolved=None):
             record_saved(root,tool_id,info,key,destination,digest.hexdigest(),safe_path)
         finally:
             if temporary.exists(): temporary.unlink()
-    return '\n'.join(results) + '\nPackages saved. The following scan extracts recognized ZIP packages; installers are never run automatically.'
+    return '\n'.join(results) + '\nPackages saved. The following scan extracts recognized archives; installers are never run automatically.'
 
 def record_saved(root, tool_id, info, key, destination, checksum, safe_path):
     receipt_path = safe_path(root, 'assets/download-receipts.json')
@@ -267,7 +270,8 @@ def allowed_download(asset, url):
     if parsed.scheme!='https' or parsed.username or parsed.password or parsed.port not in (None,443): return False
     origin=urlsplit(asset['url']).hostname
     if origin=='github.com': return host in ('github.com','release-assets.githubusercontent.com','objects.githubusercontent.com')
-    if origin=='downloads.sourceforge.net': return host=='downloads.sourceforge.net' or host.endswith('.dl.sourceforge.net')
+    if origin in ('sourceforge.net','downloads.sourceforge.net'):
+        return host in ('sourceforge.net','downloads.sourceforge.net') or bool(re.fullmatch(r'[a-z0-9-]+\.dl\.sourceforge\.net',host))
     return host==origin or host in asset.get('redirectHosts',[])
 
 def open_package(asset):

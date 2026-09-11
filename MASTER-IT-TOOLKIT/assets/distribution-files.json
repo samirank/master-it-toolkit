@@ -311,9 +311,9 @@
   "activity_store.py": "ab270a4fb6754f30043b3cfed04d71459ab591dfeb124948768295fa800ef7ee",
   "assets/build-profiles.json": "cb485d82d402f983400b3bc9bb5b9cae95c63268eae899e587f8201e0e8440bd",
   "assets/css/app.css": "0abfaeef578abc35f78e6154d9df3c02ff33e48c1729fd4a855cb2fd068bfe8a",
-  "assets/download-catalog.json": "da948c0ffa5eb411bd7d9e61881c6cd91435318b60eda02c73d2c939ab8b1573",
+  "assets/download-catalog.json": "a6efeaa3a546e8174d62b5d0eb37fac8fbb555a58efaa753176f7eabfe5c84df",
   "assets/download-manifest.json": "91ffeafaf88440010348fbd097a386b85f58426f9120f519c4315e76fa23a9d9",
-  "assets/download-sources.json": "cc65570393f1b1cba6f2ee55982fe3b884f4aee92a324c7e907785908aec0347",
+  "assets/download-sources.json": "0460dfa5aeea1fa1a01f5a1241aba9c85994d880563ce084f9f7ef15faa3f637",
   "assets/images/dashboard.png": "c33bfc4b94d4316b3d56f827315835193727b27851527ee94ed2b4f4fac353fe",
   "assets/js/app.js": "5d00bf712994255cf162c3c5f60a76257a3b11b21f68df833e5cb6aa31c729ae",
   "assets/js/assistant.js": "16a7db28715a2acc8d79b02504110a8c5de8a86d29cd891e45d7a454a622c8f3",
@@ -323,7 +323,7 @@
   "assets/js/catalog-downloads.js": "40e2f00d2e6434531bbac50ad1b9e1697e9d6c6f44f41924d75ce890d92f1d6c",
   "assets/js/categories.js": "6858d6a5b6eec16af3b70f6a7deb79bcb75602efc812818c16ac8f7baa5b5047",
   "assets/js/download-redirect.js": "168bf681259257106dc507de49ec582ad4306e3403495111692db180738c8bec",
-  "assets/js/downloads.js": "fde8eb59c2b62a0c4562c7a91a70e5ec527bb04f3e15f38a62ff8ca1d509e342",
+  "assets/js/downloads.js": "16691f1c9d5fd2d1d56f4801f9a75c80ade64829c52a22b1e6153ab87888c9cc",
   "assets/js/guides-data.js": "5b8c605bd35e02d5b09e8c5a4d3a546e10f713b7574216f059dd37d3b9006f48",
   "assets/js/installs.js": "3efdcc4fd34ad25d433dfdc8960202fcde68880ebb05d27b310d7be5c32c34a3",
   "assets/js/inventory-default.js": "8a43fe812c6147ff9aba34bdc1bc3fd0aed5910e963672137eb9656d3f1ea806",
@@ -1277,5 +1277,5 @@
   "runtime-extensions/ubol/zapper-ui.html": "2afbdfcad9405c07e035299f8a27b0b5fdb399813f813275a5236e1d8d8099d6",
   "secure_vault.py": "a37c31e3e31d89faa904b8a1553a121427ea22d55c6154b9edd08f27f5fc179d",
   "setup_wizard.py": "2354921dc8c910f9c7465ca3250beb74d19cfeee6812fd62fbe4d7a742b9e427",
-  "tool_downloads.py": "cf2af8691df582daee73cff3594de30f50d929b943488e315aa0863b1cd68b89"
+  "tool_downloads.py": "7dc2190972c28b30298e7016a9aba671b42f147b80d8d4a5c0ec790a8884b1ca"
 }

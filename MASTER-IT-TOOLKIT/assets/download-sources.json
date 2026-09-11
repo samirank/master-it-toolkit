@@ -254,8 +254,11 @@
     "package": "REALiX.HWiNFO"
   },
   "cdi": {
-    "provider": "winget",
-    "package": "CrystalDewWorld.CrystalDiskInfo"
+    "provider": "sourceforge",
+    "project": "crystaldiskinfo",
+    "folder": "",
+    "filePattern": "CrystalDiskInfo[0-9]+(?:_[0-9]+)*\\.zip",
+    "platform": "Windows"
   },
   "cdm": {
     "provider": "winget",

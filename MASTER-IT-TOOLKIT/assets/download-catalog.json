@@ -1239,40 +1239,47 @@
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
     },
     "cdi": {
+      "tool": "cdi",
       "name": "CrystalDiskInfo",
       "source": "https://crystalmark.info/en/software/crystaldiskinfo/",
-      "checkedAt": "2026-09-10T16:00:33.774495+00:00",
+      "folder": "20_PORTABLE_APPS/Misc/CrystalDiskInfo",
       "assets": [
         {
-          "id": "e92cd29a9c7daa5115a2",
-          "name": "CrystalDiskInfo9_9_2.exe",
-          "url": "https://sourceforge.net/projects/crystaldiskinfo/files/9.9.2/CrystalDiskInfo9_9_2.exe",
-          "digest": "sha256:45be8def3ec8876dcd1e5d299bd049140bc5d692413883aae1049f7d24a41abe",
-          "size": 0,
+          "id": "CrystalDiskInfo9_9_2.zip",
+          "name": "CrystalDiskInfo9_9_2.zip",
+          "url": "https://downloads.sourceforge.net/project/crystaldiskinfo/9.9.2/CrystalDiskInfo9_9_2.zip",
+          "size": 8533389,
           "platform": "Windows",
-          "architecture": "x86",
+          "architecture": "universal",
+          "digest": null,
           "redirectHosts": [
-            "downloads.sourceforge.net",
-            "psychz.dl.sourceforge.net",
-            "sourceforge.net"
+            "psychz.dl.sourceforge.net"
           ]
         }
       ],
+      "platforms": [
+        "Windows"
+      ],
       "version": "9.9.2",
-      "metadataSource": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/c/CrystalDewWorld/CrystalDiskInfo/9.9.2/CrystalDewWorld.CrystalDiskInfo.installer.yaml",
       "status": "ready",
-      "provider": "winget",
+      "provider": "sourceforge",
+      "checkedAt": "2026-09-11T07:20:24.072021+00:00",
+      "lastSuccess": "2026-09-11T07:20:24.072021+00:00",
       "recommended": {
         "Windows/x64": [
-          "e92cd29a9c7daa5115a2"
+          "CrystalDiskInfo9_9_2.zip"
         ],
         "Windows/x86": [
-          "e92cd29a9c7daa5115a2"
+          "CrystalDiskInfo9_9_2.zip"
         ],
-        "Windows/arm64": [],
-        "Windows/universal": [],
+        "Windows/arm64": [
+          "CrystalDiskInfo9_9_2.zip"
+        ],
+        "Windows/universal": [
+          "CrystalDiskInfo9_9_2.zip"
+        ],
         "Windows/All": [
-          "e92cd29a9c7daa5115a2"
+          "CrystalDiskInfo9_9_2.zip"
         ],
         "Linux/x64": [],
         "Linux/x86": [],
@@ -1290,18 +1297,21 @@
         "Boot ISO/universal": [],
         "Boot ISO/All": [],
         "All/x64": [
-          "e92cd29a9c7daa5115a2"
+          "CrystalDiskInfo9_9_2.zip"
         ],
         "All/x86": [
-          "e92cd29a9c7daa5115a2"
+          "CrystalDiskInfo9_9_2.zip"
         ],
-        "All/arm64": [],
-        "All/universal": [],
+        "All/arm64": [
+          "CrystalDiskInfo9_9_2.zip"
+        ],
+        "All/universal": [
+          "CrystalDiskInfo9_9_2.zip"
+        ],
         "All/All": [
-          "e92cd29a9c7daa5115a2"
+          "CrystalDiskInfo9_9_2.zip"
         ]
-      },
-      "lastSuccess": "2026-09-10T16:00:33.774495+00:00"
+      }
     },
     "cdm": {
       "name": "CrystalDiskMark",
