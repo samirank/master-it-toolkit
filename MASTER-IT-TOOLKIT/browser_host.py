@@ -74,8 +74,11 @@ class Host:
             with self.lock: self.windows.discard(key)
 
     async def window(self, url, tool_id):
-        from platform_runtime import browser_path
-        bundled = browser_path(self.root)
+        from platform_runtime import browser_session
+        with browser_session(self.root) as bundled:
+            await self._window(url, tool_id, bundled)
+
+    async def _window(self, url, tool_id, bundled):
         if bundled.is_dir(): os.environ['PLAYWRIGHT_BROWSERS_PATH'] = str(bundled)
         from playwright.async_api import async_playwright
         temp_root = self.safe_path(self.root, '90_TEMP/browser-sessions')

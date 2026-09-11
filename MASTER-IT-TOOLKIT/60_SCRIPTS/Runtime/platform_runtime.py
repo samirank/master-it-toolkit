@@ -1,4 +1,6 @@
 """Find shared source and the matching bundled runtime without fixed drive paths."""
+import atexit
+from contextlib import contextmanager
 import json
 import hashlib
 import os
@@ -13,6 +15,84 @@ from pathlib import Path, PurePosixPath
 
 SUPPORTED = ('windows-x64', 'linux-x64', 'macos-arm64')
 LOCKS = {}
+
+
+HOST_CACHE_LOCK = threading.RLock()
+HOST_CACHE = None
+HOST_USERS = 0
+
+
+def remove_host_session(folder, base):
+    """Delete only a directly owned session, never a link or unrelated folder."""
+    if folder.is_symlink() or base.is_symlink(): return False
+    resolved = folder.resolve()
+    if resolved.parent != base.resolve() or not folder.name.startswith('session-'): return False
+    owner = folder / '.owner.json'
+    if owner.is_symlink() or not owner.is_file(): return False
+    try:
+        record = json.loads(owner.read_text('utf-8'))
+        if record.get('application') != 'Master-IT-Toolkit-browser-session-v1': return False
+        shutil.rmtree(resolved)
+        return True
+    except (OSError, ValueError): return False
+
+
+def clean_abandoned_host_sessions(base):
+    if not base.is_dir() or base.is_symlink(): return
+    for folder in base.glob('session-*'):
+        if folder.is_symlink() or not folder.is_dir(): continue
+        try:
+            owner = folder / '.owner.json'
+            if owner.is_symlink(): continue
+            record = json.loads(owner.read_text('utf-8'))
+            pid = record.get('pid')
+            if record.get('application') != 'Master-IT-Toolkit-browser-session-v1' or type(pid) is not int or pid <= 0: continue
+            try: os.kill(pid, 0)
+            except ProcessLookupError: remove_host_session(folder, base)
+            except (PermissionError, OSError): pass  # Unknown ownership: preserve.
+        except (OSError, ValueError): continue
+
+
+def host_session():
+    global HOST_CACHE
+    with HOST_CACHE_LOCK:
+        if HOST_CACHE is None:
+            base = Path.home() / 'Library/Caches/Master-IT-Toolkit/browser-sessions'
+            base.mkdir(parents=True, exist_ok=True)
+            clean_abandoned_host_sessions(base)
+            folder = base / ('session-' + secrets.token_hex(16))
+            folder.mkdir(mode=0o700)
+            (folder / '.owner.json').write_text(json.dumps({'application': 'Master-IT-Toolkit-browser-session-v1', 'pid': os.getpid()}), encoding='utf-8')
+            HOST_CACHE = folder
+        return HOST_CACHE
+
+
+def cleanup_host_cache():
+    global HOST_CACHE
+    with HOST_CACHE_LOCK:
+        if HOST_USERS or HOST_CACHE is None: return
+        folder = HOST_CACHE
+        if remove_host_session(folder, folder.parent):
+            HOST_CACHE = None
+            # Only remove empty application cache directories.
+            for parent in (folder.parent, folder.parent.parent):
+                try: parent.rmdir()
+                except OSError: break
+
+
+@contextmanager
+def browser_session(root):
+    """Keep shared runtime files alive until every browser window has closed."""
+    global HOST_USERS
+    with HOST_CACHE_LOCK: HOST_USERS += 1
+    try: yield browser_path(root)
+    finally:
+        with HOST_CACHE_LOCK:
+            HOST_USERS -= 1
+            cleanup_host_cache()
+
+
+atexit.register(cleanup_host_cache)
 
 
 def prepare_browser(runtime, browser=None):
@@ -84,12 +164,12 @@ def browser_path(root):
     runtime = modern.parent
     manifest = runtime / 'platform.json'
     if sys.platform == 'darwin' and (runtime / 'browser.zip').is_file():
-        # Never expand macOS app bundles onto the shared SSD. A versioned host
-        # cache is reusable across drives and can be rebuilt entirely offline.
+        # Never expand macOS app bundles onto the shared SSD. Session files
+        # are removed after browser use and rebuilt entirely offline.
         checksum = json.loads(manifest.read_text('utf-8')).get('browserArchiveSha256', '')
         if len(checksum) != 64 or any(c not in '0123456789abcdef' for c in checksum):
             raise ValueError('Invalid bundled browser checksum')
-        modern = Path.home() / 'Library/Caches/Master-IT-Toolkit/browsers' / checksum / 'browser'
+        modern = host_session() / checksum[:16] / 'browser'
     prepare_browser(runtime, modern)
     # Windows ZIP extraction can lose Unix executable bits. Restore only the
     # package's explicitly listed browser files when first opened on Unix.

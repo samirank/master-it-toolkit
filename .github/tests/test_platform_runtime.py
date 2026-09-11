@@ -17,6 +17,45 @@ assemble = importlib.util.module_from_spec(spec); spec.loader.exec_module(assemb
 
 
 class PlatformTests(unittest.TestCase):
+    def tearDown(self):
+        p.cleanup_host_cache()
+        p.HOST_CACHE = None
+
+    def test_host_session_cleanup_waits_for_last_window_and_handles_failure(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(p.Path, 'home', return_value=Path(tmp)):
+            def path(_):
+                folder = p.host_session()
+                (folder / 'browser-file').write_bytes(b'runtime')
+                return folder
+            with patch.object(p, 'browser_path', side_effect=path):
+                with p.browser_session(Path(tmp)) as first:
+                    with p.browser_session(Path(tmp)) as second:
+                        self.assertEqual(first, second)
+                    self.assertTrue(first.exists())
+                self.assertFalse(first.exists())
+                with self.assertRaisesRegex(RuntimeError, 'launch failed'):
+                    with p.browser_session(Path(tmp)) as failed:
+                        raise RuntimeError('launch failed')
+                self.assertFalse(failed.exists())
+                self.assertFalse((Path(tmp) / 'Library/Caches/Master-IT-Toolkit').exists())
+
+    def test_abandoned_cleanup_preserves_active_and_unowned_folders(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            for name, pid in [('session-dead', 11), ('session-active', 12)]:
+                folder = base / name; folder.mkdir()
+                (folder / '.owner.json').write_text(json.dumps({'application': 'Master-IT-Toolkit-browser-session-v1', 'pid': pid}))
+                (folder / 'runtime').write_bytes(b'test')
+            unrelated = base / 'session-unrelated'; unrelated.mkdir()
+            (unrelated / 'user-data').write_bytes(b'preserve')
+            def alive(pid, signal):
+                if pid == 11: raise ProcessLookupError()
+            with patch.object(p.os, 'kill', side_effect=alive): p.clean_abandoned_host_sessions(base)
+            self.assertFalse((base / 'session-dead').exists())
+            self.assertTrue((base / 'session-active/runtime').exists())
+            self.assertTrue((unrelated / 'user-data').exists())
+            self.assertFalse(p.remove_host_session(unrelated, base))
+
     def test_browser_preparation_is_offline_cached_and_platform_specific(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(p,'label',return_value='windows-x64'):
             root=Path(tmp);runtime=root/'runtimes/windows-x64';runtime.mkdir(parents=True)
