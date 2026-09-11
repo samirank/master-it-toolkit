@@ -149,6 +149,16 @@ class ServerTests(unittest.TestCase):
         for path in ('../launcher.py', '70_DOCUMENTATION/Service-Notes/README.txt', '60_SCRIPTS/Diagnostics/Get-PCDiagnostics.ps1'):
             with self.assertRaises(urllib.error.HTTPError): self.request(path)
         with self.assertRaises(urllib.error.HTTPError): urllib.request.urlopen(self.server.origin + '/api/status')
+    def test_stale_dashboard_navigation_recovers_but_api_and_cross_site_do_not(self):
+        stale=self.server.origin+'/'+'old-session-'*3+'/index.html'
+        headers={'Sec-Fetch-Mode':'navigate','Sec-Fetch-Dest':'document','Sec-Fetch-Site':'none'}
+        with urllib.request.urlopen(urllib.request.Request(stale,headers=headers)) as r:
+            self.assertEqual(r.url,self.base+'index.html');self.assertIn(b'Master IT Toolkit',r.read())
+            self.assertEqual(r.headers['Referrer-Policy'],'no-referrer')
+        for url,values in [(stale,{}),(stale,{**headers,'Sec-Fetch-Site':'cross-site'}),(stale,{**headers,'Sec-Fetch-Dest':'iframe'}),(stale.replace('index.html','api/status'),headers),(stale,{**headers,'Host':'attacker.example'})]:
+            with self.assertRaises(urllib.error.HTTPError) as error:urllib.request.urlopen(urllib.request.Request(url,headers=values))
+            self.assertEqual(error.exception.code,403)
+
     def test_external_origin_and_unknown_action_rejected(self):
         for action, origin in [('inventory', 'https://example.com'), ('cmd /c anything', self.server.origin)]:
             with self.assertRaises(urllib.error.HTTPError): self.request('api/action', {'action': action, 'confirmed': True}, origin)

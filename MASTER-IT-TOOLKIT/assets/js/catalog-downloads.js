@@ -3,7 +3,7 @@
  'use strict';
  const feed='https://raw.githubusercontent.com/samirank/master-it-toolkit/download-catalog/catalog.json';
  const api=name=>new URL('api/'+name,location.href);
- let catalog=null;
+ let catalog=null;const dismissed=new Set();
  async function load(refresh=false){
   const url=window.TOOLKIT_LAUNCHER?api('catalog'+(refresh?'?refresh=1':'')):feed;
   try{const response=await fetch(url,{cache:'no-store'});if(!response.ok)throw Error('Catalog unavailable');catalog=await response.json();}
@@ -14,14 +14,17 @@
   const ready=Object.values(catalog.tools||{}).filter(t=>t.status==='ready').length;
   let banner=document.getElementById('catalog-notice');
   if(!banner){banner=document.createElement('aside');banner.id='catalog-notice';banner.className='catalog-notice';document.querySelector('main')?.before(banner);}
-  banner.replaceChildren();
-  const text=document.createElement('span');text.textContent=ready+' tools support automatic downloads'+(errors?' · '+errors+' sources need attention':'')+(catalog.warning?' · Offline/saved catalog':'')+'.';banner.append(text);
-  const link=document.createElement('a');link.href='https://github.com/samirank/master-it-toolkit/issues?q=is%3Aissue+%22Download+catalog%22';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Update notifications ↗';banner.append(link);
+  banner.replaceChildren();const revision=catalog.revision||catalog.generatedAt||'saved';let hidden=dismissed.has(revision);try{hidden=hidden||localStorage.getItem('master-it.catalog-dismissed')===revision;}catch{}banner.hidden=hidden;banner.setAttribute('aria-label','Download catalog updates');
+  const copy=document.createElement('div');copy.className='catalog-notice-copy';const actions=document.createElement('div');actions.className='catalog-notice-actions';banner.append(copy,actions);
+  const hide=()=>{dismissed.add(revision);banner.hidden=true;try{localStorage.setItem('master-it.catalog-dismissed',revision);}catch{}};
+  const close=document.createElement('button');close.className='catalog-notice-close';close.textContent='×';close.setAttribute('aria-label','Dismiss update notification');close.onclick=hide;banner.append(close);
+  const text=document.createElement('span');text.textContent=ready+' tools support automatic downloads'+(errors?' · '+errors+' sources need attention':'')+(catalog.warning?' · Offline/saved catalog':'')+'.';copy.append(text);
+  const link=document.createElement('a');link.href='https://github.com/samirank/master-it-toolkit/issues?q=is%3Aissue+%22Download+catalog%22';link.target='_blank';link.rel='noopener noreferrer';link.textContent='Update notifications ↗';actions.append(link);
   let seen='';try{seen=localStorage.getItem('master-it.catalog-seen')||'';}catch{}
   if(catalog.revision&&catalog.revision!==seen){
    const updates=(catalog.changes||[]).filter(c=>c.kind==='updated');
-   if(updates.length){const message=document.createElement('strong');message.textContent=updates.length+' catalog updates since the last catalog change';banner.prepend(message);}
-   const dismiss=document.createElement('button');dismiss.textContent='Mark reviewed';dismiss.onclick=()=>{try{localStorage.setItem('master-it.catalog-seen',catalog.revision);}catch{}dismiss.remove();};banner.append(dismiss);
+   if(updates.length){const message=document.createElement('strong');message.textContent=updates.length+' catalog updates since the last catalog change';copy.prepend(message);}
+   const dismiss=document.createElement('button');dismiss.textContent='Mark reviewed';dismiss.onclick=()=>{try{localStorage.setItem('master-it.catalog-seen',catalog.revision);}catch{}hide();};actions.append(dismiss);
   }
   return catalog;
  }

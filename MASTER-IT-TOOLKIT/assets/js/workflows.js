@@ -6,7 +6,7 @@
  const button=(text,fn)=>{const n=el('button',text);n.onclick=fn;return n;};
  const api=async(path,body)=>{const r=await fetch(new URL('api/'+path,location.href),body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...body,confirmed:true})}:{});const data=await r.json();if(!r.ok)throw Error(data.error||'Launcher unavailable');return data;};
  const activity=message=>window.dispatchEvent(new CustomEvent('toolkit-activity',{detail:{message,busy:true}}));
- function modal(title){const d=el('dialog');d.className='download-dialog';d.setAttribute('aria-label',title);d.append(button('Close',()=>d.close()),el('h2',title));document.body.append(d);d.onclose=()=>d.remove();d.showModal();return d;}
+ function modal(title){const d=el('dialog');d.className='download-dialog';d.setAttribute('aria-label',title);const close=button('Close',()=>d.close());close.className='dialog-close';close.setAttribute('aria-label','Close');d.append(close,el('h2',title));document.body.append(d);d.onclose=()=>d.remove();d.showModal();return d;}
  async function openTool(id){
   const tool=tools.find(t=>t.id===id);if(!tool)return;
   const d=modal('Run '+tool.name), status=el('p','Checking scanned executables…');status.setAttribute('role','status');d.append(status);
@@ -22,7 +22,8 @@
   }catch(e){status.textContent=e.message;}
  }
  let current=null, record=null, runner=null, last='', polling=false;const drafts={};
- const reopen=button('Workflow status',()=>showRunner());reopen.hidden=true;reopen.id='workflow-status-button';document.querySelector('.launcher-panel').after(reopen);
+ const toolbar=el('div');toolbar.className='workspace-toolbar';toolbar.setAttribute('aria-label','Workflow controls');document.querySelector('.launcher-panel').after(toolbar);
+ const reopen=button('Workflow status',()=>showRunner());reopen.hidden=true;reopen.id='workflow-status-button';toolbar.append(reopen);
  function showRunner(){
   if(runner?.isConnected){runner.showModal();return;}
   runner=modal('Workflow runner');last='';paint();
@@ -98,8 +99,8 @@
  }
  document.addEventListener('click',event=>{const run=event.target.closest('[data-run-tool]'), flow=event.target.closest('[data-workflow]');if(run)openTool(run.dataset.runTool);if(flow)start(flow.dataset.workflow);});
  const historyButton=button('Workflow job history',async()=>{
-  const d=modal('Workflow job history');const all=el('input');all.type='checkbox';all.setAttribute('aria-label','Show all machines');const label=el('label','Show all machines');label.prepend(all);d.append(label);const list=el('div');d.append(list);
+  const d=modal('Workflow job history');d.classList.add('workflow-history');const all=el('input');all.type='checkbox';all.setAttribute('aria-label','Show all machines');const label=el('label','Show all machines');label.prepend(all);d.append(label);const list=el('div');d.append(list);
   async function load(){list.replaceChildren(el('p','Loading job history…'));try{const data=await api('workflow-jobs'+(all.checked?'?all=1':''));list.replaceChildren(el('p','Current machine: '+data.machine.name+' · '+data.machine.matchBasis+' matching'));for(const job of data.jobs){const row=el('section');row.className='panel';row.append(el('h3',job.name),el('p','Job '+job.id+' · '+job.machine.name+' · '+(job.status==='running'&&data.activeJob!==job.id?'Incomplete / interrupted':job.status)),el('p',new Date(job.startedAt*1000).toLocaleString()));const details=el('details');details.append(el('summary','Inputs, step results and notes'));const text=el('pre',JSON.stringify({inputs:job.inputs,steps:job.steps,notes:job.stepNotes,migration:job.migrationResult},null,2));details.append(text);row.append(details);if(job.status!=='completed'&&job.definitionHash){row.append(button('Review and resume',()=>{d.close();start(job.profile,job.id);}));}list.append(row);}if(!data.jobs.length)list.append(el('p','No recorded runs for this selection.'));}catch(e){list.replaceChildren(el('p',e.message));}}all.onchange=load;load();
- });document.querySelector('.launcher-panel').after(historyButton);
+ });toolbar.prepend(historyButton);
  poll();setInterval(poll,1500);
 })();

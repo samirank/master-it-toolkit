@@ -6,6 +6,7 @@ import mimetypes
 import os
 from pathlib import Path, PurePosixPath
 import secrets
+import re
 import shutil
 import subprocess
 import sys
@@ -416,7 +417,22 @@ class Handler(BaseHTTPRequestHandler):
         return self.path[len(prefix):].split('?')[0]
     def do_GET(self):
         route = self.route()
-        if route is None: return self.reply(403, {'error': 'Open the URL printed by your launcher.'})
+        if route is None:
+            # Recover only an address-bar/reload navigation to the dashboard.
+            # Old API tokens, cross-site links, frames and alternate Host headers stay denied.
+            path=urllib.parse.urlsplit(self.path).path
+            if (self.headers.get('Host')==self.server.origin.split('//')[1]
+                and self.headers.get('Sec-Fetch-Mode')=='navigate'
+                and self.headers.get('Sec-Fetch-Dest')=='document'
+                and self.headers.get('Sec-Fetch-Site') in ('none','same-origin')
+                and (path=='/' or re.fullmatch(r'/[A-Za-z0-9_-]{20,100}/index\.html',path))):
+                self.send_response(302)
+                self.send_header('Location','/'+self.server.token+'/index.html')
+                self.send_header('Cache-Control','no-store')
+                self.send_header('Referrer-Policy','no-referrer')
+                self.send_header('Content-Length','0')
+                self.end_headers();return
+            return self.reply(403, {'error': 'This launcher address has expired. Reopen Master-IT-Toolkit to connect to the current session.'})
         if route == 'api/vault':return self.reply(200,secure_vault.status(self.server.history.path))
         if route == 'api/setup':
             if secure_vault.status(self.server.history.path)['locked']:return self.reply(200,{'locked':True})
