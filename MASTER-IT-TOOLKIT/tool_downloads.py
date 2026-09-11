@@ -242,7 +242,7 @@ def save_selected(root, tool_id, selected, safe_path, progress, resolved=None):
                     if total > 8_000_000_000: raise ValueError('Package exceeds 8 GB transfer limit')
                     output.write(chunk); digest.update(chunk)
                     progress({'message': 'Downloading ' + asset['name'], 'file': asset['name'], 'received': total, 'total': transfer_size or None, 'index': index, 'count': len(selected), 'stage': 'download'})
-            if size and total != size: raise ValueError('Incomplete publisher download')
+            if transfer_size and total != transfer_size: raise ValueError('Incomplete publisher download')
             if total == 0: raise ValueError('Empty publisher download')
             expected = asset.get('digest') or ''
             if expected.startswith('sha256:') and digest.hexdigest() != expected[7:]: raise ValueError('Publisher SHA256 mismatch')
@@ -353,19 +353,26 @@ def bulk_download(root, selection, safe_path, progress, scan, completed, cancell
                 counts['manual']+=1;results.append('↗ '+tool['name']+': '+info.get('reason','Publisher-managed download'));continue
             assets=recommended(info,platform,arch,tool.get('portable',False))
             if not assets: counts['notApplicable']+=1;continue
+            processed=False
             for asset in assets:
                 for attempt in range(3):
                     if cancelled(): break
                     try:
                         report=save_selected(root,id,[asset['id']],safe_path,
                             lambda state:progress(dict(state,tool=id,queueIndex=index,queueCount=len(eligible))),resolved=info)
+                        processed=True
                         results.append(tool['name']+': '+report.split('\n')[0]);break
                     except (urllib.error.URLError,TimeoutError) as error:
                         if attempt==2: raise
                         progress({'tool':id,'message':'Retrying '+tool['name']+' ('+str(attempt+2)+'/3)','stage':'retry'})
                         time.sleep(2**attempt)
                 if cancelled(): break
-            if cancelled(): results.append('Queue cancelled; completed packages were kept.');break
+            if cancelled():
+                if processed:
+                    counts['downloaded']+=1
+                    progress({'tool':id,'message':'Organizing the completed download before stopping…','stage':'scan'})
+                    scan();completed()
+                results.append('Queue cancelled; completed packages were kept.');break
             counts['downloaded']+=1
             progress({'tool':id,'message':'Organizing '+tool['name'],'stage':'scan'})
             scan();completed()

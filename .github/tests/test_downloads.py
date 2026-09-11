@@ -26,6 +26,50 @@ class DownloadsTests(unittest.TestCase):
         with patch.object(downloads,'fetch_bytes',return_value=b'No matching download'):
             with self.assertRaises(ValueError):downloads.hwinfo_portable()
 
+    def test_truncated_http_response_is_removed_and_retry_can_complete(self):
+        import threading,urllib.request
+        from http.server import BaseHTTPRequestHandler,ThreadingHTTPServer
+        payload=b'complete package payload'; truncated=[True]
+        class Handler(BaseHTTPRequestHandler):
+            def log_message(self,*args):pass
+            def do_GET(self):
+                self.send_response(200);self.send_header('Content-Length',str(len(payload)));self.end_headers()
+                self.wfile.write(payload[:4] if truncated[0] else payload)
+        server=ThreadingHTTPServer(('127.0.0.1',0),Handler)
+        thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+        asset={'id':'fixture','name':'tool.zip','url':'https://example.com/tool.zip','size':0,'digest':None}
+        def transport(_):
+            response=urllib.request.urlopen('http://127.0.0.1:'+str(server.server_port),timeout=5)
+            response.url=asset['url'];return response
+        try:
+            with tempfile.TemporaryDirectory() as tmp,patch.object(downloads,'open_package',side_effect=transport):
+                root=Path(tmp);info={'folder':'tools','assets':[asset]}
+                with self.assertRaisesRegex(ValueError,'Incomplete'):
+                    downloads.save_selected(root,'fixture',['fixture'],launcher.safe_path,lambda _:None,resolved=info)
+                self.assertEqual(list((root/'tools').iterdir()),[])
+                self.assertFalse((root/'assets/download-receipts.json').exists())
+                truncated[0]=False
+                downloads.save_selected(root,'fixture',['fixture'],launcher.safe_path,lambda _:None,resolved=info)
+                self.assertEqual((root/'tools/tool.zip').read_bytes(),payload)
+                self.assertTrue((root/'assets/download-receipts.json').is_file())
+        finally:server.shutdown();server.server_close();thread.join()
+
+    def test_stop_after_current_file_still_refreshes_inventory(self):
+        stopped=[False];scans=[];callbacks=[]
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);(root/'assets/js').mkdir(parents=True)
+            (root/'assets/toolkit-manifest.json').write_text(json.dumps([{'id':'fixture','name':'Fixture','officialDownload':'https://example.com','kind':'Portable','license':'Free'}]))
+            def scan():
+                scans.append(True)
+                (root/'assets/js/local-inventory.js').write_text('window.LOCAL_INVENTORY = '+json.dumps({'tools':{'fixture':{'downloaded':stopped[0]}}})+';')
+            def save(*args,**kwargs):stopped[0]=True;return 'Saved: tool.zip'
+            with patch.object(downloads,'options',return_value={'assets':[{'id':'a'}]}),patch.object(downloads,'recommended',return_value=[{'id':'a'}]),patch.object(downloads,'save_selected',side_effect=save):
+                report=downloads.bulk_download(root,{},launcher.safe_path,lambda _:None,scan,lambda:callbacks.append(True),lambda:stopped[0])
+            self.assertEqual(len(scans),2);self.assertEqual(len(callbacks),2)
+            self.assertIn('1 processed',report)
+            self.assertIn('Queue cancelled',report)
+            self.assertIn('true',(root/'assets/js/local-inventory.js').read_text())
+
     def test_platforms(self):
         for name,expected in [('7z2603-x64.exe','Windows'),('7z2603-linux-arm64.tar.xz','Linux'),('7z2603-mac.tar.xz','macOS')]:
             self.assertEqual(downloads.platform_for(name,['Windows']),expected)
