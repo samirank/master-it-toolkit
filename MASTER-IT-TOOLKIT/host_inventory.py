@@ -1,5 +1,6 @@
 """Read-only host inventory. Never uses Win32_Product or launches discovered applications."""
 import hashlib
+import functools
 import os
 from pathlib import Path
 import re
@@ -31,6 +32,7 @@ PACKAGES={'nodejs':['nodejs','node'],'gh':['gh'],'dbeaver':['dbeaver-ce','dbeave
  'libreoffice':['libreoffice','libreoffice-core'],'thunderbird':['thunderbird'],'clawsmail':['claws-mail'],
  '4kdownloader':['4kvideodownloaderplus']}
 
+@functools.lru_cache(maxsize=1)
 def host_id():
     identity=socket.gethostname()+'|'+sys.platform+'|'+os.environ.get('USERNAME',os.environ.get('USER',''))
     try:
@@ -39,7 +41,11 @@ def host_id():
             with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,r'SOFTWARE\Microsoft\Cryptography',0,winreg.KEY_READ|winreg.KEY_WOW64_64KEY) as key:
                 identity+='|'+str(winreg.QueryValueEx(key,'MachineGuid')[0])
         elif sys.platform.startswith('linux'): identity+='|'+Path('/etc/machine-id').read_text().strip()
-    except OSError: pass
+        elif sys.platform=='darwin':
+            output=subprocess.check_output(['/usr/sbin/ioreg','-rd1','-c','IOPlatformExpertDevice'],text=True,timeout=3)
+            match=re.search(r'"IOPlatformUUID"\s*=\s*"([^"]+)"',output)
+            if match:identity+='|'+match.group(1)
+    except (OSError,subprocess.SubprocessError): pass
     return hashlib.sha256(identity.encode()).hexdigest()[:20]
 
 def normalize(value):

@@ -97,6 +97,11 @@ def run(root,settings,progress,cancelled=lambda:False,repository_key=None):
     # restores portable when the SSD drive letter changes.
     args=['backup','--json','--tag','master-it-toolkit',*[str(Path(p).relative_to(root.parent)) for p in paths]]
     for pattern in ['**/90_TEMP/**','**/.toolkit-backups/**','**/BrowserProfile/**','**/*.partial','**/__pycache__/**']:args+=['--exclude',pattern]
+    if settings.get('scope')=='full':
+        import importlib.util
+        spec=importlib.util.spec_from_file_location('runtime_backup_cache',Path(__file__).with_name('toolkit_backup.py'))
+        cache=importlib.util.module_from_spec(spec);spec.loader.exec_module(cache)
+        for pattern in cache.runtime_cache_patterns(root):args+=['--exclude','**/'+pattern+'/**']
     message=command(args)
     command(['check'])
     if keep:command(['forget','--keep-last',str(keep),'--tag','master-it-toolkit','--prune'])

@@ -3,6 +3,7 @@ Master IT Toolkit now supports one SSD with shared data across Windows x64, Linu
 - **Fresh SSD:** download `standalone-all-platforms.zip`, extract it once, and use `Start-Windows.exe`, `Start-Linux.sh` or `Start-macOS.command`.
 - **Existing toolkit:** update its shared source first, then extract the required `runtime-<platform>.zip` beside the `MASTER-IT-TOOLKIT` folder. These smaller archives add only that platform's runtime and launcher. Do not overlay a complete fresh toolkit package onto your existing workspace.
 - **Master computers:** create/unlock Private vault, enter your passphrase again, and choose **Make this a master computer**. Registered OS accounts unlock at startup using their native credential store. Other computers require the vault passphrase or recovery key. Shared notes remain encrypted on the SSD after vault setup.
+- Each platform prepares its bundled browser on first launch, entirely offline. Other platforms’ browsers remain compressed so Windows does not have to extract macOS paths.
 - `SHA256SUMS.txt` contains checksums for the release packages.
 
 No Python installation is required for standalone packages. Linux still needs a compatible desktop and Chromium system libraries, plus permission to execute files on the SSD mount. Windows tools cannot run natively on other operating systems. Intel Mac, Linux ARM and native Windows ARM builds are not included.

@@ -1,4 +1,5 @@
 import importlib.util
+import hashlib
 import json
 import sys
 import tempfile
@@ -16,6 +17,32 @@ assemble = importlib.util.module_from_spec(spec); spec.loader.exec_module(assemb
 
 
 class PlatformTests(unittest.TestCase):
+    def test_browser_preparation_is_offline_cached_and_platform_specific(self):
+        with tempfile.TemporaryDirectory() as tmp, patch.object(p,'label',return_value='windows-x64'):
+            root=Path(tmp);runtime=root/'runtimes/windows-x64';runtime.mkdir(parents=True)
+            archive=runtime/'browser.zip'
+            with zipfile.ZipFile(archive,'w') as z:z.writestr('chromium-fixture/chrome',b'browser')
+            checksum=hashlib.sha256(archive.read_bytes()).hexdigest()
+            (runtime/'platform.json').write_text(json.dumps({'browserArchiveSha256':checksum}))
+            foreign=root/'runtimes/macos-arm64';foreign.mkdir();(foreign/'browser.zip').write_bytes(b'foreign compressed runtime')
+            self.assertEqual(set(p.available(root)['installed']),{'windows-x64','macos-arm64'})
+            browser=p.browser_path(root);self.assertEqual((browser/'chromium-fixture/chrome').read_bytes(),b'browser')
+            self.assertFalse((foreign/'browser').exists())
+            with patch.object(p.zipfile,'ZipFile',side_effect=AssertionError('Cache should be reused')):self.assertEqual(p.browser_path(root),browser)
+            self.assertFalse(list(runtime.glob('.browser-*')))
+
+    def test_damaged_or_unsafe_browser_archive_preserves_previous_browser(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            runtime=Path(tmp);browser=runtime/'browser';browser.mkdir();(browser/'old').write_bytes(b'preserve')
+            archive=runtime/'browser.zip'
+            with zipfile.ZipFile(archive,'w') as z:z.writestr('../escape',b'bad')
+            manifest=runtime/'platform.json';manifest.write_text(json.dumps({'browserArchiveSha256':'0'*64}))
+            with self.assertRaisesRegex(ValueError,'checksum mismatch'):p.prepare_browser(runtime)
+            manifest.write_text(json.dumps({'browserArchiveSha256':hashlib.sha256(archive.read_bytes()).hexdigest()}))
+            with self.assertRaisesRegex(ValueError,'Unsafe'):p.prepare_browser(runtime)
+            self.assertEqual((browser/'old').read_bytes(),b'preserve');self.assertFalse((runtime.parent/'escape').exists())
+            self.assertFalse(list(runtime.glob('.browser-*')))
+
     def test_unix_permissions_and_escaping_runtime_paths(self):
         with tempfile.TemporaryDirectory() as tmp, patch.object(p, 'label', return_value='linux-x64'), patch.object(p.sys, 'platform', 'linux'):
             root = Path(tmp); runtime = root / 'runtimes/linux-x64'

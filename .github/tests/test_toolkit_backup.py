@@ -3,6 +3,18 @@ from pathlib import Path
 from contextlib import closing
 spec=importlib.util.spec_from_file_location('backup',Path(__file__).resolve().parents[2]/'MASTER-IT-TOOLKIT/60_SCRIPTS/Backup/toolkit_backup.py');b=importlib.util.module_from_spec(spec);spec.loader.exec_module(b)
 class BackupTests(unittest.TestCase):
+ def test_full_backup_keeps_runtime_archive_and_omits_expanded_cache(self):
+  import hashlib
+  runtime=self.root/'runtimes/macos-arm64';(runtime/'browser/deep').mkdir(parents=True)
+  (runtime/'browser/deep/long-macos-helper').write_bytes(b'rebuildable')
+  (runtime/'browser.zip').write_bytes(b'fixture archive')
+  (runtime/'platform.json').write_text(json.dumps({'browserArchiveSha256':hashlib.sha256(b'fixture archive').hexdigest()}))
+  names={name for _,name in b.files(self.root,'full')[0]}
+  self.assertIn('MASTER-IT-TOOLKIT/runtimes/macos-arm64/browser.zip',names)
+  self.assertFalse(any('/browser/deep/' in name for name in names))
+  (runtime/'browser.zip').write_bytes(b'damaged')
+  with self.assertRaisesRegex(ValueError,'Damaged browser runtime'):b.files(self.root,'full')
+
  def setUp(self):
   self.tmp=tempfile.TemporaryDirectory();self.base=Path(self.tmp.name);self.root=self.base/'MASTER-IT-TOOLKIT';self.root.mkdir();self.dest=self.base/'backup';self.dest.mkdir()
   for name in ('assets/data.json','20_PORTABLE_APPS/tool.exe','90_TEMP/partial.bin','70_DOCUMENTATION/Service-Notes/BrowserProfile/cookies','70_DOCUMENTATION/Service-Notes/job.txt'):

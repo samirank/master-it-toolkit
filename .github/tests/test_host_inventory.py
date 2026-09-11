@@ -16,6 +16,15 @@ spec=importlib.util.spec_from_file_location('scanner',ROOT/'60_SCRIPTS/Inventory
 scanner=importlib.util.module_from_spec(spec);spec.loader.exec_module(scanner)
 
 class SmartScanTests(unittest.TestCase):
+    def test_same_named_macs_use_distinct_hardware_identity(self):
+        host.host_id.cache_clear()
+        try:
+            with patch.object(host.os,'name','posix'), patch.object(host.sys,'platform','darwin'), patch.object(host.socket,'gethostname',return_value='Mac'), patch.object(host.subprocess,'check_output',return_value='"IOPlatformUUID" = "UUID-A"') as probe:
+                first=host.host_id();self.assertEqual(first,host.host_id());self.assertEqual(probe.call_count,1)
+                host.host_id.cache_clear();probe.return_value='"IOPlatformUUID" = "UUID-B"'
+                self.assertNotEqual(first,host.host_id())
+        finally:host.host_id.cache_clear()
+
     def test_version_architecture_and_no_substring_false_positive(self):
         tools=[dict(id='7zip',name='7-Zip',os=['Windows']),dict(id='notepad',name='Notepad++',os=['Windows'])]
         records=[dict(name='7-Zip 26.01 (x64)',version='26.01'),dict(name='Notepad',version='1'),dict(name='Notepad++ (64-bit x64)',version='8')]

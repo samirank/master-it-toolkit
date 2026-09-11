@@ -24,6 +24,7 @@ def assemble(folder):
                 with zipfile.ZipFile(folder / ('standalone-' + label + '.zip')) as source:
                     for info in source.infolist():
                         name = info.filename
+                        if len(name) > 220: raise ValueError('Outer package path too long for SSD preparation on Windows: ' + name)
                         if name.startswith('/') or '\\' in name or ':' in name or '..' in PurePosixPath(name).parts:
                             raise ValueError('Unsafe package path')
                         if info.is_dir(): continue

@@ -48,7 +48,7 @@ def account(doc):
 
 
 def aad(doc, host):
-    return ('mit-master-v1:' + identity(doc)[0] + ':' + host).encode()
+    return ('mit-master-v1:' + hashlib.sha256(vault.un64(doc['salt'])).hexdigest() + ':' + host).encode()
 
 
 def status(path):

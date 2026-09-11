@@ -15,7 +15,24 @@ def destination(root,value):
     if path==root or root in path.parents:raise ValueError('Backup destination must be outside the toolkit folder')
     return path
 
+def runtime_cache_patterns(root):
+    """Back up verified runtime archives, not rebuildable expanded browser caches."""
+    patterns=[]
+    for label in ('windows-x64','linux-x64','macos-arm64'):
+        folder=root/'runtimes'/label;archive=folder/'browser.zip';manifest=folder/'platform.json'
+        if not archive.is_file():continue
+        if linked(folder) or linked(archive) or linked(manifest):raise ValueError('Linked runtime archive is not supported')
+        expected=json.loads(manifest.read_text('utf-8')).get('browserArchiveSha256')
+        digest=hashlib.sha256()
+        with archive.open('rb') as source:
+            for block in iter(lambda:source.read(1024*1024),b''):digest.update(block)
+        if digest.hexdigest()!=expected:raise ValueError('Damaged browser runtime archive: '+label+'. Replace it before a full backup, or back up the workspace separately.')
+        patterns.extend('runtimes/'+label+'/'+name for name in ('browser','.browser-*','.previous-browser-*'))
+    return patterns
+
 def files(root,scope):
+    import fnmatch
+    caches=runtime_cache_patterns(root) if scope=='full' else []
     result=[];skipped=[]
     for folder,dirs,names in os.walk(root,followlinks=False):
         folder=Path(folder)
@@ -23,6 +40,7 @@ def files(root,scope):
         for name in dirs:
             path=folder/name;relative=path.relative_to(root)
             if name in EXCLUDED or relative.as_posix()=='70_DOCUMENTATION/Service-Notes/BrowserProfile':continue
+            if any(fnmatch.fnmatchcase(relative.as_posix(),pattern) for pattern in caches):continue
             if linked(path):skipped.append(str(relative));continue
             if scope=='workspace' and len(relative.parts)==1 and name not in ('assets','60_SCRIPTS','70_DOCUMENTATION'):continue
             kept.append(name)

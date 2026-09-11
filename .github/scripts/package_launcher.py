@@ -26,12 +26,18 @@ with zipfile.ZipFile(root / 'MASTER-IT-TOOLKIT.zip') as source, zipfile.ZipFile(
     browser_root = root / 'MASTER-IT-TOOLKIT/runtime-browser'
     if not browser_root.is_dir(): raise RuntimeError('Bundled Chromium is missing')
     executables = []
-    for folder, directories, files in os.walk(browser_root, followlinks=True):
-        directories[:] = [d for d in directories if not d.startswith('.')]
-        for name in files:
-            file = Path(folder) / name
-            target.write(file, runtime_prefix + 'browser/' + file.relative_to(browser_root).as_posix())
-            if file.stat().st_mode & 0o111: executables.append('browser/' + file.relative_to(browser_root).as_posix())
+    browser_archive = root / 'dist' / ('browser-' + label + '.zip')
+    with zipfile.ZipFile(browser_archive, 'w', zipfile.ZIP_DEFLATED) as browser_zip:
+        for folder, directories, files in os.walk(browser_root, followlinks=True):
+            directories[:] = [d for d in directories if not d.startswith('.')]
+            for name in files:
+                file = Path(folder) / name
+                browser_zip.write(file, file.relative_to(browser_root).as_posix())
+                if file.stat().st_mode & 0o111: executables.append('browser/' + file.relative_to(browser_root).as_posix())
+    browser_digest = __import__('hashlib').sha256()
+    with browser_archive.open('rb') as src:
+        for block in iter(lambda: src.read(1024 * 1024), b''): browser_digest.update(block)
+    target.write(browser_archive, runtime_prefix + 'browser.zip', compress_type=zipfile.ZIP_STORED)
     for package in ('playwright','pyee','greenlet','cryptography','keyring','jaraco.classes','jaraco.context','jaraco.functools','more-itertools','importlib_metadata','zipp','SecretStorage','jeepney','pywin32-ctypes','cffi','pycparser'):
         try: distribution = importlib.metadata.distribution(package)
         except importlib.metadata.PackageNotFoundError: continue
@@ -61,7 +67,7 @@ with zipfile.ZipFile(root / 'MASTER-IT-TOOLKIT.zip') as source, zipfile.ZipFile(
         script += 'exec "./' + archive_binary + '" "$@"\n'
         info = zipfile.ZipInfo(starter); info.external_attr = 0o100755 << 16
         target.writestr(info, script)
-    target.writestr(runtime_prefix + 'platform.json', __import__('json').dumps({'platform': label, 'executable': archive_binary, 'executables': executables}))
+    target.writestr(runtime_prefix + 'platform.json', __import__('json').dumps({'platform': label, 'executable': archive_binary, 'executables': executables, 'browserArchiveSha256': browser_digest.hexdigest()}))
 # Runtime-only additions never contain the shared database, inventory or source.
 with zipfile.ZipFile(output) as source, zipfile.ZipFile(root / ('runtime-' + label + '.zip'), 'w', zipfile.ZIP_DEFLATED) as target:
     for info in source.infolist():
@@ -77,5 +83,6 @@ with tempfile.TemporaryDirectory() as temporary:
     exe = Path(temporary) / archive_binary
     exe.chmod(0o755)
     subprocess.run([str(exe), '--inventory'], check=True, timeout=120)
+    subprocess.run([str(exe), '--browser-self-test'], check=True, timeout=300)
     subprocess.run([str(exe), '--browser-self-test'], check=True, timeout=120)
 print(output)
