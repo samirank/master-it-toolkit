@@ -149,6 +149,15 @@ class ServerTests(unittest.TestCase):
         for path in ('../launcher.py', '70_DOCUMENTATION/Service-Notes/README.txt', '60_SCRIPTS/Diagnostics/Get-PCDiagnostics.ps1'):
             with self.assertRaises(urllib.error.HTTPError): self.request(path)
         with self.assertRaises(urllib.error.HTTPError): urllib.request.urlopen(self.server.origin + '/api/status')
+    def test_launchers_get_distinct_ports_and_cannot_share_listener(self):
+        other = launcher.Server(ROOT)
+        try:
+            self.assertNotEqual(other.server_port, self.server.server_port)
+            with self.assertRaises(OSError):
+                duplicate = launcher.Server(ROOT, port=self.server.server_port)
+                duplicate.server_close()
+        finally: other.server_close()
+
     def test_stale_dashboard_navigation_recovers_but_api_and_cross_site_do_not(self):
         stale=self.server.origin+'/'+'old-session-'*3+'/index.html'
         headers={'Sec-Fetch-Mode':'navigate','Sec-Fetch-Dest':'document','Sec-Fetch-Site':'none'}

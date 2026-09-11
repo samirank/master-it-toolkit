@@ -6,6 +6,7 @@ import mimetypes
 import os
 from pathlib import Path, PurePosixPath
 import secrets
+import socket
 import re
 import shutil
 import subprocess
@@ -245,7 +246,16 @@ def run_script(key):
 
 class Server(ThreadingHTTPServer):
     daemon_threads = True
-    def __init__(self, root=ROOT, port=8765):
+    allow_reuse_address = False
+
+    def server_bind(self):
+        # Windows SO_REUSEADDR can let two launchers bind the same port and
+        # deliver a new session URL to the old process. Never share a listener.
+        if os.name == 'nt':
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        super().server_bind()
+
+    def __init__(self, root=ROOT, port=0):
         if recover_update(root):
             raise RuntimeError("Interrupted update recovered. Restart the launcher to load the restored files.")
         self.root = root
