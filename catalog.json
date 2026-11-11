@@ -1,12 +1,12 @@
 {
   "schema": 1,
-  "generatedAt": "2026-11-11T05:24:04.559896+00:00",
-  "revision": "43362b78e8de988bf342",
+  "generatedAt": "2026-11-11T17:23:56.068215+00:00",
+  "revision": "4c618624173c4b8e7a79",
   "tools": {
     "windows11": {
       "name": "Windows 11 ISO",
       "source": "https://www.microsoft.com/en-us/software-download/windows11",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -14,7 +14,7 @@
     "hirens": {
       "name": "Hiren's BootCD PE",
       "source": "https://www.hirensbootcd.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -22,7 +22,7 @@
     "systemrescue": {
       "name": "SystemRescue",
       "source": "https://www.system-rescue.org/Download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -30,7 +30,7 @@
     "gparted": {
       "name": "GParted Live",
       "source": "https://gparted.org/download.php",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "gparted-live-1.8.1-6-amd64.iso",
@@ -41,7 +41,7 @@
           "architecture": "x64",
           "digest": null,
           "redirectHosts": [
-            "gigenet.dl.sourceforge.net"
+            "psychz.dl.sourceforge.net"
           ]
         }
       ],
@@ -100,12 +100,12 @@
           "gparted-live-1.8.1-6-amd64.iso"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "ubuntu": {
       "name": "Ubuntu Live",
       "source": "https://ubuntu.com/download/desktop",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -113,7 +113,7 @@
     "rescuezilla": {
       "name": "Rescuezilla",
       "source": "https://rescuezilla.com/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "422024942",
@@ -247,12 +247,12 @@
           "422024942"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "clonezilla": {
       "name": "Clonezilla Live",
       "source": "https://clonezilla.org/downloads.php",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "clonezilla-live-3.3.3-37-amd64.iso",
@@ -322,12 +322,12 @@
           "clonezilla-live-3.3.3-37-amd64.iso"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "kaspersky": {
       "name": "Kaspersky Rescue Disk",
       "source": "https://www.kaspersky.com/downloads/free-rescue-disk",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -335,7 +335,7 @@
     "memtest": {
       "name": "MemTest86+",
       "source": "https://memtest.org/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -343,7 +343,7 @@
     "passmark": {
       "name": "PassMark MemTest86",
       "source": "https://www.memtest86.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -351,7 +351,7 @@
     "winaero": {
       "name": "Winaero Tweaker",
       "source": "https://winaero.com/winaero-tweaker/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "25fd5bddd0fae2a036fc",
@@ -407,12 +407,12 @@
           "25fd5bddd0fae2a036fc"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "shutup": {
       "name": "O&O ShutUp10++",
       "source": "https://www.oo-software.com/en/shutup10",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "2d3d98c5a9508b269cf6",
@@ -496,12 +496,12 @@
           "2d3d98c5a9508b269cf6"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "win11debloat": {
       "name": "Win11Debloat",
       "source": "https://github.com/Raphire/Win11Debloat/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -509,7 +509,7 @@
     "winutil": {
       "name": "Chris Titus Tech WinUtil",
       "source": "https://github.com/ChrisTitusTech/winutil/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "686253484",
@@ -579,12 +579,12 @@
           "686253484"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "appbuster": {
       "name": "O&O AppBuster",
       "source": "https://www.oo-software.com/en/ooappbuster",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "5ea861f4637a775b9119",
@@ -636,12 +636,12 @@
           "5ea861f4637a775b9119"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "optimizernxt": {
       "name": "OptimizerNXT",
       "source": "https://github.com/hellzerg/optimizerNXT/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "344366146",
@@ -711,12 +711,12 @@
           "344366146"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "revo": {
       "name": "Revo Uninstaller Pro Portable",
       "source": "https://www.revouninstaller.com/revo-uninstaller-free-download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -724,7 +724,7 @@
     "bcu": {
       "name": "Bulk Crap Uninstaller",
       "source": "https://github.com/Klocman/Bulk-Crap-Uninstaller/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "549514732",
@@ -830,12 +830,12 @@
           "549508183"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "geek": {
       "name": "Geek Uninstaller",
       "source": "https://geekuninstaller.com/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "6cd17eba8af3b642af04",
@@ -891,12 +891,12 @@
           "6cd17eba8af3b642af04"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "hibit": {
       "name": "HiBit Uninstaller",
       "source": "https://www.hibitsoft.ir/Uninstaller.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "4fe2fca5b6e7b310d1aa",
@@ -952,12 +952,12 @@
           "4fe2fca5b6e7b310d1aa"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "rufus": {
       "name": "Rufus Portable",
       "source": "https://rufus.ie/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "462098597",
@@ -1067,12 +1067,12 @@
           "462098643"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "ntlite": {
       "name": "NTLite",
       "source": "https://www.ntlite.com/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "081fa281b70e35eee1be",
@@ -1140,12 +1140,12 @@
           "a8d69b8df8d2b1fca93a"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "easeus": {
       "name": "EaseUS Partition Master",
       "source": "https://www.easeus.com/partition-manager/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1153,7 +1153,7 @@
     "diskgenius": {
       "name": "DiskGenius",
       "source": "https://www.diskgenius.com/download.php",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1161,7 +1161,7 @@
     "minitool": {
       "name": "MiniTool Partition Wizard",
       "source": "https://www.partitionwizard.com/download.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1169,7 +1169,7 @@
     "aomei": {
       "name": "AOMEI Partition Assistant",
       "source": "https://www.diskpart.com/download.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1177,7 +1177,7 @@
     "macrium": {
       "name": "Macrium Reflect",
       "source": "https://www.macrium.com/products/home",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1185,7 +1185,7 @@
     "veeam": {
       "name": "Veeam Agent for Microsoft Windows",
       "source": "https://www.veeam.com/products/free/microsoft-windows.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1193,7 +1193,7 @@
     "testdisk": {
       "name": "TestDisk",
       "source": "https://www.cgsecurity.org/wiki/TestDisk_Download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1201,7 +1201,7 @@
     "photorec": {
       "name": "PhotoRec",
       "source": "https://www.cgsecurity.org/wiki/TestDisk_Download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1209,7 +1209,7 @@
     "dmde": {
       "name": "DMDE",
       "source": "https://dmde.com/download.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1217,7 +1217,7 @@
     "recuva": {
       "name": "Recuva",
       "source": "https://www.ccleaner.com/recuva/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1225,7 +1225,7 @@
     "rstudio": {
       "name": "R-Studio",
       "source": "https://www.r-studio.com/data-recovery-software/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1233,7 +1233,7 @@
     "ufs": {
       "name": "UFS Explorer",
       "source": "https://www.ufsexplorer.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1241,7 +1241,7 @@
     "cdi": {
       "name": "CrystalDiskInfo",
       "source": "https://crystalmark.info/en/software/crystaldiskinfo/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "CrystalDiskInfo9_9_4.zip",
@@ -1311,12 +1311,12 @@
           "CrystalDiskInfo9_9_4.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "cdm": {
       "name": "CrystalDiskMark",
       "source": "https://crystalmark.info/en/software/crystaldiskmark/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "5eaeb395ed17f6b6ed27",
@@ -1327,8 +1327,8 @@
           "platform": "Windows",
           "architecture": "x86",
           "redirectHosts": [
-            "cytranet-dal.dl.sourceforge.net",
             "downloads.sourceforge.net",
+            "netactuate.dl.sourceforge.net",
             "sourceforge.net"
           ]
         }
@@ -1376,12 +1376,12 @@
           "5eaeb395ed17f6b6ed27"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "gsmart": {
       "name": "GSmartControl",
       "source": "https://gsmartcontrol.shaduri.dev/downloads",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "232079345",
@@ -1482,12 +1482,12 @@
           "232079323"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "smartmontools": {
       "name": "smartmontools",
       "source": "https://www.smartmontools.org/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "792367c0f819627a4b9a",
@@ -1545,12 +1545,12 @@
           "792367c0f819627a4b9a"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "hddscan": {
       "name": "HDDScan",
       "source": "https://hddscan.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1558,7 +1558,7 @@
     "samsung": {
       "name": "Samsung Magician",
       "source": "https://semiconductor.samsung.com/consumer-storage/magician/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1566,7 +1566,7 @@
     "wd": {
       "name": "Western Digital / SanDisk support",
       "source": "https://support-en.wd.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1574,7 +1574,7 @@
     "seatools": {
       "name": "SeaTools",
       "source": "https://www.seagate.com/support/downloads/seatools/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1582,7 +1582,7 @@
     "crucial": {
       "name": "Crucial Storage Executive",
       "source": "https://www.crucial.com/support/storage-executive",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1590,7 +1590,7 @@
     "solidigm": {
       "name": "Solidigm Storage Tool",
       "source": "https://www.solidigm.com/support-page/drivers-downloads.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1598,7 +1598,7 @@
     "kingston": {
       "name": "Kingston SSD Manager",
       "source": "https://www.kingston.com/en/support/technical/ssdmanager",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1606,7 +1606,7 @@
     "hwinfo": {
       "name": "HWiNFO",
       "source": "https://www.hwinfo.com/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "hwi_860.zip",
@@ -1675,12 +1675,12 @@
           "hwi_860.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "cpuz": {
       "name": "CPU-Z",
       "source": "https://www.cpuid.com/softwares/cpu-z.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "fe6a66ce8720c885262e",
@@ -1736,12 +1736,12 @@
           "fe6a66ce8720c885262e"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "gpuz": {
       "name": "GPU-Z",
       "source": "https://www.techpowerup.com/gpuz/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1749,7 +1749,7 @@
     "occt": {
       "name": "OCCT",
       "source": "https://www.ocbase.com/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1757,7 +1757,7 @@
     "prime95": {
       "name": "Prime95",
       "source": "https://www.mersenne.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1765,7 +1765,7 @@
     "furmark": {
       "name": "FurMark",
       "source": "https://geeks3d.com/furmark/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1773,7 +1773,7 @@
     "cinebench": {
       "name": "Cinebench",
       "source": "https://www.maxon.net/en/cinebench",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1781,7 +1781,7 @@
     "hwmonitor": {
       "name": "HWMonitor",
       "source": "https://www.cpuid.com/softwares/hwmonitor.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "28463928e8f0a55a8488",
@@ -1837,12 +1837,12 @@
           "28463928e8f0a55a8488"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "coretemp": {
       "name": "Core Temp",
       "source": "https://www.alcpu.com/CoreTemp/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "912a9ff71534750950f3",
@@ -1898,12 +1898,12 @@
           "912a9ff71534750950f3"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "latencymon": {
       "name": "LatencyMon",
       "source": "https://www.resplendence.com/latencymon",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "103de67a0dbd7806d0d8",
@@ -1967,12 +1967,12 @@
           "103de67a0dbd7806d0d8"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "ddu": {
       "name": "Display Driver Uninstaller",
       "source": "https://www.wagnardsoft.com/display-driver-uninstaller-DDU-",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1980,7 +1980,7 @@
     "sdio": {
       "name": "Snappy Driver Installer Origin",
       "source": "https://www.snappy-driver-installer.org/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -1988,7 +1988,7 @@
     "wireshark": {
       "name": "Wireshark",
       "source": "https://www.wireshark.org/download.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "4840065502b3f797beb2",
@@ -2050,12 +2050,12 @@
           "2625cf35465e1379e51a"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "nmap": {
       "name": "Nmap",
       "source": "https://nmap.org/download.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "ca2eee2a34dff60ea5a5",
@@ -2111,12 +2111,12 @@
           "ca2eee2a34dff60ea5a5"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "angryip": {
       "name": "Angry IP Scanner",
       "source": "https://angryip.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "703340437",
@@ -2286,12 +2286,12 @@
           "703350625"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "advancedip": {
       "name": "Advanced IP Scanner",
       "source": "https://www.advanced-ip-scanner.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -2299,7 +2299,7 @@
     "iperf3": {
       "name": "iperf3",
       "source": "https://software.es.net/iperf/obtaining.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -2307,7 +2307,7 @@
     "putty": {
       "name": "PuTTY",
       "source": "https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "55a59a8d7293d526dede",
@@ -2421,12 +2421,12 @@
           "12de040899446cfb40bc"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "winscp": {
       "name": "WinSCP",
       "source": "https://winscp.net/eng/downloads.php",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "9728469530522767997f",
@@ -2437,7 +2437,7 @@
           "platform": "Windows",
           "architecture": "x86",
           "redirectHosts": [
-            "cytranet.dl.sourceforge.net",
+            "cfhcable.dl.sourceforge.net",
             "downloads.sourceforge.net"
           ]
         },
@@ -2450,7 +2450,7 @@
           "platform": "Windows",
           "architecture": "x86",
           "redirectHosts": [
-            "cytranet.dl.sourceforge.net",
+            "cfhcable.dl.sourceforge.net",
             "downloads.sourceforge.net"
           ]
         }
@@ -2498,19 +2498,19 @@
           "9728469530522767997f"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "rustdesk": {
       "name": "RustDesk",
       "source": "https://rustdesk.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
-          "id": "698916724",
-          "name": "rustdesk-1.5.1-0.aarch64-suse.rpm",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-0.aarch64-suse.rpm",
-          "size": 33529911,
-          "digest": "sha256:868d3d8bf0faa8f01db43dce92bbcff3db5f1cab33d95caa9dee6b8b82a363c6",
+          "id": "727063823",
+          "name": "rustdesk-1.5.3-0.aarch64-suse.rpm",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-0.aarch64-suse.rpm",
+          "size": 33551321,
+          "digest": "sha256:4871d3867e424ecbf4a998ee487be85de928a22b0e096a7159b1927562bd3d93",
           "platform": "Linux",
           "architecture": "arm64",
           "redirectHosts": [
@@ -2518,11 +2518,11 @@
           ]
         },
         {
-          "id": "698916720",
-          "name": "rustdesk-1.5.1-0.aarch64.rpm",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-0.aarch64.rpm",
-          "size": 33529853,
-          "digest": "sha256:b26753b64c9fcb26855bb9bd1fbefc22c146875d2376f892581ab6d79764f669",
+          "id": "727063821",
+          "name": "rustdesk-1.5.3-0.aarch64.rpm",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-0.aarch64.rpm",
+          "size": 33551269,
+          "digest": "sha256:a36cb8ff424896ffd10df9e9cd8d73b6a00a70128202ac2b550169ff84dd6868",
           "platform": "Linux",
           "architecture": "arm64",
           "redirectHosts": [
@@ -2530,11 +2530,11 @@
           ]
         },
         {
-          "id": "698920297",
-          "name": "rustdesk-1.5.1-0.x86_64-suse.rpm",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-0.x86_64-suse.rpm",
-          "size": 34346763,
-          "digest": "sha256:6a4156c8c2ffa5655a5d0d205ba12be5f81a7c2e3d24259ee974bd2762c4e708",
+          "id": "727039145",
+          "name": "rustdesk-1.5.3-0.x86_64-suse.rpm",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-0.x86_64-suse.rpm",
+          "size": 34373365,
+          "digest": "sha256:3693a17c52682c453feb1cf300278b7a4baedb6e6c92a6ad5da0621cf46231e2",
           "platform": "Linux",
           "architecture": "x64",
           "redirectHosts": [
@@ -2542,11 +2542,11 @@
           ]
         },
         {
-          "id": "698920294",
-          "name": "rustdesk-1.5.1-0.x86_64.rpm",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-0.x86_64.rpm",
-          "size": 34346724,
-          "digest": "sha256:089b95378e8e9a064d71577293d3eb04784f087e8213204da4d5464bcb9e0807",
+          "id": "727039143",
+          "name": "rustdesk-1.5.3-0.x86_64.rpm",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-0.x86_64.rpm",
+          "size": 34373327,
+          "digest": "sha256:bd5d036392ba6197ece89232c52e71c570e1160f9ac3c1a895c8383ac5911c70",
           "platform": "Linux",
           "architecture": "x64",
           "redirectHosts": [
@@ -2554,11 +2554,11 @@
           ]
         },
         {
-          "id": "698927317",
-          "name": "rustdesk-1.5.1-aarch64.AppImage",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-aarch64.AppImage",
-          "size": 80337416,
-          "digest": "sha256:47c1be6f26ee261101ed155bcd1923ab682ebfc5bc546e5b4399cb1a5b4097ed",
+          "id": "727068098",
+          "name": "rustdesk-1.5.3-aarch64.AppImage",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-aarch64.AppImage",
+          "size": 85486088,
+          "digest": "sha256:924c8dee36cbd7873ba222979ea1e3274c5537c382321504edf1be824e7cde37",
           "platform": "Linux",
           "architecture": "arm64",
           "redirectHosts": [
@@ -2566,11 +2566,11 @@
           ]
         },
         {
-          "id": "698916723",
-          "name": "rustdesk-1.5.1-aarch64.deb",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-aarch64.deb",
-          "size": 23594612,
-          "digest": "sha256:d1471ed916dc21e3ae3965f936c51944e1f2635a6d521fcc4663486696018465",
+          "id": "727063822",
+          "name": "rustdesk-1.5.3-aarch64.deb",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-aarch64.deb",
+          "size": 23625528,
+          "digest": "sha256:fa85e8d3ccd45e2e303c2d1359af5dc51aa93d880e39ba47c9b04bfabd82ae19",
           "platform": "Linux",
           "architecture": "arm64",
           "redirectHosts": [
@@ -2578,11 +2578,11 @@
           ]
         },
         {
-          "id": "689843560",
-          "name": "rustdesk-1.5.1-aarch64.dmg",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-aarch64.dmg",
-          "size": 30548457,
-          "digest": "sha256:1b94182cba2375ea29a196f2c8183f7feaa00588474ecd76c92c2303ffd70d7b",
+          "id": "727209114",
+          "name": "rustdesk-1.5.3-aarch64.dmg",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-aarch64.dmg",
+          "size": 31464911,
+          "digest": "sha256:e6d30fa1633d772c48935907c208ca4e555a856fb2038af3aaa87a327c29360b",
           "platform": "macOS",
           "architecture": "arm64",
           "redirectHosts": [
@@ -2590,11 +2590,11 @@
           ]
         },
         {
-          "id": "689843559",
-          "name": "rustdesk-1.5.1-aarch64.exe",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-aarch64.exe",
-          "size": 24252784,
-          "digest": "sha256:54de7328a4a2bff0b9e60d1268f7b239c45d11ab4dff4fed0c88a8a3b0fbe516",
+          "id": "727209112",
+          "name": "rustdesk-1.5.3-aarch64.exe",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-aarch64.exe",
+          "size": 24277360,
+          "digest": "sha256:4152a661be3ddb0e4d241ba3f3a99051f22ce33d348e7a1ccfaca052c832410e",
           "platform": "Windows",
           "architecture": "arm64",
           "redirectHosts": [
@@ -2602,11 +2602,11 @@
           ]
         },
         {
-          "id": "689843562",
-          "name": "rustdesk-1.5.1-aarch64.msi",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-aarch64.msi",
-          "size": 24842240,
-          "digest": "sha256:71900b5212fdc4af20d0d9ba9d6fc1f43767a16cd022bb55e46a17e3b7dc21c1",
+          "id": "727209102",
+          "name": "rustdesk-1.5.3-aarch64.msi",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-aarch64.msi",
+          "size": 24862720,
+          "digest": "sha256:b41893aed2cf411d557babc3cd02b74836dd199fc152a3b63147591f52f981aa",
           "platform": "Windows",
           "architecture": "arm64",
           "redirectHosts": [
@@ -2614,11 +2614,11 @@
           ]
         },
         {
-          "id": "699021129",
-          "name": "rustdesk-1.5.1-armv7-sciter.deb",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-armv7-sciter.deb",
-          "size": 15238164,
-          "digest": "sha256:560aaa3c89a9fc5eb3ebb9afe7260acf637b1ba72f3ca17129391430418eab90",
+          "id": "727178177",
+          "name": "rustdesk-1.5.3-armv7-sciter.deb",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-armv7-sciter.deb",
+          "size": 15249564,
+          "digest": "sha256:2f048f748505c2a46da060cc9a6fb2ac4462bdb37db2c981f931ae4e4d6ed3d5",
           "platform": "Linux",
           "architecture": "arm",
           "redirectHosts": [
@@ -2626,11 +2626,11 @@
           ]
         },
         {
-          "id": "689844572",
-          "name": "rustdesk-1.5.1-unsigned.tar.gz",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-unsigned.tar.gz",
-          "size": 205039584,
-          "digest": "sha256:e69fbb3ab7c5e8539d131b21f5acf73c2dc6414f883529bd966ea8bcbd7976ad",
+          "id": "727210964",
+          "name": "rustdesk-1.5.3-unsigned.tar.gz",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-unsigned.tar.gz",
+          "size": 268611576,
+          "digest": "sha256:0b76d56602a49fe96219de33245c8cd90a2f1b5297efb1040c4aa96d31f5189b",
           "platform": "Windows",
           "architecture": "universal",
           "redirectHosts": [
@@ -2638,11 +2638,11 @@
           ]
         },
         {
-          "id": "689843561",
-          "name": "rustdesk-1.5.1-x86-sciter.exe",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-x86-sciter.exe",
-          "size": 13645680,
-          "digest": "sha256:fbc9d8f59602bf6b1b419902cd8c77cd236393e6fe74635393e8a9cf4c765483",
+          "id": "727209106",
+          "name": "rustdesk-1.5.3-x86-sciter.exe",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-x86-sciter.exe",
+          "size": 13658480,
+          "digest": "sha256:5f4a42c16d0326efee52a3bb84649f2d7d08352193266e94bdc10d6a0fd75dc0",
           "platform": "Windows",
           "architecture": "x86",
           "redirectHosts": [
@@ -2650,11 +2650,11 @@
           ]
         },
         {
-          "id": "698930142",
-          "name": "rustdesk-1.5.1-x86_64-sciter.deb",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-x86_64-sciter.deb",
-          "size": 18334832,
-          "digest": "sha256:562247ee5e786426d51734bc7b531ad4b7c6f848b9de518d408208458f07ac65",
+          "id": "727077341",
+          "name": "rustdesk-1.5.3-x86_64-sciter.deb",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-x86_64-sciter.deb",
+          "size": 18361156,
+          "digest": "sha256:8e0101e598e40792cd153a28611644414743b00ef7724a58cd08d1668f609fcc",
           "platform": "Linux",
           "architecture": "x64",
           "redirectHosts": [
@@ -2662,11 +2662,11 @@
           ]
         },
         {
-          "id": "698926927",
-          "name": "rustdesk-1.5.1-x86_64.AppImage",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-x86_64.AppImage",
-          "size": 88472056,
-          "digest": "sha256:bb8b7ccb3f50a201dccdc89b46385cff90f33e60b4730faeda9fa5504ac4dce6",
+          "id": "727066532",
+          "name": "rustdesk-1.5.3-x86_64.AppImage",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-x86_64.AppImage",
+          "size": 88492536,
+          "digest": "sha256:ff7fff208fed218fc9f895457a36cc2dd31fefbfae0461a27b54f3d391204506",
           "platform": "Linux",
           "architecture": "x64",
           "redirectHosts": [
@@ -2674,11 +2674,11 @@
           ]
         },
         {
-          "id": "698920295",
-          "name": "rustdesk-1.5.1-x86_64.deb",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-x86_64.deb",
-          "size": 25337156,
-          "digest": "sha256:b5d682ad90cb7571ecbdbf26eef58d3c4514e726a74ef6d08ce3f0b114ef0bd9",
+          "id": "727039144",
+          "name": "rustdesk-1.5.3-x86_64.deb",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-x86_64.deb",
+          "size": 25345980,
+          "digest": "sha256:81096d2f65fd43352540c351bca15bb0712a2a6f9efa4c95e9fff25cb97b3b81",
           "platform": "Linux",
           "architecture": "x64",
           "redirectHosts": [
@@ -2686,11 +2686,11 @@
           ]
         },
         {
-          "id": "689843572",
-          "name": "rustdesk-1.5.1-x86_64.dmg",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-x86_64.dmg",
-          "size": 37691902,
-          "digest": "sha256:457e45a26d3f0919221e6db3dfb8c6a12ca65190307b53a907c3c51b762eb008",
+          "id": "727209115",
+          "name": "rustdesk-1.5.3-x86_64.dmg",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-x86_64.dmg",
+          "size": 37715587,
+          "digest": "sha256:74d06e6b2e273a128e8d36313e30d47db2063f453a4235ed4d9e5cdfdf9be538",
           "platform": "macOS",
           "architecture": "x64",
           "redirectHosts": [
@@ -2698,11 +2698,11 @@
           ]
         },
         {
-          "id": "689843553",
-          "name": "rustdesk-1.5.1-x86_64.exe",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-x86_64.exe",
-          "size": 26211184,
-          "digest": "sha256:319206042390ebfcba934cf0baa2f612f34de463c78c843b7cb8c22097c4bf7b",
+          "id": "727209111",
+          "name": "rustdesk-1.5.3-x86_64.exe",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-x86_64.exe",
+          "size": 26233712,
+          "digest": "sha256:523ba0efbf62a21739961b62c7daaffb44d3da86139c546b364fd4e1333ed249",
           "platform": "Windows",
           "architecture": "x64",
           "redirectHosts": [
@@ -2710,11 +2710,11 @@
           ]
         },
         {
-          "id": "689843552",
-          "name": "rustdesk-1.5.1-x86_64.msi",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-1.5.1-x86_64.msi",
-          "size": 26718208,
-          "digest": "sha256:71069183cbc6124273138684ab4032d2211e83efa035886f9c774fe1d3eba3f0",
+          "id": "727209108",
+          "name": "rustdesk-1.5.3-x86_64.msi",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-1.5.3-x86_64.msi",
+          "size": 26734592,
+          "digest": "sha256:27f6bfb48a93d524860dd7f4a79e349be14b6dc71295746cf132a060ba4869c8",
           "platform": "Windows",
           "architecture": "x64",
           "redirectHosts": [
@@ -2722,11 +2722,11 @@
           ]
         },
         {
-          "id": "698946225",
-          "name": "rustdesk-unattended-wayland-1.5.1-x86_64.deb",
-          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.1/rustdesk-unattended-wayland-1.5.1-x86_64.deb",
-          "size": 25573768,
-          "digest": "sha256:f7760dad505b5eca1e99531f15b4de21e83acc7dbfce77a3ba456ef2afb0e961",
+          "id": "727093570",
+          "name": "rustdesk-unattended-wayland-1.5.3-x86_64.deb",
+          "url": "https://github.com/rustdesk/rustdesk/releases/download/1.5.3/rustdesk-unattended-wayland-1.5.3-x86_64.deb",
+          "size": 25599048,
+          "digest": "sha256:708f390c46c357b72255ed6a1560da644c8381c51dd9b108cbf2a3ceca733e0d",
           "platform": "Linux",
           "architecture": "x64",
           "redirectHosts": [
@@ -2739,52 +2739,52 @@
       "platforms": [
         "Windows"
       ],
-      "version": "1.5.1",
+      "version": "1.5.3",
       "status": "ready",
       "provider": "github",
       "recommended": {
         "Windows/x64": [
-          "689843552"
+          "727209108"
         ],
         "Windows/x86": [
-          "689843561"
+          "727209106"
         ],
         "Windows/arm64": [
-          "689843562"
+          "727209102"
         ],
         "Windows/universal": [
-          "689844572"
+          "727210964"
         ],
         "Windows/All": [
-          "689844572",
-          "689843562",
-          "689843552",
-          "689843561"
+          "727210964",
+          "727209102",
+          "727209108",
+          "727209106"
         ],
         "Linux/x64": [
-          "698926927"
+          "727066532"
         ],
         "Linux/x86": [],
         "Linux/arm64": [
-          "698927317"
+          "727068098"
         ],
         "Linux/universal": [],
         "Linux/All": [
-          "698927317",
-          "698926927",
-          "699021129"
+          "727068098",
+          "727066532",
+          "727178177"
         ],
         "macOS/x64": [
-          "689843572"
+          "727209115"
         ],
         "macOS/x86": [],
         "macOS/arm64": [
-          "689843560"
+          "727209114"
         ],
         "macOS/universal": [],
         "macOS/All": [
-          "689843560",
-          "689843572"
+          "727209114",
+          "727209115"
         ],
         "Boot ISO/x64": [],
         "Boot ISO/x86": [],
@@ -2792,39 +2792,39 @@
         "Boot ISO/universal": [],
         "Boot ISO/All": [],
         "All/x64": [
-          "698926927",
-          "689843572",
-          "689843552"
+          "727066532",
+          "727209115",
+          "727209108"
         ],
         "All/x86": [
-          "689843561"
+          "727209106"
         ],
         "All/arm64": [
-          "698927317",
-          "689843560",
-          "689843562"
+          "727068098",
+          "727209114",
+          "727209102"
         ],
         "All/universal": [
-          "689844572"
+          "727210964"
         ],
         "All/All": [
-          "689844572",
-          "698927317",
-          "689843560",
-          "689843562",
-          "698926927",
-          "689843572",
-          "689843552",
-          "689843561",
-          "699021129"
+          "727210964",
+          "727068098",
+          "727209114",
+          "727209102",
+          "727066532",
+          "727209115",
+          "727209108",
+          "727209106",
+          "727178177"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "anydesk": {
       "name": "AnyDesk",
       "source": "https://anydesk.com/en/downloads/windows",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "80317f0d5f649c7c108e",
@@ -2880,73 +2880,73 @@
           "80317f0d5f649c7c108e"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "tailscale": {
       "name": "Tailscale",
       "source": "https://tailscale.com/download/windows",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
-          "id": "1d69dd416d352e041157",
-          "name": "tailscale-setup-full-1.104.5.exe",
-          "url": "https://pkgs.tailscale.com/stable/tailscale-setup-full-1.104.5.exe",
-          "digest": "sha256:85412f3ce8b05bbc493311cc20e72c0f619285f95d351141cd9f49ca2d31a12a",
+          "id": "6804af02ac46b1911c1b",
+          "name": "tailscale-setup-full-1.104.6.exe",
+          "url": "https://pkgs.tailscale.com/stable/tailscale-setup-full-1.104.6.exe",
+          "digest": "sha256:3231b778ec302753a3be9b6b64b0bb49634da724231229d00b95c7dea6c820c8",
           "size": 0,
           "platform": "Windows",
           "architecture": "x86",
           "redirectHosts": []
         },
         {
-          "id": "0e305c1234122285faa2",
-          "name": "tailscale-setup-1.104.5-x86.msi",
-          "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.104.5-x86.msi",
-          "digest": "sha256:078edb90cdab6a4fc67f79721cb2d2b48828b108cf5d656a3d9fd94b859a54d2",
+          "id": "2da3c5b3cc3d6e397781",
+          "name": "tailscale-setup-1.104.6-x86.msi",
+          "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.104.6-x86.msi",
+          "digest": "sha256:f2b822e0e567cbedc857eb993e78167b4b49d865801f490a83f36b3b1f6da340",
           "size": 0,
           "platform": "Windows",
           "architecture": "x86",
           "redirectHosts": []
         },
         {
-          "id": "dd31bbace0885091b34c",
-          "name": "tailscale-setup-1.104.5-amd64.msi",
-          "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.104.5-amd64.msi",
-          "digest": "sha256:3c41318c83c5d95d0b017b1baa08ba7c99fd5334166122bbb1931e55af99839c",
+          "id": "2c2e1c2c4041a0982e2d",
+          "name": "tailscale-setup-1.104.6-amd64.msi",
+          "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.104.6-amd64.msi",
+          "digest": "sha256:8445636f79e258f56e01d324e5562d4ebcdf898ab84c2e618ae05014b8ba90ab",
           "size": 0,
           "platform": "Windows",
           "architecture": "x64",
           "redirectHosts": []
         },
         {
-          "id": "4da2015af8f2f73e742a",
-          "name": "tailscale-setup-1.104.5-arm64.msi",
-          "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.104.5-arm64.msi",
-          "digest": "sha256:609982de4dfe70b67a02e2a93c9c5c1dfa20addceb33a7d3b144f1d34d98f5fc",
+          "id": "6149c2abb914310e8b82",
+          "name": "tailscale-setup-1.104.6-arm64.msi",
+          "url": "https://pkgs.tailscale.com/stable/tailscale-setup-1.104.6-arm64.msi",
+          "digest": "sha256:2810b17d4edcb6feb0307d0029e67426d2af78f0e4b1092fbbe307f5875c82b7",
           "size": 0,
           "platform": "Windows",
           "architecture": "arm64",
           "redirectHosts": []
         }
       ],
-      "version": "1.104.5",
-      "metadataSource": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tailscale/Tailscale/1.104.5/Tailscale.Tailscale.installer.yaml",
+      "version": "1.104.6",
+      "metadataSource": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/t/Tailscale/Tailscale/1.104.6/Tailscale.Tailscale.installer.yaml",
       "status": "ready",
       "provider": "winget",
       "recommended": {
         "Windows/x64": [
-          "dd31bbace0885091b34c"
+          "2c2e1c2c4041a0982e2d"
         ],
         "Windows/x86": [
-          "0e305c1234122285faa2"
+          "2da3c5b3cc3d6e397781"
         ],
         "Windows/arm64": [
-          "4da2015af8f2f73e742a"
+          "6149c2abb914310e8b82"
         ],
         "Windows/universal": [],
         "Windows/All": [
-          "dd31bbace0885091b34c",
-          "4da2015af8f2f73e742a",
-          "0e305c1234122285faa2"
+          "2c2e1c2c4041a0982e2d",
+          "6149c2abb914310e8b82",
+          "2da3c5b3cc3d6e397781"
         ],
         "Linux/x64": [],
         "Linux/x86": [],
@@ -2964,27 +2964,27 @@
         "Boot ISO/universal": [],
         "Boot ISO/All": [],
         "All/x64": [
-          "dd31bbace0885091b34c"
+          "2c2e1c2c4041a0982e2d"
         ],
         "All/x86": [
-          "0e305c1234122285faa2"
+          "2da3c5b3cc3d6e397781"
         ],
         "All/arm64": [
-          "4da2015af8f2f73e742a"
+          "6149c2abb914310e8b82"
         ],
         "All/universal": [],
         "All/All": [
-          "dd31bbace0885091b34c",
-          "4da2015af8f2f73e742a",
-          "0e305c1234122285faa2"
+          "2c2e1c2c4041a0982e2d",
+          "6149c2abb914310e8b82",
+          "2da3c5b3cc3d6e397781"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "safetyscanner": {
       "name": "Microsoft Safety Scanner",
       "source": "https://learn.microsoft.com/en-us/defender-endpoint/safety-scanner-download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -2992,7 +2992,7 @@
     "eek": {
       "name": "Emsisoft Emergency Kit",
       "source": "https://www.emsisoft.com/en/emergency-kit/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -3000,7 +3000,7 @@
     "malwarebytes": {
       "name": "Malwarebytes",
       "source": "https://www.malwarebytes.com/mwb-download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -3008,7 +3008,7 @@
     "adwcleaner": {
       "name": "AdwCleaner",
       "source": "https://www.malwarebytes.com/adwcleaner",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -3016,7 +3016,7 @@
     "firefox": {
       "name": "Firefox Portable",
       "source": "https://portableapps.com/apps/internet/firefox_portable",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -3024,7 +3024,7 @@
     "chrome": {
       "name": "Google Chrome installer",
       "source": "https://chromeenterprise.google/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "32acc226db42f646298e",
@@ -3108,12 +3108,12 @@
           "c47f94a40aac0a795ed2"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "edge": {
       "name": "Microsoft Edge installer",
       "source": "https://www.microsoft.com/en-us/edge/business/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "878aba8be4512ac0d07c",
@@ -3197,12 +3197,12 @@
           "695664d9a19f70048fc0"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "7zip": {
       "name": "7-Zip",
       "source": "https://www.7-zip.org/download.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "720542630",
@@ -3471,12 +3471,12 @@
           "720543968"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "nanazip": {
       "name": "NanaZip",
       "source": "https://github.com/M2Team/NanaZip/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "678682401",
@@ -3606,12 +3606,12 @@
           "678671715"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "notepad": {
       "name": "Notepad++",
       "source": "https://notepad-plus-plus.org/downloads/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "717624863",
@@ -3829,12 +3829,12 @@
           "717626128"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "vscode": {
       "name": "Visual Studio Code (VS Code / portable)",
       "source": "https://code.visualstudio.com/docs/setup/portable",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -3842,7 +3842,7 @@
     "winmerge": {
       "name": "WinMerge",
       "source": "https://winmerge.org/downloads/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "681586720",
@@ -4050,12 +4050,12 @@
           "681586720"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "everything": {
       "name": "Everything",
       "source": "https://www.voidtools.com/downloads/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "84812323eb41e5ee550a",
@@ -4191,12 +4191,12 @@
           "edde6205e9800b406707"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "wiztree": {
       "name": "WizTree",
       "source": "https://diskanalyzer.com/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "9612b4ca0b97be10dbdf",
@@ -4254,12 +4254,12 @@
           "9612b4ca0b97be10dbdf"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "treesize": {
       "name": "TreeSize Free",
       "source": "https://www.jam-software.com/treesize_free",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "a21466729ccc4f7069c1",
@@ -4311,12 +4311,12 @@
           "a21466729ccc4f7069c1"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "fastcopy": {
       "name": "FastCopy",
       "source": "https://fastcopy.jp/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "5fc07d8e7ae4b97b7368",
@@ -4375,12 +4375,12 @@
           "5fc07d8e7ae4b97b7368"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "freefilesync": {
       "name": "FreeFileSync",
       "source": "https://freefilesync.org/download.php",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -4388,7 +4388,7 @@
     "sumatra": {
       "name": "SumatraPDF",
       "source": "https://www.sumatrapdfreader.org/download-free-pdf-viewer",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "1dac6e4c8b1e189fb366",
@@ -4514,12 +4514,12 @@
           "1dac6e4c8b1e189fb366"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "pdfarranger": {
       "name": "PDF Arranger",
       "source": "https://github.com/pdfarranger/pdfarranger/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "427605108",
@@ -4601,12 +4601,12 @@
           "427605286"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "libreoffice": {
       "name": "LibreOffice Portable",
       "source": "https://portableapps.com/apps/office/libreoffice_portable",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -4614,7 +4614,7 @@
     "onlyoffice": {
       "name": "ONLYOFFICE Desktop Editors",
       "source": "https://www.onlyoffice.com/download-desktop.aspx",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "636648046",
@@ -5076,12 +5076,12 @@
           "636645737"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "vlc": {
       "name": "VLC Portable",
       "source": "https://portableapps.com/apps/music_video/vlc_portable",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -5089,7 +5089,7 @@
     "mediainfo": {
       "name": "MediaInfo",
       "source": "https://mediaarea.net/en/MediaInfo/Download/Windows",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "5edaeb80c8aecfe4be09",
@@ -5161,12 +5161,12 @@
           "b6b280b47886db630581"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "handbrake": {
       "name": "HandBrake",
       "source": "https://handbrake.fr/downloads.php",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "441100393",
@@ -5355,12 +5355,12 @@
           "441100166"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "audacity": {
       "name": "Audacity",
       "source": "https://www.audacityteam.org/download/windows/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "701279402",
@@ -5564,12 +5564,12 @@
           "701286452"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "irfanview": {
       "name": "IrfanView",
       "source": "https://www.irfanview.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "f0a12033beaf42ca8490",
@@ -5637,12 +5637,12 @@
           "fab49199b1b6c6760893"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "gimp": {
       "name": "GIMP",
       "source": "https://www.gimp.org/downloads/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "156fd1df4abd9643b692",
@@ -5653,7 +5653,7 @@
           "platform": "Windows",
           "architecture": "x64",
           "redirectHosts": [
-            "abqix.mm.fcix.net"
+            "mirrors.iu13.net"
           ]
         }
       ],
@@ -5696,12 +5696,12 @@
           "156fd1df4abd9643b692"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "powershell": {
       "name": "PowerShell 7",
       "source": "https://github.com/PowerShell/PowerShell/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "732754732",
@@ -6071,12 +6071,12 @@
           "732756922"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "git": {
       "name": "Git Portable",
       "source": "https://git-scm.com/downloads/win",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "732763578",
@@ -6812,12 +6812,12 @@
           "732766873"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "python": {
       "name": "Python embeddable package",
       "source": "https://www.python.org/downloads/windows/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -6825,7 +6825,7 @@
     "curl": {
       "name": "curl",
       "source": "https://curl.se/windows/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -6833,7 +6833,7 @@
     "jq": {
       "name": "jq",
       "source": "https://jqlang.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "453012753",
@@ -6969,12 +6969,12 @@
           "453012791"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "sqlite": {
       "name": "SQLite tools",
       "source": "https://sqlite.org/download.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -6982,7 +6982,7 @@
     "ventoy": {
       "name": "Ventoy installer",
       "source": "https://www.ventoy.net/en/download.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "623861621",
@@ -7091,12 +7091,12 @@
           "623861621"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "usbtree": {
       "name": "USB Device Tree Viewer",
       "source": "https://www.uwe-sieber.de/usbtreeview_e.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7104,7 +7104,7 @@
     "usbdeview": {
       "name": "USBDeview",
       "source": "https://www.nirsoft.net/utils/usb_devices_view.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7112,7 +7112,7 @@
     "mct": {
       "name": "Windows Media Creation Tool",
       "source": "https://www.microsoft.com/en-us/software-download/windows11",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7120,7 +7120,7 @@
     "etcher": {
       "name": "balenaEtcher",
       "source": "https://etcher.balena.io/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "666836790",
@@ -7305,12 +7305,12 @@
           "666836789"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "unigetui": {
       "name": "UniGetUI",
       "source": "https://github.com/Devolutions/UniGetUI/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "689747935",
@@ -7574,12 +7574,12 @@
           "689748054"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "chocolatey": {
       "name": "Chocolatey",
       "source": "https://chocolatey.org/install",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -7587,7 +7587,7 @@
     "scoop": {
       "name": "Scoop",
       "source": "https://scoop.sh/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -7595,7 +7595,7 @@
     "proxmox": {
       "name": "Proxmox VE ISO",
       "source": "https://www.proxmox.com/en/downloads",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7603,7 +7603,7 @@
     "debian": {
       "name": "Debian Live",
       "source": "https://www.debian.org/CD/live/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7611,7 +7611,7 @@
     "vcredist": {
       "name": "Microsoft Visual C++ Redistributables",
       "source": "https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7619,7 +7619,7 @@
     "dotnet": {
       "name": ".NET Desktop Runtime",
       "source": "https://dotnet.microsoft.com/en-us/download/dotnet",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7627,7 +7627,7 @@
     "directx": {
       "name": "DirectX End-User Runtimes",
       "source": "https://www.microsoft.com/en-us/download/details.aspx?id=8109",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7635,7 +7635,7 @@
     "steam": {
       "name": "Steam",
       "source": "https://store.steampowered.com/about/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "6ab9e6283dbf7f6beb06",
@@ -7691,12 +7691,12 @@
           "6ab9e6283dbf7f6beb06"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "epic": {
       "name": "Epic Games Launcher",
       "source": "https://store.epicgames.com/en-US/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "c6dd580c8c4adc680d86",
@@ -7748,12 +7748,12 @@
           "c6dd580c8c4adc680d86"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "battlenet": {
       "name": "Battle.net",
       "source": "https://download.battle.net/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7761,7 +7761,7 @@
     "intel-network": {
       "name": "Intel Ethernet / Wi-Fi / Bluetooth",
       "source": "https://www.intel.com/content/www/us/en/download-center/home.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7769,7 +7769,7 @@
     "intel-chipset": {
       "name": "Intel Chipset Device Software",
       "source": "https://www.intel.com/content/www/us/en/download-center/home.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7777,7 +7777,7 @@
     "intel-gpu": {
       "name": "Intel Graphics / Arc drivers",
       "source": "https://www.intel.com/content/www/us/en/download-center/home.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7785,7 +7785,7 @@
     "amd-chipset": {
       "name": "AMD chipset drivers",
       "source": "https://www.amd.com/en/support/download/drivers.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7793,7 +7793,7 @@
     "amd-gpu": {
       "name": "AMD Software: Adrenalin Edition",
       "source": "https://www.amd.com/en/support/download/drivers.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7801,7 +7801,7 @@
     "nvidia": {
       "name": "NVIDIA graphics drivers",
       "source": "https://www.nvidia.com/en-us/drivers/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7809,7 +7809,7 @@
     "realtek": {
       "name": "Realtek network / audio drivers",
       "source": "https://www.realtek.com/Download/List",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7817,7 +7817,7 @@
     "hpia": {
       "name": "HP Image Assistant",
       "source": "https://ftp.ext.hp.com/pub/caps-softpaq/cmit/HPIA.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7825,7 +7825,7 @@
     "dell": {
       "name": "Dell Command Update",
       "source": "https://www.dell.com/support/kbdoc/en-us/000177325/dell-command-update",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7833,7 +7833,7 @@
     "lenovo": {
       "name": "Lenovo System Update",
       "source": "https://support.lenovo.com/us/en/solutions/ht003029",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7841,7 +7841,7 @@
     "surface": {
       "name": "Microsoft Surface driver / firmware packs",
       "source": "https://learn.microsoft.com/en-us/surface/manage-surface-driver-and-firmware-updates",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7849,7 +7849,7 @@
     "firmware-hp": {
       "name": "HP firmware / BIOS support",
       "source": "https://support.hp.com/us-en/drivers",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7857,7 +7857,7 @@
     "firmware-dell": {
       "name": "Dell firmware / BIOS support",
       "source": "https://www.dell.com/support/home/en-us?app=drivers",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7865,7 +7865,7 @@
     "firmware-lenovo": {
       "name": "Lenovo firmware / BIOS support",
       "source": "https://support.lenovo.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7873,7 +7873,7 @@
     "firmware-asus": {
       "name": "ASUS firmware / BIOS support",
       "source": "https://www.asus.com/support/download-center/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7881,7 +7881,7 @@
     "firmware-acer": {
       "name": "Acer firmware / BIOS support",
       "source": "https://www.acer.com/us-en/support/drivers-and-manuals",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7889,7 +7889,7 @@
     "firmware-msi": {
       "name": "MSI firmware / BIOS support",
       "source": "https://www.msi.com/support/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7897,7 +7897,7 @@
     "firmware-gigabyte": {
       "name": "Gigabyte firmware / BIOS support",
       "source": "https://www.gigabyte.com/Support",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7905,7 +7905,7 @@
     "firmware-intel": {
       "name": "Intel firmware / BIOS support",
       "source": "https://www.intel.com/content/www/us/en/download-center/home.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7913,7 +7913,7 @@
     "firmware-amd": {
       "name": "AMD firmware / BIOS support",
       "source": "https://www.amd.com/en/support/download/drivers.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7921,7 +7921,7 @@
     "firmware-nvidia": {
       "name": "NVIDIA firmware / BIOS support",
       "source": "https://www.nvidia.com/en-us/drivers/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -7929,7 +7929,7 @@
     "sysinternals": {
       "name": "Sysinternals Suite",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/sysinternals-suite",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "SysinternalsSuite.zip",
@@ -7998,12 +7998,12 @@
           "SysinternalsSuite.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "autoruns": {
       "name": "Autoruns",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/autoruns",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "Autoruns.zip",
@@ -8072,12 +8072,12 @@
           "Autoruns.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "process-explorer": {
       "name": "Process Explorer",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/process-explorer",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "ProcessExplorer.zip",
@@ -8146,12 +8146,12 @@
           "ProcessExplorer.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "procmon": {
       "name": "Process Monitor",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/procmon",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "ProcessMonitor.zip",
@@ -8220,12 +8220,12 @@
           "ProcessMonitor.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "tcpview": {
       "name": "TCPView",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/tcpview",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "TCPView.zip",
@@ -8294,12 +8294,12 @@
           "TCPView.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "rammap": {
       "name": "RAMMap",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/rammap",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "RAMMap.zip",
@@ -8368,12 +8368,12 @@
           "RAMMap.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "disk2vhd": {
       "name": "Disk2vhd",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/disk2vhd",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "Disk2vhd.zip",
@@ -8442,12 +8442,12 @@
           "Disk2vhd.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "sigcheck": {
       "name": "Sigcheck",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/sigcheck",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "Sigcheck.zip",
@@ -8516,12 +8516,12 @@
           "Sigcheck.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "pstools": {
       "name": "PsTools",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/pstools",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "PSTools.zip",
@@ -8590,12 +8590,12 @@
           "PSTools.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "procdump": {
       "name": "ProcDump",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/procdump",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "Procdump.zip",
@@ -8664,12 +8664,12 @@
           "Procdump.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "handle": {
       "name": "Handle",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/handle",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "Handle.zip",
@@ -8738,12 +8738,12 @@
           "Handle.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "strings": {
       "name": "Strings",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/strings",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "Strings.zip",
@@ -8812,12 +8812,12 @@
           "Strings.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "sdelete": {
       "name": "SDelete",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/sdelete",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "SDelete.zip",
@@ -8886,12 +8886,12 @@
           "SDelete.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "zoomit": {
       "name": "ZoomIt",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/zoomit",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "ZoomIt.zip",
@@ -8960,12 +8960,12 @@
           "ZoomIt.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "psping": {
       "name": "PsPing",
       "source": "https://learn.microsoft.com/en-us/sysinternals/downloads/psping",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "PSTools.zip",
@@ -9034,12 +9034,12 @@
           "PSTools.zip"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "sfc": {
       "name": "System File Checker",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9047,7 +9047,7 @@
     "dism": {
       "name": "DISM component store repair",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9055,7 +9055,7 @@
     "chkdsk": {
       "name": "CHKDSK read-only check",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9063,7 +9063,7 @@
     "msconfig": {
       "name": "System Configuration",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9071,7 +9071,7 @@
     "msinfo32": {
       "name": "System Information",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9079,7 +9079,7 @@
     "dxdiag": {
       "name": "DirectX Diagnostic Tool",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9087,7 +9087,7 @@
     "eventvwr": {
       "name": "Event Viewer",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9095,7 +9095,7 @@
     "perfmon": {
       "name": "Performance Monitor",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9103,7 +9103,7 @@
     "reliability": {
       "name": "Reliability Monitor",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9111,7 +9111,7 @@
     "resmon": {
       "name": "Resource Monitor",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9119,7 +9119,7 @@
     "taskmgr": {
       "name": "Task Manager",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9127,7 +9127,7 @@
     "services": {
       "name": "Services console",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9135,7 +9135,7 @@
     "devmgmt": {
       "name": "Device Manager",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9143,7 +9143,7 @@
     "diskmgmt": {
       "name": "Disk Management",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9151,7 +9151,7 @@
     "diskpart": {
       "name": "DiskPart inventory",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9159,7 +9159,7 @@
     "compmgmt": {
       "name": "Computer Management",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9167,7 +9167,7 @@
     "regedit": {
       "name": "Registry Editor",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9175,7 +9175,7 @@
     "gpedit": {
       "name": "Local Group Policy Editor",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9183,7 +9183,7 @@
     "secpol": {
       "name": "Local Security Policy",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9191,7 +9191,7 @@
     "netplwiz": {
       "name": "User Accounts",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9199,7 +9199,7 @@
     "cleanmgr": {
       "name": "Disk Cleanup",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9207,7 +9207,7 @@
     "mrt": {
       "name": "Malicious Software Removal Tool",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9215,7 +9215,7 @@
     "optionalfeatures": {
       "name": "Windows Features",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9223,7 +9223,7 @@
     "appwiz": {
       "name": "Programs and Features",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9231,7 +9231,7 @@
     "ncpa": {
       "name": "Network Connections",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9239,7 +9239,7 @@
     "powercfg": {
       "name": "Power configuration report",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9247,7 +9247,7 @@
     "winget": {
       "name": "WinGet package manager",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9255,7 +9255,7 @@
     "winget-upgrade": {
       "name": "WinGet upgrade preview",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9263,7 +9263,7 @@
     "winget-export": {
       "name": "Export package list",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9271,7 +9271,7 @@
     "winget-install": {
       "name": "Install common software with WinGet",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9279,7 +9279,7 @@
     "robocopy": {
       "name": "Robocopy copy preview",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9287,7 +9287,7 @@
     "cipher": {
       "name": "EFS encryption information",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9295,7 +9295,7 @@
     "manage-bde": {
       "name": "BitLocker status",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9303,7 +9303,7 @@
     "reagentc": {
       "name": "Windows RE status",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9311,7 +9311,7 @@
     "bcdedit": {
       "name": "BCD inspection",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9319,7 +9319,7 @@
     "ipconfig": {
       "name": "IP configuration",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9327,7 +9327,7 @@
     "dns": {
       "name": "DNS lookup",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9335,7 +9335,7 @@
     "tracert": {
       "name": "Route trace",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9343,7 +9343,7 @@
     "porttest": {
       "name": "TCP port test",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9351,7 +9351,7 @@
     "netadapter": {
       "name": "Network adapter status",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9359,7 +9359,7 @@
     "netip": {
       "name": "PowerShell IP configuration",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9367,7 +9367,7 @@
     "flushdns": {
       "name": "Flush DNS cache",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9375,7 +9375,7 @@
     "winsock": {
       "name": "Winsock reset",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9383,7 +9383,7 @@
     "ping": {
       "name": "Packet loss sample",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9391,7 +9391,7 @@
     "wlan": {
       "name": "Wi-Fi interface details",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9399,7 +9399,7 @@
     "arp": {
       "name": "Neighbor / duplicate IP inspection",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9407,7 +9407,7 @@
     "restore": {
       "name": "System Restore",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9415,7 +9415,7 @@
     "installer": {
       "name": "Windows Installer service check",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9423,7 +9423,7 @@
     "quickassist": {
       "name": "Windows Quick Assist",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9431,7 +9431,7 @@
     "defenderoffline": {
       "name": "Microsoft Defender Offline",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9439,7 +9439,7 @@
     "ddrescue": {
       "name": "GNU ddrescue",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9447,7 +9447,7 @@
     "dd": {
       "name": "dd",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9455,7 +9455,7 @@
     "ssh": {
       "name": "OpenSSH client",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9463,7 +9463,7 @@
     "mdadm": {
       "name": "Linux software RAID",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9471,7 +9471,7 @@
     "lvm": {
       "name": "LVM inventory",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9479,7 +9479,7 @@
     "zfs": {
       "name": "ZFS pool status",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9487,7 +9487,7 @@
     "lsblk": {
       "name": "Linux block device inventory",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9495,7 +9495,7 @@
     "mount": {
       "name": "Read-only filesystem mounting",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9503,7 +9503,7 @@
     "rsync": {
       "name": "rsync dry run",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9511,7 +9511,7 @@
     "fsck": {
       "name": "Filesystem check planning",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9519,7 +9519,7 @@
     "ip-linux": {
       "name": "Linux network inventory",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9527,7 +9527,7 @@
     "unattend": {
       "name": "Windows unattended language template",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9535,7 +9535,7 @@
     "reference": {
       "name": "Offline technician reference",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9543,7 +9543,7 @@
     "inventory-script": {
       "name": "Update toolkit inventory",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9551,7 +9551,7 @@
     "metadata-script": {
       "name": "Update toolkit metadata",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9559,7 +9559,7 @@
     "download-script": {
       "name": "Preview / download reviewed tools",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9567,7 +9567,7 @@
     "diagnostic-script": {
       "name": "Collect PC diagnostics",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9575,7 +9575,7 @@
     "network-script": {
       "name": "Inspect network configuration",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9583,7 +9583,7 @@
     "repair-script": {
       "name": "Windows system file repair helper",
       "source": "",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -9591,7 +9591,7 @@
     "obs": {
       "name": "OBS Studio",
       "source": "https://obsproject.com/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "689998561",
@@ -9800,12 +9800,12 @@
           "689998555"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "obsidian": {
       "name": "Obsidian",
       "source": "https://obsidian.md/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "c296803b758bb93882dd",
@@ -9859,12 +9859,12 @@
           "c296803b758bb93882dd"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "4kdownloader": {
       "name": "4K Video Downloader Plus",
       "source": "https://www.4kdownload.com/products/videodownloader",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "94330c7fc2b97f690cdc",
@@ -9916,12 +9916,12 @@
           "94330c7fc2b97f690cdc"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "shotcut": {
       "name": "Shotcut",
       "source": "https://shotcut.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "608688841",
@@ -10091,12 +10091,12 @@
           "594038266"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "kdenlive": {
       "name": "Kdenlive",
       "source": "https://kdenlive.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "afc5e4efb32c7c340105",
@@ -10107,7 +10107,7 @@
           "platform": "Windows",
           "architecture": "x64",
           "redirectHosts": [
-            "mirror.fcix.net"
+            "mirror.math.princeton.edu"
           ]
         }
       ],
@@ -10150,12 +10150,12 @@
           "afc5e4efb32c7c340105"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "openshot": {
       "name": "OpenShot",
       "source": "https://www.openshot.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "700065885",
@@ -10269,12 +10269,12 @@
           "700065298"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "thunderbird": {
       "name": "Mozilla Thunderbird",
       "source": "https://www.thunderbird.net/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "d09da45715caeedd9dfc",
@@ -10342,12 +10342,12 @@
           "717f6efd2ebd6bdfec0a"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "betterbird": {
       "name": "Betterbird",
       "source": "https://www.betterbird.eu/downloads/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "a05b9c7755c4ae0b5278",
@@ -10399,12 +10399,12 @@
           "a05b9c7755c4ae0b5278"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "clawsmail": {
       "name": "Claws Mail",
       "source": "https://www.claws-mail.org/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -10412,7 +10412,7 @@
     "joplin": {
       "name": "Joplin",
       "source": "https://joplinapp.org/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "685979091",
@@ -10624,12 +10624,12 @@
           "685979091"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "remmina": {
       "name": "Remmina",
       "source": "https://remmina.org/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -10637,7 +10637,7 @@
     "meshcentral": {
       "name": "MeshCentral",
       "source": "https://meshcentral.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -10645,7 +10645,7 @@
     "syncthing": {
       "name": "Syncthing",
       "source": "https://syncthing.net/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "661539539",
@@ -11109,12 +11109,12 @@
           "661539920"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "keepassxc": {
       "name": "KeePassXC",
       "source": "https://keepassxc.org/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "670597741",
@@ -11334,12 +11334,12 @@
           "662947406"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "bleachbit": {
       "name": "BleachBit",
       "source": "https://www.bleachbit.org/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "664226471",
@@ -11667,12 +11667,12 @@
           "664227190"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "easeus-drw": {
       "name": "EaseUS Data Recovery Wizard",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11680,7 +11680,7 @@
     "easeus-drw-mac": {
       "name": "EaseUS Data Recovery Wizard for Mac",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11688,7 +11688,7 @@
     "easeus-partition-mac": {
       "name": "EaseUS Partition Master for Mac",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11696,7 +11696,7 @@
     "easeus-todo-backup": {
       "name": "EaseUS Todo Backup (Free / Home / Enterprise)",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11704,7 +11704,7 @@
     "easeus-todo-backup-mac": {
       "name": "EaseUS Todo Backup for Mac",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11712,7 +11712,7 @@
     "easeus-pctrans": {
       "name": "EaseUS Todo PCTrans (Free / Pro / Technician)",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11720,7 +11720,7 @@
     "easeus-diskcopy": {
       "name": "EaseUS Disk Copy (Pro / Technician)",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11728,7 +11728,7 @@
     "easeus-mobisaver": {
       "name": "EaseUS MobiSaver for iOS",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11736,7 +11736,7 @@
     "easeus-mobisaver-mac": {
       "name": "EaseUS MobiSaver for Mac",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11744,7 +11744,7 @@
     "easeus-mobisaver-android": {
       "name": "EaseUS MobiSaver for Android",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11752,7 +11752,7 @@
     "easeus-mobisaver-app": {
       "name": "EaseUS MobiSaver Android App",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11760,7 +11760,7 @@
     "easeus-mobimover": {
       "name": "EaseUS MobiMover",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11768,7 +11768,7 @@
     "easeus-mobiunlock": {
       "name": "EaseUS MobiUnlock",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11776,7 +11776,7 @@
     "easeus-mobianygo": {
       "name": "EaseUS MobiAnyGo",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11784,7 +11784,7 @@
     "easeus-ringtone": {
       "name": "EaseUS Ringtone Editor",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11792,7 +11792,7 @@
     "easeus-recexperts": {
       "name": "EaseUS RecExperts",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11800,7 +11800,7 @@
     "easeus-makemyaudio": {
       "name": "EaseUS MakeMyAudio",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11808,7 +11808,7 @@
     "easeus-voicewave": {
       "name": "EaseUS VoiceWave",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11816,7 +11816,7 @@
     "easeus-videoeditor": {
       "name": "EaseUS Video Editor",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11824,7 +11824,7 @@
     "easeus-videokit": {
       "name": "EaseUS VideFlow / VideoKit",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11832,7 +11832,7 @@
     "easeus-videodownloader": {
       "name": "EaseUS Video Downloader",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11840,7 +11840,7 @@
     "easeus-pdf": {
       "name": "EaseUS PDF Editor",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11848,7 +11848,7 @@
     "easeus-email": {
       "name": "EaseUS Email Recovery Wizard",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11856,7 +11856,7 @@
     "easeus-exchange": {
       "name": "EaseUS Exchange Recovery",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11864,7 +11864,7 @@
     "easeus-partitionrecovery": {
       "name": "EaseUS Partition Recovery",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11872,7 +11872,7 @@
     "easeus-sql": {
       "name": "EaseUS MS SQL Recovery",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11880,7 +11880,7 @@
     "easeus-lockmyfile": {
       "name": "EaseUS LockMyFile",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11888,7 +11888,7 @@
     "easeus-os2go": {
       "name": "EaseUS OS2Go",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11896,7 +11896,7 @@
     "easeus-ntfs": {
       "name": "EaseUS NTFS for Mac",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11904,7 +11904,7 @@
     "easeus-keyfinder": {
       "name": "EaseUS Key Finder",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11912,7 +11912,7 @@
     "easeus-bitwiper": {
       "name": "EaseUS BitWiper",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11920,7 +11920,7 @@
     "easeus-duplicates": {
       "name": "EaseUS DupFiles Cleaner",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11928,7 +11928,7 @@
     "easeus-driverhandy": {
       "name": "EaseUS DriverHandy",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11936,7 +11936,7 @@
     "easeus-everysync": {
       "name": "EaseUS EverySync",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11944,7 +11944,7 @@
     "easeus-chattrans": {
       "name": "EaseUS ChatTrans",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11952,7 +11952,7 @@
     "easeus-winrescuer": {
       "name": "EaseUS WinRescuer",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11960,7 +11960,7 @@
     "easeus-fixo": {
       "name": "EaseUS Fixo",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11968,7 +11968,7 @@
     "easeus-cleangenius": {
       "name": "EaseUS CleanGenius",
       "source": "https://www.easeus.com/download.htm",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11976,7 +11976,7 @@
     "easeus-vocalremover": {
       "name": "EaseUS Vocal Remover Online",
       "source": "https://vocalremover.easeus.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -11984,7 +11984,7 @@
     "foldersize": {
       "name": "Folder Size (MindGems)",
       "source": "https://www.mindgems.com/products/Folder-Size/Folder-Size.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -11992,7 +11992,7 @@
     "windirstat": {
       "name": "WinDirStat",
       "source": "https://windirstat.net/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "632011602",
@@ -12176,12 +12176,12 @@
           "632011760"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "sharex": {
       "name": "ShareX",
       "source": "https://getsharex.com/downloads.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "722853656",
@@ -12251,12 +12251,12 @@
           "722853656"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "jdownloader": {
       "name": "JDownloader 2",
       "source": "https://jdownloader.org/download/index",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -12264,7 +12264,7 @@
     "powertoys": {
       "name": "Microsoft PowerToys",
       "source": "https://github.com/microsoft/PowerToys/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "716424545",
@@ -12410,12 +12410,12 @@
           "716419453"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "sublime": {
       "name": "Sublime Text",
       "source": "https://www.sublimetext.com/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "ab4f2b4c3b8f3bfbb780",
@@ -12477,12 +12477,12 @@
           "b26f7f10ec009f6b7ea0"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "brave": {
       "name": "Brave Browser",
       "source": "https://brave.com/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "732271925",
@@ -13346,12 +13346,12 @@
           "730232884"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "chromium": {
       "name": "Chromium",
       "source": "https://www.chromium.org/getting-involved/download-chromium/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -13359,7 +13359,7 @@
     "platform-tools": {
       "name": "Android SDK Platform-Tools (ADB & Fastboot)",
       "source": "https://developer.android.com/tools/releases/platform-tools",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "39e9358c079d1ead67b9",
@@ -13411,12 +13411,12 @@
           "39e9358c079d1ead67b9"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "scrcpy": {
       "name": "scrcpy",
       "source": "https://github.com/Genymobile/scrcpy/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "620992699",
@@ -13565,12 +13565,12 @@
           "620993016"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "android-flash": {
       "name": "Android Flash Tool",
       "source": "https://flash.android.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "not-applicable",
       "reason": "Included with the OS/toolkit, package-manager command, or online service."
@@ -13578,7 +13578,7 @@
     "google-usb-driver": {
       "name": "Google USB Driver",
       "source": "https://developer.android.com/studio/run/win-usb",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -13586,7 +13586,7 @@
     "samsung-smartswitch": {
       "name": "Samsung Smart Switch",
       "source": "https://www.samsung.com/us/apps/smart-switch/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -13594,7 +13594,7 @@
     "libimobiledevice": {
       "name": "libimobiledevice",
       "source": "https://libimobiledevice.org/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -13602,7 +13602,7 @@
     "naps2": {
       "name": "NAPS2",
       "source": "https://www.naps2.com/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "676165903",
@@ -13832,12 +13832,12 @@
           "676166369"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "cups": {
       "name": "CUPS / OpenPrinting",
       "source": "https://openprinting.github.io/cups/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -13845,7 +13845,7 @@
     "hp-printer": {
       "name": "HP Printer Drivers",
       "source": "https://support.hp.com/us-en/drivers/printers",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -13853,7 +13853,7 @@
     "brother-printer": {
       "name": "Brother Printer & Scanner Support",
       "source": "https://support.brother.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -13861,7 +13861,7 @@
     "epson-printer": {
       "name": "Epson Printer & Scanner Support",
       "source": "https://epson.com/Support/sl/s",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -13869,7 +13869,7 @@
     "canon-printer": {
       "name": "Canon Printer & Scanner Support",
       "source": "https://www.usa.canon.com/support",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -13877,7 +13877,7 @@
     "wifiinfoview": {
       "name": "WifiInfoView",
       "source": "https://www.nirsoft.net/utils/wifi_information_view.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "33f26ec3d978e74a7bc1",
@@ -13945,12 +13945,12 @@
           "33f26ec3d978e74a7bc1"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "wifidiagnostics": {
       "name": "WifiDiagnosticsView",
       "source": "https://www.nirsoft.net/utils/wifi_diagnostics_view.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "326561ea9068744cc5b8",
@@ -14006,12 +14006,12 @@
           "326561ea9068744cc5b8"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "wirelesswatcher": {
       "name": "Wireless Network Watcher",
       "source": "https://www.nirsoft.net/utils/wireless_network_watcher.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "6ab4da7e48d6a2a43ea2",
@@ -14089,12 +14089,12 @@
           "d7f37f8e494d24d03b62"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "currports": {
       "name": "CurrPorts",
       "source": "https://www.nirsoft.net/utils/cports.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -14102,7 +14102,7 @@
     "networklatency": {
       "name": "NetworkLatencyView",
       "source": "https://www.nirsoft.net/utils/network_latency_view.html",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -14110,7 +14110,7 @@
     "filezilla": {
       "name": "FileZilla (Client)",
       "source": "https://filezilla-project.org/download.php?show_all=1",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -14118,7 +14118,7 @@
     "termius": {
       "name": "Termius",
       "source": "https://termius.com/download/windows",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "a1d487a3cd5a3ae04594",
@@ -14174,70 +14174,70 @@
           "a1d487a3cd5a3ae04594"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "github-desktop": {
       "name": "GitHub Desktop",
       "source": "https://desktop.github.com/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
-          "id": "5fe93ef9ca61aa8c70cc",
+          "id": "d70c09ae641878201d38",
           "name": "GitHubDesktopSetup-x64.exe",
-          "url": "https://desktop.githubusercontent.com/releases/3.6.10-ffeefe5d/GitHubDesktopSetup-x64.exe",
-          "digest": "sha256:36cae76228a32cfabcf2bf3e17e6bb3f4e294b70692ca88a163595e6603dd835",
+          "url": "https://desktop.githubusercontent.com/releases/3.6.11-0102f49a/GitHubDesktopSetup-x64.exe",
+          "digest": "sha256:c76edda67f22103b65da1468687348e9e97ddb53d977b727f16aa695680f1618",
           "size": 0,
           "platform": "Windows",
           "architecture": "x64",
           "redirectHosts": []
         },
         {
-          "id": "e2316eafd26aa33c9915",
+          "id": "f9eaf5dd6d2c8d8717a1",
           "name": "GitHubDesktopSetup-x64.msi",
-          "url": "https://desktop.githubusercontent.com/releases/3.6.10-ffeefe5d/GitHubDesktopSetup-x64.msi",
-          "digest": "sha256:7878e103e3c7870a7df98cf06550ebe04aded6bde5997cb3564f09800122c829",
+          "url": "https://desktop.githubusercontent.com/releases/3.6.11-0102f49a/GitHubDesktopSetup-x64.msi",
+          "digest": "sha256:30e8f88b559fd0cea5a4c3b5f50e0e6d56137405067a70f8ff1ce163d8403487",
           "size": 0,
           "platform": "Windows",
           "architecture": "x64",
           "redirectHosts": []
         },
         {
-          "id": "92e0decfbd8d017430a7",
+          "id": "47d398adb0188a19e0a1",
           "name": "GitHubDesktopSetup-arm64.exe",
-          "url": "https://desktop.githubusercontent.com/releases/3.6.10-ffeefe5d/GitHubDesktopSetup-arm64.exe",
-          "digest": "sha256:1f83a4c4623b9e7cd4634fee4be47684d7ce67c66b7fca36293eac6f74bd4eaa",
+          "url": "https://desktop.githubusercontent.com/releases/3.6.11-0102f49a/GitHubDesktopSetup-arm64.exe",
+          "digest": "sha256:f37f01f6fef6bba271f4d3d441eb57e93d54c07b5d69749a806bd000494c4cd0",
           "size": 0,
           "platform": "Windows",
           "architecture": "arm64",
           "redirectHosts": []
         },
         {
-          "id": "678f87601c0aff31f74b",
+          "id": "502a6846692a717c917d",
           "name": "GitHubDesktopSetup-arm64.msi",
-          "url": "https://desktop.githubusercontent.com/releases/3.6.10-ffeefe5d/GitHubDesktopSetup-arm64.msi",
-          "digest": "sha256:5dc2eee67cf4cd7df3fa52b5616a9e2caf57a625f0298310419c8b21ded39c64",
+          "url": "https://desktop.githubusercontent.com/releases/3.6.11-0102f49a/GitHubDesktopSetup-arm64.msi",
+          "digest": "sha256:ba176b4d66ceb9a824963cf1614bd65db20910c97eb62d8dc01c650ee7b83177",
           "size": 0,
           "platform": "Windows",
           "architecture": "arm64",
           "redirectHosts": []
         }
       ],
-      "version": "3.6.10",
-      "metadataSource": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/g/GitHub/GitHubDesktop/3.6.10/GitHub.GitHubDesktop.installer.yaml",
+      "version": "3.6.11",
+      "metadataSource": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/g/GitHub/GitHubDesktop/3.6.11/GitHub.GitHubDesktop.installer.yaml",
       "status": "ready",
       "provider": "winget",
       "recommended": {
         "Windows/x64": [
-          "e2316eafd26aa33c9915"
+          "f9eaf5dd6d2c8d8717a1"
         ],
         "Windows/x86": [],
         "Windows/arm64": [
-          "678f87601c0aff31f74b"
+          "502a6846692a717c917d"
         ],
         "Windows/universal": [],
         "Windows/All": [
-          "678f87601c0aff31f74b",
-          "e2316eafd26aa33c9915"
+          "502a6846692a717c917d",
+          "f9eaf5dd6d2c8d8717a1"
         ],
         "Linux/x64": [],
         "Linux/x86": [],
@@ -14255,24 +14255,24 @@
         "Boot ISO/universal": [],
         "Boot ISO/All": [],
         "All/x64": [
-          "e2316eafd26aa33c9915"
+          "f9eaf5dd6d2c8d8717a1"
         ],
         "All/x86": [],
         "All/arm64": [
-          "678f87601c0aff31f74b"
+          "502a6846692a717c917d"
         ],
         "All/universal": [],
         "All/All": [
-          "678f87601c0aff31f74b",
-          "e2316eafd26aa33c9915"
+          "502a6846692a717c917d",
+          "f9eaf5dd6d2c8d8717a1"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "gh": {
       "name": "GitHub CLI (gh)",
       "source": "https://cli.github.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "679195511",
@@ -14628,12 +14628,12 @@
           "679195704"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "nodejs": {
       "name": "Node.js LTS (includes npm)",
       "source": "https://nodejs.org/en/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "aab70e8ca1b56de12fbe",
@@ -14701,12 +14701,12 @@
           "aab70e8ca1b56de12fbe"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "docker-desktop": {
       "name": "Docker Desktop",
       "source": "https://www.docker.com/products/docker-desktop/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "7f0b7aa13b52b88b46d0",
@@ -14774,12 +14774,12 @@
           "3088b3c914160a4e8a05"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "podman-desktop": {
       "name": "Podman Desktop",
       "source": "https://podman-desktop.io/downloads",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "636801520",
@@ -15150,12 +15150,12 @@
           "636282430"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "uv": {
       "name": "uv (Python environment manager)",
       "source": "https://docs.astral.sh/uv/getting-started/installation/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "704009442",
@@ -15466,12 +15466,12 @@
           "704009823"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "dbeaver": {
       "name": "DBeaver Community",
       "source": "https://dbeaver.io/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "699551953",
@@ -15691,12 +15691,12 @@
           "699552687"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "windows-terminal": {
       "name": "Windows Terminal",
       "source": "https://github.com/microsoft/terminal/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "732546742",
@@ -15832,12 +15832,12 @@
           "732547238"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "restic": {
       "name": "Restic",
       "source": "https://github.com/restic/restic/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "467000535",
@@ -16243,12 +16243,12 @@
           "466998668"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "kopia": {
       "name": "Kopia",
       "source": "https://github.com/kopia/kopia/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "448730919",
@@ -16758,12 +16758,12 @@
           "448730977"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "duplicati": {
       "name": "Duplicati",
       "source": "https://github.com/duplicati/duplicati/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "688942241",
@@ -17399,12 +17399,12 @@
           "688931317"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "rclone": {
       "name": "rclone",
       "source": "https://github.com/rclone/rclone/releases",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "717742238",
@@ -18064,12 +18064,12 @@
           "717776474"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "airvpn": {
       "name": "AirVPN (Eddie client)",
       "source": "https://airvpn.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -18077,7 +18077,7 @@
     "expressvpn": {
       "name": "ExpressVPN",
       "source": "https://www.expressvpn.com/vpn-download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -18085,7 +18085,7 @@
     "vpn-unlimited": {
       "name": "VPN Unlimited",
       "source": "https://www.vpnunlimited.com/downloads",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -18093,7 +18093,7 @@
     "fastestvpn": {
       "name": "FastestVPN",
       "source": "https://fastestvpn.com/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -18101,7 +18101,7 @@
     "bitwarden": {
       "name": "Bitwarden",
       "source": "https://bitwarden.com/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "436f817067a372daa566",
@@ -18171,12 +18171,12 @@
           "436f817067a372daa566"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "lastpass": {
       "name": "LastPass",
       "source": "https://lastpass.com/misc_download2.php?lang=en_US",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -18184,7 +18184,7 @@
     "localwp": {
       "name": "Local (LocalWP)",
       "source": "https://localwp.com/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "865f68f7a031b2357a2f",
@@ -18240,12 +18240,12 @@
           "865f68f7a031b2357a2f"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "wordpress-studio": {
       "name": "WordPress Studio",
       "source": "https://developer.wordpress.com/studio/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -18253,7 +18253,7 @@
     "ddev": {
       "name": "DDEV",
       "source": "https://docs.ddev.com/en/stable/users/install/ddev-installation/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "678380122",
@@ -18533,12 +18533,12 @@
           "678379944"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "wp-cli": {
       "name": "WP-CLI",
       "source": "https://make.wordpress.org/cli/handbook/guides/installing/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -18546,7 +18546,7 @@
     "composer": {
       "name": "Composer",
       "source": "https://getcomposer.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [],
       "status": "manual",
       "reason": "Publisher selection required: no reviewed automatic resolver for this edition."
@@ -18554,7 +18554,7 @@
     "freecad": {
       "name": "FreeCAD",
       "source": "https://www.freecad.org/downloads",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "a9f0efafa1fa2b74f6c0",
@@ -18608,12 +18608,12 @@
           "a9f0efafa1fa2b74f6c0"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "prusaslicer": {
       "name": "PrusaSlicer",
       "source": "https://www.prusa3d.com/page/prusaslicer_424/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "702021700",
@@ -18724,12 +18724,12 @@
           "702021700"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "kicad": {
       "name": "KiCad",
       "source": "https://www.kicad.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "0758a73f6de8cb807619",
@@ -18801,12 +18801,12 @@
           "0758a73f6de8cb807619"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "arduino-ide": {
       "name": "Arduino IDE",
       "source": "https://www.arduino.cc/en/software",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "442901953",
@@ -18980,36 +18980,36 @@
           "442901797"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "blender": {
       "name": "Blender",
       "source": "https://www.blender.org/download/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "c69916ac1dee9bf64647",
           "name": "blender-5.3.0-windows-x64.msi",
-          "url": "https://mirrors.ocf.berkeley.edu/blender/release/Blender5.3/blender-5.3.0-windows-x64.msi",
+          "url": "https://plug-mirror.rcac.purdue.edu/blender/release/Blender5.3/blender-5.3.0-windows-x64.msi",
           "digest": "sha256:3ff4ec8a488be1148aa2bdb2cb229be21b8050e75931da617934cac254dd726c",
           "size": 0,
           "platform": "Windows",
           "architecture": "x64",
           "redirectHosts": [
-            "mirrors.ocf.berkeley.edu",
+            "mirrors.iu13.net",
             "plug-mirror.rcac.purdue.edu"
           ]
         },
         {
           "id": "0e1512bda822d40f59ed",
           "name": "blender-5.3.0-windows-arm64.msi",
-          "url": "https://plug-mirror.rcac.purdue.edu/blender/release/Blender5.3/blender-5.3.0-windows-arm64.msi",
+          "url": "https://mirrors.iu13.net/blender/release/Blender5.3/blender-5.3.0-windows-arm64.msi",
           "digest": "sha256:82bf9c0057e288c44d066c201abe2ea1278d1ebe5df6cfd54571fca14dba27de",
           "size": 0,
           "platform": "Windows",
           "architecture": "arm64",
           "redirectHosts": [
-            "mirrors.ocf.berkeley.edu",
+            "mirrors.iu13.net",
             "plug-mirror.rcac.purdue.edu"
           ]
         }
@@ -19059,12 +19059,12 @@
           "c69916ac1dee9bf64647"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "inkscape": {
       "name": "Inkscape",
       "source": "https://inkscape.org/release/",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "329521514f3e162e66b8",
@@ -19142,12 +19142,12 @@
           "329521514f3e162e66b8"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     },
     "ollama": {
       "name": "Ollama",
       "source": "https://ollama.com/download",
-      "checkedAt": "2026-11-11T05:24:04.559896+00:00",
+      "checkedAt": "2026-11-11T17:23:56.068215+00:00",
       "assets": [
         {
           "id": "729375242",
@@ -19310,58 +19310,30 @@
           "729375415"
         ]
       },
-      "lastSuccess": "2026-11-11T05:24:04.559896+00:00"
+      "lastSuccess": "2026-11-11T17:23:56.068215+00:00"
     }
   },
   "changes": [
     {
-      "tool": "powershell",
-      "name": "PowerShell 7",
+      "tool": "rustdesk",
+      "name": "RustDesk",
       "kind": "updated",
-      "version": "v7.7.0",
-      "previous": "v7.6.9"
+      "version": "1.5.3",
+      "previous": "1.5.1"
     },
     {
-      "tool": "git",
-      "name": "Git Portable",
+      "tool": "tailscale",
+      "name": "Tailscale",
       "kind": "updated",
-      "version": "v2.56.1.windows.1",
-      "previous": "v2.56.0.windows.4"
+      "version": "1.104.6",
+      "previous": "1.104.5"
     },
     {
-      "tool": "thunderbird",
-      "name": "Mozilla Thunderbird",
+      "tool": "github-desktop",
+      "name": "GitHub Desktop",
       "kind": "updated",
-      "version": "160.0",
-      "previous": "159.0"
-    },
-    {
-      "tool": "betterbird",
-      "name": "Betterbird",
-      "kind": "updated",
-      "version": "153.7.0",
-      "previous": "153.6.0"
-    },
-    {
-      "tool": "platform-tools",
-      "name": "Android SDK Platform-Tools (ADB & Fastboot)",
-      "kind": "updated",
-      "version": "37.0.3",
-      "previous": "37.0.2"
-    },
-    {
-      "tool": "windows-terminal",
-      "name": "Windows Terminal",
-      "kind": "updated",
-      "version": "v1.25.3131.0",
-      "previous": "v1.25.2733.0"
-    },
-    {
-      "tool": "kicad",
-      "name": "KiCad",
-      "kind": "updated",
-      "version": "10.0.8",
-      "previous": "10.0.7"
+      "version": "3.6.11",
+      "previous": "3.6.10"
     },
     {
       "tool": "blender",
